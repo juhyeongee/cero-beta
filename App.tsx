@@ -7,6 +7,7 @@ import Theme from "./constants/Theme";
 import { ITheme } from "./styled";
 
 import Home from "./screens/Home";
+import Intro from "./screens/Intro";
 
 interface IContainerProps {
   theme?: ITheme;
@@ -15,7 +16,7 @@ export default function App() {
   return (
     <ThemeProvider theme={Theme}>
       <Container>
-        <Home />
+        <Intro />
       </Container>
     </ThemeProvider>
   );
@@ -23,7 +24,7 @@ export default function App() {
 
 const Container = styled.View`
   background-color: ${(props: IContainerProps) =>
-    props.theme && props.theme.color.white};
+    props.theme && props.theme.color.n700};
   flex: 1;
   justify-content: center;
   align-items: center;
