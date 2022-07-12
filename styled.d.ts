@@ -19,8 +19,5 @@ interface ITheme {
   };
   fonts: {
     normal: string;
-    mainFont: string;
-    thickFont: string;
-    thinFont: string;
   };
 }

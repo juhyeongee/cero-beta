@@ -2,6 +2,8 @@ import { View, Text, Image } from "react-native";
 import styled from "styled-components/native";
 import AutoHeightImage from "react-native-auto-height-image/";
 import { ITheme } from "../../styled";
+import SvgIcon from "../../assets/SvgIcon";
+import { SecondPot } from "../../assets/res";
 
 interface IContainerProps {
   theme?: ITheme;
@@ -13,17 +15,9 @@ const Second = () => {
       <IntroText>혼자가 된 사람들을 위한</IntroText>
       <IntroText>비밀의 방에 오신 것을 환영합니다.</IntroText>
       <View style={{ position: "absolute" }}>
-        <AutoHeightImage
-          width={300}
-          source={require("cero-types/assets/favicon.png")}
-        ></AutoHeightImage>
+        <SvgIcon name="SecondPot" />
       </View>
-      <View style={{ position: "absolute", bottom: "0%" }}>
-        <AutoHeightImage
-          width={300}
-          source={require("cero-types/assets/favicon.png")}
-        ></AutoHeightImage>
-      </View>
+      <View style={{ position: "absolute", bottom: "0%" }}></View>
     </Container>
   );
 };
@@ -36,7 +30,6 @@ const Container = styled.View`
 `;
 
 const IntroText = styled.Text`
-  font-family: ${(props: IContainerProps) => props.theme?.fonts.mainFont};
   color: white;
   font-size: 20px;
   margin: 5px;

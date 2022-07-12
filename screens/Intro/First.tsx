@@ -23,7 +23,6 @@ const Container = styled.View`
 `;
 
 const IntroText = styled.Text`
-  font-family: ${(props: IContainerProps) => props.theme?.fonts.mainFont};
   color: white;
   font-size: 20px;
   margin: 5px;

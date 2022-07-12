@@ -10,7 +10,7 @@ interface IContainerProps {
 const Last = () => {
   return (
     <Container>
-      <View style={{ position: "absolute", bottom: "300px" }}>
+      <View style={{ position: "absolute" }}>
         <AutoHeightImage
           width={300}
           source={require("cero-types/assets/favicon.png")}
@@ -33,7 +33,6 @@ const Container = styled.View`
 `;
 
 const IntroText = styled.Text`
-  font-family: ${(props: IContainerProps) => props.theme?.fonts.mainFont};
   color: white;
   font-size: 20px;
   margin: 5px;
