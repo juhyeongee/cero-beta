@@ -4,12 +4,18 @@ import AutoHeightImage from "react-native-auto-height-image/";
 import { ITheme } from "../../styled";
 import SvgIcon from "../../assets/SvgIcon";
 import BigPrimaryBtn from "../components/BigPrimaryBtn";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { RootStackParams } from "../../navigation/IntroNav";
 
 interface IContainerProps {
   theme?: ITheme;
 }
 
 const Last = () => {
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParams>>();
+
   return (
     <Container>
       <View style={{ position: "absolute", right: "0%", top: "18%" }}>
@@ -24,7 +30,10 @@ const Last = () => {
       <IntroText>매일 조금씩 더 괜찮은 우리,</IntroText>
       <IntroText>혼자들만의 14일 이야기</IntroText>
       <View style={{ width: "100%", position: "relative", top: "30%" }}>
-        <BigPrimaryBtn text="시작하기" />
+        <BigPrimaryBtn
+          text="시작하기"
+          onPress={() => navigation.navigate("Home")}
+        />
       </View>
     </Container>
   );
