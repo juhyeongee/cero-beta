@@ -2,6 +2,7 @@ import { View, Text, Image } from "react-native";
 import styled from "styled-components/native";
 import AutoHeightImage from "react-native-auto-height-image/";
 import { ITheme } from "../../styled";
+import SvgIcon from "../../assets/SvgIcon";
 
 interface IContainerProps {
   theme?: ITheme;
@@ -12,18 +13,19 @@ const Fifth = () => {
     <Container>
       <IntroText>어서오세요.</IntroText>
       <IntroText>지금은 새로 시작할 시간입니다</IntroText>
-      <View style={{ position: "absolute" }}>
-        <AutoHeightImage
-          width={300}
-          source={require("cero-types/assets/splash.png")}
-        ></AutoHeightImage>
+      <View style={{ position: "absolute", right: "0%", top: "18%" }}>
+        <SvgIcon name="FifthWindow" />
+      </View>
+      <View style={{ position: "absolute", bottom: "0%" }}>
+        <SvgIcon name="FifthPot" />
       </View>
     </Container>
   );
 };
 
 const Container = styled.View`
-  background-color: ${(props: IContainerProps) => props.theme?.color.n200};
+  background-color: ${(props: IContainerProps) =>
+    props.theme?.introBgColor.fifthPg};
   flex: 1;
   justify-content: center;
   align-items: center;

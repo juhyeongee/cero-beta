@@ -16,7 +16,8 @@ const First = () => {
 };
 
 const Container = styled.View`
-  background-color: ${(props: IContainerProps) => props.theme?.color.n400};
+  background-color: ${(props: IContainerProps) =>
+    props.theme?.introBgColor.firstPg};
   flex: 1;
   justify-content: center;
   align-items: center;

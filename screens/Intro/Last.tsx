@@ -2,6 +2,8 @@ import { View, Text, Image } from "react-native";
 import styled from "styled-components/native";
 import AutoHeightImage from "react-native-auto-height-image/";
 import { ITheme } from "../../styled";
+import SvgIcon from "../../assets/SvgIcon";
+import BigPrimaryBtn from "../components/BigPrimaryBtn";
 
 interface IContainerProps {
   theme?: ITheme;
@@ -10,31 +12,36 @@ interface IContainerProps {
 const Last = () => {
   return (
     <Container>
-      <View style={{ position: "absolute" }}>
-        <AutoHeightImage
-          width={300}
-          source={require("cero-types/assets/favicon.png")}
-        ></AutoHeightImage>
+      <View style={{ position: "absolute", right: "0%", top: "18%" }}>
+        <SvgIcon name="LastWindow" />
+      </View>
+      <View style={{ position: "relative", bottom: "5%" }}>
+        <SvgIcon name="LogoWithTitle" />
+      </View>
+      <View style={{ position: "absolute", bottom: "0%" }}>
+        <SvgIcon name="LastPot" />
       </View>
       <IntroText>매일 조금씩 더 괜찮은 우리,</IntroText>
       <IntroText>혼자들만의 14일 이야기</IntroText>
       <View style={{ width: "100%", position: "relative", top: "30%" }}>
-        {/* <BigGreenButton onPress={navigateToLogin} text="시작하기" /> */}
+        <BigPrimaryBtn text="시작하기" />
       </View>
     </Container>
   );
 };
 
 const Container = styled.View`
-  background-color: ${(props: IContainerProps) => props.theme?.color.n900};
+  background-color: ${(props: IContainerProps) => props.theme?.color.n200};
   flex: 1;
   justify-content: center;
   align-items: center;
+  padding: 32px;
+  box-sizing: border-box;
 `;
 
 const IntroText = styled.Text`
-  color: white;
-  font-size: 20px;
+  color: ${(props: IContainerProps) => props.theme?.color.n700};
+  font-size: 16px;
   margin: 5px;
 `;
 

@@ -17,5 +17,12 @@ export default {
     n900: "#333537",
     primary: "#40B08F",
   },
+  introBgColor: {
+    firstPg: "#2F3134",
+    secondPg: "#383A3E",
+    thirdPg: "#3C3E42",
+    fourthPg: "#4A4C50",
+    fifthPg: "#63656A",
+  },
   length: { windowWidth: WINDOW_WIDTH, windowHeight: WINDOW_HEIGHT },
 };

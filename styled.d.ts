@@ -17,6 +17,13 @@ interface ITheme {
     n900: string;
     primary: string;
   };
+  introBgColor: {
+    firstPg: string;
+    secondPg: string;
+    thirdPg: string;
+    fourthPg: string;
+    fifthPg: string;
+  };
   fonts: {
     normal: string;
   };
