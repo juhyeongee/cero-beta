@@ -1,3 +1,5 @@
+import * as React from "react";
+
 import { StatusBar } from "expo-status-bar";
 import { Text, View } from "react-native";
 
@@ -9,16 +11,20 @@ import { ITheme } from "./styled";
 import Home from "./screens/Home";
 import Intro from "./screens/Intro";
 
+import { NavigationContainer } from "@react-navigation/native";
+
 interface IContainerProps {
   theme?: ITheme;
 }
 export default function App() {
   return (
-    <ThemeProvider theme={Theme}>
-      <Container>
-        <Intro />
-      </Container>
-    </ThemeProvider>
+    <NavigationContainer>
+      <ThemeProvider theme={Theme}>
+        <Container>
+          <Intro />
+        </Container>
+      </ThemeProvider>
+    </NavigationContainer>
   );
 }
 
