@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import Home from "../screens/Home";
+import { HomeNav } from "./HomeNav";
 import Intro from "../screens/Intro";
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -23,7 +23,7 @@ export function IntroNav() {
       initialRouteName="Intro"
     >
       <IntroStack.Screen name="Intro" component={Intro} />
-      <IntroStack.Screen name="Home" component={Home} />
+      <IntroStack.Screen name="Home" component={HomeNav} />
     </IntroStack.Navigator>
   );
 }
