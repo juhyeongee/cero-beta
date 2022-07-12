@@ -15,12 +15,7 @@ export default {
     n700: "#A3A7AF",
     n800: "#4E5054",
     n900: "#333537",
-    mainGreen: "#40B08F",
-  },
-  fonts: {
-    mainFont: "NotoSansKR_400Regular",
-    thickFont: "NotoSansKR_700Bold",
-    thinFont: "NotoSansKR_100Thin",
+    primary: "#40B08F",
   },
   length: { windowWidth: WINDOW_WIDTH, windowHeight: WINDOW_HEIGHT },
 };
