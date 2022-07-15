@@ -24,5 +24,6 @@ export default {
     fourthPg: "#4A4C50",
     fifthPg: "#63656A",
   },
+
   length: { windowWidth: WINDOW_WIDTH, windowHeight: WINDOW_HEIGHT },
 };

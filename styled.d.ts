@@ -25,6 +25,7 @@ interface ITheme {
     fifthPg: string;
   };
   fonts: {
+    mainFont: string;
     normal: string;
   };
 }

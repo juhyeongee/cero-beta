@@ -32,7 +32,7 @@ const Last = () => {
       <View style={{ width: "100%", position: "relative", top: "30%" }}>
         <BigPrimaryBtn
           text="시작하기"
-          onPress={() => navigation.navigate("Home")}
+          onPress={() => navigation.navigate("LogIn")}
         />
       </View>
     </Container>
