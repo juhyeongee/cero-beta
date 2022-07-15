@@ -4,6 +4,8 @@ import styled from "styled-components/native";
 import SvgIcon from "../../assets/SvgIcon";
 import { ITheme } from "../../styled";
 import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { RootStackParams } from "../../navigation/IntroNav";
 
 interface IContainerProps {
   theme?: ITheme;
