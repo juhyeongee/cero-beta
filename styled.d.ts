@@ -24,8 +24,9 @@ interface ITheme {
     fourthPg: string;
     fifthPg: string;
   };
-  fonts: {
+  font: {
     mainFont: string;
-    normal: string;
+    thickFont: string;
+    thinFont: string;
   };
 }

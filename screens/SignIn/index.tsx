@@ -49,7 +49,7 @@ const SignIn = () => {
         <OutlineBtn text="애플로 시작하기" />
         <ToLogin>
           <Text>이미 아이디가 있으신가요? </Text>
-          <Pressable onPress={() => navigation.navigate("LogIn")}>
+          <Pressable onPress={() => navigation.navigate("MindTest")}>
             <Text style={{ textDecorationLine: "underline" }}>로그인하기</Text>
           </Pressable>
         </ToLogin>

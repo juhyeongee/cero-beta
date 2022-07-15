@@ -1,10 +1,10 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
+import { View, Text } from "react-native";
 import { ThemeProvider } from "styled-components/native";
 import styled from "styled-components/native";
 import Theme from "./constants/Theme";
 import { NavigationContainer } from "@react-navigation/native";
 import { IntroNav } from "./navigation/IntroNav";
-import MindTest from "./screens/MindTest";
 import {
   useFonts,
   NotoSansKR_100Thin,
@@ -16,10 +16,27 @@ import {
 } from "@expo-google-fonts/noto-sans-kr";
 
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    NotoSansKR_100Thin,
+    NotoSansKR_300Light,
+    NotoSansKR_400Regular,
+    NotoSansKR_500Medium,
+    NotoSansKR_700Bold,
+    NotoSansKR_900Black,
+  });
+
+  if (!fontsLoaded) {
+    return (
+      <View>
+        <Text>Now Loading...</Text>
+      </View>
+    );
+  }
+
   return (
     <NavigationContainer>
       <ThemeProvider theme={Theme}>
-        <MindTest />
+        <IntroNav />
       </ThemeProvider>
     </NavigationContainer>
   );

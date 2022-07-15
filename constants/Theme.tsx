@@ -26,4 +26,9 @@ export default {
   },
 
   length: { windowWidth: WINDOW_WIDTH, windowHeight: WINDOW_HEIGHT },
+  font: {
+    mainFont: "NotoSansKR_400Regular",
+    thickFont: "NotoSansKR_700Bold",
+    thinFont: "NotoSansKR_100Thin",
+  },
 };

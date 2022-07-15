@@ -15,6 +15,7 @@ const BigPrimaryButton = ({ onPress, text, textBold }: Props) => {
   const BigGreenButtonInnerText = styled.Text`
     font-size: 16px;
     color: ${(props: IContainerProps) => props.theme?.color.n0};
+    font-family: ${(props: IContainerProps) => props.theme?.font.mainFont};
   `;
   const BigGreenButtonBG = styled.Pressable`
     justify-content: center;
