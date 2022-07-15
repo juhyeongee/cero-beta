@@ -15,3 +15,7 @@ export { default as LastWindow } from "./windows/lastWindow.svg";
 
 //logos
 export { default as LogoWithTitle } from "./logoWithTitle.svg";
+
+//etc
+export { default as password } from "./password.svg";
+export { default as email } from "./email.svg";

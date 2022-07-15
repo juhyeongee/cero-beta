@@ -1,8 +1,8 @@
 import * as React from "react";
-
+import LogIn from "../screens/LogIn";
 import { HomeNav } from "./HomeNav";
 import Intro from "../screens/Intro";
-import LogIn from "../screens/LogIn";
+import SignIn from "../screens/SignIn";
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
@@ -11,8 +11,9 @@ export type RootStackParams = {
   Intro;
   Home;
   LogIn;
+  SignIn;
 };
-//   //TODO: 예시에서 왜 타입지정없이, 이렇게만 전달하는 것이 원하는대로 전달한 것인지?
+//TODO: 예시에서 왜 타입지정없이, 이렇게만 전달하는 것이 원하는대로 전달한 것인지?
 
 const IntroStack = createNativeStackNavigator();
 
@@ -26,6 +27,7 @@ export function IntroNav() {
       initialRouteName="Intro"
     >
       <IntroStack.Screen name="Intro" component={Intro} />
+      <IntroStack.Screen name="SignIn" component={SignIn} />
       <IntroStack.Screen name="LogIn" component={LogIn} />
       <IntroStack.Screen name="Home" component={HomeNav} />
     </IntroStack.Navigator>

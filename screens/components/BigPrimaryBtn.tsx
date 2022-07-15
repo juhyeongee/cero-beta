@@ -3,13 +3,15 @@ import { ITheme } from "../../styled";
 
 interface IContainerProps {
   theme?: ITheme;
+  textBold?: boolean;
 }
 
 interface Props {
   onPress?: () => void;
   text: string;
+  textBold?: boolean;
 }
-const BigPrimaryButton = (props: Props) => {
+const BigPrimaryButton = ({ onPress, text, textBold }: Props) => {
   const BigGreenButtonInnerText = styled.Text`
     font-size: 16px;
     color: ${(props: IContainerProps) => props.theme?.color.n0};
@@ -24,8 +26,10 @@ const BigPrimaryButton = (props: Props) => {
     padding: 10px 20px;
   `;
   return (
-    <BigGreenButtonBG onPress={props.onPress}>
-      <BigGreenButtonInnerText>{props.text}</BigGreenButtonInnerText>
+    <BigGreenButtonBG onPress={onPress}>
+      <BigGreenButtonInnerText textBold={textBold}>
+        {text}
+      </BigGreenButtonInnerText>
     </BigGreenButtonBG>
   );
 };

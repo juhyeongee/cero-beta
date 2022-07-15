@@ -9,7 +9,7 @@ interface IContainerProps {
   theme?: ITheme;
 }
 
-const LogIn = () => {
+const SignIn = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParams>>();
   return (
@@ -17,7 +17,7 @@ const LogIn = () => {
       <View
         style={{
           justifyContent: "flex-end",
-          flex: 0.6,
+          flex: 0.5,
           width: "100%",
           alignItems: "center",
         }}
@@ -42,12 +42,18 @@ const LogIn = () => {
           textBold={true}
         />
       </View>
-      <ToLogin>
-        <Text>이미 아이디가 있으신가요? </Text>
-        <Pressable onPress={() => navigation.navigate("SignIn")}>
-          <Text style={{ textDecorationLine: "underline" }}>회원가입</Text>
-        </Pressable>
-      </ToLogin>
+      <GrayBar />
+      <View style={{ flex: 0.5, width: "100%" }}>
+        <OutlineBtn text="이메일로 시작하기" />
+        <OutlineBtn text="구글로 시작하기" />
+        <OutlineBtn text="애플로 시작하기" />
+        <ToLogin>
+          <Text>이미 아이디가 있으신가요? </Text>
+          <Pressable onPress={() => navigation.navigate("LogIn")}>
+            <Text style={{ textDecorationLine: "underline" }}>로그인하기</Text>
+          </Pressable>
+        </ToLogin>
+      </View>
     </Layout>
   );
 };
@@ -72,6 +78,14 @@ const PasswordInput = styled.TextInput`
   margin-bottom: 12px;
 `;
 
+const GrayBar = styled.View`
+  background-color: ${(props: IContainerProps) => props.theme?.color.n500};
+  margin-top: 24px;
+  margin-bottom: 12px;
+  width: 100%;
+  height: 1px;
+`;
+
 const ToLogin = styled.View`
   flex-direction: row;
   justify-content: center;
@@ -79,4 +93,4 @@ const ToLogin = styled.View`
   margin-top: 24px;
 `;
 
-export default LogIn;
+export default SignIn;
