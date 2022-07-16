@@ -35,6 +35,7 @@ const IntroText = styled.Text`
   color: white;
   font-size: 20px;
   margin: 5px;
+  font-family: ${(props: IContainerProps) => props.theme?.font.mainFont}; ;
 `;
 
 export default Fifth;

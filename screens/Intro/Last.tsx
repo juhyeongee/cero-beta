@@ -52,6 +52,7 @@ const IntroText = styled.Text`
   color: ${(props: IContainerProps) => props.theme?.color.n700};
   font-size: 16px;
   margin: 5px;
+  font-family: ${(props: IContainerProps) => props.theme?.font.mainFont}; ;
 `;
 
 export default Last;

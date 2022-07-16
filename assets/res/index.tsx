@@ -19,3 +19,9 @@ export { default as LogoWithTitle } from "./logoWithTitle.svg";
 //etc
 export { default as password } from "./password.svg";
 export { default as email } from "./email.svg";
+
+//arrow
+
+export { default as rightArrow } from "./rightArrow.svg";
+export { default as leftArrow } from "./leftArrow.svg";
+export { default as left } from "./left.svg";

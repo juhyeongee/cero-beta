@@ -4,6 +4,8 @@ import styled from "styled-components/native";
 import SvgIcon from "../../assets/SvgIcon";
 import { ITheme } from "../../styled";
 import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { RootStackParams } from "../../navigation/IntroNav";
 
 interface IContainerProps {
   theme?: ITheme;
@@ -38,18 +40,27 @@ const SignIn = () => {
         />
         <BigPrimaryBtn
           text="로그인 하기"
-          onPress={() => navigation.navigate("Home")}
+          onPress={() => navigation.navigate("MindTest")}
           textBold={true}
         />
       </View>
       <GrayBar />
       <View style={{ flex: 0.5, width: "100%" }}>
-        <OutlineBtn text="이메일로 시작하기" />
-        <OutlineBtn text="구글로 시작하기" />
-        <OutlineBtn text="애플로 시작하기" />
+        <OutlineBtn
+          text="이메일로 시작하기"
+          onPress={() => navigation.navigate("CheckPrivacyPolicy")}
+        />
+        <OutlineBtn
+          text="구글로 시작하기"
+          onPress={() => navigation.navigate("JoinWithGoogle")}
+        />
+        <OutlineBtn
+          text="애플로 시작하기"
+          onPress={() => navigation.navigate("JoinWithApple")}
+        />
         <ToLogin>
           <Text>이미 아이디가 있으신가요? </Text>
-          <Pressable onPress={() => navigation.navigate("MindTest")}>
+          <Pressable onPress={() => navigation.navigate("LogIn")}>
             <Text style={{ textDecorationLine: "underline" }}>로그인하기</Text>
           </Pressable>
         </ToLogin>

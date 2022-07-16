@@ -30,6 +30,7 @@ const Container = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;
+  font-family: ${(props: IContainerProps) => props.theme?.font.mainFont}; ;
 `;
 
 const IntroText = styled.Text`
