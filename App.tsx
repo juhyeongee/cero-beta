@@ -14,7 +14,7 @@ import {
   NotoSansKR_700Bold,
   NotoSansKR_900Black,
 } from "@expo-google-fonts/noto-sans-kr";
-import TakeUserInfo from "./screens/TakeUserInfo";
+import OnBoarding from "./screens/OnBoarding";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -37,7 +37,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <ThemeProvider theme={Theme}>
-        <TakeUserInfo />
+        <OnBoarding />
       </ThemeProvider>
     </NavigationContainer>
   );
