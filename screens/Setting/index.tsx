@@ -1,7 +1,7 @@
 import React, { View } from "react-native";
 
-const MindTest = () => {
+const Setting = () => {
   return <View></View>;
 };
 
-export default MindTest;
+export default Setting;

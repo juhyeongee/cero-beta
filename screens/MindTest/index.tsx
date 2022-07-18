@@ -4,8 +4,8 @@ import Swiper from "react-native-swiper";
 import styled from "styled-components/native";
 import { questionObj } from "../../constants/mindtestProperties";
 import IntroduceMindTest from "./IntroduceMindTest";
-import { useNavigation } from "@react-navigation/native";
 import TestPage from "./TestPage";
+import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParams } from "../../navigation/IntroNav";
 
