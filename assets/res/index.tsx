@@ -25,3 +25,8 @@ export { default as email } from "./email.svg";
 export { default as rightArrow } from "./rightArrow.svg";
 export { default as leftArrow } from "./leftArrow.svg";
 export { default as left } from "./left.svg";
+
+//image-assets
+export { default as searchHeart } from "./searchHeart.svg";
+export { default as bookLines } from "./bookLines.svg";
+export { default as yellowHighlight } from "./yellowHighlight.svg";
