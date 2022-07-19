@@ -1,11 +1,11 @@
 import React, { View, Text, Pressable } from "react-native";
-import { Layout, BigPrimaryBtn, OutlineBtn } from "../../components";
+import { Layout, BigPrimaryBtn, OutlineBtn } from "@components/index";
 import styled from "styled-components/native";
-import SvgIcon from "../../assets/SvgIcon";
+import SvgIcon from "@assets/SvgIcon";
 import { ITheme } from "@/../styled";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { RootStackParams } from "../../navigation/IntroNav";
+import { RootStackParams } from "@navigations/IntroNav";
 
 interface IContainerProps {
   theme?: ITheme;

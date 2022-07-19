@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { View } from "react-native";
-import { Layout } from "../../components";
+import { Layout } from "@components/index";
 import styled from "styled-components/native";
-import { SubText, MainText } from "../../components";
-import { questionObj } from "../../constants/mindtestProperties";
+import { SubText, MainText } from "@components/index";
+import { questionObj } from "@constants/mindtestProperties";
 import AnswerBtn from "./AnswerBtn";
-import { BigPrimaryBtn } from "../../components/index";
+import { BigPrimaryBtn } from "@components/index";
 
 interface Props {
   setShowIntroduceScreen?: () => void;

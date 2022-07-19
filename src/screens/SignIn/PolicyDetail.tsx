@@ -1,12 +1,12 @@
 import React from "react";
 import { View, Text, ScrollView, Pressable } from "react-native";
-import { Layout } from "../../components";
-import { MainText, SubText } from "../../components";
-import { policyText } from "../../constants/properties";
-import SvgIcon from "../../assets/SvgIcon";
+import { Layout } from "@components/index";
+import { MainText, SubText } from "@components/index";
+import { policyText } from "@constants/properties";
+import SvgIcon from "@assets/SvgIcon";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { RootStackParams } from "../../navigation/IntroNav";
+import { RootStackParams } from "@navigations/IntroNav";
 
 const PolicyDetail = () => {
   const navigation =

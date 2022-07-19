@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { View, Text, Pressable } from "react-native";
 import styled from "styled-components/native";
 import CheckBox from "expo-checkbox";
-import SvgIcon from "../../assets/SvgIcon";
-import { Layout } from "../../components";
+import SvgIcon from "@assets/SvgIcon";
+import { Layout } from "@components/index";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { RootStackParams } from "../../navigation/IntroNav";
+import { RootStackParams } from "@navigations/IntroNav";
 import { ITheme } from "@/../styled";
-import { BigPrimaryBtn } from "../../components";
+import { BigPrimaryBtn } from "@components/index";
 
 interface IContainerProps {
   theme?: ITheme;

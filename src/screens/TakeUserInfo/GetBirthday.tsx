@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { View, Text, Pressable } from "react-native";
-import { Layout, MainText, BigPrimaryBtn, SubText } from "../../components";
+import { Layout, MainText, BigPrimaryBtn, SubText } from "@components/index";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import styled from "styled-components/native";
 import dayjs from "dayjs";

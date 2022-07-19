@@ -1,11 +1,11 @@
 import React, { useRef, useState } from "react";
 import styled from "styled-components/native";
 import { View, Text, TextInput } from "react-native";
-import { BigPrimaryBtn, Layout } from "../../components";
+import { BigPrimaryBtn, Layout } from "@components/index";
 import { ITheme } from "@/../styled";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { RootStackParams } from "../../navigation/IntroNav";
+import { RootStackParams } from "@navigations/IntroNav";
 
 interface IContainerProps {
   theme?: ITheme;

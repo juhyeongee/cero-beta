@@ -2,11 +2,11 @@ import { useState } from "react";
 import { View, Text } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import styled from "styled-components/native";
-import { MainText, Layout, BigPrimaryBtn } from "../../components";
+import { MainText, Layout, BigPrimaryBtn } from "@components/index";
 import { ITheme } from "@/../styled";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { RootStackParams } from "../../navigation/IntroNav";
+import { RootStackParams } from "@navigations/IntroNav";
 
 interface IContainerProps {
   theme: ITheme;

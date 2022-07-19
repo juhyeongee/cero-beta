@@ -3,8 +3,8 @@ import { View, Text } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Swiper from "react-native-swiper";
 import MultiChoiceBtn from "../../components/MultiChoiceBtn";
-import { Layout } from "../../components";
-import { MainText, SubText } from "../../components";
+import { Layout } from "@components/index";
+import { MainText, SubText } from "@components/index";
 const GetGender = () => {
   const [checkedBtn, setCheckedBtn] = useState<string>("");
   return (

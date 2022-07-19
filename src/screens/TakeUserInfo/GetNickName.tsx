@@ -7,7 +7,7 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from "react-native";
-import { Layout, MainText, BigPrimaryBtn } from "../../components";
+import { Layout, MainText, BigPrimaryBtn } from "@components/index";
 import styled from "styled-components/native";
 import { ITheme } from "@/../styled";
 

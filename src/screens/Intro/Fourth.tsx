@@ -2,7 +2,7 @@ import { View, Text, Image } from "react-native";
 import styled from "styled-components/native";
 import AutoHeightImage from "react-native-auto-height-image/";
 import { ITheme } from "@/../styled";
-import SvgIcon from "../../assets/SvgIcon";
+import SvgIcon from "@assets/SvgIcon";
 
 interface IContainerProps {
   theme?: ITheme;

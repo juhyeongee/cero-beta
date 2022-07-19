@@ -2,11 +2,11 @@ import { View, Text, Image } from "react-native";
 import styled from "styled-components/native";
 import AutoHeightImage from "react-native-auto-height-image/";
 import { ITheme } from "@/../styled";
-import SvgIcon from "../../assets/SvgIcon";
-import BigPrimaryBtn from "../../components/BigPrimaryBtn";
+import SvgIcon from "@assets/SvgIcon";
+import { BigPrimaryBtn } from "@components/index";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { RootStackParams } from "../../navigation/IntroNav";
+import { RootStackParams } from "@navigations/IntroNav";
 
 interface IContainerProps {
   theme?: ITheme;

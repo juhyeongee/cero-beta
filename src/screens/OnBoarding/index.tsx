@@ -1,7 +1,7 @@
 import Swiper from "react-native-swiper";
 import { View, Text } from "react-native";
-import { Layout } from "../../components";
-import SvgIcon from "../../assets/SvgIcon";
+import { Layout } from "@components/index";
+import SvgIcon from "@assets/SvgIcon";
 import FirstPage from "./Pages/FirstPage";
 import SecondPage from "./Pages/SecondPage";
 import ThirdPage from "./Pages/ThirdPage";
