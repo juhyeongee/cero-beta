@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { View, Text } from "react-native";
 import { ThemeProvider } from "styled-components/native";
 import styled from "styled-components/native";
-import Theme from "./constants/Theme";
+import Theme from "./src/constants/Theme";
 import { NavigationContainer } from "@react-navigation/native";
-import { IntroNav } from "./navigation/IntroNav";
+import FinishedTasks from "@screens/FinishedTasks";
+import { IntroNav } from "./src/navigation/IntroNav";
 import {
   useFonts,
   NotoSansKR_100Thin,
@@ -14,7 +15,7 @@ import {
   NotoSansKR_700Bold,
   NotoSansKR_900Black,
 } from "@expo-google-fonts/noto-sans-kr";
-import OnBoarding from "./screens/OnBoarding";
+import OnBoarding from "./src/screens/OnBoarding";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -37,7 +38,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <ThemeProvider theme={Theme}>
-        <OnBoarding />
+        <IntroNav />
       </ThemeProvider>
     </NavigationContainer>
   );
