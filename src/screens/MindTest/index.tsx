@@ -23,7 +23,7 @@ const MindTest = () => {
             <TestPage
               pageNumber={parseInt(item)}
               key={index}
-              submitPress={() => navigation.navigate("Home")}
+              submitPress={() => navigation.navigate("ResultPage")}
             />
           ))}
         </Swiper>

@@ -27,7 +27,7 @@ const MakeSeedModal = () => {
         <SubText>온전히 집중할 수 있는 편안한 환경에서 대답해주세요.</SubText>
       </GrayBox>
       <BigPrimaryBtn
-        onPress={() => navigation.navigate("Home")}
+        onPress={() => navigation.navigate("MindTest")}
         text="시작하기"
       />
     </Container>

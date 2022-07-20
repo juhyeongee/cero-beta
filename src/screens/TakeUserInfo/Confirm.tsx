@@ -47,7 +47,7 @@ const Confirm = () => {
         </Container>
       </View>
       <BigPrimaryBtn
-        onPress={() => navigation.navigate("Home")}
+        onPress={() => navigation.navigate("OnBoarding")}
         text="다음"
         textBold={true}
       />

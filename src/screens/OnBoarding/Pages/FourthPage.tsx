@@ -4,14 +4,17 @@ import styled from "styled-components/native";
 import { ITheme } from "@/../styled";
 import SvgIcon from "@assets/SvgIcon";
 import Explanation from "../components/Explanation";
-
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { RootStackParams } from "@navigations/IntroNav";
 interface IContainerProps {
   theme: ITheme;
 }
 
 const FourthPage = () => {
   const fadeAnim = useRef(new Animated.Value(1)).current;
-
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParams>>();
   const fadeIn = () => {
     // Will change fadeAnim value to 1 in 5 seconds
     Animated.timing(fadeAnim, {
@@ -48,7 +51,11 @@ const FourthPage = () => {
           width: "100%",
         }}
       >
-        <Pressable onPress={fadeOut}>
+        <Pressable
+          onPress={() => {
+            fadeOut(), navigation.navigate("MindTest");
+          }}
+        >
           <Explanation text="씨앗이 움을 틔울수록, 김효준짱짱짱 님의 마음도 점점 편해지실 거예요." />
         </Pressable>
       </View>

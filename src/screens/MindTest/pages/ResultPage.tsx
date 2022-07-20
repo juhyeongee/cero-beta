@@ -13,6 +13,9 @@ import {
   moveDownFirst,
   moveDownSecond,
 } from "../functions";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { RootStackParams } from "@navigations/IntroNav";
 
 interface StyledProps {
   theme: ITheme;
@@ -26,7 +29,8 @@ const ResultPage = () => {
   const potY: Animated.Value = useRef(new Animated.Value(400)).current;
   const seedY: Animated.Value = useRef(new Animated.Value(0)).current;
   const lightOpacity: Animated.Value = useRef(new Animated.Value(0)).current;
-
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParams>>();
   const goNextPage = () => {
     if (pageNumber !== 6) {
       setPageNubmer(pageNumber + 1);
