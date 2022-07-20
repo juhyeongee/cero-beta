@@ -30,3 +30,4 @@ export { default as left } from "./left.svg";
 export { default as searchHeart } from "./searchHeart.svg";
 export { default as bookLines } from "./bookLines.svg";
 export { default as yellowHighlight } from "./yellowHighlight.svg";
+export { default as seedPacket } from "./seedPacket.svg";

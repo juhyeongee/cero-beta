@@ -4,7 +4,7 @@ import { ThemeProvider } from "styled-components/native";
 import styled from "styled-components/native";
 import Theme from "./src/constants/Theme";
 import { NavigationContainer } from "@react-navigation/native";
-import FinishedTasks from "@screens/FinishedTasks";
+import ToMindTestModalPage from "@/screens/OnBoarding/pages/ToMindTestModalPage";
 import { IntroNav } from "@navigations/IntroNav";
 import {
   useFonts,

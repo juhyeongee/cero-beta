@@ -2,10 +2,10 @@ import Swiper from "react-native-swiper";
 import { View, Text } from "react-native";
 import { Layout } from "@components/index";
 import SvgIcon from "@assets/SvgIcon";
-import FirstPage from "./Pages/FirstPage";
-import SecondPage from "./Pages/SecondPage";
-import ThirdPage from "./Pages/ThirdPage";
-import FourthPage from "./Pages/FourthPage";
+import FirstPage from "./pages/FirstPage";
+import SecondPage from "./pages/SecondPage";
+import ThirdPage from "./pages/ThirdPage";
+import FourthPage from "./pages/FourthPage";
 
 const OnBoarding = () => {
   return (

@@ -4,7 +4,7 @@ import { Layout } from "@components/index";
 import styled from "styled-components/native";
 import { SubText, MainText } from "@components/index";
 import { questionObj } from "@constants/mindtestProperties";
-import AnswerBtn from "./AnswerBtn";
+import AnswerBtn from "../AnswerBtn";
 import { BigPrimaryBtn } from "@components/index";
 
 interface Props {

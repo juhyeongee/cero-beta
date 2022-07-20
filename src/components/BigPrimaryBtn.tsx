@@ -11,7 +11,7 @@ interface Props {
   text: string;
   textBold?: boolean;
 }
-const BigPrimaryButton = ({ onPress, text, textBold }: Props) => {
+export const BigPrimaryBtn = ({ onPress, text, textBold }: Props) => {
   const BigGreenButtonInnerText = styled.Text`
     font-size: 16px;
     color: ${(props: IContainerProps) => props.theme?.color.n0};
@@ -35,5 +35,3 @@ const BigPrimaryButton = ({ onPress, text, textBold }: Props) => {
     </BigGreenButtonBG>
   );
 };
-
-export default BigPrimaryButton;
