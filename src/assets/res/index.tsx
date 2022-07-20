@@ -6,6 +6,9 @@ export { default as FourthPot } from "./pots/fourthPot.svg";
 export { default as FifthPot } from "./pots/fifthPot.svg";
 export { default as LastPot } from "./pots/lastPot.svg";
 
+//seeds-svgs
+export { default as seriousSeed } from "./seriousSeed.svg";
+
 //windows-svgs
 export { default as SecondWindow } from "./windows/secondWindow.svg";
 export { default as ThirdWindow } from "./windows/thirdWindow.svg";
@@ -25,6 +28,7 @@ export { default as email } from "./email.svg";
 export { default as rightArrow } from "./rightArrow.svg";
 export { default as leftArrow } from "./leftArrow.svg";
 export { default as left } from "./left.svg";
+export { default as rightPrimaryTriangle } from "./rightPrimaryTriangle.svg";
 
 //image-assets
 export { default as searchHeart } from "./searchHeart.svg";

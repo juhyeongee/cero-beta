@@ -4,7 +4,7 @@ import { ThemeProvider } from "styled-components/native";
 import styled from "styled-components/native";
 import Theme from "./src/constants/Theme";
 import { NavigationContainer } from "@react-navigation/native";
-import LoadingPage from "@/screens/MindTest/pages/LoadingPage";
+import ResultPage from "@/screens/MindTest/pages/ResultPage";
 import { IntroNav } from "@navigations/IntroNav";
 import {
   useFonts,
@@ -37,7 +37,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <ThemeProvider theme={Theme}>
-        <LoadingPage />
+        <ResultPage />
       </ThemeProvider>
     </NavigationContainer>
   );

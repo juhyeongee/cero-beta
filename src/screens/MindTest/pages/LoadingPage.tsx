@@ -1,6 +1,6 @@
 import React, { View } from "react-native";
 import SvgIcon from "@assets/SvgIcon";
-import { Layout, MainText } from "@components/index";
+import { Layout, MainText } from "@/components";
 import styled from "styled-components/native";
 import { ITheme } from "@/../styled";
 
