@@ -15,7 +15,7 @@ const Explanation = ({ text }: ExplanationProps) => {
     <Contianer>
       <View>
         <ExplainText numberOfLines={3} ellipsizeMode="tail">
-          {text}
+           {text}
         </ExplainText>
       </View>
     </Contianer>

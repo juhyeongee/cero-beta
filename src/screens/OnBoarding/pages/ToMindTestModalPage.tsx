@@ -4,12 +4,13 @@ import styled from "styled-components/native";
 import { ITheme } from "@/../styled";
 import SvgIcon from "@assets/SvgIcon";
 import Explanation from "../components/Explanation";
+import MakeSeedModal from "../components/MakeSeedModal";
 
 interface IContainerProps {
   theme: ITheme;
 }
 
-const FourthPage = () => {
+const ToMindTestModalPage = () => {
   const fadeAnim = useRef(new Animated.Value(1)).current;
 
   const fadeIn = () => {
@@ -30,33 +31,32 @@ const FourthPage = () => {
     }).start();
   };
   return (
-    <Container>
-      <Animated.View style={{ opacity: fadeAnim }}>
-        <SvgIcon
-          name="yellowHighlight"
-          style={{ position: "relative", bottom: "3%" }}
-        />
-      </Animated.View>
-      <View style={{ position: "absolute", bottom: "25%" }}>
-        <SvgIcon name="LastPot" />
-      </View>
-      <View
-        style={{
-          alignItems: "center",
-          position: "absolute",
-          bottom: 100,
-          width: "100%",
-        }}
-      >
-        <Pressable onPress={fadeOut}>
-          <Explanation text="씨앗이 움을 틔울수록, 김효준짱짱짱 님의 마음도 점점 편해지실 거예요." />
-        </Pressable>
-      </View>
-    </Container>
+    <>
+      <Container>
+        <View style={{ position: "absolute", bottom: "25%" }}>
+          <SvgIcon name="LastPot" />
+        </View>
+        <View
+          style={{
+            alignItems: "center",
+            position: "absolute",
+            bottom: 100,
+            width: "100%",
+          }}
+        >
+          <Pressable onPress={fadeOut}>
+            <Animated.View style={{ opacity: fadeAnim }}>
+              <Explanation text="씨앗이 움을 틔울수록, 김효준짱짱짱 님의 마음도 점점 편해지실 거예요." />
+            </Animated.View>
+          </Pressable>
+        </View>
+      </Container>
+      <MakeSeedModal />
+    </>
   );
 };
 
-export default FourthPage;
+export default ToMindTestModalPage;
 
 const Container = styled.View`
   flex: 1;
@@ -64,5 +64,5 @@ const Container = styled.View`
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  background-color: ${(props: IContainerProps) => props.theme.color.n50};
+  background-color: ${(props: IContainerProps) => props.theme.color.n200};
 `;
