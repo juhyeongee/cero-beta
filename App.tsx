@@ -4,7 +4,7 @@ import { ThemeProvider } from "styled-components/native";
 import styled from "styled-components/native";
 import Theme from "./src/constants/Theme";
 import { NavigationContainer } from "@react-navigation/native";
-import ToMindTestModalPage from "@/screens/OnBoarding/pages/ToMindTestModalPage";
+import LoadingPage from "@/screens/MindTest/pages/LoadingPage";
 import { IntroNav } from "@navigations/IntroNav";
 import {
   useFonts,
@@ -15,7 +15,6 @@ import {
   NotoSansKR_700Bold,
   NotoSansKR_900Black,
 } from "@expo-google-fonts/noto-sans-kr";
-import OnBoarding from "./src/screens/OnBoarding";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -38,7 +37,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <ThemeProvider theme={Theme}>
-        <IntroNav />
+        <LoadingPage />
       </ThemeProvider>
     </NavigationContainer>
   );
