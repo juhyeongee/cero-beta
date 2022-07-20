@@ -5,9 +5,11 @@ export { default as ThirdPot } from "./pots/thirdPot.svg";
 export { default as FourthPot } from "./pots/fourthPot.svg";
 export { default as FifthPot } from "./pots/fifthPot.svg";
 export { default as LastPot } from "./pots/lastPot.svg";
+export { default as fullPot } from "./pots/fullPot.svg";
 
 //seeds-svgs
 export { default as seriousSeed } from "./seriousSeed.svg";
+export { default as seriousSeedWithoutBG } from "./seriousSeedWithoutBG.svg";
 
 //windows-svgs
 export { default as SecondWindow } from "./windows/secondWindow.svg";
