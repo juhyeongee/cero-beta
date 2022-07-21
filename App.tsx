@@ -17,7 +17,7 @@ import {
 } from "@expo-google-fonts/noto-sans-kr";
 
 export default function App() {
-  const [onPage, setOnPage] = useState("OnBoardingNav");
+  const [onPage, setOnPage] = useState("HomeNav");
   const [fontsLoaded] = useFonts({
     NotoSansKR_100Thin,
     NotoSansKR_300Light,
@@ -39,8 +39,8 @@ export default function App() {
     <NavigationContainer>
       <ThemeProvider theme={Theme}>
         {onPage === "IntroNav" && <IntroNav />}
-        {onPage === "HomeNav" && <HomeNav />}
         {onPage === "OnBoardingNav" && <OnBoardingNav />}
+        {onPage === "HomeNav" && <HomeNav />}
       </ThemeProvider>
     </NavigationContainer>
   );

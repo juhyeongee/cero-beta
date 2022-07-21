@@ -18,6 +18,8 @@ export { default as FourthWindow } from "./windows/fourthWindow.svg";
 export { default as FifthWindow } from "./windows/fifthWindow.svg";
 export { default as LastWindow } from "./windows/lastWindow.svg";
 
+export { default as plant1 } from "./plant/plant1.svg";
+
 //logos
 export { default as LogoWithTitle } from "./logoWithTitle.svg";
 
@@ -38,3 +40,8 @@ export { default as bookLines } from "./bookLines.svg";
 export { default as yellowHighlight } from "./yellowHighlight.svg";
 export { default as seedPacket } from "./seedPacket.svg";
 export { default as boilingSeed } from "./boilingSeed.svg";
+
+//buttons
+
+export { default as home } from "./button/home.svg";
+export { default as refresh } from "./refresh.svg";
