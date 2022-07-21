@@ -1,31 +1,47 @@
-import { StatusBar } from "expo-status-bar";
-import { Text, View } from "react-native";
-
-import { ThemeProvider } from "styled-components";
+import React, { useState, useEffect } from "react";
+import { View, Text } from "react-native";
+import { ThemeProvider } from "styled-components/native";
 import styled from "styled-components/native";
-import Theme from "./constants/Theme";
-import { ITheme } from "./styled";
+import Theme from "./src/constants/Theme";
+import { NavigationContainer } from "@react-navigation/native";
+import ResultPage from "@/screens/MindTest/pages/ResultPage";
+import { IntroNav, OnBoardingNav, HomeNav } from "@/navigations";
+import {
+  useFonts,
+  NotoSansKR_100Thin,
+  NotoSansKR_300Light,
+  NotoSansKR_400Regular,
+  NotoSansKR_500Medium,
+  NotoSansKR_700Bold,
+  NotoSansKR_900Black,
+} from "@expo-google-fonts/noto-sans-kr";
 
-import Home from "./screens/Home";
-import Intro from "./screens/Intro";
-
-interface IContainerProps {
-  theme?: ITheme;
-}
 export default function App() {
+  const [onPage, setOnPage] = useState("HomeNav");
+  const [fontsLoaded] = useFonts({
+    NotoSansKR_100Thin,
+    NotoSansKR_300Light,
+    NotoSansKR_400Regular,
+    NotoSansKR_500Medium,
+    NotoSansKR_700Bold,
+    NotoSansKR_900Black,
+  });
+
+  if (!fontsLoaded) {
+    return (
+      <View>
+        <Text>Now Loading...</Text>
+      </View>
+    );
+  }
+
   return (
-    <ThemeProvider theme={Theme}>
-      <Container>
-        <Intro />
-      </Container>
-    </ThemeProvider>
+    <NavigationContainer>
+      <ThemeProvider theme={Theme}>
+        {onPage === "IntroNav" && <IntroNav />}
+        {onPage === "OnBoardingNav" && <OnBoardingNav />}
+        {onPage === "HomeNav" && <HomeNav />}
+      </ThemeProvider>
+    </NavigationContainer>
   );
 }
-
-const Container = styled.View`
-  background-color: ${(props: IContainerProps) =>
-    props.theme && props.theme.color.n700};
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-`;
