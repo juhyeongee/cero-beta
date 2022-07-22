@@ -5,12 +5,13 @@ import FinishedTasks from "../screens/FinishedTasks";
 import Setting from "../screens/Setting";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Theme from "@/constants/Theme";
-import SvgIcon from "@/assets/SvgIcon";
-const HomeBottomTab = createBottomTabNavigator();
+import { HomeStackNav } from "./HomeStackNav";
 
-export function HomeNav() {
+const MainBottomTab = createBottomTabNavigator();
+
+export function MainBottomTabNav() {
   return (
-    <HomeBottomTab.Navigator
+    <MainBottomTab.Navigator
       screenOptions={{
         tabBarInactiveTintColor: Theme.color.n700,
         tabBarActiveTintColor: Theme.color.primary,
@@ -24,7 +25,7 @@ export function HomeNav() {
       }}
       initialRouteName="HomeNav"
     >
-      <HomeBottomTab.Screen
+      <MainBottomTab.Screen
         name="FinishedTasks"
         component={FinishedTasks}
         options={{
@@ -38,9 +39,9 @@ export function HomeNav() {
           ),
         }}
       />
-      <HomeBottomTab.Screen
+      <MainBottomTab.Screen
         name="HomeNav"
-        component={Home}
+        component={HomeStackNav}
         options={{
           tabBarIcon: ({ color }) => (
             <Image
@@ -53,7 +54,7 @@ export function HomeNav() {
         }} //TODO: PNG file -> svg파일로 수정 필요 (color 변수 svg에 넘기는 방법 찾기)
       />
 
-      <HomeBottomTab.Screen
+      <MainBottomTab.Screen
         name="Setting"
         component={Setting}
         options={{
@@ -67,6 +68,6 @@ export function HomeNav() {
           ),
         }}
       />
-    </HomeBottomTab.Navigator>
+    </MainBottomTab.Navigator>
   );
 }

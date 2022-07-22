@@ -47,3 +47,4 @@ export { default as password } from "./password.svg";
 export { default as email } from "./email.svg";
 
 export { default as greenCheck } from "./greenCheck.svg";
+export { default as information } from "./information.svg";

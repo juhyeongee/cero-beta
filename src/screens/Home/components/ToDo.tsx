@@ -4,12 +4,17 @@ import { ITheme } from "@/../styled";
 import { BigPrimaryBtn } from "@/components";
 import SvgIcon from "@/assets/SvgIcon";
 import Theme from "@/constants/Theme";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { RootStackParams } from "@navigations/IntroNav";
 
 interface IContainerProps {
   theme: ITheme;
 }
 
 const ToDo = () => {
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParams>>();
   return (
     <Container>
       <View
@@ -43,7 +48,10 @@ const ToDo = () => {
           height: "30%",
         }}
       >
-        <BigPrimaryBtn text="물 주기" onPress={() => console.log("pressed")} />
+        <BigPrimaryBtn
+          text="물 주기"
+          onPress={() => navigation.navigate("TodayMission")}
+        />
       </View>
     </Container>
   );
