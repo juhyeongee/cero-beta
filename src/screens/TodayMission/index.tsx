@@ -7,17 +7,19 @@ import Theme from "@constants/Theme";
 import AutoHeightImage from "react-native-auto-height-image/";
 import PhotoMission from "./pages/PhotoMission";
 import TextMission from "./pages/TextMission";
+import PhotoTextMission from "./pages/PhotoTextMission";
 
 interface IContainerProps {
   theme: ITheme;
 }
 
 const TodayMission = () => {
-  const [isPhotoMission, setIsPhotoMission] = useState(true);
+  const [isPhotoMission, setIsPhotoMission] = useState("PhotoText");
   return (
     <>
-      {isPhotoMission && <PhotoMission />}
-      {!isPhotoMission && <TextMission />}
+      {isPhotoMission === "Photo" && <PhotoMission />}
+      {isPhotoMission === "Text" && <TextMission />}
+      {isPhotoMission === "PhotoText" && <PhotoTextMission />}
     </>
   );
 };
