@@ -16,6 +16,7 @@ export default {
     n800: "#4E5054",
     n900: "#333537",
     primary: "#40B08F",
+    mildgreen: "#D4F8E9",
   },
   introBgColor: {
     firstPg: "#2F3134",

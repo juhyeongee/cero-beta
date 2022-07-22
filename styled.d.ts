@@ -16,6 +16,7 @@ interface ITheme {
     n800: string;
     n900: string;
     primary: string;
+    mildgreen: string;
   };
   introBgColor: {
     firstPg: string;
