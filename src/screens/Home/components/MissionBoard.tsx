@@ -6,6 +6,7 @@ import SvgIcon from "@/assets/SvgIcon";
 import Theme from "@/constants/Theme";
 import NumberBox from "./NumberBox";
 import CheckedBox from "./CheckedBox";
+import AutoHeightImage from "react-native-auto-height-image";
 
 interface IContainerProps {
   theme: ITheme;
@@ -33,7 +34,14 @@ const MissionBoard = () => {
         <NumberBox text="12" />
         <NumberBox text="13" />
         <NumberBox text="14" />
-        <NumberBox text="15" />
+        <NumberBox
+          icon={
+            <AutoHeightImage
+              width={24}
+              source={require("@assets/images/flowerIcon.png")}
+            />
+          }
+        />
       </View>
     </Container>
   );
