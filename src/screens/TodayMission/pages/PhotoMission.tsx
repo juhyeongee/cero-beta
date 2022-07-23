@@ -12,11 +12,12 @@ interface IContainerProps {
 }
 
 const PhotoMission = () => {
+  const [modalVisible, setModalVisible] = useState(true);
   const [isPhotoMission, setIsPhotoMission] = useState();
   return (
     <Container>
       <SafeAreaView style={{ flex: 1 }}>
-        <Header />
+        <Header modalVisible={modalVisible} setModalVisible={setModalVisible} />
         <Main>
           <PhotoBtn>
             <AutoHeightImage

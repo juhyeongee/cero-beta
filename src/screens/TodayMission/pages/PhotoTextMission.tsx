@@ -6,6 +6,7 @@ import SvgIcon from "@/assets/SvgIcon";
 import Theme from "@constants/Theme";
 import AutoHeightImage from "react-native-auto-height-image/";
 import Header from "../components/Header";
+import { WINDOW_HEIGHT, WINDOW_WIDTH } from "constants/properties";
 
 interface IContainerProps {
   theme: ITheme;
@@ -13,11 +14,16 @@ interface IContainerProps {
 
 const PhotoMission = () => {
   const [isPhotoMission, setIsPhotoMission] = useState();
+  const [modalVisible, setModalVisible] = useState(false);
+
   return (
     <>
       <Container>
         <SafeAreaView style={{ flex: 1 }}>
-          <Header />
+          <Header
+            modalVisible={modalVisible}
+            setModalVisible={setModalVisible}
+          />
           <PhotoTab>
             <PhotoBtn>
               <AutoHeightImage
@@ -60,6 +66,7 @@ const TextBox = styled.View`
   height: 36%;
   bottom: 0%;
 `;
+
 const PhotoBtn = styled.Pressable`
   height: 40%;
   width: 100%;

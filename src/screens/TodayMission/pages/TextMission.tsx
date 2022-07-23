@@ -19,12 +19,16 @@ interface IContainerProps {
 }
 
 const TextMission = () => {
+  const [modalVisible, setModalVisible] = useState(false);
   const [isPhotoMission, setIsPhotoMission] = useState();
   return (
     <Container>
       <SafeAreaView style={{ flex: 2 }}>
         <View style={{ flex: 1, paddingRight: "8%", paddingLeft: "8%" }}>
-          <Header />
+          <Header
+            modalVisible={modalVisible}
+            setModalVisible={setModalVisible}
+          />
         </View>
       </SafeAreaView>
       <Main>

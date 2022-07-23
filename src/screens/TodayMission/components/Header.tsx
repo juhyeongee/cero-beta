@@ -1,46 +1,100 @@
 import styled from "styled-components/native";
+import { useState } from "react";
 import AutoHeightImage from "react-native-auto-height-image";
-import { View, Text, Pressable } from "react-native";
+import { View, Text, Pressable, Modal, ScrollView } from "react-native";
 import SvgIcon from "@/assets/SvgIcon";
 import { ITheme } from "@/../styled";
 interface IContainerProps {
   theme: ITheme;
 }
+interface HeaderModal {
+  modalVisible: boolean;
+  setModalVisible: (props: boolean) => void;
+}
 
-const Header = () => {
+const Header = ({ modalVisible, setModalVisible }: HeaderModal) => {
   return (
-    <Container>
-      <View
-        style={{
-          flex: 1,
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <AutoHeightImage
-          width={24}
-          source={require("@assets/images/leftArrow.png")}
-        />
-        <HeaderText>오늘의 할 일</HeaderText>
-        <Pressable>
-          <FinishBtn>완료</FinishBtn>
-        </Pressable>
-      </View>
-      <View style={{ flex: 1, marginBottom: 24 }}>
+    <>
+      <Container>
+        <Modal
+          animationType="none"
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => {
+            setModalVisible(!modalVisible);
+          }}
+        >
+          <Modal
+            style={{ flex: 1 }}
+            animationType="slide"
+            transparent={true}
+            visible={modalVisible}
+            onRequestClose={() => {
+              setModalVisible(!modalVisible);
+            }}
+          >
+            <Pressable
+              style={{ flex: 1 }}
+              onPress={() => setModalVisible(!modalVisible)}
+            />
+            <ModalBox>
+              <ModalContainer>
+                <MissionTitle>하늘 사진을 왜 찍어야 해요?</MissionTitle>
+                <ScrollView>
+                  <MissionContext>
+                    자기가 힘들 때는 항상 연락의 바라면서, 정작 내가 연락할 때는
+                    전혀 모르겠는데, 이게 어떻게 하지 나는 누구지? 텍스트가
+                    이렇게 긴데 어디서?
+                  </MissionContext>
+                </ScrollView>
+              </ModalContainer>
+            </ModalBox>
+          </Modal>
+          <Pressable
+            style={{ flex: 1 }}
+            onPress={() => setModalVisible(!modalVisible)}
+          >
+            <GrayBG />
+          </Pressable>
+        </Modal>
+
         <View
           style={{
+            flex: 1,
             flexDirection: "row",
+            justifyContent: "space-between",
             alignItems: "center",
           }}
         >
-          <MissionTitle>하늘 사진 찍기</MissionTitle>
-          <SvgIcon name="information" />
+          <AutoHeightImage
+            width={24}
+            source={require("@assets/images/leftArrow.png")}
+          />
+          <HeaderText>오늘의 할 일</HeaderText>
+          <Pressable>
+            <FinishBtn>완료</FinishBtn>
+          </Pressable>
         </View>
-        <Subtitle>김효준 님, 오늘 하늘은 어떤 색인가요?</Subtitle>
-        <Subtitle>잠시 고개를 들고 사진 한 장 찍어보세요!</Subtitle>
-      </View>
-    </Container>
+        <View style={{ flex: 1, marginBottom: 24 }}>
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+            }}
+          >
+            <MissionTitle>하늘 사진 찍기</MissionTitle>
+            <Pressable onPress={() => setModalVisible(!modalVisible)}>
+              <SvgIcon name="information" />
+            </Pressable>
+          </View>
+          <Subtitle>
+            김효준 님, 오늘 하늘은 어떤 색인가요? 잠시 고개를 들고 사진 한 장
+            찍어보세요!
+          </Subtitle>
+          <Subtitle></Subtitle>
+        </View>
+      </Container>
+    </>
   );
 };
 export default Header;
@@ -58,12 +112,12 @@ const HeaderText = styled.Text`
 const MissionTitle = styled.Text`
   color: ${(props: IContainerProps) => props.theme.color.n900};
   font-family: ${(props: IContainerProps) => props.theme.font.mainFont};
-  font-size: 18px;
-  margin-bottom: 10px;
-  margin-right: 8px; ;
+  font-size: 20px;
+  margin-right: 8px;
 `;
 
 const Subtitle = styled.Text`
+  margin-top: 10px;
   color: ${(props: IContainerProps) => props.theme.color.n700};
   font-family: ${(props: IContainerProps) => props.theme.font.thinFont};
 `;
@@ -71,4 +125,35 @@ const Subtitle = styled.Text`
 const FinishBtn = styled.Text`
   color: ${(props: IContainerProps) => props.theme.color.primary};
   font-size: 16px;
+`;
+
+const ModalBox = styled.View`
+  width: 100%;
+  height: 45%;
+  position: absolute;
+  bottom: 0%;
+`;
+
+const ModalContainer = styled.View`
+  border-radius: 40px;
+  padding: 8%;
+  width: 100%;
+  height: 100%;
+  background-color: ${(props: IContainerProps) => props.theme.color.n0}; ;
+`;
+
+const GrayBG = styled.Pressable`
+  flex: 1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.4;
+  background-color: ${(props: IContainerProps) => props.theme.color.n900}; ;
+`;
+
+const MissionContext = styled.Text`
+  font-size: 16px;
+  font-family: ${(props: IContainerProps) => props.theme.font.mainFont};
+  margin-top: 20px;
+  color: ${(props: IContainerProps) => props.theme.color.n900};
 `;
