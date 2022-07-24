@@ -23,6 +23,7 @@ export type RootStackParams = {
   TakeUserInfo: any;
   OnBoarding: any;
   ResultPage: any;
+  TodayMission: any;
 };
 //TODO: 예시에서 왜 타입지정없이, 이렇게만 전달하는 것이 원하는대로 전달한 것인지?
 
