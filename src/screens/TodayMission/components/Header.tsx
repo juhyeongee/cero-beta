@@ -4,6 +4,7 @@ import AutoHeightImage from "react-native-auto-height-image";
 import { View, Text, Pressable, Modal, ScrollView } from "react-native";
 import SvgIcon from "@/assets/SvgIcon";
 import { ITheme } from "@/../styled";
+import { useNavigation } from "@react-navigation/native";
 interface IContainerProps {
   theme: ITheme;
 }
@@ -13,6 +14,12 @@ interface HeaderModal {
 }
 
 const Header = ({ modalVisible, setModalVisible }: HeaderModal) => {
+  const navigation = useNavigation();
+  const pressCompleteBtn = () => {
+    //TODO: 이 함수를 pages 단계로 올리고, 완료시 데이터 업로드 로직을 추가할 것
+    navigation.goBack();
+  };
+
   return (
     <>
       <Container>
@@ -66,12 +73,14 @@ const Header = ({ modalVisible, setModalVisible }: HeaderModal) => {
             alignItems: "center",
           }}
         >
-          <AutoHeightImage
-            width={24}
-            source={require("@assets/images/leftArrow.png")}
-          />
+          <Pressable onPress={() => navigation.goBack()}>
+            <AutoHeightImage
+              width={24}
+              source={require("@assets/images/leftArrow.png")}
+            />
+          </Pressable>
           <HeaderText>오늘의 할 일</HeaderText>
-          <Pressable>
+          <Pressable onPress={pressCompleteBtn}>
             <FinishBtn>완료</FinishBtn>
           </Pressable>
         </View>

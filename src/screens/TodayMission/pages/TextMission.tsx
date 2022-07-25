@@ -18,9 +18,13 @@ interface IContainerProps {
   theme: ITheme;
 }
 
-const TextMission = () => {
+interface Props {
+  setMissionText: (props: string) => void;
+}
+
+const TextMission = ({ setMissionText }: Props) => {
   const [modalVisible, setModalVisible] = useState(false);
-  const [isPhotoMission, setIsPhotoMission] = useState();
+
   return (
     <Container>
       <SafeAreaView style={{ flex: 2 }}>
@@ -32,7 +36,11 @@ const TextMission = () => {
         </View>
       </SafeAreaView>
       <Main>
-        <TextInput style={{ fontSize: 18 }} placeholder="여기에 적어 주세요" />
+        <TextInput
+          style={{ fontSize: 18 }}
+          onChangeText={setMissionText}
+          placeholder="여기에 적어 주세요"
+        />
       </Main>
     </Container>
   );

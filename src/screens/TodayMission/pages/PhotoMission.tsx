@@ -10,16 +10,18 @@ import Header from "../components/Header";
 interface IContainerProps {
   theme: ITheme;
 }
+interface Props {
+  pickImage: () => void;
+}
+const PhotoMission = ({ pickImage }: Props) => {
+  const [modalVisible, setModalVisible] = useState(false);
 
-const PhotoMission = () => {
-  const [modalVisible, setModalVisible] = useState(true);
-  const [isPhotoMission, setIsPhotoMission] = useState();
   return (
     <Container>
       <SafeAreaView style={{ flex: 1 }}>
         <Header modalVisible={modalVisible} setModalVisible={setModalVisible} />
         <Main>
-          <PhotoBtn>
+          <PhotoBtn onPress={pickImage}>
             <AutoHeightImage
               width={40}
               source={require("@assets/images/camera.png")}

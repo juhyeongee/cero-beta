@@ -11,9 +11,11 @@ import { WINDOW_HEIGHT, WINDOW_WIDTH } from "constants/properties";
 interface IContainerProps {
   theme: ITheme;
 }
-
-const PhotoMission = () => {
-  const [isPhotoMission, setIsPhotoMission] = useState();
+interface Props {
+  pickImage: () => void;
+  setMissionText: (props: string) => void;
+}
+const PhotoMission = ({ pickImage, setMissionText }: Props) => {
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
@@ -25,7 +27,7 @@ const PhotoMission = () => {
             setModalVisible={setModalVisible}
           />
           <PhotoTab>
-            <PhotoBtn>
+            <PhotoBtn onPress={pickImage}>
               <AutoHeightImage
                 width={40}
                 source={require("@assets/images/camera.png")}
@@ -39,6 +41,7 @@ const PhotoMission = () => {
           <TextInput
             style={{ fontSize: 18 }}
             placeholder="여기에 적어 주세요"
+            onChangeText={setMissionText}
           />
         </Main>
       </TextBox>

@@ -35,7 +35,7 @@ const Card = () => {
           resizeMode="cover"
           source={require("@assets/images/exampleImage.png")}
           style={{ marginBottom: 16 }}
-          imageStyle={{ borderRadius: 13 }}
+          // imageStyle={{ borderRadius: "13px" }}
         >
           <BGPhoto>
             <View style={{ flex: 1, justifyContent: "center" }}>
