@@ -1,4 +1,8 @@
-export default {
+interface IMissionType {
+  [key: number]: { [key2: string]: { [key3: string]: string } };
+}
+
+const missions: IMissionType = {
   1: {
     version1: {
       subtitle: "보내지 않을 편지쓰기 📨",
@@ -212,3 +216,5 @@ export default {
     },
   },
 };
+
+export default missions;

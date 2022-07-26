@@ -1,4 +1,5 @@
-import { View, Text } from "react-native";
+import { View, Text, Pressable } from "react-native";
+import { useState, useEffect } from "react";
 import styled from "styled-components/native";
 import { ITheme } from "@/../styled";
 import { BigPrimaryBtn } from "@/components";
@@ -7,6 +8,7 @@ import Theme from "@/constants/Theme";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParams } from "@navigations/IntroNav";
+import missions from "@constants/missions";
 
 interface IContainerProps {
   theme: ITheme;
@@ -15,6 +17,22 @@ interface IContainerProps {
 const ToDo = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParams>>();
+  const [versionNum, setVersionNum] = useState<number>(0);
+  const MISSION_NUMBER = 5;
+  //TODO: 임시로 정해놓은 미션 번호 상수, 전역으로 미션 날짜 앱로딩때 설정되면 그 값으로 초기화 설정 필요.
+  const todayMissionObject = missions[MISSION_NUMBER];
+  const version = Object.keys(todayMissionObject)[versionNum];
+  const todayMissions = todayMissionObject[version];
+
+  const rotateVersionNum = () => {
+    let length = Object.keys(todayMissionObject).length - 1;
+    console.log(length);
+    if (versionNum < length) {
+      setVersionNum(versionNum + 1);
+    } else {
+      setVersionNum(0);
+    }
+  };
 
   return (
     <Container>
@@ -29,7 +47,9 @@ const ToDo = () => {
         <GrayText>오늘의 할 일</GrayText>
         <View style={{ flexDirection: "row" }}>
           <GrayText>변경하기 </GrayText>
-          <SvgIcon name="refresh" />
+          <Pressable onPress={rotateVersionNum}>
+            <SvgIcon name="refresh" />
+          </Pressable>
         </View>
       </View>
       <ToDoGrayBox>
@@ -39,7 +59,7 @@ const ToDo = () => {
             color: Theme.color.n900,
           }}
         >
-          그 사람에게 배울만 했던 점 정리하기
+          {todayMissions.subtitle}
         </Text>
       </ToDoGrayBox>
       <View
