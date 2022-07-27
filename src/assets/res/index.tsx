@@ -29,6 +29,7 @@ export { default as rightArrow } from "./rightArrow.svg";
 export { default as leftArrow } from "./leftArrow.svg";
 export { default as left } from "./left.svg";
 export { default as rightPrimaryTriangle } from "./rightPrimaryTriangle.svg";
+export { default as exitX } from "./exitX.svg";
 
 //image-assets
 export { default as searchHeart } from "./searchHeart.svg";

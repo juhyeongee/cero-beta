@@ -28,7 +28,9 @@ const Container = styled.View`
   color: ${(props: IContainerProps) => props.theme?.color.n50};
   flex: 1;
   justify-content: center;
-  padding: 32px;
+  padding: 8%;
+  width: 100%;
+  height: 100%;
 `;
 
 const SafeArea = styled.SafeAreaView`
