@@ -3,7 +3,7 @@ import { useState } from "react";
 import AutoHeightImage from "react-native-auto-height-image";
 import { View, Text, Pressable, Modal, ScrollView } from "react-native";
 import SvgIcon from "@/assets/SvgIcon";
-import { ITheme } from "@/../styled";
+import { ITheme } from "@/types";
 import { useNavigation } from "@react-navigation/native";
 interface IContainerProps {
   theme: ITheme;

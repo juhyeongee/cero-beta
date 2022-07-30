@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { View, Text, SafeAreaView, Pressable, Animated } from "react-native";
 import { mindTestResult } from "@constants/properties";
 import styled from "styled-components/native";
-import { ITheme } from "@/../styled";
+import { ITheme } from "@/types";
 import SvgIcon from "@/assets/SvgIcon";
 import {
   fadeOut,

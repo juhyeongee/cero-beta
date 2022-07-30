@@ -1,10 +1,10 @@
 import React from "react";
 import { View, Text, Pressable } from "react-native";
 import styled from "styled-components/native";
-import { ITheme } from "@/../styled";
+import { ITheme } from "@/types";
 
 interface IContainerProps {
-  theme?: ITheme;
+  theme: ITheme;
   marginBottom?: string;
   marginTop?: string;
 }
@@ -29,11 +29,11 @@ const OutlineBtn = ({ onPress, text, marginBottom, marginTop }: Props) => {
 };
 
 const OutlineButtonBG = styled.Pressable`
-  border: 1px solid ${(props: IContainerProps) => props.theme?.color.n500};
+  border: 1px solid ${(props: IContainerProps) => props.theme.color.n500};
   justify-content: center;
   align-items: center;
   width: 100%;
-  background-color: ${(props: IContainerProps) => props.theme?.color.n100};
+  background-color: ${(props: IContainerProps) => props.theme.color.n100};
   border-radius: 10px;
   height: 48px;
   padding: 10px 20px;
@@ -42,7 +42,7 @@ const OutlineButtonBG = styled.Pressable`
 
 const OutlineButtonText = styled.Text`
   font-size: 16px;
-  color: ${(props: IContainerProps) => props.theme?.color.n800};
+  color: ${(props: IContainerProps) => props.theme.color.n800};
 `;
 
 export default OutlineBtn;

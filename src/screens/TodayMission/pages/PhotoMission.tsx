@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, Pressable, Image, SafeAreaView } from "react-native";
 import styled from "styled-components/native";
-import { ITheme } from "@/../styled";
+import { ITheme } from "@/types";
 import SvgIcon from "@/assets/SvgIcon";
 import Theme from "@constants/Theme";
 import AutoHeightImage from "react-native-auto-height-image/";

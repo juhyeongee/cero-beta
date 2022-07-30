@@ -1,6 +1,4 @@
-import "styled-components";
-
-interface ITheme {
+export interface ITheme {
   color: {
     white: string;
     black: string;

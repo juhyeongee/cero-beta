@@ -1,7 +1,7 @@
 import { View, Text, Pressable } from "react-native";
 import { useState, useEffect } from "react";
 import styled from "styled-components/native";
-import { ITheme } from "@/../styled";
+import { ITheme } from "@/types";
 import { BigPrimaryBtn } from "@/components";
 import SvgIcon from "@/assets/SvgIcon";
 import Theme from "@/constants/Theme";
@@ -83,8 +83,7 @@ export default ToDo;
 const Container = styled.View`
   width: 100%;
   height: 100%;
-  background-color: ${(props: IContainerProps) =>
-    props.theme && props.theme.color.n50};
+  background-color: ${(props: IContainerProps) => props.theme.color.n50};
   padding: 8%;
 `;
 

@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { Animated, Text, View, Pressable } from "react-native";
 import styled from "styled-components/native";
-import { ITheme } from "@/../styled";
+import { ITheme } from "@/types";
 import SvgIcon from "@assets/SvgIcon";
 import Explanation from "../components/Explanation";
 import { useNavigation } from "@react-navigation/native";

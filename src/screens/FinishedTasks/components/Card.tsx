@@ -1,6 +1,6 @@
 import styled from "styled-components/native";
 import { View, Text, Image, ImageBackground, Pressable } from "react-native";
-import { ITheme } from "@/../styled";
+import { ITheme } from "@/types";
 import { useState } from "react";
 import Tag from "./Tag";
 import DetailModal from "./DetailModal";
@@ -83,8 +83,7 @@ const BGPhoto = styled.View`
 `;
 
 const Container = styled.Pressable`
-  background-color: ${(props: IContainerProps) =>
-    props.theme && props.theme.color.n400};
+  background-color: ${(props: IContainerProps) => props.theme.color.n400};
   padding: 8%;
   padding-top: 12%;
   padding-bottom: 12%;

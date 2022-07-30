@@ -3,7 +3,7 @@ import { View, Text } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import styled from "styled-components/native";
 import { MainText, Layout, BigPrimaryBtn } from "@components/index";
-import { ITheme } from "@/../styled";
+import { ITheme } from "@/types";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParams } from "@navigations/IntroNav";

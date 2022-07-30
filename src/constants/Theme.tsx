@@ -1,6 +1,6 @@
 import { WINDOW_WIDTH, WINDOW_HEIGHT } from "./properties";
-// src/Theme.tsx
-export default {
+
+const Theme = {
   color: {
     white: "#FFFFFF",
     black: "#000000",
@@ -33,3 +33,5 @@ export default {
     thinFont: "NotoSansKR_100Thin",
   },
 };
+
+export default Theme;

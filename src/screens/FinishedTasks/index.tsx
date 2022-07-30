@@ -8,11 +8,11 @@ import {
   FlatList,
 } from "react-native";
 import styled from "styled-components/native";
-import { ITheme } from "@/../styled";
+import { ITheme } from "@/types";
 import AutoHeightImage from "react-native-auto-height-image";
 import Card from "./components/Card";
 interface IContainerProps {
-  theme?: ITheme;
+  theme: ITheme;
 }
 
 const FinishedTasks = () => {
@@ -43,8 +43,7 @@ const FinishedTasks = () => {
 export default FinishedTasks;
 
 const Container = styled.View`
-  background-color: ${(props: IContainerProps) =>
-    props.theme && props.theme.color.n0};
+  background-color: ${(props: IContainerProps) => props.theme.color.n0};
   padding: 8%;
   padding-top: 30%;
   padding-bottom: 0%;
@@ -53,16 +52,14 @@ const Container = styled.View`
 `;
 
 const Title = styled.Text`
-  font-family: ${(props: IContainerProps) =>
-    props.theme && props.theme.font.thickFont};
+  font-family: ${(props: IContainerProps) => props.theme.font.thickFont};
   font-size: 20;
   margin-bottom: 8px;
   margin-top: 8px;
 `;
 
 const Subtitle = styled.Text`
-  font-family: ${(props: IContainerProps) =>
-    props.theme && props.theme.font.mainFont};
+  font-family: ${(props: IContainerProps) => props.theme.font.mainFont};
   font-size: 16px;
   margin-bottom: 8px;
 `;

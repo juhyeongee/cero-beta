@@ -2,13 +2,13 @@ import React, { useRef, useState } from "react";
 import styled from "styled-components/native";
 import { View, Text, TextInput } from "react-native";
 import { BigPrimaryBtn, Layout } from "@components/index";
-import { ITheme } from "@/../styled";
+import { ITheme } from "@/types";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParams } from "@navigations/IntroNav";
 
 interface IContainerProps {
-  theme?: ITheme;
+  theme: ITheme;
 }
 
 const JoinWithEmail = () => {
@@ -70,7 +70,7 @@ const JoinWithEmail = () => {
 };
 
 const EmailInput = styled.TextInput`
-  background-color: ${(props: IContainerProps) => props.theme?.color.n100};
+  background-color: ${(props: IContainerProps) => props.theme.color.n100};
   padding: 10px;
   height: 40px;
   border: 1px solid grey;
@@ -78,7 +78,7 @@ const EmailInput = styled.TextInput`
 `;
 
 const PWInput = styled.TextInput`
-  background-color: ${(props: IContainerProps) => props.theme?.color.n100};
+  background-color: ${(props: IContainerProps) => props.theme.color.n100};
   padding: 10px;
   height: 40px;
   border: 1px solid grey;

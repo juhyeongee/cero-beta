@@ -1,7 +1,7 @@
 import { View, Text, Image } from "react-native";
 import styled from "styled-components/native";
 import AutoHeightImage from "react-native-auto-height-image/";
-import { ITheme } from "@/../styled";
+import { ITheme } from "@/types";
 import SvgIcon from "@assets/SvgIcon";
 import { BigPrimaryBtn } from "@components/index";
 import { useNavigation } from "@react-navigation/native";
@@ -9,7 +9,7 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParams } from "@navigations/IntroNav";
 
 interface IContainerProps {
-  theme?: ITheme;
+  theme: ITheme;
 }
 
 const Last = () => {
@@ -40,7 +40,7 @@ const Last = () => {
 };
 
 const Container = styled.View`
-  background-color: ${(props: IContainerProps) => props.theme?.color.n200};
+  background-color: ${(props: IContainerProps) => props.theme.color.n200};
   flex: 1;
   justify-content: center;
   align-items: center;
@@ -49,10 +49,10 @@ const Container = styled.View`
 `;
 
 const IntroText = styled.Text`
-  color: ${(props: IContainerProps) => props.theme?.color.n700};
+  color: ${(props: IContainerProps) => props.theme.color.n700};
   font-size: 16px;
   margin: 5px;
-  font-family: ${(props: IContainerProps) => props.theme?.font.mainFont}; ;
+  font-family: ${(props: IContainerProps) => props.theme.font.mainFont}; ;
 `;
 
 export default Last;

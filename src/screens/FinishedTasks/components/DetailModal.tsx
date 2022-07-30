@@ -8,7 +8,7 @@ import {
   ScrollView,
 } from "react-native";
 import styled from "styled-components/native";
-import { ITheme } from "@/../styled";
+import { ITheme } from "@/types";
 import { Layout } from "@/components";
 import SvgIcon from "@/assets/SvgIcon";
 

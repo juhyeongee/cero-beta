@@ -1,6 +1,6 @@
 import { View, Text } from "react-native";
 import styled from "styled-components/native";
-import { ITheme } from "@/../styled";
+import { ITheme } from "@/types";
 import { BigPrimaryBtn } from "@/components";
 import SvgIcon from "@/assets/SvgIcon";
 import Theme from "@/constants/Theme";
@@ -52,6 +52,5 @@ export default MissionBoard;
 const Container = styled.View`
   width: 100%;
   height: 100%;
-  background-color: ${(props: IContainerProps) =>
-    props.theme && props.theme.color.n0};
+  background-color: ${(props: IContainerProps) => props.theme.color.n0};
 `;

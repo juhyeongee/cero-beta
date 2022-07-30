@@ -7,11 +7,11 @@ import { Layout } from "@components/index";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParams } from "@navigations/IntroNav";
-import { ITheme } from "@/../styled";
+import { ITheme } from "@/types";
 import { BigPrimaryBtn } from "@components/index";
 
 interface IContainerProps {
-  theme?: ITheme;
+  theme: ITheme;
 }
 
 const CheckPrivacyPolicy = () => {
@@ -144,8 +144,8 @@ const Container = styled.View`
 `;
 
 const AgreeText = styled.Text`
-  font-family: ${(props: IContainerProps) => props.theme?.font.mainFont};
-  color: ${(props: IContainerProps) => props.theme?.color.n800};
+  font-family: ${(props: IContainerProps) => props.theme.font.mainFont};
+  color: ${(props: IContainerProps) => props.theme.color.n800};
   font-size: 16px;
   margin-left: 8%;
   position: relative;
@@ -156,7 +156,7 @@ const GrayBar = styled.View`
   position: relative;
   top: -0.5%;
   margin-bottom: 6%;
-  background-color: ${(props: IContainerProps) => props.theme?.color.n600};
+  background-color: ${(props: IContainerProps) => props.theme.color.n600};
   width: 100%;
   height: 1px;
 `;

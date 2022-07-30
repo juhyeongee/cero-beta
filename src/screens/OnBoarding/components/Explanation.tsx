@@ -1,6 +1,6 @@
 import { View, Text } from "react-native";
 import styled from "styled-components/native";
-import { ITheme } from "@/../styled";
+import { ITheme } from "@/types";
 
 interface IContainerProps {
   theme: ITheme;
@@ -15,7 +15,7 @@ const Explanation = ({ text }: ExplanationProps) => {
     <Contianer>
       <View>
         <ExplainText numberOfLines={3} ellipsizeMode="tail">
-           {text}
+          {text}
         </ExplainText>
       </View>
     </Contianer>

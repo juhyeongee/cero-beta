@@ -1,6 +1,6 @@
 import { View, Text, Pressable, Image, SafeAreaView } from "react-native";
 import styled from "styled-components/native";
-import { ITheme } from "@/../styled";
+import { ITheme } from "@/types";
 import { BigPrimaryBtn, Layout } from "@/components";
 import SvgIcon from "@/assets/SvgIcon";
 import Theme from "@/constants/Theme";
@@ -54,10 +54,7 @@ const Home = ({}: MissionProps) => {
           <Bar />
           <View style={{ height: "90%" }}>
             <Swiper showsPagination={false}>
-              <ToDo
-                rotateVersionNum={rotateVersionNum}
-                todayMissions={todayMissions}
-              />
+              <ToDo />
               <MissionBoard />
             </Swiper>
           </View>
@@ -70,8 +67,7 @@ const Home = ({}: MissionProps) => {
 export default Home;
 
 const Container = styled.View`
-  background-color: ${(props: IContainerProps) =>
-    props.theme && props.theme.color.n200};
+  background-color: ${(props: IContainerProps) => props.theme.color.n200};
   flex: 1;
 `;
 const PlantCont = styled.View`
@@ -81,8 +77,7 @@ const PlantCont = styled.View`
 `;
 
 const ContentsCont = styled.View`
-  background-color: ${(props: IContainerProps) =>
-    props.theme && props.theme.color.n500};
+  background-color: ${(props: IContainerProps) => props.theme.color.n500};
   justify-content: center;
   align-items: center;
   flex: 1;
@@ -90,8 +85,7 @@ const ContentsCont = styled.View`
 `;
 
 const Bar = styled.View`
-  background-color: ${(props: IContainerProps) =>
-    props.theme && props.theme.color.n0};
+  background-color: ${(props: IContainerProps) => props.theme.color.n0};
   width: 100%;
   flex: 1;
 `;

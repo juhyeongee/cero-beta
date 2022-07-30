@@ -2,13 +2,13 @@ import React, { View, Text, Pressable } from "react-native";
 import { Layout, BigPrimaryBtn, OutlineBtn } from "@components/index";
 import styled from "styled-components/native";
 import SvgIcon from "@assets/SvgIcon";
-import { ITheme } from "@/../styled";
+import { ITheme } from "@/types";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParams } from "@navigations/IntroNav";
 
 interface IContainerProps {
-  theme?: ITheme;
+  theme: ITheme;
 }
 
 const LogIn = () => {
@@ -57,7 +57,7 @@ const LogIn = () => {
 const LoginInput = styled.TextInput`
   font-size: 16px;
   width: 100%;
-  background-color: ${(props: IContainerProps) => props.theme?.color.n300};
+  background-color: ${(props: IContainerProps) => props.theme.color.n300};
   border-radius: 10px;
   height: 48px;
   padding: 10px 20px;
@@ -67,7 +67,7 @@ const LoginInput = styled.TextInput`
 const PasswordInput = styled.TextInput`
   font-size: 16px;
   width: 100%;
-  background-color: ${(props: IContainerProps) => props.theme?.color.n300};
+  background-color: ${(props: IContainerProps) => props.theme.color.n300};
   border-radius: 10px;
   height: 48px;
   padding: 10px 20px;
