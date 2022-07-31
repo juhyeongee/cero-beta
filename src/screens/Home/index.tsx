@@ -1,41 +1,32 @@
 import { View, Text, Pressable, Image, SafeAreaView } from "react-native";
 import styled from "styled-components/native";
-import { ITheme } from "@/types";
-import { BigPrimaryBtn, Layout } from "@/components";
+import { HomeStackScreenProps, ITheme } from "@/types";
 import SvgIcon from "@/assets/SvgIcon";
-import Theme from "@/constants/Theme";
 import Swiper from "react-native-swiper";
 import ToDo from "./components/ToDo";
 import MissionBoard from "./components/MissionBoard";
 import missions from "@constants/missions";
 import { useState, useEffect } from "react";
+import { useNavigation } from "@react-navigation/native";
+import {
+  NativeStackNavigationProp,
+  NativeStackScreenProps,
+} from "@react-navigation/native-stack";
+import { HomeStackParamList } from "@/types";
 
 interface IContainerProps {
   theme: ITheme;
 }
-interface MissionProps {
-  todayMissions: { [key: string]: string };
-  rotateVersionNum: () => void;
-}
 
-const Home = ({}: MissionProps) => {
+const Home = ({ route, navigation }: HomeStackScreenProps<"Home">) => {
+  const { missionNum } = route.params;
   const [versionNum, setVersionNum] = useState<number>(0);
-  const MISSION_NUMBER = 5;
   //TODO: 임시로 정해놓은 미션 번호 상수, 전역으로 미션 날짜 앱로딩때 설정되면 그 값으로 초기화 설정 필요.
-  const todayMissionObject = missions[MISSION_NUMBER];
+  const todayMissionObject = missions[missionNum];
   const version = Object.keys(todayMissionObject)[versionNum];
-  const todayMissions = todayMissionObject[version];
-
-  const rotateVersionNum = () => {
-    let length = Object.keys(todayMissionObject).length - 1;
-    console.log(length);
-    if (versionNum < length) {
-      setVersionNum(versionNum + 1);
-    } else {
-      setVersionNum(0);
-    }
+  const navigateToTodayMission = () => {
+    navigation.navigate("TodayMission");
   };
-
   return (
     <Container>
       <PlantCont>
@@ -54,7 +45,7 @@ const Home = ({}: MissionProps) => {
           <Bar />
           <View style={{ height: "90%" }}>
             <Swiper showsPagination={false}>
-              <ToDo />
+              <ToDo navigateToTodayMission={navigateToTodayMission} />
               <MissionBoard />
             </Swiper>
           </View>

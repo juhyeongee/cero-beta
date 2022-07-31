@@ -5,20 +5,23 @@ import { ITheme } from "@/types";
 import { BigPrimaryBtn } from "@/components";
 import SvgIcon from "@/assets/SvgIcon";
 import Theme from "@/constants/Theme";
-import { useNavigation } from "@react-navigation/native";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { RootStackParams } from "@navigations/IntroNav";
 import missions from "@constants/missions";
+import { useNavigation } from "@react-navigation/native";
+import TodayMission from "@screens/TodayMission";
+import { HomeStackScreenProps } from "@/types";
 
 interface IContainerProps {
   theme: ITheme;
 }
 
-const ToDo = () => {
-  const navigation =
-    useNavigation<NativeStackNavigationProp<RootStackParams>>();
+interface Props {
+  navigateToTodayMission: () => void;
+}
+
+const ToDo = ({ navigateToTodayMission }: Props) => {
   const [versionNum, setVersionNum] = useState<number>(0);
   const MISSION_NUMBER = 5;
+
   //TODO: 임시로 정해놓은 미션 번호 상수, 전역으로 미션 날짜 앱로딩때 설정되면 그 값으로 초기화 설정 필요.
   const todayMissionObject = missions[MISSION_NUMBER];
   const version = Object.keys(todayMissionObject)[versionNum];
@@ -69,10 +72,7 @@ const ToDo = () => {
           height: "30%",
         }}
       >
-        <BigPrimaryBtn
-          text="물 주기"
-          onPress={() => navigation.navigate("TodayMission")}
-        />
+        <BigPrimaryBtn text="물 주기" onPress={navigateToTodayMission} />
       </View>
     </Container>
   );
