@@ -1,6 +1,6 @@
 import { Pressable } from "react-native";
 import styled from "styled-components/native";
-import { ITheme } from "@/../styled";
+import { ITheme } from "@/types";
 
 interface MultiChoiceBtnProps {
   checkedBtnName: string;

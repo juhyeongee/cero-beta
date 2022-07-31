@@ -1,12 +1,12 @@
 import React from "react";
 import { View, Text } from "react-native";
 import styled from "styled-components/native";
-import { ITheme } from "@/../styled";
+import { ITheme } from "@/types";
 import SvgIcon from "@assets/SvgIcon";
 import { BigPrimaryBtn } from "@components/index";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { RootStackParams } from "@navigations/IntroNav";
+import { IntroStackParamList } from "@/types";
 
 interface IContainerProps {
   theme: ITheme;
@@ -14,7 +14,7 @@ interface IContainerProps {
 
 const MakeSeedModal = () => {
   const navigation =
-    useNavigation<NativeStackNavigationProp<RootStackParams>>();
+    useNavigation<NativeStackNavigationProp<IntroStackParamList>>();
   return (
     <Container>
       <SvgIcon name="seedPacket" />

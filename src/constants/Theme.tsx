@@ -1,6 +1,6 @@
 import { WINDOW_WIDTH, WINDOW_HEIGHT } from "./properties";
-// src/Theme.tsx
-export default {
+
+const Theme = {
   color: {
     white: "#FFFFFF",
     black: "#000000",
@@ -16,6 +16,7 @@ export default {
     n800: "#4E5054",
     n900: "#333537",
     primary: "#40B08F",
+    mildgreen: "#D4F8E9",
   },
   introBgColor: {
     firstPg: "#2F3134",
@@ -28,7 +29,9 @@ export default {
   length: { windowWidth: WINDOW_WIDTH, windowHeight: WINDOW_HEIGHT },
   font: {
     mainFont: "NotoSansKR_400Regular",
-    thickFont: "NotoSansKR_700Bold",
+    thickFont: "NotoSansKR_500Medium",
     thinFont: "NotoSansKR_100Thin",
   },
 };
+
+export default Theme;

@@ -7,12 +7,12 @@ import IntroduceMindTest from "./pages/IntroduceMindTest";
 import TestPage from "./pages/TestPage";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { RootStackParams } from "@navigations/IntroNav";
+import { OnBoardingStackParamList } from "@/types";
 
 const MindTest = () => {
   const [showIntroduceScreen, setShowIntroduceScreen] = useState(false);
   const navigation =
-    useNavigation<NativeStackNavigationProp<RootStackParams>>();
+    useNavigation<NativeStackNavigationProp<OnBoardingStackParamList>>();
   return (
     <>
       {showIntroduceScreen ? (

@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { View, Text, SafeAreaView, Pressable, Animated } from "react-native";
 import { mindTestResult } from "@constants/properties";
 import styled from "styled-components/native";
-import { ITheme } from "@/../styled";
+import { ITheme } from "@/types";
 import SvgIcon from "@/assets/SvgIcon";
 import {
   fadeOut,
@@ -15,7 +15,7 @@ import {
 } from "../functions";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { RootStackParams } from "@navigations/IntroNav";
+import { IntroStackParamList } from "@/types";
 
 interface StyledProps {
   theme: ITheme;
@@ -30,7 +30,7 @@ const ResultPage = () => {
   const seedY: Animated.Value = useRef(new Animated.Value(0)).current;
   const lightOpacity: Animated.Value = useRef(new Animated.Value(0)).current;
   const navigation =
-    useNavigation<NativeStackNavigationProp<RootStackParams>>();
+    useNavigation<NativeStackNavigationProp<IntroStackParamList>>();
   const goNextPage = () => {
     if (pageNumber !== 6) {
       setPageNubmer(pageNumber + 1);

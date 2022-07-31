@@ -5,7 +5,7 @@ import styled from "styled-components/native";
 import Theme from "./src/constants/Theme";
 import { NavigationContainer } from "@react-navigation/native";
 import ResultPage from "@/screens/MindTest/pages/ResultPage";
-import { IntroNav, OnBoardingNav, HomeNav } from "@/navigations";
+import { IntroNav, OnBoardingNav, MainBottomTabNav } from "@/navigations";
 import {
   useFonts,
   NotoSansKR_100Thin,
@@ -17,7 +17,7 @@ import {
 } from "@expo-google-fonts/noto-sans-kr";
 
 export default function App() {
-  const [onPage, setOnPage] = useState("HomeNav");
+  const [onPage, setOnPage] = useState("MainBottomTabNav");
   const [fontsLoaded] = useFonts({
     NotoSansKR_100Thin,
     NotoSansKR_300Light,
@@ -40,7 +40,7 @@ export default function App() {
       <ThemeProvider theme={Theme}>
         {onPage === "IntroNav" && <IntroNav />}
         {onPage === "OnBoardingNav" && <OnBoardingNav />}
-        {onPage === "HomeNav" && <HomeNav />}
+        {onPage === "MainBottomTabNav" && <MainBottomTabNav />}
       </ThemeProvider>
     </NavigationContainer>
   );

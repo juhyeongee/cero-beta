@@ -1,15 +1,26 @@
 import { View, Text, Pressable, Image, SafeAreaView } from "react-native";
 import styled from "styled-components/native";
-import { ITheme } from "@/../styled";
-import { BigPrimaryBtn, Layout } from "@/components";
+import { HomeStackScreenProps, ITheme } from "@/types";
 import SvgIcon from "@/assets/SvgIcon";
-import Theme from "@/constants/Theme";
+import Swiper from "react-native-swiper";
+import ToDo from "./components/ToDo";
+import MissionBoard from "./components/MissionBoard";
+import missions from "@constants/missions";
+import { useState, useEffect } from "react";
 
 interface IContainerProps {
   theme: ITheme;
 }
 
-const Home = () => {
+const Home = ({ route, navigation }: HomeStackScreenProps<"Home">) => {
+  const { missionNum } = route.params;
+  const [versionNum, setVersionNum] = useState<number>(0);
+  //TODO: 임시로 정해놓은 미션 번호 상수, 전역으로 미션 날짜 앱로딩때 설정되면 그 값으로 초기화 설정 필요.
+  const todayMissionObject = missions[missionNum];
+  const version = Object.keys(todayMissionObject)[versionNum];
+  const navigateToTodayMission = () => {
+    navigation.navigate("TodayMission");
+  };
   return (
     <Container>
       <PlantCont>
@@ -23,58 +34,17 @@ const Home = () => {
           <SvgIcon name="LastPot" />
         </View>
       </PlantCont>
-      <ContentsCont>
-        <Bar />
-        <ToDo>
-          <View
-            style={{
-              width: "100%",
-              flexDirection: "row",
-              justifyContent: "space-between",
-              height: "20%",
-            }}
-          >
-            <GrayText>오늘의 할 일</GrayText>
-            <View style={{ flexDirection: "row" }}>
-              <GrayText>변경하기 </GrayText>
-              <SvgIcon name="refresh" />
-            </View>
+      <View style={{ flex: 0.3 }}>
+        <ContentsCont>
+          <Bar />
+          <View style={{ height: "90%" }}>
+            <Swiper showsPagination={false}>
+              <ToDo navigateToTodayMission={navigateToTodayMission} />
+              <MissionBoard />
+            </Swiper>
           </View>
-          <View
-            style={{
-              width: "100%",
-              backgroundColor: Theme.color.n500,
-              height: "40%",
-              padding: "5%",
-              justifyContent: "center",
-              alignItems: "center",
-              borderRadius: "10%",
-              marginBottom: "5%",
-            }}
-          >
-            <Text
-              style={{
-                fontFamily: Theme.font.mainFont,
-                color: Theme.color.n900,
-              }}
-            >
-              그 사람에게 배울만 했던 점 정리하기
-            </Text>
-          </View>
-          <View
-            style={{
-              width: "100%",
-              backgroundColor: Theme.color.n500,
-              height: "30%",
-            }}
-          >
-            <BigPrimaryBtn
-              text="물 주기"
-              onPress={() => console.log("pressed")}
-            />
-          </View>
-        </ToDo>
-      </ContentsCont>
+        </ContentsCont>
+      </View>
     </Container>
   );
 };
@@ -82,8 +52,7 @@ const Home = () => {
 export default Home;
 
 const Container = styled.View`
-  background-color: ${(props: IContainerProps) =>
-    props.theme && props.theme.color.n200};
+  background-color: ${(props: IContainerProps) => props.theme.color.n200};
   flex: 1;
 `;
 const PlantCont = styled.View`
@@ -93,31 +62,15 @@ const PlantCont = styled.View`
 `;
 
 const ContentsCont = styled.View`
-  background-color: ${(props: IContainerProps) =>
-    props.theme && props.theme.color.n500};
+  background-color: ${(props: IContainerProps) => props.theme.color.n500};
   justify-content: center;
   align-items: center;
-  flex: 0.3;
+  flex: 1;
   height: 10%;
 `;
 
 const Bar = styled.View`
-  background-color: ${(props: IContainerProps) =>
-    props.theme && props.theme.color.n0};
+  background-color: ${(props: IContainerProps) => props.theme.color.n0};
   width: 100%;
-  height: 10%;
-`;
-
-const ToDo = styled.View`
-  width: 100%;
-  height: 90%;
-  background-color: ${(props: IContainerProps) =>
-    props.theme && props.theme.color.n50};
-  padding: 8%;
-`;
-
-const GrayText = styled.Text`
-  font-size: 12em;
-  font-family: ${(props: IContainerProps) => props.theme.font.mainFont};
-  color: ${(props: IContainerProps) => props.theme.color.n700};
+  flex: 1;
 `;

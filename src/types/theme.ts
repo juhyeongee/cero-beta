@@ -1,6 +1,4 @@
-import "styled-components";
-
-interface ITheme {
+export interface ITheme {
   color: {
     white: string;
     black: string;
@@ -16,6 +14,7 @@ interface ITheme {
     n800: string;
     n900: string;
     primary: string;
+    mildgreen: string;
   };
   introBgColor: {
     firstPg: string;

@@ -2,18 +2,13 @@ import React, { View, Text, Pressable } from "react-native";
 import { Layout, BigPrimaryBtn, OutlineBtn } from "@components/index";
 import styled from "styled-components/native";
 import SvgIcon from "@assets/SvgIcon";
-import { ITheme } from "@/../styled";
-import { useNavigation } from "@react-navigation/native";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { RootStackParams } from "@navigations/IntroNav";
+import { IntroStackScreenProps, ITheme } from "@/types";
 
 interface IContainerProps {
-  theme?: ITheme;
+  theme: ITheme;
 }
 
-const SignIn = () => {
-  const navigation =
-    useNavigation<NativeStackNavigationProp<RootStackParams>>();
+const SignIn = ({ route, navigation }: IntroStackScreenProps<"SignIn">) => {
   return (
     <Layout alignCenter={true}>
       <View
@@ -40,7 +35,7 @@ const SignIn = () => {
         />
         <BigPrimaryBtn
           text="로그인 하기"
-          onPress={() => navigation.navigate("MindTest")}
+          onPress={() => navigation.navigate("Intro")}
           textBold={true}
         />
       </View>
@@ -72,7 +67,7 @@ const SignIn = () => {
 const LoginInput = styled.TextInput`
   font-size: 16px;
   width: 100%;
-  background-color: ${(props: IContainerProps) => props.theme?.color.n300};
+  background-color: ${(props: IContainerProps) => props.theme.color.n300};
   border-radius: 10px;
   height: 48px;
   padding: 10px 20px;
@@ -82,7 +77,7 @@ const LoginInput = styled.TextInput`
 const PasswordInput = styled.TextInput`
   font-size: 16px;
   width: 100%;
-  background-color: ${(props: IContainerProps) => props.theme?.color.n300};
+  background-color: ${(props: IContainerProps) => props.theme.color.n300};
   border-radius: 10px;
   height: 48px;
   padding: 10px 20px;
@@ -90,7 +85,7 @@ const PasswordInput = styled.TextInput`
 `;
 
 const GrayBar = styled.View`
-  background-color: ${(props: IContainerProps) => props.theme?.color.n500};
+  background-color: ${(props: IContainerProps) => props.theme.color.n500};
   margin-top: 24px;
   margin-bottom: 12px;
   width: 100%;

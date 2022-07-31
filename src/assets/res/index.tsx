@@ -23,16 +23,13 @@ export { default as plant1 } from "./plant/plant1.svg";
 //logos
 export { default as LogoWithTitle } from "./logoWithTitle.svg";
 
-//etc
-export { default as password } from "./password.svg";
-export { default as email } from "./email.svg";
-
 //arrow
 
 export { default as rightArrow } from "./rightArrow.svg";
 export { default as leftArrow } from "./leftArrow.svg";
 export { default as left } from "./left.svg";
 export { default as rightPrimaryTriangle } from "./rightPrimaryTriangle.svg";
+export { default as exitX } from "./exitX.svg";
 
 //image-assets
 export { default as searchHeart } from "./searchHeart.svg";
@@ -45,3 +42,10 @@ export { default as boilingSeed } from "./boilingSeed.svg";
 
 export { default as home } from "./button/home.svg";
 export { default as refresh } from "./refresh.svg";
+
+//etc
+export { default as password } from "./password.svg";
+export { default as email } from "./email.svg";
+
+export { default as greenCheck } from "./greenCheck.svg";
+export { default as information } from "./information.svg";
