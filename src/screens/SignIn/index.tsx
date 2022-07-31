@@ -2,18 +2,13 @@ import React, { View, Text, Pressable } from "react-native";
 import { Layout, BigPrimaryBtn, OutlineBtn } from "@components/index";
 import styled from "styled-components/native";
 import SvgIcon from "@assets/SvgIcon";
-import { ITheme } from "@/types";
-import { useNavigation } from "@react-navigation/native";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { IntroStackParamList } from "@/types";
+import { IntroStackScreenProps, ITheme } from "@/types";
 
 interface IContainerProps {
   theme: ITheme;
 }
 
-const SignIn = () => {
-  const navigation =
-    useNavigation<NativeStackNavigationProp<IntroStackParamList>>();
+const SignIn = ({ route, navigation }: IntroStackScreenProps<"SignIn">) => {
   return (
     <Layout alignCenter={true}>
       <View
@@ -40,7 +35,7 @@ const SignIn = () => {
         />
         <BigPrimaryBtn
           text="로그인 하기"
-          onPress={() => navigation.navigate("MindTest")}
+          onPress={() => navigation.navigate("Intro")}
           textBold={true}
         />
       </View>

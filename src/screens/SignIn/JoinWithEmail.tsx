@@ -60,7 +60,7 @@ const JoinWithEmail = () => {
           <BigPrimaryBtn
             text="Create Account"
             // onPress={onSubmitPasswordEditing}
-            onPress={() => navigation.navigate("MindTest")}
+            onPress={() => navigation.goBack()}
           />
         )}
       </ButtonContainer>

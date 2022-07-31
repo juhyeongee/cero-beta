@@ -10,7 +10,7 @@ import PolicyDetail from "../screens/SignIn/PolicyDetail";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { IntroStackParamList } from "@/types";
 
-const IntroStack = createNativeStackNavigator();
+const IntroStack = createNativeStackNavigator<IntroStackParamList>();
 
 export function IntroNav() {
   return (

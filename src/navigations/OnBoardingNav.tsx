@@ -4,8 +4,9 @@ import TakeUserInfo from "../screens/TakeUserInfo";
 import OnBoarding from "../screens/OnBoarding";
 import ResultPage from "@/screens/MindTest/pages/ResultPage";
 import MindTest from "@/screens/MindTest";
+import { OnBoardingStackParamList } from "@/types";
 
-const OnBoardingStack = createNativeStackNavigator();
+const OnBoardingStack = createNativeStackNavigator<OnBoardingStackParamList>();
 
 export const OnBoardingNav = () => {
   return (

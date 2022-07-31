@@ -7,12 +7,6 @@ import ToDo from "./components/ToDo";
 import MissionBoard from "./components/MissionBoard";
 import missions from "@constants/missions";
 import { useState, useEffect } from "react";
-import { useNavigation } from "@react-navigation/native";
-import {
-  NativeStackNavigationProp,
-  NativeStackScreenProps,
-} from "@react-navigation/native-stack";
-import { HomeStackParamList } from "@/types";
 
 interface IContainerProps {
   theme: ITheme;

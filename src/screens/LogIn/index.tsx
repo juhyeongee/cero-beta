@@ -40,7 +40,7 @@ const LogIn = () => {
         />
         <BigPrimaryBtn
           text="로그인 하기"
-          onPress={() => navigation.navigate("MindTest")}
+          onPress={() => navigation.navigate("SignIn")}
           textBold={true}
         />
       </View>

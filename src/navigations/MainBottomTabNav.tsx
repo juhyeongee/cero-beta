@@ -6,8 +6,9 @@ import Setting from "../screens/Setting";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Theme from "@/constants/Theme";
 import { HomeStackNav } from "./HomeStackNav";
+import { MainBottomTabParamList } from "@/types";
 
-const MainBottomTab = createBottomTabNavigator();
+const MainBottomTab = createBottomTabNavigator<MainBottomTabParamList>();
 
 export function MainBottomTabNav() {
   return (
@@ -23,7 +24,7 @@ export function MainBottomTabNav() {
           backgroundColor: Theme.color.n0,
         },
       }}
-      initialRouteName="HomeNav"
+      initialRouteName="HomeStackNav"
     >
       <MainBottomTab.Screen
         name="FinishedTasks"
@@ -40,7 +41,7 @@ export function MainBottomTabNav() {
         }}
       />
       <MainBottomTab.Screen
-        name="HomeNav"
+        name="HomeStackNav"
         component={HomeStackNav}
         options={{
           tabBarIcon: ({ color }) => (
