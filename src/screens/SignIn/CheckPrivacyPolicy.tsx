@@ -6,7 +6,7 @@ import SvgIcon from "@assets/SvgIcon";
 import { Layout } from "@components/index";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { RootStackParams } from "@navigations/IntroNav";
+import { IntroStackParamList } from "@/types";
 import { ITheme } from "@/types";
 import { BigPrimaryBtn } from "@components/index";
 
@@ -18,7 +18,7 @@ const CheckPrivacyPolicy = () => {
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
 
   const navigation =
-    useNavigation<NativeStackNavigationProp<RootStackParams>>();
+    useNavigation<NativeStackNavigationProp<IntroStackParamList>>();
 
   return (
     <Layout>

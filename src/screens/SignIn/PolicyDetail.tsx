@@ -6,11 +6,11 @@ import { policyText } from "@constants/properties";
 import SvgIcon from "@assets/SvgIcon";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { RootStackParams } from "@navigations/IntroNav";
+import { IntroStackParamList } from "@/types";
 
 const PolicyDetail = () => {
   const navigation =
-    useNavigation<NativeStackNavigationProp<RootStackParams>>();
+    useNavigation<NativeStackNavigationProp<IntroStackParamList>>();
   return (
     <Layout>
       <View style={{ flex: 0.1, justifyContent: "center" }}>

@@ -5,7 +5,7 @@ import { BigPrimaryBtn, Layout } from "@components/index";
 import { ITheme } from "@/types";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { RootStackParams } from "@navigations/IntroNav";
+import { IntroStackParamList } from "@/types";
 
 interface IContainerProps {
   theme: ITheme;
@@ -18,7 +18,7 @@ const JoinWithEmail = () => {
   const [checkPW, setCheckPW] = useState("");
 
   const navigation =
-    useNavigation<NativeStackNavigationProp<RootStackParams>>();
+    useNavigation<NativeStackNavigationProp<IntroStackParamList>>();
   return (
     <Layout>
       <ButtonContainer>

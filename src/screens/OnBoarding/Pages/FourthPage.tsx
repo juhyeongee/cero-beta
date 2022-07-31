@@ -6,7 +6,7 @@ import SvgIcon from "@assets/SvgIcon";
 import Explanation from "../components/Explanation";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { RootStackParams } from "@navigations/IntroNav";
+import { IntroStackParamList } from "@/types";
 interface IContainerProps {
   theme: ITheme;
 }
@@ -14,7 +14,7 @@ interface IContainerProps {
 const FourthPage = () => {
   const fadeAnim = useRef(new Animated.Value(1)).current;
   const navigation =
-    useNavigation<NativeStackNavigationProp<RootStackParams>>();
+    useNavigation<NativeStackNavigationProp<IntroStackParamList>>();
   const fadeIn = () => {
     // Will change fadeAnim value to 1 in 5 seconds
     Animated.timing(fadeAnim, {
