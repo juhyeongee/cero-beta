@@ -26,7 +26,7 @@ const missions: IMissionType = {
     version1: {
       subtitle: `지난 연애 장면 소설로 써보기 ✍🏻`,
       contents: `지난 연애에서 가장 좋았던 추억을 하나 적어보세요. 관찰하듯 담담하게 3인칭으로 써보시길 추천드려요.`,
-      type: "textAndPhoto",
+      type: "both",
     },
     version2: {
       subtitle: `그 사람에게 배울만 했던 점 정리하기 🤔`,
@@ -77,7 +77,7 @@ const missions: IMissionType = {
     version1: {
       subtitle: `처음 가보는 길 걸어보기 🚶🏻‍♀️`,
       contents: `세상은 넓고, 좋은 곳도 참 많죠. 오늘은 한 번도 가보지 않았던 길로 걸어보세요.`,
-      type: "textAndPhoto",
+      type: "both",
     },
     version2: {
       subtitle: `깔끔하게 방 청소하기 🧹`,
@@ -94,7 +94,7 @@ const missions: IMissionType = {
     version1: {
       subtitle: `해묵은 물건 중고 거래하기 🏷`,
       contents: `오랫동안 자리만 차지했던 물건 하나 골라서 중고 마켓에 올려보세요! 의외로 후련한 기분이 드실걸요?`,
-      type: "textAndPhoto",
+      type: "both",
     },
     version2: {
       subtitle: `찐맛집 예약하기 📞`,
@@ -116,7 +116,7 @@ const missions: IMissionType = {
     version2: {
       subtitle: `이별 장면 회상하기 🎞`,
       contents: `지난 이별의 순간을 떠올려 볼까요? 당시의 기분, 상황, 분위기까지 관찰하듯 찬찬히 되뇌어 보겠습니다.`,
-      type: "textAndPhoto",
+      type: "both",
     },
     version3: {
       subtitle: `이불 정리하기 🛏`,
@@ -128,7 +128,7 @@ const missions: IMissionType = {
     version1: {
       subtitle: `미래의 나에게 안부 묻기 👋🏻`,
       contents: `나중에 OO님은 지금을 어떻게 기억할까요? 미래의 나에게 하고 싶은 말을 영상이나 글로 남겨보세요.`,
-      type: "textAndPhoto",
+      type: "both",
     },
     version2: {
       subtitle: `댄스타임! 온 몸 흔들어 제끼기 🕺🏻`,
@@ -155,14 +155,14 @@ const missions: IMissionType = {
     version3: {
       subtitle: `혼자 심야 영화 보고 오기 🌃`,
       contents: `오늘은 극장에 가서 심야 영화 한 편 보기! 여유롭게 OO님만을 위한 시간을 가져보세요.`,
-      type: "textAndPhoto",
+      type: "both",
     },
   },
   11: {
     version1: {
       subtitle: `‘혼자여서 괜찮은’ 5가지 이유 적기 😌`,
       contents: `다시 혼자가 돼서 좋은 점은 무엇인가요? 아주 많겠지만, 딱 5가지만 말씀해주세요.`,
-      type: "textAndPhoto",
+      type: "both",
     },
     version2: {
       subtitle: `주식 한 주 구매하기 📈`,
@@ -179,12 +179,12 @@ const missions: IMissionType = {
     version1: {
       subtitle: `새로운 취미 시작하기 👩🏻‍🎨`,
       contents: `새로운 취미에 도전해볼까요? 뭐든 좋아요! 미뤄왔던 취미가 있다면 과감하게 시작해보세요!`,
-      type: "textAndPhoto",
+      type: "both",
     },
     version2: {
       subtitle: `하늘 사진 찍어보기 🌤`,
       contents: `OO님, 오늘 하늘은 어떤 색인가요?잠시 고개를 들고 하늘 사진 한 장 찍어보세요!`,
-      type: "textAndPhoto",
+      type: "both",
     },
     version3: {
       subtitle: `헤어스타일 바꾸기 💇🏻‍♀️`,
@@ -208,7 +208,7 @@ const missions: IMissionType = {
     version1: {
       subtitle: `내 마음 확인하기 👍🏻`,
       contents: `첫날과 비교해서 보여주기`,
-      type: "textAndPhoto",
+      type: "both",
     },
     version2: {
       subtitle: `나에게 쓰는 편지 💌`,

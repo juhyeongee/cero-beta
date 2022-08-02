@@ -18,8 +18,13 @@ interface IContainerProps {
 interface Props {
   modalVisible: boolean;
   setModalVisible: (visible: boolean) => void;
+  missionTitle: string;
 }
-const DetailModal = ({ modalVisible, setModalVisible }: Props) => {
+const DetailModal = ({
+  modalVisible,
+  setModalVisible,
+  missionTitle,
+}: Props) => {
   return (
     <Modal
       style={{ flex: 1 }}
@@ -33,7 +38,7 @@ const DetailModal = ({ modalVisible, setModalVisible }: Props) => {
       <Layout>
         <Header>
           <View>
-            <MainText>그 사람이 별로인 이유</MainText>
+            <MainText>{missionTitle}</MainText>
             <DateText>2022년 5월 28일</DateText>
           </View>
           <Pressable onPress={() => setModalVisible(false)}>

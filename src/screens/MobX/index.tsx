@@ -3,7 +3,7 @@ import styled from "styled-components/native";
 import todoNumStore from "@/store/TodoNumStore";
 import { observer } from "mobx-react";
 
-const Setting = () => {
+const MobXScreen = () => {
   function addOne() {
     todoNumStore.addOne();
   }
@@ -27,7 +27,7 @@ const Setting = () => {
   );
 };
 
-export default observer(Setting);
+export default observer(MobXScreen);
 
 const CenterView = styled.View`
   flex: 1;

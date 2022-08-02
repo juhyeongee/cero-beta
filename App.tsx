@@ -15,6 +15,7 @@ import {
   NotoSansKR_700Bold,
   NotoSansKR_900Black,
 } from "@expo-google-fonts/noto-sans-kr";
+import MobXScreen from "@/screens/MobX";
 
 export default function App() {
   const [onPage, setOnPage] = useState("MainBottomTabNav");
@@ -41,6 +42,7 @@ export default function App() {
         {onPage === "IntroNav" && <IntroNav />}
         {onPage === "OnBoardingNav" && <OnBoardingNav />}
         {onPage === "MainBottomTabNav" && <MainBottomTabNav />}
+        {onPage === "MobX" && <MobXScreen />}
       </ThemeProvider>
     </NavigationContainer>
   );

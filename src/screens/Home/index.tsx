@@ -13,11 +13,6 @@ interface IContainerProps {
 }
 
 const Home = ({ route, navigation }: HomeStackScreenProps<"Home">) => {
-  const { missionNum } = route.params;
-  const [versionNum, setVersionNum] = useState<number>(0);
-  //TODO: 임시로 정해놓은 미션 번호 상수, 전역으로 미션 날짜 앱로딩때 설정되면 그 값으로 초기화 설정 필요.
-  const todayMissionObject = missions[missionNum];
-  const version = Object.keys(todayMissionObject)[versionNum];
   const navigateToTodayMission = () => {
     navigation.navigate("TodayMission");
   };

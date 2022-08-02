@@ -10,28 +10,42 @@ interface IProps {
 }
 const Tag = ({ type }: IProps) => {
   return (
-    <Container>
-      {type === "photo" && <InnerText>사진</InnerText>}
-      {type === "text" && <InnerText>텍스트</InnerText>}
-      {type === "both" && (
-        <>
+    <View style={{ flex: 1 }}>
+      {type === "photo" && (
+        <Container>
           <InnerText>사진</InnerText>
-          <InnerText>텍스트</InnerText>
-        </>
+        </Container>
       )}
-    </Container>
+      {type === "text" && (
+        <Container>
+          <InnerText>텍스트</InnerText>
+        </Container>
+      )}
+      {type === "both" && (
+        <View style={{ flex: 1, flexDirection: "row", width: "40%" }}>
+          <Container>
+            <InnerText>사진</InnerText>
+          </Container>
+          <Container>
+            <InnerText>텍스트</InnerText>
+          </Container>
+        </View>
+      )}
+    </View>
   );
 };
 
 const Container = styled.View`
+  flex-direction: row;
   opacity: 0.8;
   justify-content: center;
   align-items: center;
   flex: 1;
   width: 56px;
-  height: 16px;
+  height: 100%;
   border-radius: 10px;
   background-color: ${(props: IContainerProps) => props.theme.color.n600};
+  margin-right: 4px; ;
 `;
 const InnerText = styled.Text`
   font-family: ${(props: IContainerProps) => props.theme.font.mainFont};
