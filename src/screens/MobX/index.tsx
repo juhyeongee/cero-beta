@@ -1,18 +1,18 @@
 import React, { View, Text, Pressable } from "react-native";
 import styled from "styled-components/native";
-import missionNumStore from "@/store/MissionNumStore";
+import todoNumStore from "@/store/TodoNumStore";
 import { observer } from "mobx-react";
 
 const MobXScreen = () => {
   function addOne() {
-    missionNumStore.addOne();
+    todoNumStore.addOne();
   }
   function minusOne() {
-    missionNumStore.minusOne();
+    todoNumStore.minusOne();
   }
   return (
     <CenterView>
-      <Text>{missionNumStore.missionNum}</Text>
+      <Text>{todoNumStore.todoNum}</Text>
       <Pressable onPress={addOne}>
         <View>
           <Text>하나 추가요~</Text>

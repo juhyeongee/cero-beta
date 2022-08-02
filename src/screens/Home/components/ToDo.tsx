@@ -10,7 +10,7 @@ import { useNavigation } from "@react-navigation/native";
 import TodayMission from "@screens/TodayMission";
 import { HomeStackScreenProps } from "@/types";
 import { observer } from "mobx-react";
-import missionNumStore from "@/store/MissionNumStore";
+import todoNumStore from "@/store/TodoNumStore";
 
 interface IContainerProps {
   theme: ITheme;
@@ -22,10 +22,10 @@ interface Props {
 
 const ToDo = ({ navigateToTodayMission }: Props) => {
   const [versionNum, setVersionNum] = useState<number>(0);
-  const { missionNum } = missionNumStore;
+  const { todoNum } = todoNumStore;
 
   //TODO: 임시로 정해놓은 미션 번호 상수, 전역으로 미션 날짜 앱로딩때 설정되면 그 값으로 초기화 설정 필요.
-  const todayMissionObject = missions[missionNum];
+  const todayMissionObject = missions[todoNum];
   const version = Object.keys(todayMissionObject)[versionNum];
   const todayMissions = todayMissionObject[version];
 
