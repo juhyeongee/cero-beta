@@ -1,21 +1,17 @@
-import {
-  View,
-  Text,
-  Pressable,
-  Image,
-  SafeAreaView,
-  ScrollView,
-  FlatList,
-} from "react-native";
+import { View, Text, SafeAreaView, ScrollView } from "react-native";
 import styled from "styled-components/native";
 import { ITheme } from "@/types";
 import AutoHeightImage from "react-native-auto-height-image";
 import Card from "./components/Card";
+import missions from "@constants/missions";
+
 interface IContainerProps {
   theme: ITheme;
 }
 
 const FinishedTasks = () => {
+  const missionArray = Object.keys(missions);
+  console.log(missionArray);
   return (
     <Container>
       <SafeAreaView style={{ flex: 1 }}>
@@ -26,13 +22,9 @@ const FinishedTasks = () => {
         <Title>지난 할 일 </Title>
         <Subtitle>지금까지의 여정을 살펴보세요.</Subtitle>
         <ScrollView showsVerticalScrollIndicator={false}>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          {missionArray.map((index) => (
+            <Card key={index} missionNum={index} />
+          ))}
         </ScrollView>
         {/* TODO: ScrollView => Flatlist로 변환 */}
       </SafeAreaView>
@@ -53,7 +45,7 @@ const Container = styled.View`
 
 const Title = styled.Text`
   font-family: ${(props: IContainerProps) => props.theme.font.thickFont};
-  font-size: 20;
+  font-size: 20px;
   margin-bottom: 8px;
   margin-top: 8px;
 `;

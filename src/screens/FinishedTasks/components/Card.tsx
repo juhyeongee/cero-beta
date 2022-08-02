@@ -4,33 +4,89 @@ import { ITheme } from "@/types";
 import { useState } from "react";
 import Tag from "./Tag";
 import DetailModal from "./DetailModal";
+import missions from "@constants/missions";
+import todoNumStore from "@/store/TodoNumStore";
 
 interface IContainerProps {
   theme: ITheme;
 }
-const Card = () => {
-  const [type, setType] = useState("photo");
-  const [modalVisible, setModalVisible] = useState(false);
 
+interface CardProps {
+  missionNum: string;
+}
+const Card = ({ missionNum }: CardProps) => {
+  const [modalVisible, setModalVisible] = useState(false);
+  const thisMissionNum = parseInt(missionNum);
+  const todoMission = todoNumStore.todoNum;
+  console.log("thisMissionNum: ", thisMissionNum);
+  console.log("todoMission: ", todoMission);
+  console.log("typeof thisMissionNum: ", typeof thisMissionNum);
+  console.log("typeof todoMission: ", typeof todoMission);
+  const missionTitle = missions[thisMissionNum].version1.subtitle;
+  const type = missions[thisMissionNum].version1.type;
   return (
     // <BGPhoto
     //   source={require("@assets/images/exampleImage.png")}
     //   resizeMode="cover"
     //   style={{ flex: 1 }}
     // >
-    <>
+    <View>
+      <DetailModal
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
+        missionTitle={missionTitle}
+      />
+      {type === "both" && (
+        <>
+          <ImageBackground
+            resizeMode="cover"
+            source={require("@assets/images/exampleImage.png")}
+            style={{ marginBottom: 16 }}
+            imageStyle={{ borderRadius: 13 }}
+          >
+            <Pressable
+              onPress={() => {
+                if (thisMissionNum > todoMission) {
+                  return null;
+                } else {
+                  setModalVisible(!modalVisible);
+                }
+              }}
+            >
+              <BGPhoto>
+                <View style={{ flex: 1, justifyContent: "center" }}>
+                  <Title>{thisMissionNum}</Title>
+                </View>
+                <View style={{ flex: 1.4, justifyContent: "center" }}>
+                  <MissionNum>{missionTitle}</MissionNum>
+                </View>
+                <View style={{ flex: 1, justifyContent: "center" }}>
+                  <Date>2022 5월 28일</Date>
+                </View>
+                <Tags>
+                  <Tag type={type} />
+                </Tags>
+              </BGPhoto>
+            </Pressable>
+          </ImageBackground>
+        </>
+      )}
       {type === "text" && (
         <>
-          <DetailModal
-            modalVisible={modalVisible}
-            setModalVisible={setModalVisible}
-          />
-          <Container onPress={() => setModalVisible(!modalVisible)}>
+          <Container
+            onPress={() => {
+              if (thisMissionNum > todoMission) {
+                return null;
+              } else {
+                setModalVisible(!modalVisible);
+              }
+            }}
+          >
             <View style={{ flex: 1, justifyContent: "center" }}>
-              <Title>01</Title>
+              <Title>{thisMissionNum}</Title>
             </View>
             <View style={{ flex: 1.4, justifyContent: "center" }}>
-              <MissionNum>하늘 사진</MissionNum>
+              <MissionNum>{missionTitle}</MissionNum>
             </View>
             <View style={{ flex: 1, justifyContent: "center" }}>
               <Date>2022 5월 28일</Date>
@@ -41,34 +97,40 @@ const Card = () => {
       )}
       {type === "photo" && (
         <>
-          <DetailModal
-            modalVisible={modalVisible}
-            setModalVisible={setModalVisible}
-          />
           <ImageBackground
             resizeMode="cover"
             source={require("@assets/images/exampleImage.png")}
             style={{ marginBottom: 16 }}
             imageStyle={{ borderRadius: 13 }}
           >
-            <Pressable onPress={() => setModalVisible(!modalVisible)}>
+            <Pressable
+              onPress={() => {
+                if (thisMissionNum > todoMission) {
+                  return null;
+                } else {
+                  setModalVisible(!modalVisible);
+                }
+              }}
+            >
               <BGPhoto>
                 <View style={{ flex: 1, justifyContent: "center" }}>
-                  <Title>01</Title>
+                  <Title>{thisMissionNum}</Title>
                 </View>
                 <View style={{ flex: 1.4, justifyContent: "center" }}>
-                  <MissionNum>하늘 사진</MissionNum>
+                  <MissionNum>{missionTitle}</MissionNum>
                 </View>
                 <View style={{ flex: 1, justifyContent: "center" }}>
                   <Date>2022 5월 28일</Date>
                 </View>
-                <Tag type={type} />
+                <Tags>
+                  <Tag type={type} />
+                </Tags>
               </BGPhoto>
             </Pressable>
           </ImageBackground>
         </>
       )}
-    </>
+    </View>
   );
 };
 
@@ -109,5 +171,8 @@ const Date = styled.Text`
   font-size: 10px;
   color: ${(props: IContainerProps) => props.theme.color.n800};
 `;
-const Tags = styled.View``;
+const Tags = styled.View`
+  flex: 1;
+`;
+
 export default Card;
