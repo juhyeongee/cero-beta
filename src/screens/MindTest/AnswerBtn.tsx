@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { View, Text, Pressable, TouchableOpacity } from "react-native";
+import React from "react";
+import { View, Pressable } from "react-native";
 import styled from "styled-components/native";
 import { ITheme } from "@/types";
 

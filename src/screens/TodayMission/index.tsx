@@ -9,7 +9,6 @@ import PhotoMission from "./pages/PhotoMission";
 import TextMission from "./pages/TextMission";
 import PhotoTextMission from "./pages/PhotoTextMission";
 import * as ImagePicker from "expo-image-picker";
-import ResultPage from "../MindTest/pages/ResultPage";
 
 interface IContainerProps {
   theme: ITheme;

@@ -18,10 +18,7 @@ const Card = ({ missionNum }: CardProps) => {
   const [modalVisible, setModalVisible] = useState(false);
   const thisMissionNum = parseInt(missionNum);
   const todoMission = todoNumStore.todoNum;
-  console.log("thisMissionNum: ", thisMissionNum);
-  console.log("todoMission: ", todoMission);
-  console.log("typeof thisMissionNum: ", typeof thisMissionNum);
-  console.log("typeof todoMission: ", typeof todoMission);
+
   const missionTitle = missions[thisMissionNum].version1.subtitle;
   const type = missions[thisMissionNum].version1.type;
   return (

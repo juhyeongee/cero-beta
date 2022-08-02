@@ -1,9 +1,6 @@
 import { View, Text } from "react-native";
 import styled from "styled-components/native";
 import { ITheme } from "@/types";
-import { BigPrimaryBtn } from "@/components";
-import SvgIcon from "@/assets/SvgIcon";
-import Theme from "@/constants/Theme";
 import NumberBox from "./NumberBox";
 import CheckedBox from "./CheckedBox";
 import AutoHeightImage from "react-native-auto-height-image";

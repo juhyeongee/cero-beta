@@ -1,8 +1,6 @@
 import { View, Text, Image } from "react-native";
 import styled from "styled-components/native";
-import AutoHeightImage from "react-native-auto-height-image";
 import { ITheme } from "@/types";
-import Layout from "@components/Layout";
 
 interface IContainerProps {
   theme: ITheme;

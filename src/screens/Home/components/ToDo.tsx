@@ -6,9 +6,7 @@ import { BigPrimaryBtn } from "@/components";
 import SvgIcon from "@/assets/SvgIcon";
 import Theme from "@/constants/Theme";
 import missions from "@constants/missions";
-import { useNavigation } from "@react-navigation/native";
-import TodayMission from "@screens/TodayMission";
-import { HomeStackScreenProps } from "@/types";
+
 import { observer } from "mobx-react";
 import todoNumStore from "@/store/TodoNumStore";
 

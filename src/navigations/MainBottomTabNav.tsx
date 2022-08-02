@@ -1,6 +1,5 @@
 import * as React from "react";
 import { View, Image } from "react-native";
-import Home from "../screens/Home";
 import FinishedTasks from "../screens/FinishedTasks";
 import Setting from "../screens/Setting";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";

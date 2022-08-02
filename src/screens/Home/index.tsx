@@ -5,8 +5,6 @@ import SvgIcon from "@/assets/SvgIcon";
 import Swiper from "react-native-swiper";
 import ToDo from "./components/ToDo";
 import MissionBoard from "./components/MissionBoard";
-import missions from "@constants/missions";
-import { useState, useEffect } from "react";
 
 interface IContainerProps {
   theme: ITheme;

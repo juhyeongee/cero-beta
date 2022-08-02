@@ -2,11 +2,8 @@ import React, { useState } from "react";
 import { View, Text, Pressable, TextInput, SafeAreaView } from "react-native";
 import styled from "styled-components/native";
 import { ITheme } from "@/types";
-import SvgIcon from "@/assets/SvgIcon";
-import Theme from "@constants/Theme";
 import AutoHeightImage from "react-native-auto-height-image/";
 import Header from "../components/Header";
-import { WINDOW_HEIGHT, WINDOW_WIDTH } from "constants/properties";
 
 interface IContainerProps {
   theme: ITheme;

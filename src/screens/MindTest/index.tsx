@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import React, { useState } from "react";
 import Swiper from "react-native-swiper";
-import styled from "styled-components/native";
 import { questionObj } from "@constants/mindtestProperties";
 import IntroduceMindTest from "./pages/IntroduceMindTest";
 import TestPage from "./pages/TestPage";

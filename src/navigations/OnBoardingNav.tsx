@@ -1,4 +1,3 @@
-import PolicyDetail from "../screens/SignIn/PolicyDetail";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import TakeUserInfo from "../screens/TakeUserInfo";
 import OnBoarding from "../screens/OnBoarding";

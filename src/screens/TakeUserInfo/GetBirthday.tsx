@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { View, Text, Pressable } from "react-native";
-import { Layout, MainText, BigPrimaryBtn, SubText } from "@components/index";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import styled from "styled-components/native";
+import { Layout, MainText, BigPrimaryBtn } from "@components/index";
 import dayjs from "dayjs";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 const GetBirthday = () => {

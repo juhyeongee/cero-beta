@@ -1,7 +1,6 @@
 import { View, Text } from "react-native";
 import styled from "styled-components/native";
 import { ITheme } from "@/types";
-import { BigPrimaryBtn } from "@/components";
 
 interface IContainerProps {
   theme: ITheme;
