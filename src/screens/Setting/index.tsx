@@ -6,9 +6,11 @@ import { observer } from "mobx-react";
 const Setting = () => {
   function addOne() {
     todoNumStore.addOne();
+    todoNumStore.resetVersionNum();
   }
   function minusOne() {
     todoNumStore.minusOne();
+    todoNumStore.resetVersionNum();
   }
   function plusVersion() {
     todoNumStore.plusVersionNum();

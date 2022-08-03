@@ -25,8 +25,8 @@ const ToDo = ({ navigateToTodayMission }: Props) => {
   console.log("todayMissions: ", todo);
 
   const rotateVersionNum = () => {
-    let length = Object.keys(todoObject).length - 1;
-    if (versionNum <= length) {
+    let length = Object.keys(todoObject).length;
+    if (versionNum < length) {
       plusVersionNum();
     } else {
       resetVersionNum();

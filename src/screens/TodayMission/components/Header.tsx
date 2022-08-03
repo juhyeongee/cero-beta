@@ -26,8 +26,8 @@ const Header = ({ modalVisible, setModalVisible }: HeaderModal) => {
   const missionType = missions[todoNum].version1.type;
   const missionTitle = missions[todoNum][version].subtitle;
   const missionDescription = missions[todoNum][version].description;
-  const missionArticleTitle = missions[todoNum].version1.articleTitle;
-  const missionArticle = missions[todoNum].version1.article;
+  const missionArticleTitle = missions[todoNum][version].articleTitle;
+  const missionArticle = missions[todoNum][version].article;
 
   return (
     <>
