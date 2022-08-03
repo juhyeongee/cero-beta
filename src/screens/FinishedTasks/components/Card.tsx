@@ -6,6 +6,7 @@ import Tag from "./Tag";
 import DetailModal from "./DetailModal";
 import missions from "@constants/missions";
 import todoNumStore from "@/store/TodoNumStore";
+import Toast from "react-native-toast-message";
 
 interface IContainerProps {
   theme: ITheme;
@@ -21,6 +22,22 @@ const Card = ({ missionNum }: CardProps) => {
 
   const missionTitle = missions[thisMissionNum].version1.subtitle;
   const type = missions[thisMissionNum].version1.type;
+  const showToast = () => {
+    Toast.show({
+      type: "error",
+      text1: "아직 미션을 해결하지 못했어요!",
+      text2: "차근차근 하나씩 미션을 완료하고 보도록해요!",
+      position: "bottom",
+    });
+  };
+  const onClicked = () => {
+    if (thisMissionNum > todoNum) {
+      showToast();
+    } else {
+      setModalVisible(!modalVisible);
+    }
+  };
+
   return (
     // <BGPhoto
     //   source={require("@assets/images/exampleImage.png")}
@@ -41,15 +58,7 @@ const Card = ({ missionNum }: CardProps) => {
             style={{ marginBottom: 16 }}
             imageStyle={{ borderRadius: 13 }}
           >
-            <Pressable
-              onPress={() => {
-                if (thisMissionNum > todoNum) {
-                  return null;
-                } else {
-                  setModalVisible(!modalVisible);
-                }
-              }}
-            >
+            <Pressable onPress={showToast}>
               <BGPhoto>
                 <View style={{ flex: 1, justifyContent: "center" }}>
                   <Title>{thisMissionNum}</Title>
@@ -70,15 +79,7 @@ const Card = ({ missionNum }: CardProps) => {
       )}
       {type === "text" && (
         <>
-          <Container
-            onPress={() => {
-              if (thisMissionNum > todoNum) {
-                return null;
-              } else {
-                setModalVisible(!modalVisible);
-              }
-            }}
-          >
+          <Container onPress={onClicked}>
             <View style={{ flex: 1, justifyContent: "center" }}>
               <Title>{thisMissionNum}</Title>
             </View>
@@ -100,15 +101,7 @@ const Card = ({ missionNum }: CardProps) => {
             style={{ marginBottom: 16 }}
             imageStyle={{ borderRadius: 13 }}
           >
-            <Pressable
-              onPress={() => {
-                if (thisMissionNum > todoNum) {
-                  return null;
-                } else {
-                  setModalVisible(!modalVisible);
-                }
-              }}
-            >
+            <Pressable onPress={onClicked}>
               <BGPhoto>
                 <View style={{ flex: 1, justifyContent: "center" }}>
                   <Title>{thisMissionNum}</Title>

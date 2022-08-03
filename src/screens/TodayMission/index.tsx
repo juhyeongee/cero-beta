@@ -16,12 +16,9 @@ interface IContainerProps {
 
 const TodayMission = () => {
   const [missionText, setMissionText] = useState("");
-  const { todoNum } = todoNumStore;
-  const missionType = missions[todoNum].version1.type;
-  const onTextChange = () => {
-    setMissionText;
-    console.log(missionText);
-  };
+  const { todoNum, versionNum } = todoNumStore;
+  const version = `version${versionNum}`;
+  const missionType = missions[todoNum][version].type;
 
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
