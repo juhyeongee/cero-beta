@@ -17,7 +17,7 @@ interface CardProps {
 const Card = ({ missionNum }: CardProps) => {
   const [modalVisible, setModalVisible] = useState(false);
   const thisMissionNum = parseInt(missionNum);
-  const todoMission = todoNumStore.todoNum;
+  const { todoNum, versionNum } = todoNumStore;
 
   const missionTitle = missions[thisMissionNum].version1.subtitle;
   const type = missions[thisMissionNum].version1.type;
@@ -43,7 +43,7 @@ const Card = ({ missionNum }: CardProps) => {
           >
             <Pressable
               onPress={() => {
-                if (thisMissionNum > todoMission) {
+                if (thisMissionNum > todoNum) {
                   return null;
                 } else {
                   setModalVisible(!modalVisible);
@@ -72,7 +72,7 @@ const Card = ({ missionNum }: CardProps) => {
         <>
           <Container
             onPress={() => {
-              if (thisMissionNum > todoMission) {
+              if (thisMissionNum > todoNum) {
                 return null;
               } else {
                 setModalVisible(!modalVisible);
@@ -102,7 +102,7 @@ const Card = ({ missionNum }: CardProps) => {
           >
             <Pressable
               onPress={() => {
-                if (thisMissionNum > todoMission) {
+                if (thisMissionNum > todoNum) {
                   return null;
                 } else {
                   setModalVisible(!modalVisible);
