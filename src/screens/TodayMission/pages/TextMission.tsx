@@ -9,9 +9,6 @@ import {
 } from "react-native";
 import styled from "styled-components/native";
 import { ITheme } from "@/types";
-import SvgIcon from "@/assets/SvgIcon";
-import Theme from "@constants/Theme";
-import AutoHeightImage from "react-native-auto-height-image/";
 import Header from "../components/Header";
 
 interface IContainerProps {
