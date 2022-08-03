@@ -6,7 +6,6 @@ import { BigPrimaryBtn } from "@/components";
 import SvgIcon from "@/assets/SvgIcon";
 import Theme from "@/constants/Theme";
 import missions from "@constants/missions";
-
 import { observer } from "mobx-react";
 import todoNumStore from "@/store/TodoNumStore";
 
@@ -19,20 +18,18 @@ interface Props {
 }
 
 const ToDo = ({ navigateToTodayMission }: Props) => {
-  const [versionNum, setVersionNum] = useState<number>(0);
-  const { todoNum } = todoNumStore;
-
-  //TODO: 임시로 정해놓은 미션 번호 상수, 전역으로 미션 날짜 앱로딩때 설정되면 그 값으로 초기화 설정 필요.
-  const todayMissionObject = missions[todoNum];
-  const version = Object.keys(todayMissionObject)[versionNum];
-  const todayMissions = todayMissionObject[version];
+  const { todoNum, versionNum, plusVersionNum, resetVersionNum } = todoNumStore;
+  const version = `version${versionNum}`;
+  const todoObject = missions[todoNum];
+  const todo = todoObject[version].subtitle;
+  console.log("todayMissions: ", todo);
 
   const rotateVersionNum = () => {
-    let length = Object.keys(todayMissionObject).length - 1;
-    if (versionNum < length) {
-      setVersionNum(versionNum + 1);
+    let length = Object.keys(todoObject).length - 1;
+    if (versionNum <= length) {
+      plusVersionNum();
     } else {
-      setVersionNum(0);
+      resetVersionNum();
     }
   };
 
@@ -61,7 +58,7 @@ const ToDo = ({ navigateToTodayMission }: Props) => {
             color: Theme.color.n900,
           }}
         >
-          {todayMissions.subtitle}
+          {todo}
         </Text>
       </ToDoGrayBox>
       <View

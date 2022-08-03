@@ -4,6 +4,8 @@ import { makePersistable, stopPersisting } from "mobx-persist-store";
 
 class TodoNumStore {
   todoNum = 1;
+  versionNum = 1;
+
   constructor() {
     makeAutoObservable(
       this,
@@ -11,14 +13,16 @@ class TodoNumStore {
         addOne: action,
         minusOne: action,
         todoNum: observable,
+        versionNum: observable,
       },
       { autoBind: true }
     );
     makePersistable(this, {
-      name: "MissionNumPersistStore",
-      properties: ["todoNum"],
+      name: "TodoNumPersistStore",
+      properties: ["todoNum", "versionNum"],
       storage: AsyncStorage,
     });
+
     // TODO: 메모리 누수를 위한 stopPersisting 요소 사용 방법 습득 후 적용
   }
 
@@ -27,6 +31,13 @@ class TodoNumStore {
   }
   minusOne() {
     this.todoNum -= 1;
+  }
+
+  plusVersionNum() {
+    this.versionNum += 1;
+  }
+  resetVersionNum() {
+    this.versionNum = 1;
   }
 }
 

@@ -2,22 +2,22 @@ import React, { useState } from "react";
 import { View, Text, Pressable, Image, SafeAreaView } from "react-native";
 import styled from "styled-components/native";
 import { ITheme } from "@/types";
-import SvgIcon from "@/assets/SvgIcon";
-import Theme from "@constants/Theme";
-import AutoHeightImage from "react-native-auto-height-image/";
 import PhotoMission from "./pages/PhotoMission";
 import TextMission from "./pages/TextMission";
 import PhotoTextMission from "./pages/PhotoTextMission";
 import * as ImagePicker from "expo-image-picker";
+import { observer } from "mobx-react";
+import todoNumStore from "@/store/TodoNumStore";
+import missions from "@constants/missions";
 
 interface IContainerProps {
   theme: ITheme;
 }
 
 const TodayMission = () => {
-  const [missionType, setMissionType] = useState("textAndPhoto");
   const [missionText, setMissionText] = useState("");
-
+  const { todoNum } = todoNumStore;
+  const missionType = missions[todoNum].version1.type;
   const onTextChange = () => {
     setMissionText;
     console.log(missionText);
@@ -41,7 +41,7 @@ const TodayMission = () => {
           }}
         />
       )}
-      {missionType === "textAndPhoto" && (
+      {missionType === "both" && (
         <PhotoTextMission
           pickImage={pickImage}
           setMissionText={(text) => {
@@ -53,4 +53,4 @@ const TodayMission = () => {
   );
 };
 
-export default TodayMission;
+export default observer(TodayMission);

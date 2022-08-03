@@ -1,10 +1,12 @@
 import styled from "styled-components/native";
-import { useState } from "react";
 import AutoHeightImage from "react-native-auto-height-image";
 import { View, Text, Pressable, Modal, ScrollView } from "react-native";
 import SvgIcon from "@/assets/SvgIcon";
 import { ITheme } from "@/types";
 import { useNavigation } from "@react-navigation/native";
+import todoNumStore from "@/store/TodoNumStore";
+import missions from "@constants/missions";
+
 interface IContainerProps {
   theme: ITheme;
 }
@@ -19,6 +21,13 @@ const Header = ({ modalVisible, setModalVisible }: HeaderModal) => {
     //TODO: 이 함수를 pages 단계로 올리고, 완료시 데이터 업로드 로직을 추가할 것
     navigation.goBack();
   };
+  const { todoNum, versionNum } = todoNumStore;
+  const version = `version${versionNum}`;
+  const missionType = missions[todoNum].version1.type;
+  const missionTitle = missions[todoNum][version].subtitle;
+  const missionDescription = missions[todoNum][version].description;
+  const missionArticleTitle = missions[todoNum].version1.articleTitle;
+  const missionArticle = missions[todoNum].version1.article;
 
   return (
     <>
@@ -46,13 +55,9 @@ const Header = ({ modalVisible, setModalVisible }: HeaderModal) => {
             />
             <ModalBox>
               <ModalContainer>
-                <MissionTitle>하늘 사진을 왜 찍어야 해요?</MissionTitle>
+                <MissionTitle>{missionArticleTitle}</MissionTitle>
                 <ScrollView>
-                  <MissionContext>
-                    자기가 힘들 때는 항상 연락의 바라면서, 정작 내가 연락할 때는
-                    전혀 모르겠는데, 이게 어떻게 하지 나는 누구지? 텍스트가
-                    이렇게 긴데 어디서?
-                  </MissionContext>
+                  <MissionContext>{missionArticle}</MissionContext>
                 </ScrollView>
               </ModalContainer>
             </ModalBox>
@@ -91,15 +96,12 @@ const Header = ({ modalVisible, setModalVisible }: HeaderModal) => {
               alignItems: "center",
             }}
           >
-            <MissionTitle>하늘 사진 찍기</MissionTitle>
+            <MissionTitle>{missionTitle}</MissionTitle>
             <Pressable onPress={() => setModalVisible(!modalVisible)}>
               <SvgIcon name="information" />
             </Pressable>
           </View>
-          <Subtitle>
-            김효준 님, 오늘 하늘은 어떤 색인가요? 잠시 고개를 들고 사진 한 장
-            찍어보세요!
-          </Subtitle>
+          <Subtitle>{missionDescription}</Subtitle>
           <Subtitle></Subtitle>
         </View>
       </Container>

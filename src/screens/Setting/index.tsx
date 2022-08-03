@@ -10,17 +10,35 @@ const Setting = () => {
   function minusOne() {
     todoNumStore.minusOne();
   }
+  function plusVersion() {
+    todoNumStore.plusVersionNum();
+  }
+  function resetVersion() {
+    todoNumStore.resetVersionNum();
+  }
   return (
     <CenterView>
       <Text>{todoNumStore.todoNum}</Text>
       <Pressable onPress={addOne}>
         <View>
-          <Text>하나 추가요~</Text>
+          <Text>missionNum 하나 추가요~</Text>
         </View>
       </Pressable>
       <Pressable onPress={minusOne}>
         <View>
-          <Text>뺄게요 하나~</Text>
+          <Text>missionNum 뺄게요 하나~</Text>
+        </View>
+      </Pressable>
+      <Text>{todoNumStore.versionNum}</Text>
+
+      <Pressable onPress={plusVersion}>
+        <View>
+          <Text>versionNum 하나 추가요</Text>
+        </View>
+      </Pressable>
+      <Pressable onPress={resetVersion}>
+        <View>
+          <Text>versionNum 뺄게요 하나~</Text>
         </View>
       </Pressable>
     </CenterView>
