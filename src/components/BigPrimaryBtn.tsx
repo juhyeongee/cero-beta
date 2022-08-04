@@ -1,5 +1,6 @@
 import styled from "styled-components/native";
 import { ITheme } from "@/types";
+import { Platform } from "react-native";
 
 interface IContainerProps {
   theme: ITheme;
@@ -25,7 +26,7 @@ export const BigPrimaryBtn = ({ onPress, text, textBold }: Props) => {
     background-color: ${(props: IContainerProps) => props.theme.color.primary};
     border-radius: 10px;
     height: 48px;
-    padding: 10px 20px;
+    padding: ${Platform.OS === "ios" ? "10px" : "0px"} 20px;
   `;
   return (
     <BigGreenButtonBG onPress={onPress}>

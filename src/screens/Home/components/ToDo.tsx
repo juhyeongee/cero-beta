@@ -1,6 +1,6 @@
-import { View, Text, Pressable } from "react-native";
+import { View, Text, Pressable, Platform } from "react-native";
 import { useState, useEffect } from "react";
-import styled from "styled-components/native";
+import styled, { css } from "styled-components/native";
 import { ITheme } from "@/types";
 import { BigPrimaryBtn } from "@/components";
 import SvgIcon from "@/assets/SvgIcon";
@@ -8,6 +8,7 @@ import Theme from "@/constants/Theme";
 import missions from "@constants/missions";
 import { observer } from "mobx-react";
 import todoNumStore from "@/store/TodoNumStore";
+import { heightRatio, widthRatio, fontsizeRatio } from "@/utils";
 
 interface IContainerProps {
   theme: ITheme;
@@ -44,9 +45,16 @@ const ToDo = ({ navigateToTodayMission }: Props) => {
         }}
       >
         <GrayText>오늘의 할 일</GrayText>
-        <View style={{ flexDirection: "row" }}>
+        <View
+          style={{
+            flexDirection: "row",
+          }}
+        >
           <GrayText>변경하기 </GrayText>
-          <Pressable onPress={rotateVersionNum}>
+          <Pressable
+            style={{ justifyContent: "flex-end" }}
+            onPress={rotateVersionNum}
+          >
             <SvgIcon name="refresh" />
           </Pressable>
         </View>
@@ -80,7 +88,8 @@ const Container = styled.View`
   width: 100%;
   height: 100%;
   background-color: ${(props: IContainerProps) => props.theme.color.n50};
-  padding: 8%;
+  padding: ${Platform.OS === "ios" ? "8%" : `${heightRatio(32)}px`};
+  padding-top: ${Platform.OS === "ios" ? "8%" : "0px"};
 `;
 
 const GrayText = styled.Text`
@@ -92,10 +101,10 @@ const GrayText = styled.Text`
 const ToDoGrayBox = styled.View`
   width: 100%;
   background-color: ${(props: IContainerProps) => props.theme.color.n500};
-  height: 40%;
-  padding: 5%;
+  height: ${Platform.OS === "ios" ? "40%" : "46%"};
+  padding: ${Platform.OS === "ios" ? "5%" : "2%"};
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  margin-bottom: 5%;
+  margin-bottom: ${Platform.OS === "ios" ? "5%" : `${heightRatio(10)}px`};
 `;

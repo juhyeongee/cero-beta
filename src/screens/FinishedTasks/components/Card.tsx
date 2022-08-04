@@ -37,6 +37,8 @@ const Card = ({ missionNum }: CardProps) => {
     }
   };
   const imageSource = require("@assets/images/exampleImage.png");
+  //TODO: 텍스트 콘텐츠와 사진이미지별로 BG이미지 다르게 설정하기
+
   return (
     <View>
       <DetailModal
