@@ -96,6 +96,6 @@ const ToDoGrayBox = styled.View`
   padding: 5%;
   justify-content: center;
   align-items: center;
-  border-radius: 10%;
+  border-radius: 10px;
   margin-bottom: 5%;
 `;

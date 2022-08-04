@@ -2,6 +2,7 @@ import { Dimensions } from "react-native";
 
 export const WINDOW_WIDTH = Dimensions.get("window").width;
 export const WINDOW_HEIGHT = Dimensions.get("window").height;
+
 export const MindTestIntroductionText = [
   "효준님의 마음은 지금 어둡고 외로워 보이네요.",
   "평소에는 괜찮은 것 같다가도, 이따금 가슴이 답답하고 가라앉는 느낌이 드실 거예요.",
