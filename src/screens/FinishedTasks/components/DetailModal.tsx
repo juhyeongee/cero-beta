@@ -21,11 +21,13 @@ interface Props {
   modalVisible: boolean;
   setModalVisible: (visible: boolean) => void;
   missionTitle: string;
+  missionType: string;
 }
 const DetailModal = ({
   modalVisible,
   setModalVisible,
   missionTitle,
+  missionType,
 }: Props) => {
   return (
     <Modal

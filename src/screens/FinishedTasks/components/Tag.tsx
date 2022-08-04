@@ -49,7 +49,6 @@ const Container = styled.View`
 `;
 const InnerText = styled.Text`
   font-family: ${(props: IContainerProps) => props.theme.font.mainFont};
-
   color: black;
   font-size: 10px;
 `;

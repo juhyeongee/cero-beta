@@ -17,6 +17,7 @@ import {
 } from "@expo-google-fonts/noto-sans-kr";
 import MobXScreen from "@/screens/MobX";
 import Toast from "react-native-toast-message";
+import Example from "@/screens/Example";
 
 export default function App() {
   const [onPage, setOnPage] = useState("MainBottomTabNav");
@@ -43,7 +44,7 @@ export default function App() {
         {onPage === "IntroNav" && <IntroNav />}
         {onPage === "OnBoardingNav" && <OnBoardingNav />}
         {onPage === "MainBottomTabNav" && <MainBottomTabNav />}
-        {onPage === "MobX" && <MobXScreen />}
+        {onPage === "Example" && <Example />}
         <Toast />
       </ThemeProvider>
     </NavigationContainer>
