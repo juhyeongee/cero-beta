@@ -1,15 +1,10 @@
 import { View, Text, Image } from "react-native";
-import styled from "styled-components/native";
-import { ITheme } from "@/types";
 import SvgIcon from "@assets/SvgIcon";
-
-interface IContainerProps {
-  theme: ITheme;
-}
+import { FourthContainer, IntroText } from "./Components/Styled";
 
 const Fourth = () => {
   return (
-    <Container>
+    <FourthContainer>
       <IntroText>14일 후,</IntroText>
       <IntroText>당신의 화분엔</IntroText>
       <IntroText>어떤 꽃이 자라게 될까요?</IntroText>
@@ -19,23 +14,8 @@ const Fourth = () => {
       <View style={{ position: "absolute", bottom: "0%" }}>
         <SvgIcon name="FourthPot" />
       </View>
-    </Container>
+    </FourthContainer>
   );
 };
-
-const Container = styled.View`
-  background-color: ${(props: IContainerProps) =>
-    props.theme.introBgColor.fourthPg};
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-`;
-
-const IntroText = styled.Text`
-  color: white;
-  font-size: 20px;
-  margin: 5px;
-  font-family: ${(props: IContainerProps) => props.theme.font.mainFont}; ;
-`;
 
 export default Fourth;

@@ -5,8 +5,13 @@ import Third from "./Third";
 import Fourth from "./Fourth";
 import Fifth from "./Fifth";
 import Last from "./Last";
+import { IntroStackScreenProps } from "@/types";
 
-const Intro = () => {
+const Intro = ({ route, navigation }: IntroStackScreenProps<"Intro">) => {
+  const navigateToSignInScreen = () => {
+    navigation.navigate("SignIn");
+  };
+
   return (
     <Swiper loop={false} dotColor={"gray"} activeDotColor={"brown"}>
       <First />
@@ -14,7 +19,7 @@ const Intro = () => {
       <Third />
       <Fourth />
       <Fifth />
-      <Last />
+      <Last navigateToSignInScreen={navigateToSignInScreen} />
     </Swiper>
   );
 };

@@ -17,11 +17,11 @@ export interface ITheme {
     mildgreen: string;
   };
   introBgColor: {
-    firstPg: string;
-    secondPg: string;
-    thirdPg: string;
-    fourthPg: string;
-    fifthPg: string;
+    firstBg: string;
+    secondBg: string;
+    thirdBg: string;
+    fourthBg: string;
+    fifthBg: string;
   };
   font: {
     mainFont: string;

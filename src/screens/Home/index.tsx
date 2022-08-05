@@ -12,7 +12,6 @@ import SvgIcon from "@/assets/SvgIcon";
 import Swiper from "react-native-swiper";
 import ToDo from "./components/ToDo";
 import MissionBoard from "./components/MissionBoard";
-import { heightRatio, widthRatio, fontsizeRatio } from "@/utils";
 
 interface IContainerProps {
   theme: ITheme;
@@ -65,20 +64,6 @@ const PlantCont = styled.View`
   justify-content: center;
   align-items: center;
   flex: 0.7;
-`;
-
-export const MissionTitleText = styled.Text`
-  flex-direction: column;
-  color: ${(props: IContainerProps) => props.theme.color.n900};
-  font-size: ${Platform.select({
-    ios: css`
-      ${fontsizeRatio(24)}px
-    `,
-    android: css`
-      ${fontsizeRatio(18)}px
-    `,
-  })};
-  font-family: ${(props: IContainerProps) => props.theme.font.mainFont};
 `;
 
 const ContentsCont = styled.View`
