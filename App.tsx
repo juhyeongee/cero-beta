@@ -20,7 +20,7 @@ import Toast from "react-native-toast-message";
 import Example from "@/screens/Example";
 
 export default function App() {
-  const [onPage, setOnPage] = useState("MainBottomTabNav");
+  const [onPage, setOnPage] = useState("IntroNav");
   const [fontsLoaded] = useFonts({
     NotoSansKR_100Thin,
     NotoSansKR_300Light,
