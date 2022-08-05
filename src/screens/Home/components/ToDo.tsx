@@ -52,7 +52,9 @@ const ToDo = ({ navigateToTodayMission }: Props) => {
         >
           <GrayText>변경하기 </GrayText>
           <Pressable
-            style={{ justifyContent: "flex-end" }}
+            style={{
+              justifyContent: Platform.OS === "ios" ? "flex-start" : "flex-end",
+            }}
             onPress={rotateVersionNum}
           >
             <SvgIcon name="refresh" />

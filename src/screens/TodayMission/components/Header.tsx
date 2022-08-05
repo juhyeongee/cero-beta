@@ -1,15 +1,25 @@
-import styled from "styled-components/native";
 import AutoHeightImage from "react-native-auto-height-image";
-import { View, Text, Pressable, Modal, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  Pressable,
+  Modal,
+  ScrollView,
+  Platform,
+} from "react-native";
 import SvgIcon from "@/assets/SvgIcon";
-import { ITheme } from "@/types";
 import { useNavigation } from "@react-navigation/native";
 import todoNumStore from "@/store/TodoNumStore";
 import missions from "@constants/missions";
+import ModalDescription from "./ModalDescription";
+import {
+  Container,
+  HeaderText,
+  MissionTitle,
+  Subtitle,
+  FinishBtn,
+} from "./Styled";
 
-interface IContainerProps {
-  theme: ITheme;
-}
 interface HeaderModal {
   modalVisible: boolean;
   setModalVisible: (props: boolean) => void;
@@ -31,44 +41,12 @@ const Header = ({ modalVisible, setModalVisible }: HeaderModal) => {
   return (
     <>
       <Container>
-        <Modal
-          animationType="none"
-          transparent={true}
-          visible={modalVisible}
-          onRequestClose={() => {
-            setModalVisible(!modalVisible);
-          }}
-        >
-          <Modal
-            style={{ flex: 1 }}
-            animationType="slide"
-            transparent={true}
-            visible={modalVisible}
-            onRequestClose={() => {
-              setModalVisible(!modalVisible);
-            }}
-          >
-            <Pressable
-              style={{ flex: 1 }}
-              onPress={() => setModalVisible(!modalVisible)}
-            />
-            <ModalBox>
-              <ModalContainer>
-                <MissionTitle>{missionArticleTitle}</MissionTitle>
-                <ScrollView>
-                  <MissionContext>{missionArticle}</MissionContext>
-                </ScrollView>
-              </ModalContainer>
-            </ModalBox>
-          </Modal>
-          <Pressable
-            style={{ flex: 1 }}
-            onPress={() => setModalVisible(!modalVisible)}
-          >
-            <GrayBG />
-          </Pressable>
-        </Modal>
-
+        <ModalDescription
+          missionArticle={missionArticle}
+          missionArticleTitle={missionArticleTitle}
+          modalVisible={modalVisible}
+          setModalVisible={setModalVisible}
+        />
         <View
           style={{
             flex: 1,
@@ -101,69 +79,9 @@ const Header = ({ modalVisible, setModalVisible }: HeaderModal) => {
             </Pressable>
           </View>
           <Subtitle>{missionDescription}</Subtitle>
-          <Subtitle></Subtitle>
         </View>
       </Container>
     </>
   );
 };
 export default Header;
-
-const Container = styled.View`
-  flex: 2;
-  width: 100%;
-`;
-
-const HeaderText = styled.Text`
-  color: ${(props: IContainerProps) => props.theme.color.n800};
-  font-size: 18px;
-`;
-
-const MissionTitle = styled.Text`
-  color: ${(props: IContainerProps) => props.theme.color.n900};
-  font-family: ${(props: IContainerProps) => props.theme.font.mainFont};
-  font-size: 20px;
-  margin-right: 8px;
-`;
-
-const Subtitle = styled.Text`
-  margin-top: 10px;
-  color: ${(props: IContainerProps) => props.theme.color.n700};
-  font-family: ${(props: IContainerProps) => props.theme.font.thinFont};
-`;
-
-const FinishBtn = styled.Text`
-  color: ${(props: IContainerProps) => props.theme.color.primary};
-  font-size: 16px;
-`;
-
-const ModalBox = styled.View`
-  width: 100%;
-  height: 45%;
-  position: absolute;
-  bottom: 0%;
-`;
-
-const ModalContainer = styled.View`
-  border-radius: 40px;
-  padding: 8%;
-  width: 100%;
-  height: 100%;
-  background-color: ${(props: IContainerProps) => props.theme.color.n0}; ;
-`;
-
-const GrayBG = styled.Pressable`
-  flex: 1;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  opacity: 0.4;
-  background-color: ${(props: IContainerProps) => props.theme.color.n900}; ;
-`;
-
-const MissionContext = styled.Text`
-  font-size: 16px;
-  font-family: ${(props: IContainerProps) => props.theme.font.mainFont};
-  margin-top: 20px;
-  color: ${(props: IContainerProps) => props.theme.color.n900};
-`;
