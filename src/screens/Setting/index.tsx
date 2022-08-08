@@ -2,6 +2,7 @@ import React, { View, Text, Pressable } from "react-native";
 import styled from "styled-components/native";
 import todoNumStore from "@/store/TodoNumStore";
 import { observer } from "mobx-react";
+import nicknameStore from "@/store/NicknameStore";
 
 const Setting = () => {
   function addOne() {
@@ -11,9 +12,6 @@ const Setting = () => {
   function minusOne() {
     todoNumStore.minusOne();
     todoNumStore.resetVersionNum();
-  }
-  function plusVersion() {
-    todoNumStore.plusVersionNum();
   }
   function resetVersion() {
     todoNumStore.resetVersionNum();
@@ -33,16 +31,12 @@ const Setting = () => {
       </Pressable>
       <Text>{todoNumStore.versionNum}</Text>
 
-      <Pressable onPress={plusVersion}>
-        <View>
-          <Text>versionNum 하나 추가요</Text>
-        </View>
-      </Pressable>
       <Pressable onPress={resetVersion}>
         <View>
-          <Text>versionNum 뺄게요 하나~</Text>
+          <Text>versionNum 리셋하기요~</Text>
         </View>
       </Pressable>
+      <Text>{nicknameStore.nickname}</Text>
     </CenterView>
   );
 };
