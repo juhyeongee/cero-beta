@@ -1,12 +1,12 @@
 import * as React from "react";
 import Intro from "../screens/Intro";
 import SignIn from "../screens/SignIn";
-import CheckPrivacyPolicy from "../screens/SignIn/Pages/CheckPrivacyPolicy";
-import JoinWithEmail from "../screens/SignIn/Pages/JoinWithEmail";
-import JoinWithApple from "../screens/SignIn/Pages/JoinWithApple";
-import JoinWithGoogle from "../screens/SignIn/Pages/JoinWithGoogle";
-import PolicyDetail from "../screens/SignIn/Pages/PolicyDetail";
-import LogIn from "../screens/SignIn/Pages/LogIn";
+import CheckPrivacyPolicy from "../screens/SignIn/pages/CheckPrivacyPolicy";
+import JoinWithEmail from "../screens/SignIn/pages/JoinWithEmail";
+import JoinWithApple from "../screens/SignIn/pages/JoinWithApple";
+import JoinWithGoogle from "../screens/SignIn/pages/JoinWithGoogle";
+import PolicyDetail from "../screens/SignIn/pages/PolicyDetail";
+import LogIn from "../screens/SignIn/pages/LogIn";
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { IntroStackParamList } from "@/types";

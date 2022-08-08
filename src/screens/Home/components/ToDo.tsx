@@ -1,5 +1,4 @@
 import { View, Text, Pressable, Platform } from "react-native";
-import { useState, useEffect } from "react";
 import styled, { css } from "styled-components/native";
 import { ITheme } from "@/types";
 import { BigPrimaryBtn } from "@/components";

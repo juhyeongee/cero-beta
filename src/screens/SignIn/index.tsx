@@ -1,4 +1,10 @@
-import React, { View, Text, Pressable } from "react-native";
+import React, {
+  View,
+  Text,
+  Pressable,
+  KeyboardAvoidingView,
+  Platform,
+} from "react-native";
 import { BigPrimaryBtn, OutlineBtn } from "@components/index";
 import SvgIcon from "@assets/SvgIcon";
 import { IntroStackScreenProps } from "@/types";

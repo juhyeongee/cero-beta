@@ -3,10 +3,10 @@ import { View, Text, KeyboardAvoidingView } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Swiper from "react-native-swiper";
 
-import GetGender from "./GetGender";
-import GetBirthday from "./GetBirthday";
-import GetNickName from "./GetNickName";
-import Confirm from "./Confirm";
+import GetGender from "./pages/GetGender";
+import GetBirthday from "./pages/GetBirthday";
+import GetNickName from "./pages/GetNickName";
+import Confirm from "./pages/Confirm";
 
 const TakeUserInfo = () => {
   const [nickname, setNickname] = useState<string | null>("");

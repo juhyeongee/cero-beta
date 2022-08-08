@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { View, Text, Pressable } from "react-native";
-import { Layout, MainText, BigPrimaryBtn } from "@components/index";
+import { BigPrimaryBtn } from "@components/index";
 import dayjs from "dayjs";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
+import { Container, SafeArea, TitleText } from "../components/Styled";
+
 const GetBirthday = () => {
   const [birthday, setBirthday] = useState<string>("");
   const [birthYear, setBirthYear] = useState("");
@@ -35,30 +37,32 @@ const GetBirthday = () => {
     hideDatePicker();
   };
   return (
-    <Layout>
-      <View style={{ flex: 0.5 }}></View>
-      <View style={{ flex: 1 }}>
-        <MainText>효준 님의 생일을 알려주세요 </MainText>
-        <BigPrimaryBtn
-          text="선택하기"
-          onPress={() => {
-            showDatePicker();
-          }}
-        />
-        <DateTimePickerModal
-          isVisible={isDatePickerVisible}
-          mode="date"
-          onConfirm={handleConfirm}
-          onCancel={hideDatePicker}
-          confirmTextIOS="완료"
-          cancelTextIOS="취소하기"
-          minimumDate={new Date(1950, 0, 1)}
-          maximumDate={new Date()}
-        />
-        <MainText>{birthday ? `${birthday}` : ""}</MainText>
-      </View>
-      <View style={{ flex: 3 }}></View>
-    </Layout>
+    <Container>
+      <SafeArea>
+        <View style={{ flex: 0.5 }}></View>
+        <View style={{ flex: 1 }}>
+          <TitleText>효준 님의 생일을 알려주세요 </TitleText>
+          <BigPrimaryBtn
+            text="선택하기"
+            onPress={() => {
+              showDatePicker();
+            }}
+          />
+          <DateTimePickerModal
+            isVisible={isDatePickerVisible}
+            mode="date"
+            onConfirm={handleConfirm}
+            onCancel={hideDatePicker}
+            confirmTextIOS="완료"
+            cancelTextIOS="취소하기"
+            minimumDate={new Date(1950, 0, 1)}
+            maximumDate={new Date()}
+          />
+          <TitleText>{birthday ? `${birthday}` : ""}</TitleText>
+        </View>
+        <View style={{ flex: 3 }}></View>
+      </SafeArea>
+    </Container>
   );
 };
 export default GetBirthday;
