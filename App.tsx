@@ -16,6 +16,14 @@ import {
   NotoSansKR_900Black,
 } from "@expo-google-fonts/noto-sans-kr";
 import MobXScreen from "@/screens/MobX";
+import {
+  GothicA1_100Thin,
+  GothicA1_200ExtraLight,
+  GothicA1_300Light,
+  GothicA1_400Regular,
+  GothicA1_700Bold,
+} from "@expo-google-fonts/gothic-a1";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import Toast from "react-native-toast-message";
 import Example from "@/screens/Example";
 
@@ -28,6 +36,11 @@ export default function App() {
     NotoSansKR_500Medium,
     NotoSansKR_700Bold,
     NotoSansKR_900Black,
+    GothicA1_100Thin,
+    GothicA1_200ExtraLight,
+    GothicA1_300Light,
+    GothicA1_400Regular,
+    GothicA1_700Bold,
   });
 
   if (!fontsLoaded) {

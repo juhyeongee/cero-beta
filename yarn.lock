@@ -1078,6 +1078,11 @@
   resolved "https://registry.npmjs.org/@emotion/unitless/-/unitless-0.7.5.tgz"
   integrity sha512-OWORNpfjMsSSUBVrRBVGECkhWcULOAJz9ZW8uK9qgxD+87M7jHRcvh/A96XXNhXTLmKcoYSQtBEX7lHMO7YRwg==
 
+"@expo-google-fonts/gothic-a1@^0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/gothic-a1/-/gothic-a1-0.2.2.tgz#6c21d09f68432cf1aecdeb6c06198b2f2dcbc46a"
+  integrity sha512-lh6uDyVy6Gb2y0HnfK+DBNlIxHA7aerWI67VYyv+Uq5gu0xlGRrLla7pris3SRitaXcw0fa7kmiJO0+BnHgDPw==
+
 "@expo-google-fonts/inter@^0.2.2":
   version "0.2.2"
   resolved "https://registry.npmjs.org/@expo-google-fonts/inter/-/inter-0.2.2.tgz"
