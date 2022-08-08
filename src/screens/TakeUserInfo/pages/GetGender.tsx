@@ -9,7 +9,7 @@ const GetGender = () => {
     <Container>
       <SafeArea>
         <View style={{ flex: 0.5 }}></View>
-        <View style={{ flex: 1, width: "100%" }}>
+        <View style={{ flex: 2, width: "100%" }}>
           <TitleText>효준 님의 성별을 알려주세요</TitleText>
 
           <MultiChoiceBtn
@@ -40,7 +40,7 @@ const GetGender = () => {
             }}
           />
         </View>
-        <View style={{ flex: 3 }}></View>
+        <View style={{ flex: 2 }}></View>
       </SafeArea>
     </Container>
   );
