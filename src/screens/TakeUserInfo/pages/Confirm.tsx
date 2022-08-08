@@ -10,7 +10,11 @@ interface IContainerProps {
   theme: ITheme;
 }
 
-const Confirm = () => {
+interface IConfirm {
+  navigateToMindText: () => void;
+}
+
+const Confirm = ({ navigateToMindText }: IConfirm) => {
   const { nickname, age, gender } = todoNumStore;
   return (
     <Container>
@@ -44,7 +48,11 @@ const Confirm = () => {
             </View>
           </MainContainer>
         </View>
-        <BigPrimaryBtn text="다음" textBold={false} />
+        <BigPrimaryBtn
+          text="다음"
+          textBold={false}
+          onPress={navigateToMindText}
+        />
       </SafeArea>
     </Container>
   );

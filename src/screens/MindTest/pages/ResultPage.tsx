@@ -13,9 +13,7 @@ import {
   moveDownFirst,
   moveDownSecond,
 } from "../functions";
-import { useNavigation } from "@react-navigation/native";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { IntroStackParamList } from "@/types";
+import currentPageStore from "@/store/CurrentPageStore";
 
 interface StyledProps {
   theme: ITheme;
@@ -29,8 +27,11 @@ const ResultPage = () => {
   const potY: Animated.Value = useRef(new Animated.Value(400)).current;
   const seedY: Animated.Value = useRef(new Animated.Value(0)).current;
   const lightOpacity: Animated.Value = useRef(new Animated.Value(0)).current;
-  const navigation =
-    useNavigation<NativeStackNavigationProp<IntroStackParamList>>();
+
+  const { updateScreen } = currentPageStore;
+
+  const TOGO_SCREEN = "MainBottomTabNav";
+
   const goNextPage = () => {
     if (pageNumber !== 6) {
       setPageNubmer(pageNumber + 1);
@@ -50,6 +51,7 @@ const ResultPage = () => {
       fadeIn(lightOpacity);
     } else if (pageNumber === 6) {
       console.log("마지막페이지 입니다");
+      updateScreen("TOGO_SCREEN");
     }
   };
 

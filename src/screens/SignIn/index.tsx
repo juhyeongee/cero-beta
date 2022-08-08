@@ -16,8 +16,12 @@ import {
   BottomLinePressable,
   SignInGrayBar,
 } from "./components/Styled";
+import currentPageStore from "@/store/CurrentPageStore";
 
 const SignIn = ({ route, navigation }: IntroStackScreenProps<"SignIn">) => {
+  const { updateScreen } = currentPageStore;
+  const TOGO_SCREEN = "OnBoardingNav";
+
   return (
     <Container>
       <SafeArea>
@@ -45,7 +49,7 @@ const SignIn = ({ route, navigation }: IntroStackScreenProps<"SignIn">) => {
           />
           <BigPrimaryBtn
             text="로그인 하기"
-            onPress={() => navigation.navigate("Intro")}
+            onPress={() => updateScreen(TOGO_SCREEN)}
             textBold={true}
           />
         </View>

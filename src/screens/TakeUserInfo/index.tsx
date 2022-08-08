@@ -4,19 +4,28 @@ import GetBirthday from "./pages/GetBirthday";
 import GetNickName from "./pages/GetNickName";
 import Confirm from "./pages/Confirm";
 import { useRef } from "react";
+import { OnBoardingStackScreenProps } from "@/types";
 
-const TakeUserInfo = () => {
+const TakeUserInfo = ({
+  route,
+  navigation,
+}: OnBoardingStackScreenProps<"TakeUserInfo">) => {
   const swiperRef = useRef();
   const swipeNextPage = () => {
     swiperRef.current.scrollBy(1);
   };
   //TODO: Swiper type적용
+
+  const navigateToMindText = () => {
+    navigation.navigate("MindTest");
+  };
+
   return (
     <Swiper ref={swiperRef} loop={false} showsPagination={false}>
       <GetNickName swipeNextPage={swipeNextPage} />
       <GetBirthday swipeNextPage={swipeNextPage} />
       <GetGender swipeNextPage={swipeNextPage} />
-      <Confirm />
+      <Confirm navigateToMindText={navigateToMindText} />
     </Swiper>
   );
 };

@@ -25,10 +25,12 @@ import {
 } from "@expo-google-fonts/gothic-a1";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Toast from "react-native-toast-message";
-import Example from "@/screens/Example";
 import todoNumStore from "@/store/TodoNumStore";
+import currentPageStore from "@/store/CurrentPageStore";
+import { observer } from "mobx-react";
 
-export default function App() {
+function App() {
+  const { currentScreen } = currentPageStore;
   const [onPage, setOnPage] = useState("OnBoardingNav");
   const [fontsLoaded] = useFonts({
     NotoSansKR_100Thin,
@@ -60,12 +62,13 @@ export default function App() {
   return (
     <NavigationContainer>
       <ThemeProvider theme={Theme}>
-        {onPage === "IntroNav" && <IntroNav />}
-        {onPage === "OnBoardingNav" && <OnBoardingNav />}
-        {onPage === "MainBottomTabNav" && <MainBottomTabNav />}
-        {onPage === "Example" && <Example />}
+        {currentScreen === "IntroNav" && <IntroNav />}
+        {currentScreen === "OnBoardingNav" && <OnBoardingNav />}
+        {currentScreen === "MainBottomTabNav" && <MainBottomTabNav />}
         <Toast />
       </ThemeProvider>
     </NavigationContainer>
   );
 }
+
+export default observer(App);
