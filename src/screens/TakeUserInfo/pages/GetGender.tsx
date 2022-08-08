@@ -20,17 +20,24 @@ const GetGender = () => {
           <MultiChoiceBtn
             checkedBtnName={checkedBtn}
             text="남성"
-            onPress={() => setCheckedBtn("남성")}
+            onPress={() => {
+              setCheckedBtn("남성"), console.log("남자클릭됨");
+            }}
           />
           <MultiChoiceBtn
             checkedBtnName={checkedBtn}
             text="기타"
-            onPress={() => setCheckedBtn("기타")}
+            onPress={() => {
+              setCheckedBtn("기타"), console.log("기타 클릭됨");
+            }}
           />
           <MultiChoiceBtn
             checkedBtnName={checkedBtn}
             text="말하지 않을래요"
-            onPress={() => setCheckedBtn("말하지 않을래요")}
+            onPress={() => {
+              setCheckedBtn("말하지 않을래요"),
+                console.log("말하지 않을래요 클릭됨");
+            }}
           />
         </View>
         <View style={{ flex: 3 }}></View>

@@ -1090,7 +1090,7 @@
 
 "@expo-google-fonts/noto-sans-kr@^0.2.2":
   version "0.2.2"
-  resolved "https://registry.npmjs.org/@expo-google-fonts/noto-sans-kr/-/noto-sans-kr-0.2.2.tgz"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/noto-sans-kr/-/noto-sans-kr-0.2.2.tgz#6b2cf104140281a879b1a2cf8d9fdc8146f489e4"
   integrity sha512-U51A5HK6cbmZQIaNAwP9Cta3W4oAsBJ2BSfy1LhlfjR89YOm12pkH3moOsG7IRtGDrvt9jIOVU7wGRKpBzm9nA==
 
 "@expo/bunyan@4.0.0", "@expo/bunyan@^4.0.0":

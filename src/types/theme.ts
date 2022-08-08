@@ -24,6 +24,8 @@ export interface ITheme {
     fifthBg: string;
   };
   font: {
+    androidThickFont: string;
+    androidFont: string;
     mainFont: string;
     thickFont: string;
     thinFont: string;

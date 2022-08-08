@@ -21,7 +21,20 @@ export const SafeArea = styled.SafeAreaView`
 
 export const TitleText = styled.Text`
   color: ${(props: IContainerProps) => props.theme.color.n900};
-  font-family: ${(props: IContainerProps) => props.theme.font.mainFont};
+  font-family: ${(props: IContainerProps) =>
+    Platform.OS === "ios"
+      ? props.theme.font.thickFont
+      : props.theme.font.androidThickFont};
+  margin-bottom: 26px;
+  font-size: 20px;
+`;
+
+export const MainText = styled.Text`
+  color: ${(props: IContainerProps) => props.theme.color.n900};
+  font-family: ${(props: IContainerProps) =>
+    Platform.OS === "ios"
+      ? props.theme.font.mainFont
+      : props.theme.font.androidFont};
   margin-bottom: 26px;
   font-size: 20px;
 `;

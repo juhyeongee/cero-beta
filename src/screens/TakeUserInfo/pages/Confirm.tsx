@@ -1,8 +1,8 @@
 import { View, Text, Platform } from "react-native";
 import styled from "styled-components/native";
-import { MainText, BigPrimaryBtn } from "@components/index";
+import { BigPrimaryBtn } from "@components/index";
 import { ITheme } from "@/types";
-import { Container, SafeArea } from "../components/Styled";
+import { Container, SafeArea, TitleText } from "../components/Styled";
 
 interface IContainerProps {
   theme: ITheme;
@@ -14,7 +14,7 @@ const Confirm = () => {
       <SafeArea>
         <View style={{ flex: 1 }}></View>
         <View style={{ flex: 1 }}>
-          <MainText>아래 내용이 맞나요?</MainText>
+          <TitleText>아래 내용이 맞나요?</TitleText>
         </View>
         <View style={{ flex: 7, width: "100%" }}>
           <MainContainer>
@@ -41,7 +41,7 @@ const Confirm = () => {
             </View>
           </MainContainer>
         </View>
-        <BigPrimaryBtn text="다음" textBold={true} />
+        <BigPrimaryBtn text="다음" textBold={false} />
       </SafeArea>
     </Container>
   );
@@ -50,19 +50,23 @@ const Confirm = () => {
 export default Confirm;
 
 const MainContainer = styled.View`
-  flex: 0.35;
+  flex: ${Platform.OS === "ios" ? "0.35" : "0.4"};
   width: 100%;
   background-color: ${(props: IContainerProps) => props.theme.color.n0};
   box-shadow: 1px 1px 10px #cbcbcb75;
   border-radius: 10px;
   box-sizing: border-box;
-  padding: 24px;
+  padding: ${Platform.OS === "ios" ? "8%" : "6%"};
 `;
 
 const TagName = styled.Text`
   color: ${(props: IContainerProps) => props.theme.color.n700};
   font-size: 12px;
   margin-bottom: 8px;
+  font-family: ${(props: IContainerProps) =>
+    Platform.OS === "ios"
+      ? props.theme.font.mainFont
+      : props.theme.font.androidFont};
 `;
 
 const InfoContainer = styled.View`
@@ -75,6 +79,9 @@ const InfoContainer = styled.View`
 
 const InfoText = styled.Text`
   color: ${(props: IContainerProps) => props.theme.color.n800};
-  font-family: ${(props: IContainerProps) => props.theme.font.mainFont};
+  font-family: ${(props: IContainerProps) =>
+    Platform.OS === "ios"
+      ? props.theme.font.mainFont
+      : props.theme.font.androidFont};
   font-size: 16px;
 `;

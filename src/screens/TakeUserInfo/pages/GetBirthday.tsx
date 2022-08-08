@@ -3,7 +3,7 @@ import { View, Text, Pressable } from "react-native";
 import { BigPrimaryBtn } from "@components/index";
 import dayjs from "dayjs";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
-import { Container, SafeArea, TitleText } from "../components/Styled";
+import { Container, SafeArea, TitleText, MainText } from "../components/Styled";
 
 const GetBirthday = () => {
   const [birthday, setBirthday] = useState<string>("");
@@ -58,7 +58,7 @@ const GetBirthday = () => {
             minimumDate={new Date(1950, 0, 1)}
             maximumDate={new Date()}
           />
-          <TitleText>{birthday ? `${birthday}` : ""}</TitleText>
+          <MainText>{birthday ? `${birthday}` : ""}</MainText>
         </View>
         <View style={{ flex: 3 }}></View>
       </SafeArea>

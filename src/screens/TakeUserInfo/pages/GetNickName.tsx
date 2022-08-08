@@ -34,7 +34,7 @@ const GetNickName = () => {
               placeholder="6글자까지 입력하실 수 있어요"
               onChangeText={(text: string) => setNickname(text)}
             ></AnswerText>
-            <Bar nickname={nickname} />
+            <GrayBar nickname={nickname} />
             {nickname.length > 6 && (
               <Text style={{ fontSize: 12, color: "#E26D66" }}>
                 닉네임은 6자까지만 입력이 가능해요.
@@ -65,16 +65,19 @@ const GetNickName = () => {
 
 export default GetNickName;
 
-const Bar = styled.View`
+export const GrayBar = styled.View`
   background-color: ${(props: IContainerProps) =>
     props.nickname.length > 6 ? "#E26D66" : props.theme.color.n500};
   width: 100%;
   height: 1px;
   margin-bottom: 6px;
 `;
-const AnswerText = styled.TextInput`
+export const AnswerText = styled.TextInput`
   font-size: 20px;
-  font-family: ${(props: IContainerProps) => props.theme.font.mainFont};
+  font-family: ${(props: IContainerProps) =>
+    Platform.OS === "ios"
+      ? props.theme.font.mainFont
+      : props.theme.font.androidFont};
   color: ${(props: IContainerProps) =>
     props.nickname.length > 6 ? "#E26D66" : "black"};
 `;

@@ -15,20 +15,21 @@ import {
   NotoSansKR_700Bold,
   NotoSansKR_900Black,
 } from "@expo-google-fonts/noto-sans-kr";
-import MobXScreen from "@/screens/MobX";
 import {
   GothicA1_100Thin,
   GothicA1_200ExtraLight,
   GothicA1_300Light,
   GothicA1_400Regular,
   GothicA1_700Bold,
+  GothicA1_600SemiBold,
 } from "@expo-google-fonts/gothic-a1";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Toast from "react-native-toast-message";
 import Example from "@/screens/Example";
+import todoNumStore from "@/store/TodoNumStore";
 
 export default function App() {
-  const [onPage, setOnPage] = useState("IntroNav");
+  const [onPage, setOnPage] = useState("OnBoardingNav");
   const [fontsLoaded] = useFonts({
     NotoSansKR_100Thin,
     NotoSansKR_300Light,
@@ -41,7 +42,12 @@ export default function App() {
     GothicA1_300Light,
     GothicA1_400Regular,
     GothicA1_700Bold,
+    GothicA1_600SemiBold,
   });
+  useEffect(() => {
+    todoNumStore.resetVersionNum;
+    AsyncStorage.clear();
+  }, []);
 
   if (!fontsLoaded) {
     return (

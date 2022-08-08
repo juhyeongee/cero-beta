@@ -28,6 +28,8 @@ const Theme = {
 
   length: { windowWidth: WINDOW_WIDTH, windowHeight: WINDOW_HEIGHT },
   font: {
+    androidThickFont: "GothicA1_600SemiBold",
+    androidFont: "GothicA1_400Regular",
     mainFont: "NotoSansKR_400Regular",
     thickFont: "NotoSansKR_500Medium",
     thinFont: "NotoSansKR_100Thin",
