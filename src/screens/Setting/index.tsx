@@ -2,7 +2,6 @@ import React, { View, Text, Pressable } from "react-native";
 import styled from "styled-components/native";
 import todoNumStore from "@/store/TodoNumStore";
 import { observer } from "mobx-react";
-import nicknameStore from "@/store/NicknameStore";
 
 const Setting = () => {
   function addOne() {
@@ -36,7 +35,7 @@ const Setting = () => {
           <Text>versionNum 리셋하기요~</Text>
         </View>
       </Pressable>
-      <Text>{nicknameStore.nickname}</Text>
+      <Text>{todoNumStore.nickname}</Text>
     </CenterView>
   );
 };

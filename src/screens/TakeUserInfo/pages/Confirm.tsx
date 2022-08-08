@@ -3,12 +3,15 @@ import styled from "styled-components/native";
 import { BigPrimaryBtn } from "@components/index";
 import { ITheme } from "@/types";
 import { Container, SafeArea, TitleText } from "../components/Styled";
+import todoNumStore from "@/store/TodoNumStore";
+import { observer } from "mobx-react";
 
 interface IContainerProps {
   theme: ITheme;
 }
 
 const Confirm = () => {
+  const { nickname, age, gender } = todoNumStore;
   return (
     <Container>
       <SafeArea>
@@ -21,21 +24,21 @@ const Confirm = () => {
             <View style={{ flex: 1 }}>
               <TagName>이름</TagName>
               <InfoContainer>
-                <InfoText>김효준</InfoText>
+                <InfoText>{nickname}</InfoText>
               </InfoContainer>
             </View>
             <View style={{ flex: 1, flexDirection: "row" }}>
               <View style={{ flex: 1 }}>
                 <TagName>나이</TagName>
                 <InfoContainer>
-                  <InfoText>만 27세</InfoText>
+                  <InfoText>{age}</InfoText>
                 </InfoContainer>
               </View>
               <View style={{ flex: 0.1 }}></View>
               <View style={{ flex: 1 }}>
                 <TagName>성별</TagName>
                 <InfoContainer>
-                  <InfoText>남성</InfoText>
+                  <InfoText>{gender}</InfoText>
                 </InfoContainer>
               </View>
             </View>
@@ -47,7 +50,7 @@ const Confirm = () => {
   );
 };
 
-export default Confirm;
+export default observer(Confirm);
 
 const MainContainer = styled.View`
   flex: ${Platform.OS === "ios" ? "0.35" : "0.4"};

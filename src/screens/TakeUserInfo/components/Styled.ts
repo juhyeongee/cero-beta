@@ -35,6 +35,6 @@ export const MainText = styled.Text`
     Platform.OS === "ios"
       ? props.theme.font.mainFont
       : props.theme.font.androidFont};
-  margin-bottom: 26px;
+  margin-top: 26px;
   font-size: 20px;
 `;

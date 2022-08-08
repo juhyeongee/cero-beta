@@ -5,6 +5,10 @@ import { makePersistable, stopPersisting } from "mobx-persist-store";
 class TodoNumStore {
   todoNum = 1;
   versionNum = 1;
+  nickname = "유저";
+  birthday = "알려주세요!";
+  gender = "미정";
+  age = 0;
 
   constructor() {
     makeAutoObservable(
@@ -12,14 +16,19 @@ class TodoNumStore {
       {
         addOne: action,
         minusOne: action,
+        resetVersionNum: action,
+        updateBirthday: action,
         todoNum: observable,
         versionNum: observable,
+        nickname: observable,
+        birthday: observable,
+        gender: observable,
       },
       { autoBind: true }
     );
     makePersistable(this, {
       name: "TodoNumPersistStore",
-      properties: ["todoNum", "versionNum"],
+      properties: ["todoNum", "versionNum", "nickname", "birthday", "gender"],
       storage: AsyncStorage,
     });
 
@@ -32,12 +41,23 @@ class TodoNumStore {
   minusOne() {
     this.todoNum -= 1;
   }
-
   plusVersionNum() {
     this.versionNum += 1;
   }
   resetVersionNum() {
     this.versionNum = 1;
+  }
+  updateNickname(newName: string) {
+    this.nickname = newName;
+  }
+  updateBirthday(newBirthday: string) {
+    this.birthday = newBirthday;
+  }
+  updateGender(newGender: string) {
+    this.gender = newGender;
+  }
+  updateAge(age: number) {
+    this.age = age;
   }
 }
 

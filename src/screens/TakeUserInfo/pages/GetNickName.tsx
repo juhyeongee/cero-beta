@@ -11,14 +11,23 @@ import styled from "styled-components/native";
 import { ITheme } from "@/types";
 import { Container, SafeArea } from "../components/Styled";
 
+import { observer } from "mobx-react";
+import todoNumStore from "@/store/TodoNumStore";
+
 interface IContainerProps {
   theme: ITheme;
   nickname: string;
 }
 
-const GetNickName = () => {
-  const [nickname, setNickname] = useState<string>("");
+interface IPageProps {
+  swipeNextPage: () => void;
+}
 
+const GetNickName = ({ swipeNextPage }: IPageProps) => {
+  const [nickname, setNickname] = useState<string>("");
+  const updateNicknameFunction = () => {
+    todoNumStore.updateNickname(nickname);
+  };
   return (
     <Container>
       <SafeArea>
@@ -52,7 +61,8 @@ const GetNickName = () => {
             <BigPrimaryBtn
               text="다음"
               onPress={() => {
-                console.log("닉네임 저장완료:", nickname);
+                updateNicknameFunction();
+                swipeNextPage();
               }}
               textBold={false}
             />
