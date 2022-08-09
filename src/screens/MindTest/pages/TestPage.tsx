@@ -1,79 +1,82 @@
 import React, { useState } from "react";
 import { View } from "react-native";
-import { Layout } from "@components/index";
-import styled from "styled-components/native";
-import { SubText, MainText } from "@components/index";
+import { SubText, TitleText } from "../components";
 import { questionObj } from "@constants/mindtestProperties";
-import AnswerBtn from "../AnswerBtn";
-import { BigPrimaryBtn } from "@components/index";
+import { BigPrimaryBtn } from "@/components";
+import {
+  Container,
+  SafeArea,
+  AnswerBtn,
+  QuestionContainer,
+  ButtonContainer,
+  LastWeekTextContainer,
+} from "../components";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-interface Props {
-  setShowIntroduceScreen?: () => void;
+interface IProps {
   pageNumber: number;
-  submitPress: () => void;
+  onPressSubmitBtn: () => void;
+  swipeNextPage: () => void;
 }
-const TestPage = ({
-  setShowIntroduceScreen,
-  pageNumber,
-  submitPress,
-}: Props) => {
-  const [clickedBtnNumber, setClickedBtnNumber] = useState(20);
+const TestPage = ({ swipeNextPage, pageNumber, onPressSubmitBtn }: IProps) => {
+  const [clickedBtnNumber, setClickedBtnNumber] = useState(0);
+
+  const onHandleClickBtnNumber = (btnNumber: number) => {
+    setClickedBtnNumber(btnNumber);
+    AsyncStorage.setItem(`answer${pageNumber}`, `${clickedBtnNumber}`);
+    setTimeout(() => swipeNextPage(), 200);
+  };
+
+  const getAsyncData = async () => {
+    AsyncStorage.getAllKeys().then((a) => console.log(a));
+  };
 
   return (
-    <Layout>
-      <LastWeekTextContainer>
-        <SubText>최근 일주일 동안...</SubText>
-      </LastWeekTextContainer>
-      <QuestionContainer>
-        <MainText>{questionObj[1]}</MainText>
-        {/* { 
-            TODO:pageNumber넣으면 또 타입에러 뜬다... 진짜 1도모르겠다 ㅅㅂ
-        } */}
-      </QuestionContainer>
-      <ButtonContainer>
-        <AnswerBtn
-          clickedBtnNumber={clickedBtnNumber}
-          number={1}
-          content="극히 드물게"
-        />
-        <AnswerBtn
-          clickedBtnNumber={clickedBtnNumber}
-          number={2}
-          content="가끔 (1~2일)"
-        />
-        <AnswerBtn
-          clickedBtnNumber={clickedBtnNumber}
-          number={3}
-          content="자주 (3~4일)"
-        />
-        <AnswerBtn
-          clickedBtnNumber={clickedBtnNumber}
-          number={4}
-          content="거의 대부분 (5~7일)"
-        />
-      </ButtonContainer>
-      <View style={{ width: "100%", position: "absolute", bottom: "5%" }}>
-        {pageNumber === 20 && (
-          <BigPrimaryBtn text="제출하기" onPress={submitPress} />
-        )}
-      </View>
-    </Layout>
+    <Container>
+      <SafeArea>
+        <LastWeekTextContainer>
+          <SubText>최근 일주일 동안...</SubText>
+        </LastWeekTextContainer>
+        <QuestionContainer>
+          <TitleText>{questionObj[pageNumber]}</TitleText>
+        </QuestionContainer>
+        <ButtonContainer>
+          <AnswerBtn
+            clickedBtnNumber={clickedBtnNumber}
+            number={1}
+            content="극히 드물게"
+            onHandleClickBtnNumber={onHandleClickBtnNumber}
+          />
+          <AnswerBtn
+            clickedBtnNumber={clickedBtnNumber}
+            number={2}
+            content="가끔 (1~2일)"
+            onHandleClickBtnNumber={onHandleClickBtnNumber}
+          />
+          <AnswerBtn
+            clickedBtnNumber={clickedBtnNumber}
+            number={3}
+            content="자주 (3~4일)"
+            onHandleClickBtnNumber={onHandleClickBtnNumber}
+          />
+          <AnswerBtn
+            clickedBtnNumber={clickedBtnNumber}
+            number={4}
+            content="거의 대부분 (5~7일)"
+            onHandleClickBtnNumber={onHandleClickBtnNumber}
+          />
+        </ButtonContainer>
+        <View style={{ width: "100%", position: "absolute", bottom: "5%" }}>
+          {pageNumber === 20 && (
+            <>
+              <BigPrimaryBtn text="저장된 데이터보기" onPress={getAsyncData} />
+              <BigPrimaryBtn text="제출하기" onPress={onPressSubmitBtn} />
+            </>
+          )}
+        </View>
+      </SafeArea>
+    </Container>
   );
 };
-
-const QuestionContainer = styled.View`
-  width: 100%;
-  flex: 1.5;
-`;
-const ButtonContainer = styled.View`
-  flex: 8;
-  width: 100%;
-`;
-
-const LastWeekTextContainer = styled.View`
-  width: 100%;
-  justify-content: flex-end;
-  flex: 1.5;
-`;
 
 export default TestPage;

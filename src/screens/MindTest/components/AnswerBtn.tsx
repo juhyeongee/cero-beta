@@ -1,4 +1,3 @@
-import React from "react";
 import { View, Pressable } from "react-native";
 import styled from "styled-components/native";
 import { ITheme } from "@/types";
@@ -12,16 +11,19 @@ interface Props {
   clickedBtnNumber: number;
   number: number;
   content: string;
-  onHandleClickBtnNumber?: string;
+  onHandleClickBtnNumber: (btnNumber: number) => void;
 }
 
-const AnswerBtn = ({ clickedBtnNumber, number, content }: Props) => {
+export const AnswerBtn = ({
+  clickedBtnNumber,
+  number,
+  content,
+  onHandleClickBtnNumber,
+}: Props) => {
   return (
     <Container
       checked={clickedBtnNumber === number}
-      onPress={() => {
-        console.log("clicked");
-      }}
+      onPress={() => onHandleClickBtnNumber(number)}
     >
       <AnswerBtnText checked={clickedBtnNumber === number}>
         {content}
@@ -30,8 +32,6 @@ const AnswerBtn = ({ clickedBtnNumber, number, content }: Props) => {
   );
 };
 
-export default AnswerBtn;
-
 const Container = styled.Pressable`
   justify-content: center;
   width: 100%;
@@ -39,7 +39,7 @@ const Container = styled.Pressable`
     props.checked ? props.theme.color.n900 : props.theme.color.n400};
   border-radius: 10px;
   height: 56px;
-  padding: 10px 20px;
+  padding: 0px 20px;
   margin-bottom: 10px;
 `;
 

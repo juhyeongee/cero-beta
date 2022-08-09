@@ -24,10 +24,11 @@ export type HomeStackParamList = {
   Home: { missionNum: number };
 };
 export type OnBoardingStackParamList = {
-  ResultPage: undefined;
-  MindTest: undefined;
   TakeUserInfo: undefined;
   OnBoarding: undefined;
+  MindTest: undefined;
+  LoadingPage: undefined;
+  ResultPage: undefined;
 };
 
 export type HomeStackScreenProps<Screen extends keyof HomeStackParamList> =

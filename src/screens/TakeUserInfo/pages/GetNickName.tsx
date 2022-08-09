@@ -6,10 +6,10 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from "react-native";
-import { Layout, MainText, BigPrimaryBtn } from "@components/index";
+import { BigPrimaryBtn } from "@components/index";
 import styled from "styled-components/native";
 import { ITheme } from "@/types";
-import { Container, SafeArea } from "../components/Styled";
+import { Container, SafeArea, TitleText } from "../components/Styled";
 
 import { observer } from "mobx-react";
 import todoNumStore from "@/store/TodoNumStore";
@@ -37,7 +37,7 @@ const GetNickName = ({ swipeNextPage }: IPageProps) => {
         >
           <View style={{ flex: 0.5 }}></View>
           <View style={{ flex: 1 }}>
-            <MainText>앞으로 어떻게 불러드릴까요?</MainText>
+            <TitleText>앞으로 어떻게 불러드릴까요?</TitleText>
             <AnswerText
               nickname={nickname}
               placeholder="6글자까지 입력하실 수 있어요"
