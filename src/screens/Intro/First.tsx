@@ -1,32 +1,11 @@
-import { View, Text, Image } from "react-native";
-import styled from "styled-components/native";
-import { ITheme } from "@/types";
-
-interface IContainerProps {
-  theme: ITheme;
-}
+import { FirstContainer, IntroText } from "./Components/Styled";
 
 const First = () => {
   return (
-    <Container>
+    <FirstContainer>
       <IntroText>여기까지 오시느라 힘드셨죠?</IntroText>
-    </Container>
+    </FirstContainer>
   );
 };
-
-const Container = styled.View`
-  background-color: ${(props: IContainerProps) =>
-    props.theme.introBgColor.firstPg};
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-`;
-
-const IntroText = styled.Text`
-  color: white;
-  font-size: 20px;
-  margin: 5px;
-  font-family: ${(props: IContainerProps) => props.theme.font.mainFont}; ;
-`;
 
 export default First;

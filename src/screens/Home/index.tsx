@@ -1,5 +1,12 @@
-import { View, Text, Pressable, Image, SafeAreaView } from "react-native";
-import styled from "styled-components/native";
+import {
+  View,
+  Text,
+  Pressable,
+  Image,
+  SafeAreaView,
+  Platform,
+} from "react-native";
+import styled, { css } from "styled-components/native";
 import { HomeStackScreenProps, ITheme } from "@/types";
 import SvgIcon from "@/assets/SvgIcon";
 import Swiper from "react-native-swiper";
@@ -23,7 +30,12 @@ const Home = ({ route, navigation }: HomeStackScreenProps<"Home">) => {
         <View style={{ position: "absolute", bottom: "20%" }}>
           <SvgIcon name="plant1" />
         </View>
-        <View style={{ position: "absolute", bottom: "-10%" }}>
+        <View
+          style={{
+            position: "absolute",
+            bottom: Platform.OS === "ios" ? "-10%" : "-15%",
+          }}
+        >
           <SvgIcon name="LastPot" />
         </View>
       </PlantCont>

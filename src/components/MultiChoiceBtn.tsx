@@ -1,4 +1,4 @@
-import { Pressable } from "react-native";
+import { Pressable, Platform } from "react-native";
 import styled from "styled-components/native";
 import { ITheme } from "@/types";
 
@@ -19,7 +19,7 @@ const MultiChoiceBtn = ({
   text,
 }: MultiChoiceBtnProps) => {
   const checked = text === checkedBtnName;
-  const Container = styled.View`
+  const Container = styled.Pressable`
     justify-content: center;
     width: 100%;
     background-color: ${(props: StyledProps) =>
@@ -31,18 +31,19 @@ const MultiChoiceBtn = ({
   `;
 
   const BtnText = styled.Text`
-    font-family: ${(props: StyledProps) => props.theme.font.mainFont};
+    font-family: ${(props: StyledProps) =>
+      Platform.OS === "ios"
+        ? props.theme.font.mainFont
+        : props.theme.font.androidFont};
     font-size: 16px;
     color: ${(props: StyledProps) =>
       checked ? props.theme.color.n100 : props.theme.color.n900};
   `;
 
   return (
-    <Pressable onPress={onPress}>
-      <Container checked={checked}>
-        <BtnText checked={checked}>{text}</BtnText>
-      </Container>
-    </Pressable>
+    <Container checked={checked} onPress={onPress}>
+      <BtnText checked={checked}>{text}</BtnText>
+    </Container>
   );
 };
 

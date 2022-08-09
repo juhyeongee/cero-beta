@@ -2,6 +2,8 @@ import React, { View, Text, Pressable } from "react-native";
 import styled from "styled-components/native";
 import todoNumStore from "@/store/TodoNumStore";
 import { observer } from "mobx-react";
+import { MainText } from "@/components";
+import currentPageStore from "@/store/CurrentPageStore";
 
 const Setting = () => {
   function addOne() {
@@ -12,36 +14,36 @@ const Setting = () => {
     todoNumStore.minusOne();
     todoNumStore.resetVersionNum();
   }
-  function plusVersion() {
-    todoNumStore.plusVersionNum();
-  }
   function resetVersion() {
     todoNumStore.resetVersionNum();
   }
   return (
     <CenterView>
-      <Text>{todoNumStore.todoNum}</Text>
+      <MainText> Store 상황입니다.</MainText>
+      <Text>현재 TodoNum: {todoNumStore.todoNum}</Text>
       <Pressable onPress={addOne}>
-        <View>
-          <Text>missionNum 하나 추가요~</Text>
-        </View>
+        <Text>missionNum 하나 추가하기</Text>
       </Pressable>
       <Pressable onPress={minusOne}>
-        <View>
-          <Text>missionNum 뺄게요 하나~</Text>
-        </View>
+        <Text>missionNum 하나 빼기</Text>
       </Pressable>
-      <Text>{todoNumStore.versionNum}</Text>
-
-      <Pressable onPress={plusVersion}>
-        <View>
-          <Text>versionNum 하나 추가요</Text>
-        </View>
-      </Pressable>
+      <View>
+        <Text>-----------------</Text>
+      </View>
+      <Text>현재 VersionNum: {todoNumStore.versionNum}</Text>
       <Pressable onPress={resetVersion}>
-        <View>
-          <Text>versionNum 뺄게요 하나~</Text>
-        </View>
+        <Text>versionNum 1로 초기화하기</Text>
+      </Pressable>
+      <View>
+        <Text>-----------------</Text>
+      </View>
+      <Text>현재 유저이름: {todoNumStore.nickname}</Text>
+      <Text>현재 페이지 이름: {currentPageStore.currentScreen}</Text>
+      <Pressable onPress={() => currentPageStore.updateScreen("IntroNav")}>
+        <Text>Intro화면으로 가기 </Text>
+      </Pressable>
+      <Pressable onPress={() => currentPageStore.updateScreen("OnBoardingNav")}>
+        <Text>Onboarding 화면으로 가기 </Text>
       </Pressable>
     </CenterView>
   );

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { View, Image } from "react-native";
+import { View, Image, Platform } from "react-native";
 import FinishedTasks from "../screens/FinishedTasks";
 import Setting from "../screens/Setting";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -18,7 +18,7 @@ export function MainBottomTabNav() {
         tabBarShowLabel: false,
         headerShown: false,
         tabBarStyle: {
-          height: "10%",
+          height: Platform.OS === "ios" ? "10%" : "8%",
           bottom: "0%",
           backgroundColor: Theme.color.n0,
         },

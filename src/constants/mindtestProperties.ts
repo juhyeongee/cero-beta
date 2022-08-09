@@ -5,8 +5,11 @@ export const MindTextIntroductionText = [
   "앞으로 14일 동안, 효준님이 이 씨앗을 키우게 됩니다.",
   "14일 후, 이 화분엔 어떤 꽃이 자라게 될까요?",
 ];
+interface IQuestionObj {
+  [key: number]: string;
+}
 
-export const questionObj = {
+export const questionObj: IQuestionObj = {
   1: `평소에 아무렇지 않게 하던 일들이 \n귀찮게 느껴졌어요.`,
   2: "입맛이 없었어요",
   3: `가족이나 친구가 도와줘도 \n울적한 기분을 떨칠 수 없었어요.`,

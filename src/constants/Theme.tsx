@@ -19,15 +19,17 @@ const Theme = {
     mildgreen: "#D4F8E9",
   },
   introBgColor: {
-    firstPg: "#2F3134",
-    secondPg: "#383A3E",
-    thirdPg: "#3C3E42",
-    fourthPg: "#4A4C50",
-    fifthPg: "#63656A",
+    firstBg: "#2F3134",
+    secondBg: "#383A3E",
+    thirdBg: "#3C3E42",
+    fourthBg: "#4A4C50",
+    fifthBg: "#63656A",
   },
 
   length: { windowWidth: WINDOW_WIDTH, windowHeight: WINDOW_HEIGHT },
   font: {
+    androidThickFont: "GothicA1_600SemiBold",
+    androidFont: "GothicA1_400Regular",
     mainFont: "NotoSansKR_400Regular",
     thickFont: "NotoSansKR_500Medium",
     thinFont: "NotoSansKR_100Thin",
