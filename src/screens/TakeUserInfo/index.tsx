@@ -17,7 +17,7 @@ const TakeUserInfo = ({
   //TODO: Swiper type적용
 
   const navigateToMindText = () => {
-    navigation.navigate("MindTest");
+    navigation.navigate("OnBoarding");
   };
 
   return (

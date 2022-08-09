@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, Platform } from "react-native";
 import styled from "styled-components/native";
 import { ITheme } from "@/types";
 
@@ -10,19 +10,15 @@ interface ExplanationProps {
   text: string;
 }
 
-const Explanation = ({ text }: ExplanationProps) => {
+export const DescCard = ({ text }: ExplanationProps) => {
   return (
     <Contianer>
-      <View>
-        <ExplainText numberOfLines={3} ellipsizeMode="tail">
-          {text}
-        </ExplainText>
-      </View>
+      <ExplainText numberOfLines={3} ellipsizeMode="tail">
+        {text}
+      </ExplainText>
     </Contianer>
   );
 };
-
-export default Explanation;
 
 const Contianer = styled.View`
   height: 135px;
@@ -35,10 +31,14 @@ const Contianer = styled.View`
 `;
 
 const ExplainText = styled.Text`
+  line-height: 28px;
   font-size: 20px;
   padding-right: 32px;
   padding-left: 32px;
   padding-top: 24px;
   padding-bottom: 24px;
-  font-family: ${(props: IContainerProps) => props.theme.font.thinFont};
+  font-family: ${(props: IContainerProps) =>
+    Platform.OS === "ios"
+      ? props.theme.font.thinFont
+      : props.theme.font.androidFont};
 `;

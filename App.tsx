@@ -48,7 +48,6 @@ function App() {
   });
   useEffect(() => {
     todoNumStore.resetVersionNum;
-    AsyncStorage.clear();
   }, []);
 
   if (!fontsLoaded) {

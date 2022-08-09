@@ -50,8 +50,7 @@ const ResultPage = () => {
       moveDownSecond(seedY);
       fadeIn(lightOpacity);
     } else if (pageNumber === 6) {
-      console.log("마지막페이지 입니다");
-      updateScreen("TOGO_SCREEN");
+      updateScreen(TOGO_SCREEN);
     }
   };
 
@@ -99,6 +98,7 @@ const Container = styled.View`
   flex: 8;
   padding: 32px;
 `;
+
 const BG = styled.View`
   flex: 1;
   background-color: ${(props: StyledProps) => props.theme.color.n200};
