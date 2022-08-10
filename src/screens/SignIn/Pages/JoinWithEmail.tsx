@@ -1,7 +1,6 @@
 import React, { useRef, useState } from "react";
 import { View, Text } from "react-native";
 import { BigPrimaryBtn } from "@components/index";
-import { ITheme } from "@/types";
 import { IntroStackScreenProps } from "@/types";
 import {
   Container,
@@ -11,7 +10,7 @@ import {
   WhiteSpace,
 } from "../components/Styled";
 
-const JoinWithEmail = ({
+const EmailJoin = ({
   route,
   navigation,
 }: IntroStackScreenProps<"JoinWithEmail">) => {
@@ -72,5 +71,4 @@ const JoinWithEmail = ({
     </Container>
   );
 };
-
-export default JoinWithEmail;
+export default EmailJoin;

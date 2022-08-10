@@ -49,7 +49,9 @@ const SignIn = ({ route, navigation }: IntroStackScreenProps<"SignIn">) => {
           />
           <BigPrimaryBtn
             text="로그인 하기"
-            onPress={() => updateScreen(TOGO_SCREEN)}
+            onPress={() => {
+              updateScreen(TOGO_SCREEN);
+            }}
             textBold={true}
           />
         </View>

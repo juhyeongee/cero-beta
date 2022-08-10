@@ -31,7 +31,7 @@ import { observer } from "mobx-react";
 
 function App() {
   const { currentScreen } = currentPageStore;
-  const [onPage, setOnPage] = useState("OnBoardingNav");
+  const [onPage, setOnPage] = useState("IntroNav");
   const [fontsLoaded] = useFonts({
     NotoSansKR_100Thin,
     NotoSansKR_300Light,
@@ -48,7 +48,6 @@ function App() {
   });
   useEffect(() => {
     todoNumStore.resetVersionNum;
-    AsyncStorage.clear();
   }, []);
 
   if (!fontsLoaded) {
