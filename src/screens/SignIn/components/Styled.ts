@@ -1,5 +1,6 @@
 import styled from "styled-components/native";
 import { ITheme } from "@/types";
+import { Platfrom } from "react-native";
 
 interface IContainerProps {
   theme: ITheme;
@@ -16,6 +17,27 @@ export const Container = styled.View`
 
 export const SafeArea = styled.SafeAreaView`
   flex: 1;
+`;
+
+export const TitleText = styled.Text`
+  color: ${(props: IContainerProps) => props.theme.color.n900};
+  font-family: ${(props: IContainerProps) =>
+    Platform.OS === "ios"
+      ? props.theme.font.thickFont
+      : props.theme.font.androidThickFont};
+  font-size: 20px;
+  line-height: ${(props: IContainerProps) =>
+    Platform.OS === "ios" ? "28px" : "32px"}; ;
+`;
+
+export const SubText = styled.Text`
+  color: ${(props: IContainerProps) => props.theme.color.n900};
+  font-family: ${(props: IContainerProps) =>
+    Platform.OS === "ios"
+      ? props.theme.font.thickFont
+      : props.theme.font.androidThickFont};
+  margin-bottom: 10px;
+  font-size: 14px;
 `;
 
 export const PressableIconBox = styled.Pressable`

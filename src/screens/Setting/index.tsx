@@ -2,7 +2,6 @@ import React, { View, Text, Pressable } from "react-native";
 import styled from "styled-components/native";
 import todoNumStore from "@/store/TodoNumStore";
 import { observer } from "mobx-react";
-import { MainText } from "@/components";
 import currentPageStore from "@/store/CurrentPageStore";
 
 const Setting = () => {
@@ -19,7 +18,7 @@ const Setting = () => {
   }
   return (
     <CenterView>
-      <MainText> Store 상황입니다.</MainText>
+      <Text> Store 상황입니다.</Text>
       <Text>현재 TodoNum: {todoNumStore.todoNum}</Text>
       <Pressable onPress={addOne}>
         <Text>missionNum 하나 추가하기</Text>

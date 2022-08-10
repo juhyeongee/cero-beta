@@ -1,19 +1,16 @@
-import * as React from "react";
 import Intro from "../screens/Intro";
 import SignIn from "../screens/SignIn";
-import CheckPrivacyPolicy from "../screens/SignIn/pages/CheckPrivacyPolicy";
-import JoinWithEmail from "../screens/SignIn/pages/JoinWithEmail";
-import JoinWithApple from "../screens/SignIn/pages/JoinWithApple";
-import JoinWithGoogle from "../screens/SignIn/pages/JoinWithGoogle";
-import PolicyDetail from "../screens/SignIn/pages/PolicyDetail";
-import LogIn from "../screens/SignIn/pages/LogIn";
-
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { IntroStackParamList } from "@/types";
-
-const IntroStack = createNativeStackNavigator<IntroStackParamList>();
+import EmailJoin from "@/screens/SignIn/Pages/JoinWithEmail";
+import CheckPrivacyPolicy from "@/screens/SignIn/Pages/CheckPrivacyPolicy";
+import JoinWithApple from "@/screens/SignIn/Pages/JoinWithApple";
+import JoinWithGoogle from "@/screens/SignIn/Pages/JoinWithGoogle";
+import LogIn from "@/screens/SignIn/Pages/LogIn";
+import PolicyDetail from "@/screens/SignIn/Pages/PolicyDetail";
 
 export function IntroNav() {
+  const IntroStack = createNativeStackNavigator<IntroStackParamList>();
   return (
     <IntroStack.Navigator
       screenOptions={{
@@ -24,14 +21,14 @@ export function IntroNav() {
     >
       <IntroStack.Screen name="Intro" component={Intro} />
       <IntroStack.Screen name="SignIn" component={SignIn} />
-      <IntroStack.Screen name="LogIn" component={LogIn} />
-      <IntroStack.Screen name="JoinWithEmail" component={JoinWithEmail} />
-      <IntroStack.Screen name="JoinWithApple" component={JoinWithApple} />
-      <IntroStack.Screen name="JoinWithGoogle" component={JoinWithGoogle} />
+      <IntroStack.Screen name="JoinWithEmail" component={EmailJoin} />
       <IntroStack.Screen
         name="CheckPrivacyPolicy"
         component={CheckPrivacyPolicy}
       />
+      <IntroStack.Screen name="JoinWithApple" component={JoinWithApple} />
+      <IntroStack.Screen name="JoinWithGoogle" component={JoinWithGoogle} />
+      <IntroStack.Screen name="LogIn" component={LogIn} />
       <IntroStack.Screen name="PolicyDetail" component={PolicyDetail} />
     </IntroStack.Navigator>
   );

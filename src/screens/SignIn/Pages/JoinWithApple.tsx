@@ -1,7 +1,7 @@
 import React, { View } from "react-native";
 
-const JoinWithApple = () => {
+const AppleJoin = () => {
   return <View>JoinWithApple</View>;
 };
 
-export default JoinWithApple;
+export default AppleJoin;
