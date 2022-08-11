@@ -1,5 +1,12 @@
-import { useState, useRef } from "react";
-import { View, Text, SafeAreaView, Pressable, Animated } from "react-native";
+import { useState, useRef, useEffect } from "react";
+import {
+  View,
+  Text,
+  SafeAreaView,
+  Pressable,
+  Animated,
+  Platform,
+} from "react-native";
 import { mindTestResult } from "@constants/properties";
 import styled from "styled-components/native";
 import { ITheme } from "@/types";
@@ -14,23 +21,23 @@ import {
   moveDownSecond,
 } from "../functions";
 import currentPageStore from "@/store/CurrentPageStore";
+import userInfoStore from "@/store/UserInfoStore";
+import { fontsizeRatio } from "@/utils";
 
 interface StyledProps {
   theme: ITheme;
 }
 
 const ResultPage = () => {
-  const [condition, setCondition] = useState("serious");
   const [pageNumber, setPageNubmer] = useState(0);
-  const conditionList: string[] = ["moderate", "serious", "attention", "good"];
+  const { updateScreen } = currentPageStore;
+  const { depressionState } = userInfoStore;
+  const TOGO_SCREEN = "MainBottomTabNav";
+
   const seedOpacity: Animated.Value = useRef(new Animated.Value(1)).current;
   const potY: Animated.Value = useRef(new Animated.Value(400)).current;
   const seedY: Animated.Value = useRef(new Animated.Value(0)).current;
   const lightOpacity: Animated.Value = useRef(new Animated.Value(0)).current;
-
-  const { updateScreen } = currentPageStore;
-
-  const TOGO_SCREEN = "MainBottomTabNav";
 
   const goNextPage = () => {
     if (pageNumber !== 6) {
@@ -58,7 +65,7 @@ const ResultPage = () => {
     <BG>
       <SafeAreaView style={{ flex: 1 }}>
         <Container>
-          <MainText>{mindTestResult[condition][pageNumber]}</MainText>
+          <MainText>{mindTestResult[depressionState][pageNumber]}</MainText>
         </Container>
         <ImageContainer>
           <Animated.View
@@ -95,6 +102,7 @@ const ResultPage = () => {
 export default ResultPage;
 
 const Container = styled.View`
+  justify-content: center;
   flex: 8;
   padding: 32px;
 `;
@@ -105,8 +113,12 @@ const BG = styled.View`
 `;
 
 const MainText = styled.Text`
-  font-size: 20px;
-  font-family: ${(props: StyledProps) => props.theme.font.mainFont};
+  font-size: ${(props: StyledProps) =>
+    Platform.OS === "ios" ? fontsizeRatio(20) : fontsizeRatio(18)};
+  font-family: ${(props: StyledProps) =>
+    Platform.OS === "ios"
+      ? props.theme.font.mainFont
+      : props.theme.font.androidFont};
 `;
 
 const ImageContainer = styled.View`

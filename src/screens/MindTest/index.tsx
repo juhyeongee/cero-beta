@@ -4,29 +4,43 @@ import { questionObj } from "@constants/mindtestProperties";
 import TestPage from "./pages/TestPage";
 import { OnBoardingStackScreenProps } from "@/types";
 import { findNotAnsweredQuestion } from "./functions";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import userInfoStore from "@/store/UserInfoStore";
 
 const MindTest = ({
   route,
   navigation,
 }: OnBoardingStackScreenProps<"MindTest">) => {
   const swiperRef = useRef();
-  console.log("swiperRef : ", swiperRef);
   const swipeNextPage = () => {
     swiperRef.current.scrollBy(1);
   };
-  const navigateToLoadingScreen = () => {
-    navigation.navigate("LoadingPage");
+
+  const calculateDepressionScore = async () => {
+    const QUESTION_OBJ_LENGTH = Object.keys(questionObj).length;
+    let totalScore = 0;
+    for (let i = 1; i < QUESTION_OBJ_LENGTH + 1; i++) {
+      const scoreString = await AsyncStorage.getItem(`answer${i}`);
+      let score;
+      if (typeof scoreString === "string") {
+        score = parseInt(scoreString);
+        totalScore += score;
+      }
+    }
+    return totalScore;
   };
+
   const onPressSubmitBtn = async () => {
     const number = await findNotAnsweredQuestion();
-    console.log(number);
     if (number !== -1) {
       swiperRef.current.scrollBy(-(20 - number));
-      console.log("체크안한곳으로 이동");
     } else {
-      navigateToLoadingScreen();
+      const totalDepressionScore = await calculateDepressionScore();
+      userInfoStore.updateFirstDepressionScore(totalDepressionScore);
+      navigation.navigate("LoadingPage");
     }
   };
+
   return (
     <Swiper ref={swiperRef} loop={false} showsPagination={false}>
       {Object.keys(questionObj).map((item, index) => (
