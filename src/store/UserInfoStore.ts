@@ -2,13 +2,15 @@ import { action, observable, makeAutoObservable } from "mobx";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { makePersistable, stopPersisting } from "mobx-persist-store";
 
-class TodoNumStore {
+class UserInfoStore {
   todoNum = 1;
   versionNum = 1;
   nickname = "유저";
   birthday = "알려주세요!";
   gender = "미정";
   age = 0;
+  FIRST_DEPRESSION_SCORE = 0;
+  depressionState = "";
 
   constructor() {
     makeAutoObservable(
@@ -23,12 +25,21 @@ class TodoNumStore {
         nickname: observable,
         birthday: observable,
         gender: observable,
+        FIRST_DEPRESSION_SCORE: observable,
+        depressionState: observable,
       },
       { autoBind: true }
     );
     makePersistable(this, {
       name: "TodoNumPersistStore",
-      properties: ["todoNum", "versionNum", "nickname", "birthday", "gender"],
+      properties: [
+        "todoNum",
+        "versionNum",
+        "nickname",
+        "birthday",
+        "gender",
+        "FIRST_DEPRESSION_SCORE",
+      ],
       storage: AsyncStorage,
     });
 
@@ -59,8 +70,14 @@ class TodoNumStore {
   updateAge(age: number) {
     this.age = age;
   }
+  updateFirstDepressionScore(score: number) {
+    this.FIRST_DEPRESSION_SCORE = score;
+  }
+  updateFirstDepressionState(state: string) {
+    this.depressionState = state;
+  }
 }
 
-const todoNumStore = new TodoNumStore();
+const userInfoStore = new UserInfoStore();
 
-export default todoNumStore;
+export default userInfoStore;

@@ -1,25 +1,25 @@
 import React, { View, Text, Pressable } from "react-native";
 import styled from "styled-components/native";
-import todoNumStore from "@/store/TodoNumStore";
+import userInfoStore from "@/store/UserInfoStore";
 import { observer } from "mobx-react";
 import currentPageStore from "@/store/CurrentPageStore";
 
 const Setting = () => {
   function addOne() {
-    todoNumStore.addOne();
-    todoNumStore.resetVersionNum();
+    userInfoStore.addOne();
+    userInfoStore.resetVersionNum();
   }
   function minusOne() {
-    todoNumStore.minusOne();
-    todoNumStore.resetVersionNum();
+    userInfoStore.minusOne();
+    userInfoStore.resetVersionNum();
   }
   function resetVersion() {
-    todoNumStore.resetVersionNum();
+    userInfoStore.resetVersionNum();
   }
   return (
     <CenterView>
       <Text> Store 상황입니다.</Text>
-      <Text>현재 TodoNum: {todoNumStore.todoNum}</Text>
+      <Text>현재 TodoNum: {userInfoStore.todoNum}</Text>
       <Pressable onPress={addOne}>
         <Text>missionNum 하나 추가하기</Text>
       </Pressable>
@@ -29,14 +29,14 @@ const Setting = () => {
       <View>
         <Text>-----------------</Text>
       </View>
-      <Text>현재 VersionNum: {todoNumStore.versionNum}</Text>
+      <Text>현재 VersionNum: {userInfoStore.versionNum}</Text>
       <Pressable onPress={resetVersion}>
         <Text>versionNum 1로 초기화하기</Text>
       </Pressable>
       <View>
         <Text>-----------------</Text>
       </View>
-      <Text>현재 유저이름: {todoNumStore.nickname}</Text>
+      <Text>현재 유저이름: {userInfoStore.nickname}</Text>
       <Text>현재 페이지 이름: {currentPageStore.currentScreen}</Text>
       <Pressable onPress={() => currentPageStore.updateScreen("IntroNav")}>
         <Text>Intro화면으로 가기 </Text>

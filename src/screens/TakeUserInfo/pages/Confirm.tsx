@@ -3,7 +3,7 @@ import styled from "styled-components/native";
 import { BigPrimaryBtn } from "@components/index";
 import { ITheme } from "@/types";
 import { Container, SafeArea, TitleText } from "../components/Styled";
-import todoNumStore from "@/store/TodoNumStore";
+import userInfoStore from "@/store/UserInfoStore";
 import { observer } from "mobx-react";
 
 interface IContainerProps {
@@ -15,7 +15,7 @@ interface IConfirm {
 }
 
 const Confirm = ({ navigateToMindText }: IConfirm) => {
-  const { nickname, age, gender } = todoNumStore;
+  const { nickname, age, gender } = userInfoStore;
   return (
     <Container>
       <SafeArea>

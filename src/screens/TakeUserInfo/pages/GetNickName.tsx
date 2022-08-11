@@ -12,7 +12,7 @@ import { ITheme } from "@/types";
 import { Container, SafeArea, TitleText } from "../components/Styled";
 
 import { observer } from "mobx-react";
-import todoNumStore from "@/store/TodoNumStore";
+import userInfoStore from "@/store/UserInfoStore";
 
 interface IContainerProps {
   theme: ITheme;
@@ -26,7 +26,7 @@ interface IPageProps {
 const GetNickName = ({ swipeNextPage }: IPageProps) => {
   const [nickname, setNickname] = useState<string>("");
   const updateNicknameFunction = () => {
-    todoNumStore.updateNickname(nickname);
+    userInfoStore.updateNickname(nickname);
   };
   return (
     <Container>

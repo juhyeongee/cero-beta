@@ -4,7 +4,7 @@ import { BigPrimaryBtn, OutlineBtn } from "@components/index";
 import dayjs from "dayjs";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { Container, SafeArea, TitleText, MainText } from "../components/Styled";
-import todoNumStore from "@/store/TodoNumStore";
+import userInfoStore from "@/store/UserInfoStore";
 import { observer } from "mobx-react";
 interface IPageProps {
   swipeNextPage: () => void;
@@ -12,11 +12,11 @@ interface IPageProps {
 const GetBirthday = ({ swipeNextPage }: IPageProps) => {
   const [birthday, setBirthday] = useState<string>("");
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
-  const { nickname } = todoNumStore;
+  const { nickname } = userInfoStore;
 
   const handleConfirm = (date: Date) => {
     const age = new Date().getFullYear() - date.getFullYear();
-    todoNumStore.updateAge(age);
+    userInfoStore.updateAge(age);
     const newDay = dayjs(date);
     setBirthday(newDay.format("YYYY년 M월 DD일"));
     setDatePickerVisibility(false);
@@ -59,7 +59,7 @@ const GetBirthday = ({ swipeNextPage }: IPageProps) => {
           <BigPrimaryBtn
             text="다음"
             onPress={() => {
-              todoNumStore.updateBirthday(birthday);
+              userInfoStore.updateBirthday(birthday);
               swipeNextPage();
             }}
           />

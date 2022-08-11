@@ -3,7 +3,7 @@ import { ITheme } from "@/types";
 import { useState } from "react";
 import DetailModal from "./DetailModal";
 import missions from "@constants/missions";
-import todoNumStore from "@/store/TodoNumStore";
+import userInfoStore from "@/store/UserInfoStore";
 import Toast from "react-native-toast-message";
 import CardDesign from "./CardType/CardDesign";
 
@@ -17,7 +17,7 @@ interface CardProps {
 const Card = ({ missionNum }: CardProps) => {
   const [modalVisible, setModalVisible] = useState(false);
   const thisMissionNum = parseInt(missionNum);
-  const { todoNum, versionNum } = todoNumStore;
+  const { todoNum, versionNum } = userInfoStore;
   const missionTitle = missions[thisMissionNum].version1.subtitle;
   const type = missions[thisMissionNum].version1.type;
   //TODO: 완료한 미션의 버전따라 카드 타이틀명 설정

@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import SvgIcon from "@/assets/SvgIcon";
 import { useNavigation } from "@react-navigation/native";
-import todoNumStore from "@/store/TodoNumStore";
+import userInfoStore from "@/store/UserInfoStore";
 import missions from "@constants/missions";
 import ModalDescription from "./ModalDescription";
 import {
@@ -31,7 +31,7 @@ const Header = ({ modalVisible, setModalVisible }: HeaderModal) => {
     //TODO: 이 함수를 pages 단계로 올리고, 완료시 데이터 업로드 로직을 추가할 것
     navigation.goBack();
   };
-  const { todoNum, versionNum } = todoNumStore;
+  const { todoNum, versionNum } = userInfoStore;
   const version = `version${versionNum}`;
   const missionTitle = missions[todoNum][version].subtitle;
   const missionDescription = missions[todoNum][version].description;
