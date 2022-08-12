@@ -34,7 +34,7 @@ const TodayMission = () => {
       {missionType === "text" && (
         <TextMission
           setMissionText={(text) => {
-            setMissionText(text), console.log(missionText);
+            setMissionText(text);
           }}
         />
       )}
@@ -42,7 +42,7 @@ const TodayMission = () => {
         <PhotoTextMission
           pickImage={pickImage}
           setMissionText={(text) => {
-            setMissionText(text), console.log(missionText);
+            setMissionText(text);
           }}
         />
       )}

@@ -49,3 +49,8 @@ export { default as email } from "./email.svg";
 
 export { default as greenCheck } from "./greenCheck.svg";
 export { default as information } from "./information.svg";
+
+export { default as statusGraph } from "./statusGraph.svg";
+export { default as statusCompare } from "./statusCompare.svg";
+
+export { default as grayInfo } from "./grayInfo.svg";

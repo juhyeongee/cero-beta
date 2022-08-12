@@ -17,6 +17,9 @@ const Theme = {
     n900: "#333537",
     primary: "#40B08F",
     mildgreen: "#D4F8E9",
+    cautionYellow: "#FFE8BA",
+    blue: "#3D81BB",
+    errorRed: "#E26D66",
   },
   introBgColor: {
     firstBg: "#2F3134",

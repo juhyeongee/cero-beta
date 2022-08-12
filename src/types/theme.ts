@@ -15,6 +15,9 @@ export interface ITheme {
     n900: string;
     primary: string;
     mildgreen: string;
+    cautionYellow: string;
+    blue: string;
+    errorRed: string;
   };
   introBgColor: {
     firstBg: string;
