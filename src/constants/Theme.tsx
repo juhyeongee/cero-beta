@@ -20,6 +20,7 @@ const Theme = {
     cautionYellow: "#FFE8BA",
     blue: "#3D81BB",
     errorRed: "#E26D66",
+    endingBGcolor: "#F2F2F2",
   },
   introBgColor: {
     firstBg: "#2F3134",

@@ -28,11 +28,12 @@ import Toast from "react-native-toast-message";
 import userInfoStore from "@/store/UserInfoStore";
 import currentPageStore from "@/store/CurrentPageStore";
 import { observer } from "mobx-react";
-import EndingResult from "@screens/EndingResult";
+import EndingMovie from "@screens/EndingMovie";
+import EndingResult from "@/screens/EndingResult";
 
 function App() {
   const { currentScreen } = currentPageStore;
-  const [onPage, setOnPage] = useState("Ending");
+  const [onPage, setOnPage] = useState("EndingMovie");
   const [fontsLoaded] = useFonts({
     NotoSansKR_100Thin,
     NotoSansKR_300Light,
@@ -63,9 +64,11 @@ function App() {
     <NavigationContainer>
       <ThemeProvider theme={Theme}>
         {/* {currentScreen === "IntroNav" && <IntroNav />}
-        {currentScreen === "OnBoardingNav" && <OnBoardingNav />}
-        {currentScreen === "MainBottomTabNav" && <MainBottomTabNav />} */}
-        {onPage === "Ending" && <EndingResult />}
+        {currentScreen === "OnBoardingNav" && <OnBoardingNav />}*/}
+        {/* {currentScreen === "MainBottomTabNav" && <MainBottomTabNav />} */}
+        {onPage === "EndingMovie" && <EndingMovie />}
+        {onPage === "EndingResult" && <EndingResult />}
+
         {/* <Toast /> */}
       </ThemeProvider>
     </NavigationContainer>

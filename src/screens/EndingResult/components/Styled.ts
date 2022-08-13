@@ -23,6 +23,13 @@ export const TitleText = styled.Text`
       : props.theme.font.androidThickFont};
 `;
 
+export const SubText = styled.Text`
+  font-size: 18px;
+  font-family: ${(props: StyledProps) =>
+    Platform.OS === "ios"
+      ? props.theme.font.mainFont
+      : props.theme.font.androidFont};
+`;
 export const MainText = styled.Text`
   font-size: 20px;
   font-family: ${(props: StyledProps) =>
@@ -42,12 +49,4 @@ export const BtnText = styled.Text`
 
 export const TextContainer = styled.View`
   flex: 20;
-`;
-
-export const SubText = styled.Text`
-  font-size: 18px;
-  font-family: ${(props: StyledProps) =>
-    Platform.OS === "ios"
-      ? props.theme.font.mainFont
-      : props.theme.font.androidFont};
 `;

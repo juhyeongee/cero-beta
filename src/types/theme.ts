@@ -18,6 +18,7 @@ export interface ITheme {
     cautionYellow: string;
     blue: string;
     errorRed: string;
+    endingBGcolor: string;
   };
   introBgColor: {
     firstBg: string;
