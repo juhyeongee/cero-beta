@@ -30,10 +30,11 @@ import currentPageStore from "@/store/CurrentPageStore";
 import { observer } from "mobx-react";
 import EndingMovie from "@screens/EndingMovie";
 import EndingResult from "@/screens/EndingResult";
+import Feedback from "@/screens/Feedback";
 
 function App() {
   const { currentScreen } = currentPageStore;
-  const [onPage, setOnPage] = useState("EndingMovie");
+  const [onPage, setOnPage] = useState("Feedback");
   const [fontsLoaded] = useFonts({
     NotoSansKR_100Thin,
     NotoSansKR_300Light,
@@ -68,6 +69,7 @@ function App() {
         {/* {currentScreen === "MainBottomTabNav" && <MainBottomTabNav />} */}
         {onPage === "EndingMovie" && <EndingMovie />}
         {onPage === "EndingResult" && <EndingResult />}
+        {onPage === "Feedback" && <Feedback />}
 
         {/* <Toast /> */}
       </ThemeProvider>

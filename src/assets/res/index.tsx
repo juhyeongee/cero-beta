@@ -54,3 +54,5 @@ export { default as statusGraph } from "./statusGraph.svg";
 export { default as statusCompare } from "./statusCompare.svg";
 
 export { default as grayInfo } from "./grayInfo.svg";
+export { default as happy } from "./happy.svg";
+export { default as badFeeling } from "./badFeeling.svg";
