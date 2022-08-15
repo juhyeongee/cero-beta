@@ -56,3 +56,6 @@ export { default as statusCompare } from "./statusCompare.svg";
 export { default as grayInfo } from "./grayInfo.svg";
 export { default as happy } from "./happy.svg";
 export { default as badFeeling } from "./badFeeling.svg";
+
+export { default as alarm } from "./alarm.svg";
+export { default as logout } from "./logout.svg";
