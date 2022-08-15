@@ -1,6 +1,6 @@
 import SvgIcon from "@/assets/SvgIcon";
-import { ITheme } from "@/types";
-import { Platform, View, Switch } from "react-native";
+import { ITheme, SettingStackScreenProps } from "@/types";
+import { Platform, View, Switch, Pressable } from "react-native";
 import { SafeAreaView } from "react-native";
 import styled from "styled-components/native";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
@@ -10,9 +10,15 @@ import GreenTimePicker from "../components/settingHomeComp/NoticeBar";
 interface StyledProps {
   theme: ITheme;
 }
-const SettingAlarmPage = () => {
+const SettingAlarmPage = ({
+  route,
+  navigation,
+}: SettingStackScreenProps<"SettingAlarm">) => {
   const [isTimePickerVisible, setIsTimePickerVisible] = useState(false);
   const [onToggle, setOnToggle] = useState(false);
+  const navigateToBack = () => {
+    navigation.goBack();
+  };
   const handleConfirm = () => {
     console.log("타임 지정 완료");
   };
@@ -24,7 +30,9 @@ const SettingAlarmPage = () => {
     <Container>
       <SafeAreaView style={{ flex: 1 }}>
         <View style={{ flex: 1, justifyContent: "space-around" }}>
-          <SvgIcon name="leftArrow" />
+          <Pressable onPress={navigateToBack}>
+            <SvgIcon name="leftArrow" />
+          </Pressable>
           <TitleText>알림 설정</TitleText>
         </View>
         <View style={{ flex: 2, justifyContent: "space-around" }}>

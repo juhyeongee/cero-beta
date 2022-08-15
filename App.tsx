@@ -28,10 +28,7 @@ import Toast from "react-native-toast-message";
 import userInfoStore from "@/store/UserInfoStore";
 import currentPageStore from "@/store/CurrentPageStore";
 import { observer } from "mobx-react";
-import EndingMovie from "@screens/EndingMovie";
-import EndingResult from "@/screens/EndingResult";
-import Feedback from "@/screens/Feedback";
-import Setting from "@screens/Setting";
+import { SettingStackNav } from "@/navigations/SettingStackNav";
 
 function App() {
   const { currentScreen } = currentPageStore;
@@ -65,13 +62,11 @@ function App() {
   return (
     <NavigationContainer>
       <ThemeProvider theme={Theme}>
-        {/* {currentScreen === "IntroNav" && <IntroNav />}
-        {currentScreen === "OnBoardingNav" && <OnBoardingNav />}*/}
-        {/* {currentScreen === "MainBottomTabNav" && <MainBottomTabNav />} */}
-        {onPage === "EndingMovie" && <EndingMovie />}
-        {onPage === "EndingResult" && <EndingResult />}
-        {onPage === "Feedback" && <Feedback />}
-        {onPage === "Setting" && <Setting />}
+        {currentScreen === "IntroNav" && <IntroNav />}
+        {currentScreen === "OnBoardingNav" && <OnBoardingNav />}
+        {currentScreen === "MainBottomTabNav" && <MainBottomTabNav />}
+
+        {/* {onPage === "Setting" && <SettingStackNav />} */}
 
         {/* <Toast /> */}
       </ThemeProvider>

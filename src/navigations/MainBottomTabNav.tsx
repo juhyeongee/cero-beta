@@ -1,11 +1,11 @@
 import * as React from "react";
 import { View, Image, Platform } from "react-native";
 import FinishedTasks from "../screens/FinishedTasks";
-import Setting from "../screens/Setting";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Theme from "@/constants/Theme";
 import { HomeStackNav } from "./HomeStackNav";
 import { MainBottomTabParamList } from "@/types";
+import { SettingStackNav } from "./SettingStackNav";
 
 const MainBottomTab = createBottomTabNavigator<MainBottomTabParamList>();
 
@@ -56,7 +56,7 @@ export function MainBottomTabNav() {
 
       <MainBottomTab.Screen
         name="Setting"
-        component={Setting}
+        component={SettingStackNav}
         options={{
           tabBarIcon: ({ color }) => (
             <Image

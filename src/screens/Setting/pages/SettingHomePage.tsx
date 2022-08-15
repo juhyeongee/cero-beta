@@ -13,21 +13,27 @@ import { FAQText } from "@constants/properties";
 import styled from "styled-components/native";
 import GrayAcchodion from "../components/GrayAcchodion";
 import NoticeBar from "../components/settingHomeComp/NoticeBar";
-import { ITheme } from "@/types";
+import { SettingStackScreenProps, ITheme } from "@/types";
 import { OptionBox } from "../components/settingHomeComp/OptionBox";
 
-const SettingHomePage = () => {
-  function setAlarm() {
-    console.log("setAlarm clicked");
+const SettingHomePage = ({
+  route,
+  navigation,
+}: SettingStackScreenProps<"SettingHome">) => {
+  function navigateToSettingAlarmPage() {
+    navigation.navigate("SettingAlarm");
   }
-  function changeNickname() {
-    console.log("change nickname clicked");
+  function navigateToResetNickname() {
+    navigation.navigate("ResetNickname");
   }
-  function dataReset() {
-    console.log("data reset clicked");
+  function navigateToResetData() {
+    navigation.navigate("ResetData");
+  }
+  function navigateToNotice() {
+    navigation.navigate("Notice");
   }
   function logout() {
-    console.log("logout clicked");
+    console.log("logout");
   }
   return (
     <Container>
@@ -35,22 +41,25 @@ const SettingHomePage = () => {
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={{ height: "100%" }}>
             <TitleText>계정 설정</TitleText>
-            <NoticeBar text1="공지" text2="2022 새로 커뮤니티 오픈 안내" />
-
+            <NoticeBar
+              onPress={navigateToNotice}
+              text1="공지"
+              text2="2022 새로 커뮤니티 오픈 안내"
+            />
             <OptionBox
-              onPress={setAlarm}
+              onPress={navigateToSettingAlarmPage}
               arrow={true}
               text="알림 설정하기"
               icon={<SvgIcon name="alarm" />}
             />
             <OptionBox
-              onPress={changeNickname}
+              onPress={navigateToResetNickname}
               arrow={true}
               text="닉네임 바꾸기"
               icon={<SvgIcon name="alarm" />}
             />
             <OptionBox
-              onPress={dataReset}
+              onPress={navigateToResetData}
               arrow={true}
               text="데이터 초기화하기"
               icon={<SvgIcon name="alarm" />}

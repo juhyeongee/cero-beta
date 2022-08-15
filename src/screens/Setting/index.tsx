@@ -1,10 +1,5 @@
-import SettingHomePage from "./pages/SettingHomePage";
-import SettingAlarmPage from "./pages/SettingAlarmPage";
-import ResetNicknamePage from "./pages/ResetNicknamePage";
-import ResetDataPage from "./pages/ResetDataPage";
-import NoticePage from "./pages/NoticePage";
-const Setting = () => {
-  return <NoticePage />;
-};
-
-export default Setting;
+export { default as NoticePage } from "./pages/NoticePage";
+export { default as ResetDataPage } from "./pages/ResetDataPage";
+export { default as ResetNicknamePage } from "./pages/ResetNicknamePage";
+export { default as SettingAlarmPage } from "./pages/SettingAlarmPage";
+export { default as SettingHomePage } from "./pages/SettingHomePage";

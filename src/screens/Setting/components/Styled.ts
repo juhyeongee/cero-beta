@@ -9,7 +9,7 @@ export const Container = styled.View`
   flex: 1;
   justify-content: center;
   background-color: ${(props: StyledProps) => props.theme.color.n50};
-  padding: 16% 8%;
+  padding: 16% 8% 0% 8%;
 `;
 
 export const TitleText = styled.Text`

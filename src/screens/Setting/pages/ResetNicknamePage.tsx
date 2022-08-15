@@ -1,6 +1,6 @@
 import SvgIcon from "@/assets/SvgIcon";
-import { ITheme } from "@/types";
-import { Platform, View, Text } from "react-native";
+import { ITheme, SettingStackScreenProps } from "@/types";
+import { Platform, View, Text, Pressable } from "react-native";
 import { SafeAreaView } from "react-native";
 import styled from "styled-components/native";
 import { Container, TitleText, SubText } from "../components/Styled";
@@ -12,14 +12,21 @@ interface StyledProps {
   nickname: string;
 }
 
-const ResetNicknamePage = () => {
+const ResetNicknamePage = ({
+  route,
+  navigation,
+}: SettingStackScreenProps<"ResetNickname">) => {
   const [nickname, setNickname] = useState<string>("");
-
+  const navigateToBack = () => {
+    navigation.goBack();
+  };
   return (
     <Container>
       <SafeAreaView style={{ flex: 1 }}>
         <View style={{ flex: 1, justifyContent: "space-around" }}>
-          <SvgIcon name="leftArrow" />
+          <Pressable onPress={navigateToBack}>
+            <SvgIcon name="leftArrow" />
+          </Pressable>
           <TitleText>닉네임 바꾸기</TitleText>
           <AnswerText
             nickname={nickname}
