@@ -11,20 +11,17 @@ interface Props {
   clickedBtnNumber: number;
   number: number;
   content: string;
-  onHandleClickBtnNumber: (btnNumber: number) => void;
+  onPress: () => void;
 }
 
 export const AnswerBtn = ({
   clickedBtnNumber,
   number,
   content,
-  onHandleClickBtnNumber,
+  onPress,
 }: Props) => {
   return (
-    <Container
-      checked={clickedBtnNumber === number}
-      onPress={() => onHandleClickBtnNumber(number)}
-    >
+    <Container checked={clickedBtnNumber === number} onPress={onPress}>
       <AnswerBtnText checked={clickedBtnNumber === number}>
         {content}
       </AnswerBtnText>

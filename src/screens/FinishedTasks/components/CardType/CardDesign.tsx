@@ -2,21 +2,21 @@ import {
   View,
   Text,
   Image,
-  ImageBackground,
+  Platform,
   ImageProps,
   Pressable,
+  StyleSheet,
 } from "react-native";
 import Tag from "../Tag";
-import { heightRatio, widthRatio, fontsizeRatio } from "@/utils";
+import SvgIcon from "@/assets/SvgIcon";
 
-import {
-  Container,
-  SubContainer,
-  TitleContainer,
-  MissionTitleText,
-  Title,
-  Date,
-} from "./styledComponent";
+import styled from "styled-components/native";
+import { heightRatio, widthRatio, fontsizeRatio } from "@/utils";
+import { ITheme } from "@/types";
+
+interface IContainerProps {
+  theme: ITheme;
+}
 
 interface CardProps {
   thisMissionNum: number;
@@ -34,26 +34,84 @@ const CardDesign = ({
   imageSource,
 }: CardProps) => {
   return (
-    <ImageBackground
-      resizeMode="cover"
-      source={imageSource}
-      style={{ marginBottom: heightRatio(16) }}
-      imageStyle={{ borderRadius: 13 }}
+    <Pressable
+      style={[styles.cardContainer, styles.shadow]}
+      onPress={onClicked}
     >
-      <Container onPress={onClicked}>
-        <SubContainer>
-          <Title>{thisMissionNum}</Title>
-        </SubContainer>
-        <TitleContainer>
-          <MissionTitleText>{missionTitle}</MissionTitleText>
-        </TitleContainer>
-        <SubContainer>
-          <Date>2022 5월 28일</Date>
-        </SubContainer>
+      <View style={{ flexDirection: "row", alignItems: "center" }}>
+        <GrayBox>
+          <MissionNumText>{thisMissionNum}</MissionNumText>
+        </GrayBox>
+        <TitleText>{missionTitle}</TitleText>
+      </View>
+      <DateText>2022 5월 28일</DateText>
+      <View style={styles.underBox}>
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
+          <SpreadText>펼쳐보기</SpreadText>
+          <SvgIcon name="bottomArrow" />
+        </View>
         <Tag type={type} />
-      </Container>
-    </ImageBackground>
+      </View>
+    </Pressable>
   );
 };
 
 export default CardDesign;
+
+const styles = StyleSheet.create({
+  shadow: {
+    shadowOffset: { width: -2, height: 4 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+  },
+  cardContainer: {
+    marginBottom: 20,
+    borderRadius: 10,
+    backgroundColor: "#FFFFFF",
+    width: "100%",
+    height: 180,
+    padding: 30,
+    justifyContent: "space-between",
+  },
+  underBox: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "flex-end",
+  },
+});
+
+const TitleText = styled.Text`
+  font-size: 16px;
+  font-family: ${(props: IContainerProps) =>
+    Platform.OS === "ios"
+      ? props.theme.font.thickFont
+      : props.theme.font.androidThickFont};
+  color: ${(props: IContainerProps) => props.theme.color.n900};
+`;
+
+const DateText = styled.Text`
+  font-family: ${(props: IContainerProps) =>
+    Platform.OS === "ios"
+      ? props.theme.font.thickFont
+      : props.theme.font.androidThickFont};
+  color: ${(props: IContainerProps) => props.theme.color.n700};
+`;
+
+const GrayBox = styled.View`
+  margin-right: 10px;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+  height: 22px;
+  border-radius: 5px;
+  background-color: ${(props: IContainerProps) => props.theme.color.n100};
+`;
+
+const MissionNumText = styled.Text`
+  font-size: 10px;
+  color: ${(props: IContainerProps) => props.theme.color.n900};
+`;
+
+const SpreadText = styled.Text`
+  color: ${(props: IContainerProps) => props.theme.color.n400};
+`;

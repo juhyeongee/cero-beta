@@ -1,7 +1,7 @@
 import { useState } from "react";
 import SvgIcon from "@assets/SvgIcon";
 import { DescCard, DescContainer, Container } from "../components";
-import todoNumStore from "@/store/TodoNumStore";
+import userInfoStore from "@/store/UserInfoStore";
 import MakeSeedModal from "../components/MakeSeedModal";
 
 interface IPageProps {
@@ -9,7 +9,7 @@ interface IPageProps {
 }
 const FourthPage = ({ navigateToMindText }: IPageProps) => {
   // const fadeAnim = useRef(new Animated.Value(1)).current;
-  const { nickname } = todoNumStore;
+  const { nickname } = userInfoStore;
   const contentsText = `씨앗이 움을 틔울수록, ${nickname}님의 마음도 점점 편해지실 거예요.`;
   const [modalVisible, setModalVisible] = useState(false);
   // const fadeIn = () => {

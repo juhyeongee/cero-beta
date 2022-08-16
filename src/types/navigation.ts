@@ -18,6 +18,7 @@ export type MainBottomTabParamList = {
   FinishedTasks: undefined;
   HomeStackNav: undefined;
   Setting: undefined;
+  Devtool: undefined;
 };
 export type HomeStackParamList = {
   TodayMission: undefined;
@@ -31,6 +32,14 @@ export type OnBoardingStackParamList = {
   ResultPage: undefined;
 };
 
+export type SettingStackParamList = {
+  Notice: undefined;
+  ResetData: undefined;
+  ResetNickname: undefined;
+  SettingAlarm: undefined;
+  SettingHome: undefined;
+};
+
 export type HomeStackScreenProps<Screen extends keyof HomeStackParamList> =
   NativeStackScreenProps<HomeStackParamList, Screen>;
 
@@ -40,6 +49,10 @@ export type IntroStackScreenProps<Screen extends keyof IntroStackParamList> =
 export type OnBoardingStackScreenProps<
   Screen extends keyof OnBoardingStackParamList
 > = NativeStackScreenProps<OnBoardingStackParamList, Screen>;
+
+export type SettingStackScreenProps<
+  Screen extends keyof SettingStackParamList
+> = NativeStackScreenProps<SettingStackParamList, Screen>;
 
 export type MainBottomTabScreenProp<
   Screen extends keyof MainBottomTabParamList

@@ -1,11 +1,12 @@
 import * as React from "react";
 import { View, Image, Platform } from "react-native";
 import FinishedTasks from "../screens/FinishedTasks";
-import Setting from "../screens/Setting";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Theme from "@/constants/Theme";
 import { HomeStackNav } from "./HomeStackNav";
 import { MainBottomTabParamList } from "@/types";
+import { SettingStackNav } from "./SettingStackNav";
+import Devtool from "@/screens/Devtool";
 
 const MainBottomTab = createBottomTabNavigator<MainBottomTabParamList>();
 
@@ -56,7 +57,7 @@ export function MainBottomTabNav() {
 
       <MainBottomTab.Screen
         name="Setting"
-        component={Setting}
+        component={SettingStackNav}
         options={{
           tabBarIcon: ({ color }) => (
             <Image
@@ -64,6 +65,20 @@ export function MainBottomTabNav() {
                 tintColor: color,
               }}
               source={require("@/assets/images/setting.png")}
+            />
+          ),
+        }}
+      />
+      <MainBottomTab.Screen
+        name="Devtool"
+        component={Devtool}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <Image
+              style={{
+                tintColor: color,
+              }}
+              source={require("@/assets/images/information.png")}
             />
           ),
         }}

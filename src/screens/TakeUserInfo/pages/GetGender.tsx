@@ -3,7 +3,7 @@ import { View, Text } from "react-native";
 import MultiChoiceBtn from "@components/MultiChoiceBtn";
 import { Container, SafeArea, TitleText } from "../components/Styled";
 import { observer } from "mobx-react";
-import todoNumStore from "@/store/TodoNumStore";
+import userInfoStore from "@/store/UserInfoStore";
 import { BigPrimaryBtn, OutlineBtn } from "@components/index";
 interface IPageProps {
   swipeNextPage: () => void;
@@ -15,7 +15,7 @@ const GetGender = ({ swipeNextPage }: IPageProps) => {
       <SafeArea>
         <View style={{ flex: 0.5 }}></View>
         <View style={{ flex: 2, width: "100%" }}>
-          <TitleText>{todoNumStore.nickname} 님의 성별을 알려주세요</TitleText>
+          <TitleText>{userInfoStore.nickname} 님의 성별을 알려주세요</TitleText>
           <MultiChoiceBtn
             checkedBtnName={gender}
             text="여성"
@@ -25,22 +25,21 @@ const GetGender = ({ swipeNextPage }: IPageProps) => {
             checkedBtnName={gender}
             text="남성"
             onPress={() => {
-              setGender("남성"), console.log("남자클릭됨");
+              setGender("남성");
             }}
           />
           <MultiChoiceBtn
             checkedBtnName={gender}
             text="기타"
             onPress={() => {
-              setGender("기타"), console.log("기타 클릭됨");
+              setGender("기타");
             }}
           />
           <MultiChoiceBtn
             checkedBtnName={gender}
             text="말하지 않을래요"
             onPress={() => {
-              setGender("말하지 않을래요"),
-                console.log("말하지 않을래요 클릭됨");
+              setGender("말하지 않을래요");
             }}
           />
         </View>
@@ -56,7 +55,7 @@ const GetGender = ({ swipeNextPage }: IPageProps) => {
             text="다음"
             textBold={false}
             onPress={() => {
-              todoNumStore.updateGender(gender);
+              userInfoStore.updateGender(gender);
               swipeNextPage();
             }}
           />

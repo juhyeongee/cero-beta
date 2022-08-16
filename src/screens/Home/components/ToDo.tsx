@@ -6,7 +6,7 @@ import SvgIcon from "@/assets/SvgIcon";
 import Theme from "@/constants/Theme";
 import missions from "@constants/missions";
 import { observer } from "mobx-react";
-import todoNumStore from "@/store/TodoNumStore";
+import userInfoStore from "@/store/UserInfoStore";
 import { heightRatio, widthRatio, fontsizeRatio } from "@/utils";
 
 interface IContainerProps {
@@ -18,11 +18,11 @@ interface Props {
 }
 
 const ToDo = ({ navigateToTodayMission }: Props) => {
-  const { todoNum, versionNum, plusVersionNum, resetVersionNum } = todoNumStore;
+  const { todoNum, versionNum, plusVersionNum, resetVersionNum } =
+    userInfoStore;
   const version = `version${versionNum}`;
   const todoObject = missions[todoNum];
   const todo = todoObject[version].subtitle;
-  console.log("todayMissions: ", todo);
 
   const rotateVersionNum = () => {
     let length = Object.keys(todoObject).length;

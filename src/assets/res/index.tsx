@@ -30,6 +30,7 @@ export { default as leftArrow } from "./leftArrow.svg";
 export { default as left } from "./left.svg";
 export { default as rightPrimaryTriangle } from "./rightPrimaryTriangle.svg";
 export { default as exitX } from "./exitX.svg";
+export { default as bottomArrow } from "./bottomArrow.svg";
 
 //image-assets
 export { default as searchHeart } from "./searchHeart.svg";
@@ -49,3 +50,15 @@ export { default as email } from "./email.svg";
 
 export { default as greenCheck } from "./greenCheck.svg";
 export { default as information } from "./information.svg";
+
+export { default as statusGraph } from "./statusGraph.svg";
+export { default as statusCompare } from "./statusCompare.svg";
+
+export { default as grayInfo } from "./grayInfo.svg";
+export { default as happy } from "./happy.svg";
+export { default as badFeeling } from "./badFeeling.svg";
+
+export { default as alarm } from "./alarm.svg";
+export { default as logout } from "./logout.svg";
+
+export { default as textMissionIcon } from "./textMissionIcon.svg";

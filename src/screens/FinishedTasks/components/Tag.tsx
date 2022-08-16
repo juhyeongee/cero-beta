@@ -1,6 +1,8 @@
 import styled from "styled-components/native";
 import { View, Text } from "react-native";
 import { ITheme } from "@/types";
+import SvgIcon from "@/assets/SvgIcon";
+import AutoHeightImage from "react-native-auto-height-image";
 
 interface IContainerProps {
   theme: ITheme;
@@ -10,47 +12,33 @@ interface IProps {
 }
 const Tag = ({ type }: IProps) => {
   return (
-    <View style={{ flex: 1 }}>
+    <View>
       {type === "photo" && (
-        <Container>
-          <InnerText>사진</InnerText>
-        </Container>
+        <AutoHeightImage
+          width={60}
+          source={require("@assets/images/textMissionIcon.png")}
+        />
       )}
       {type === "text" && (
-        <Container>
-          <InnerText>텍스트</InnerText>
-        </Container>
+        <AutoHeightImage
+          width={60}
+          source={require("@assets/images/file.png")}
+        />
       )}
       {type === "both" && (
-        <View style={{ flex: 1, flexDirection: "row", width: "40%" }}>
-          <Container>
-            <InnerText>사진</InnerText>
-          </Container>
-          <Container>
-            <InnerText>텍스트</InnerText>
-          </Container>
+        <View style={{ flexDirection: "row" }}>
+          <AutoHeightImage
+            width={60}
+            source={require("@assets/images/textMissionIcon.png")}
+          />
+          <AutoHeightImage
+            width={60}
+            source={require("@assets/images/textMissionIcon.png")}
+          />
         </View>
       )}
     </View>
   );
 };
-
-const Container = styled.View`
-  flex-direction: row;
-  opacity: 0.8;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-  width: 56px;
-  height: 100%;
-  border-radius: 10px;
-  background-color: ${(props: IContainerProps) => props.theme.color.n600};
-  margin-right: 4px; ;
-`;
-const InnerText = styled.Text`
-  font-family: ${(props: IContainerProps) => props.theme.font.mainFont};
-  color: black;
-  font-size: 10px;
-`;
 
 export default Tag;

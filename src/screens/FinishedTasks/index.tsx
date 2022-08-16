@@ -33,12 +33,7 @@ const FinishedTasks = () => {
 export default FinishedTasks;
 
 const Container = styled.View`
-  background-color: ${(props: IContainerProps) => props.theme.color.n0};
-  display: flex;
+  background-color: ${(props: IContainerProps) => props.theme.color.n50};
   flex: 1;
-  margin-top: ${heightRatio(8)}px;
-  padding-bottom: 0%;
-  padding-left: ${widthRatio(32)}px;
-  padding-right: ${widthRatio(32)}px;
-  padding-top: ${heightRatio(70)}px;
+  padding: 16% 8% 0% 8%;
 `;

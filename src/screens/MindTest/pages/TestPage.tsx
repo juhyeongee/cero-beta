@@ -19,16 +19,12 @@ interface IProps {
   swipeNextPage: () => void;
 }
 const TestPage = ({ swipeNextPage, pageNumber, onPressSubmitBtn }: IProps) => {
-  const [clickedBtnNumber, setClickedBtnNumber] = useState(0);
-
-  const onHandleClickBtnNumber = (btnNumber: number) => {
-    setClickedBtnNumber(btnNumber);
-    AsyncStorage.setItem(`answer${pageNumber}`, `${clickedBtnNumber}`);
+  const [clickedBtnNumber, setClickedBtnNumber] = useState(-1);
+  const onHandleClickBtnNumber = async (pressedBtnNum: number) => {
+    setClickedBtnNumber(pressedBtnNum);
+    await AsyncStorage.setItem(`answer${pageNumber}`, `${pressedBtnNum}`);
+    const result = await AsyncStorage.getItem(`answer${pageNumber}`);
     setTimeout(() => swipeNextPage(), 200);
-  };
-
-  const getAsyncData = async () => {
-    AsyncStorage.getAllKeys().then((a) => console.log(a));
   };
 
   return (
@@ -43,33 +39,32 @@ const TestPage = ({ swipeNextPage, pageNumber, onPressSubmitBtn }: IProps) => {
         <ButtonContainer>
           <AnswerBtn
             clickedBtnNumber={clickedBtnNumber}
-            number={1}
+            number={10}
             content="극히 드물게"
-            onHandleClickBtnNumber={onHandleClickBtnNumber}
+            onPress={() => onHandleClickBtnNumber(0)}
+          />
+          <AnswerBtn
+            clickedBtnNumber={clickedBtnNumber}
+            number={1}
+            content="가끔 (1~2일)"
+            onPress={() => onHandleClickBtnNumber(1)}
           />
           <AnswerBtn
             clickedBtnNumber={clickedBtnNumber}
             number={2}
-            content="가끔 (1~2일)"
-            onHandleClickBtnNumber={onHandleClickBtnNumber}
+            content="자주 (3~4일)"
+            onPress={() => onHandleClickBtnNumber(2)}
           />
           <AnswerBtn
             clickedBtnNumber={clickedBtnNumber}
             number={3}
-            content="자주 (3~4일)"
-            onHandleClickBtnNumber={onHandleClickBtnNumber}
-          />
-          <AnswerBtn
-            clickedBtnNumber={clickedBtnNumber}
-            number={4}
             content="거의 대부분 (5~7일)"
-            onHandleClickBtnNumber={onHandleClickBtnNumber}
+            onPress={() => onHandleClickBtnNumber(3)}
           />
         </ButtonContainer>
         <View style={{ width: "100%", position: "absolute", bottom: "5%" }}>
           {pageNumber === 20 && (
             <>
-              <BigPrimaryBtn text="저장된 데이터보기" onPress={getAsyncData} />
               <BigPrimaryBtn text="제출하기" onPress={onPressSubmitBtn} />
             </>
           )}

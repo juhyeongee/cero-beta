@@ -3,7 +3,7 @@ import styled from "styled-components/native";
 import { BigPrimaryBtn } from "@components/index";
 import { ITheme } from "@/types";
 import { Container, SafeArea, TitleText } from "../components/Styled";
-import todoNumStore from "@/store/TodoNumStore";
+import userInfoStore from "@/store/UserInfoStore";
 import { observer } from "mobx-react";
 
 interface IContainerProps {
@@ -15,7 +15,7 @@ interface IConfirm {
 }
 
 const Confirm = ({ navigateToMindText }: IConfirm) => {
-  const { nickname, age, gender } = todoNumStore;
+  const { nickname, age, gender } = userInfoStore;
   return (
     <Container>
       <SafeArea>
@@ -64,7 +64,7 @@ const MainContainer = styled.View`
   flex: ${Platform.OS === "ios" ? "0.35" : "0.4"};
   width: 100%;
   background-color: ${(props: IContainerProps) => props.theme.color.n0};
-  box-shadow: 1px 1px 10px #cbcbcb75;
+  box-shadow: 1px 1px 10px #cbcbcb;
   border-radius: 10px;
   box-sizing: border-box;
   padding: ${Platform.OS === "ios" ? "8%" : "6%"};

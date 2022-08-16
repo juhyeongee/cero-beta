@@ -20,8 +20,8 @@ export const OnBoardingNav = () => {
       <OnBoardingStack.Screen name="TakeUserInfo" component={TakeUserInfo} />
       <OnBoardingStack.Screen name="OnBoarding" component={IntroduceMindTest} />
       <OnBoardingStack.Screen name="MindTest" component={MindTest} />
-      <OnBoardingStack.Screen name="ResultPage" component={ResultPage} />
       <OnBoardingStack.Screen name="LoadingPage" component={LoadingPage} />
+      <OnBoardingStack.Screen name="ResultPage" component={ResultPage} />
     </OnBoardingStack.Navigator>
   );
 };

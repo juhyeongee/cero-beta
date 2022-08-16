@@ -25,13 +25,14 @@ import {
 } from "@expo-google-fonts/gothic-a1";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Toast from "react-native-toast-message";
-import todoNumStore from "@/store/TodoNumStore";
+import userInfoStore from "@/store/UserInfoStore";
 import currentPageStore from "@/store/CurrentPageStore";
 import { observer } from "mobx-react";
+import { SettingStackNav } from "@/navigations/SettingStackNav";
 
 function App() {
   const { currentScreen } = currentPageStore;
-  const [onPage, setOnPage] = useState("IntroNav");
+  const [onPage, setOnPage] = useState("Setting");
   const [fontsLoaded] = useFonts({
     NotoSansKR_100Thin,
     NotoSansKR_300Light,
@@ -47,7 +48,7 @@ function App() {
     GothicA1_600SemiBold,
   });
   useEffect(() => {
-    todoNumStore.resetVersionNum;
+    userInfoStore.resetVersionNum;
   }, []);
 
   if (!fontsLoaded) {
@@ -64,7 +65,10 @@ function App() {
         {currentScreen === "IntroNav" && <IntroNav />}
         {currentScreen === "OnBoardingNav" && <OnBoardingNav />}
         {currentScreen === "MainBottomTabNav" && <MainBottomTabNav />}
-        <Toast />
+
+        {/* {onPage === "Setting" && <SettingStackNav />} */}
+
+        {/* <Toast /> */}
       </ThemeProvider>
     </NavigationContainer>
   );

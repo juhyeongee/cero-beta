@@ -7,7 +7,7 @@ import TextMission from "./pages/TextMission";
 import PhotoTextMission from "./pages/PhotoTextMission";
 import * as ImagePicker from "expo-image-picker";
 import { observer } from "mobx-react";
-import todoNumStore from "@/store/TodoNumStore";
+import userInfoStore from "@/store/UserInfoStore";
 import missions from "@constants/missions";
 
 interface IContainerProps {
@@ -16,7 +16,7 @@ interface IContainerProps {
 
 const TodayMission = () => {
   const [missionText, setMissionText] = useState("");
-  const { todoNum, versionNum } = todoNumStore;
+  const { todoNum, versionNum } = userInfoStore;
   const version = `version${versionNum}`;
   const missionType = missions[todoNum][version].type;
 
@@ -34,7 +34,7 @@ const TodayMission = () => {
       {missionType === "text" && (
         <TextMission
           setMissionText={(text) => {
-            setMissionText(text), console.log(missionText);
+            setMissionText(text);
           }}
         />
       )}
@@ -42,7 +42,7 @@ const TodayMission = () => {
         <PhotoTextMission
           pickImage={pickImage}
           setMissionText={(text) => {
-            setMissionText(text), console.log(missionText);
+            setMissionText(text);
           }}
         />
       )}
