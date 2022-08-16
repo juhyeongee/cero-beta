@@ -7,28 +7,21 @@ interface IContainerProps {
   theme: ITheme;
 }
 export const Container = styled.Pressable`
+  background-color: ${(props: IContainerProps) => props.theme.color.n0};
   padding-left: ${widthRatio(32)}px;
   padding-right: ${widthRatio(32)}px;
-  padding-top: ${Platform.select({
-    ios: css`
-      ${heightRatio(47)}px
-    `,
-    android: css`
-      ${heightRatio(20)}px
-    `,
-  })};
-  padding-bottom: ${Platform.select({
-    ios: css`
-      ${heightRatio(47)}px
-    `,
-    android: css`
-      ${heightRatio(20)}px
-    `,
-  })};
+  padding-top: ${Platform.OS === "ios"
+    ? `${heightRatio(47)}px`
+    : `${heightRatio(20)}px`};
+  padding-bottom: ${Platform.OS === "ios"
+    ? `${heightRatio(47)}px`
+    : `${heightRatio(20)}px`};
   height: ${heightRatio(200)}px;
-  width: 100%;
+  width: 90%;
   border-radius: 10px;
   flex: 1;
+  box-shadow: 0.5px 0.5px 10px #cbcbcb;
+  margin-bottom: 20px;
 `;
 
 export const SubContainer = styled.View`
