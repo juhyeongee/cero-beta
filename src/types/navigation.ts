@@ -18,6 +18,7 @@ export type MainBottomTabParamList = {
   FinishedTasks: undefined;
   HomeStackNav: undefined;
   Setting: undefined;
+  Devtool: undefined;
 };
 export type HomeStackParamList = {
   TodayMission: undefined;

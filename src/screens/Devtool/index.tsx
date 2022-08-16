@@ -4,7 +4,7 @@ import userInfoStore from "@/store/UserInfoStore";
 import { observer } from "mobx-react";
 import currentPageStore from "@/store/CurrentPageStore";
 
-const Setting = () => {
+const Devtool = () => {
   function addOne() {
     userInfoStore.addOne();
     userInfoStore.resetVersionNum();
@@ -48,7 +48,7 @@ const Setting = () => {
   );
 };
 
-export default observer(Setting);
+export default observer(Devtool);
 
 const CenterView = styled.View`
   flex: 1;

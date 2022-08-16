@@ -1,7 +1,7 @@
 import {
   View,
   Text,
-  Pressable,
+  Alert,
   SafeAreaView,
   ScrollView,
   Platform,
@@ -33,7 +33,10 @@ const SettingHomePage = ({
     navigation.navigate("Notice");
   }
   function logout() {
-    console.log("logout");
+    Alert.alert("로그아웃 하시겠어요?", "하지마~", [
+      { text: "네", onPress: () => console.log("logout") },
+      { text: "아니요", onPress: () => console.log("취소~") },
+    ]);
   }
   return (
     <Container>

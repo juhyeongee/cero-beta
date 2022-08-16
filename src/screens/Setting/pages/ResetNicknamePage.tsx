@@ -5,7 +5,8 @@ import { SafeAreaView } from "react-native";
 import styled from "styled-components/native";
 import { Container, TitleText, SubText } from "../components/Styled";
 import { useState } from "react";
-import GreenTimePicker from "../components/settingHomeComp/NoticeBar";
+import { BigPrimaryBtn } from "@/components";
+import userIntoStore from "@/store/UserInfoStore";
 
 interface StyledProps {
   theme: ITheme;
@@ -17,8 +18,14 @@ const ResetNicknamePage = ({
   navigation,
 }: SettingStackScreenProps<"ResetNickname">) => {
   const [nickname, setNickname] = useState<string>("");
+  const { updateNickname } = userIntoStore;
   const navigateToBack = () => {
     navigation.goBack();
+  };
+
+  const onPressChangeBtn = (newName: string) => {
+    updateNickname(newName);
+    console.log("닉네임이 업데이트 되었습니다.");
   };
   return (
     <Container>
@@ -41,6 +48,10 @@ const ResetNicknamePage = ({
             변경 가능합니다.
           </SubText>
         </View>
+        <BigPrimaryBtn
+          text="변경하기"
+          onPress={() => onPressChangeBtn(nickname)}
+        />
       </SafeAreaView>
     </Container>
   );

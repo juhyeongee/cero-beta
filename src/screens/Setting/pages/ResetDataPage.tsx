@@ -1,6 +1,6 @@
 import SvgIcon from "@/assets/SvgIcon";
 import { ITheme, SettingStackScreenProps } from "@/types";
-import { Platform, View, Text, Pressable } from "react-native";
+import { Platform, View, Text, Pressable, Alert } from "react-native";
 import { SafeAreaView } from "react-native";
 import styled from "styled-components/native";
 import { Container, TitleText, SubText } from "../components/Styled";
@@ -22,6 +22,17 @@ const ResetDataPage = ({
   const [nickname, setNickname] = useState<string>("");
   const navigateToBack = () => {
     navigation.goBack();
+  };
+
+  const resetData = () => {
+    console.log("reset data finished");
+  };
+
+  const onClickResetBtn = () => {
+    Alert.alert("정말로 초기화하시겠습니까?", "", [
+      { text: "네", onPress: () => resetData() },
+      { text: "아니요", onPress: () => console.log("취소했습니다") },
+    ]);
   };
   return (
     <Container>
@@ -45,7 +56,7 @@ const ResetDataPage = ({
             </SubText>
           </View>
           <View style={{ flex: 1, justifyContent: "flex-end" }}>
-            <ButtonBG onPress={() => console.log("리셋~")}>
+            <ButtonBG onPress={onClickResetBtn}>
               <ButtonInnerText>데이터 초기화</ButtonInnerText>
             </ButtonBG>
           </View>
@@ -55,21 +66,6 @@ const ResetDataPage = ({
   );
 };
 
-const AnswerText = styled.TextInput`
-  font-size: 20px;
-  font-family: ${(props: StyledProps) =>
-    Platform.OS === "ios"
-      ? props.theme.font.mainFont
-      : props.theme.font.androidFont};
-  color: ${(props: StyledProps) =>
-    props.nickname.length > 6 ? "#E26D66" : "black"};
-`;
-const GrayBar = styled.View`
-  background-color: ${(props: StyledProps) =>
-    props.nickname.length > 6 ? "#E26D66" : props.theme.color.n500};
-  height: 1px;
-  width: 100%;
-`;
 export default ResetDataPage;
 
 const ButtonInnerText = styled.Text`

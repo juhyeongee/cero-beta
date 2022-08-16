@@ -15,17 +15,25 @@ const SettingAlarmPage = ({
   navigation,
 }: SettingStackScreenProps<"SettingAlarm">) => {
   const [isTimePickerVisible, setIsTimePickerVisible] = useState(false);
-  const [onToggle, setOnToggle] = useState(false);
+  const [onTodayMissionAlarmToggle, setOnTodayMissionAlarmToggle] =
+    useState(false);
+
+  const [onHelloAlarmToggle, setOnHelloAlarmToggle] = useState(false);
   const navigateToBack = () => {
     navigation.goBack();
   };
   const handleConfirm = () => {
     console.log("타임 지정 완료");
   };
-  const toggleSwitch = () => {
+  const onPressTodayMissionAlarmToggle = () => {
     console.log("토글 변경");
-    setOnToggle(!onToggle);
+    setOnTodayMissionAlarmToggle(!onTodayMissionAlarmToggle);
   };
+
+  const onPressHelloAlarmToggle = () => {
+    setOnHelloAlarmToggle(!onHelloAlarmToggle);
+  };
+
   return (
     <Container>
       <SafeAreaView style={{ flex: 1 }}>
@@ -52,10 +60,10 @@ const SettingAlarmPage = ({
               </View>
               <Switch
                 trackColor={{ false: "#767577", true: "#81b0ff" }}
-                thumbColor={onToggle ? "#f5dd4b" : "#f4f3f4"}
+                thumbColor={onTodayMissionAlarmToggle ? "#f5dd4b" : "#f4f3f4"}
                 ios_backgroundColor="#3e3e3e"
-                onValueChange={toggleSwitch}
-                value={onToggle}
+                onValueChange={onPressTodayMissionAlarmToggle}
+                value={onTodayMissionAlarmToggle}
               />
             </View>
 
@@ -83,10 +91,10 @@ const SettingAlarmPage = ({
               </View>
               <Switch
                 trackColor={{ false: "#767577", true: "#81b0ff" }}
-                thumbColor={onToggle ? "#f5dd4b" : "#f4f3f4"}
+                thumbColor={onHelloAlarmToggle ? "#f5dd4b" : "#f4f3f4"}
                 ios_backgroundColor="#3e3e3e"
-                onValueChange={toggleSwitch}
-                value={onToggle}
+                onValueChange={onPressHelloAlarmToggle}
+                value={onHelloAlarmToggle}
               />
             </View>
             <GrayBar />
