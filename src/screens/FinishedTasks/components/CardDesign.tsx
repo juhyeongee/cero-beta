@@ -12,7 +12,6 @@ import SvgIcon from "@/assets/SvgIcon";
 import styled from "styled-components/native";
 import { heightRatio, widthRatio, fontsizeRatio } from "@/utils";
 import { ITheme } from "@/types";
-import { BlurView } from "@react-native-community/blur";
 
 interface IContainerProps {
   theme: ITheme;

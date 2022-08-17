@@ -20,6 +20,7 @@ const GetBirthday = ({ swipeNextPage }: IPageProps) => {
     const newDay = dayjs(date);
     setBirthday(newDay.format("YYYY년 M월 DD일"));
     setDatePickerVisibility(false);
+    setTimeout(() => swipeNextPage(), 700);
   };
 
   return (
