@@ -9,7 +9,7 @@ interface IContainerProps {
   theme: ITheme;
 }
 
-const MissionBoard = () => {
+const NumberBoard = () => {
   return (
     <Container>
       <View style={{ height: "33%", width: "100%", flexDirection: "row" }}>
@@ -44,7 +44,7 @@ const MissionBoard = () => {
   );
 };
 
-export default MissionBoard;
+export default NumberBoard;
 
 const Container = styled.View`
   width: 100%;

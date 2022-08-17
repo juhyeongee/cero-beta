@@ -11,11 +11,11 @@ import { HomeStackScreenProps, ITheme } from "@/types";
 import SvgIcon from "@/assets/SvgIcon";
 import Swiper from "react-native-swiper";
 import ToDo from "./components/ToDo";
-import MissionBoard from "./components/MissionBoard";
+import NumberBoard from "./components/NumberBoard";
 import userInfoStore from "@/store/UserInfoStore";
 import dayjs from "dayjs";
 import { useEffect } from "react";
-import Toast from "react-native-toast-message";
+import PlantContainer from "./components/PlantContainer";
 
 interface IContainerProps {
   theme: ITheme;
@@ -40,32 +40,35 @@ const Home = ({ route, navigation }: HomeStackScreenProps<"Home">) => {
   }, []);
 
   //TODO: 미션 14일차 미션 다 끝나면 엔딩보러가기 페이지가 생겨야함 , 미션num이 15일 일떄랑 ㅇ
-
+  const Dot = () => {
+    return (
+      <View
+        style={{
+          backgroundColor: "rgba(0,0,0,.2)",
+          width: 8,
+          height: 8,
+          borderRadius: 4,
+          marginLeft: 3,
+          marginRight: 3,
+          marginTop: 3,
+        }}
+      />
+    );
+  };
   return (
     <Container>
-      <PlantCont>
-        <View style={{ position: "absolute", right: "0%", top: "18%" }}>
-          <SvgIcon name="LastWindow" />
-        </View>
-        <View style={{ position: "absolute", bottom: "20%" }}>
-          <SvgIcon name="plant1" />
-        </View>
-        <View
-          style={{
-            position: "absolute",
-            bottom: Platform.OS === "ios" ? "-10%" : "-15%",
-          }}
-        >
-          <SvgIcon name="LastPot" />
-        </View>
-      </PlantCont>
+      <PlantContainer />
       <View style={{ flex: 0.3 }}>
         <ContentsCont>
           <Bar />
           <View style={{ height: "90%" }}>
-            <Swiper showsPagination={false}>
+            <Swiper
+              showsPagination={true}
+              paginationStyle={{ bottom: 7 }}
+              activeDotColor="#40B08F"
+            >
               <ToDo navigateToTodayMission={navigateToTodayMission} />
-              <MissionBoard />
+              <NumberBoard />
             </Swiper>
           </View>
         </ContentsCont>
@@ -79,11 +82,6 @@ export default Home;
 const Container = styled.View`
   background-color: ${(props: IContainerProps) => props.theme.color.n200};
   flex: 1;
-`;
-const PlantCont = styled.View`
-  justify-content: center;
-  align-items: center;
-  flex: 0.7;
 `;
 
 const ContentsCont = styled.View`
