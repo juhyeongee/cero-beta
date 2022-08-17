@@ -7,12 +7,12 @@ import {
   Pressable,
   StyleSheet,
 } from "react-native";
-import Tag from "../Tag";
+import Tag from "./Tag";
 import SvgIcon from "@/assets/SvgIcon";
-
 import styled from "styled-components/native";
 import { heightRatio, widthRatio, fontsizeRatio } from "@/utils";
 import { ITheme } from "@/types";
+import { BlurView } from "@react-native-community/blur";
 
 interface IContainerProps {
   theme: ITheme;
@@ -23,7 +23,7 @@ interface CardProps {
   missionTitle: string;
   type: string;
   onClicked: () => void;
-  imageSource: ImageProps["source"];
+  // imageSource: ImageProps["source"];
 }
 
 const CardDesign = ({
@@ -31,8 +31,8 @@ const CardDesign = ({
   missionTitle,
   thisMissionNum,
   onClicked,
-  imageSource,
 }: CardProps) => {
+  const photo = require("@assets/images/exampleImage.png");
   return (
     <Pressable
       style={[styles.cardContainer, styles.shadow]}
@@ -47,10 +47,10 @@ const CardDesign = ({
       <DateText>2022 5월 28일</DateText>
       <View style={styles.underBox}>
         <View style={{ flexDirection: "row", alignItems: "center" }}>
-          <SpreadText>펼쳐보기</SpreadText>
-          <SvgIcon name="bottomArrow" />
+          <SpreadText>돌아보기</SpreadText>
+          {/* <SvgIcon name="bottomArrow" /> */}
         </View>
-        <Tag type={type} />
+        <Tag photo={photo} type={type} />
       </View>
     </Pressable>
   );

@@ -12,15 +12,35 @@ import SvgIcon from "@/assets/SvgIcon";
 import Swiper from "react-native-swiper";
 import ToDo from "./components/ToDo";
 import MissionBoard from "./components/MissionBoard";
+import userInfoStore from "@/store/UserInfoStore";
+import dayjs from "dayjs";
+import { useEffect } from "react";
+import Toast from "react-native-toast-message";
 
 interface IContainerProps {
   theme: ITheme;
 }
 
 const Home = ({ route, navigation }: HomeStackScreenProps<"Home">) => {
+  const { lastCompletedMissionDate, updateLastCompletedMissionDate } =
+    userInfoStore;
+  const todayDate = dayjs().format("YYMMDD");
+
   const navigateToTodayMission = () => {
     navigation.navigate("TodayMission");
   };
+
+  useEffect(() => {
+    if (lastCompletedMissionDate === todayDate) {
+      console.log("같음");
+    } else {
+      console.log("안같음");
+      updateLastCompletedMissionDate(todayDate);
+    }
+  }, []);
+
+  //TODO: 미션 14일차 미션 다 끝나면 엔딩보러가기 페이지가 생겨야함 , 미션num이 15일 일떄랑 ㅇ
+
   return (
     <Container>
       <PlantCont>

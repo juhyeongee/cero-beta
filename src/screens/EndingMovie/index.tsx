@@ -16,13 +16,14 @@ import { ITheme } from "@/types";
 import AutoHeightImage from "react-native-auto-height-image";
 import { EndingMovieText } from "@constants/properties";
 import { BigPrimaryBtn } from "@/components";
+
 interface IContainerProps {
   theme: ITheme;
 }
+
 const EndingMovie = () => {
   const [pageNumber, setPageNubmer] = useState(1);
   const { nickname } = userInfoStore;
-
   return (
     <SafeArea>
       <BlackBG>

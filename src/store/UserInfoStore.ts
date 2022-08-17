@@ -11,6 +11,7 @@ class UserInfoStore {
   age = 0;
   FIRST_DEPRESSION_SCORE = 0;
   depressionState = "";
+  lastCompletedMissionDate = "220816";
 
   constructor() {
     makeAutoObservable(
@@ -27,6 +28,7 @@ class UserInfoStore {
         gender: observable,
         FIRST_DEPRESSION_SCORE: observable,
         depressionState: observable,
+        lastCompletedMissionDate: observable,
       },
       { autoBind: true }
     );
@@ -39,6 +41,7 @@ class UserInfoStore {
         "birthday",
         "gender",
         "FIRST_DEPRESSION_SCORE",
+        "lastCompletedMissionDate",
       ],
       storage: AsyncStorage,
     });
@@ -76,8 +79,18 @@ class UserInfoStore {
   updateFirstDepressionState(state: string) {
     this.depressionState = state;
   }
+  updateLastCompletedMissionDate(date: string) {
+    this.lastCompletedMissionDate = date;
+  }
 }
 
 const userInfoStore = new UserInfoStore();
 
 export default userInfoStore;
+
+//미션 완료 () =>
+//   Update Last Completed Mission Date
+//   plusVersionNum ()
+//   if ( Last Completed Mission Date === todayDate)
+//   => show "오늘의 미션을 완료했어요"
+//

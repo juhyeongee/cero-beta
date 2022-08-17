@@ -1,18 +1,20 @@
 import { View, Text, SafeAreaView, ScrollView, Platform } from "react-native";
-import styled, { css } from "styled-components/native";
+import styled from "styled-components/native";
 import { ITheme } from "@/types";
-import AutoHeightImage from "react-native-auto-height-image";
 import Card from "./components/Card";
 import missions from "@constants/missions";
-import { heightRatio, widthRatio, fontsizeRatio } from "@/utils";
 import Header from "./components/Header";
+import userInfoStore from "@/store/UserInfoStore";
+import { observer } from "mobx-react";
 
 interface IContainerProps {
   theme: ITheme;
 }
 
 const FinishedTasks = () => {
-  const missionArray = Object.keys(missions);
+  const { todoNum } = userInfoStore;
+  const missionArray = [...new Array(todoNum - 1)].map((_, i) => i + 1);
+  console.log(missionArray);
   return (
     <Container>
       <SafeAreaView style={{ flex: 1 }}>
@@ -30,7 +32,7 @@ const FinishedTasks = () => {
   );
 };
 
-export default FinishedTasks;
+export default observer(FinishedTasks);
 
 const Container = styled.View`
   background-color: ${(props: IContainerProps) => props.theme.color.n50};

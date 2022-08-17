@@ -29,6 +29,7 @@ import userInfoStore from "@/store/UserInfoStore";
 import currentPageStore from "@/store/CurrentPageStore";
 import { observer } from "mobx-react";
 import { SettingStackNav } from "@/navigations/SettingStackNav";
+import EndingResult from "@/screens/EndingResult";
 
 function App() {
   const { currentScreen } = currentPageStore;
@@ -68,7 +69,7 @@ function App() {
 
         {/* {onPage === "Setting" && <SettingStackNav />} */}
 
-        {/* <Toast /> */}
+        <Toast />
       </ThemeProvider>
     </NavigationContainer>
   );

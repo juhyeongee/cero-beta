@@ -1,25 +1,20 @@
 import { View, Text, Image, ImageBackground, Pressable } from "react-native";
 import { ITheme } from "@/types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DetailModal from "./DetailModal";
 import missions from "@constants/missions";
 import userInfoStore from "@/store/UserInfoStore";
 import Toast from "react-native-toast-message";
-import CardDesign from "./CardType/CardDesign";
-
-interface IContainerProps {
-  theme: ITheme;
-}
+import CardDesign from "./CardDesign";
 
 interface CardProps {
-  missionNum: string;
+  missionNum: number;
 }
 const Card = ({ missionNum }: CardProps) => {
   const [modalVisible, setModalVisible] = useState(false);
-  const thisMissionNum = parseInt(missionNum);
   const { todoNum, versionNum } = userInfoStore;
-  const missionTitle = missions[thisMissionNum].version1.subtitle;
-  const type = missions[thisMissionNum].version1.type;
+  const missionTitle = missions[missionNum].version1.subtitle;
+  const type = missions[missionNum].version1.type;
   //TODO: 완료한 미션의 버전따라 카드 타이틀명 설정
   const showToast = () => {
     Toast.show({
@@ -30,14 +25,12 @@ const Card = ({ missionNum }: CardProps) => {
     });
   };
   const onClicked = () => {
-    if (thisMissionNum > todoNum) {
+    if (missionNum > todoNum) {
       showToast();
     } else {
       setModalVisible(!modalVisible);
     }
   };
-  const imageSource = require("@assets/images/exampleImage.png");
-  //TODO: 텍스트 콘텐츠와 사진이미지별로 BG이미지 다르게 설정하기
 
   return (
     <View>
@@ -48,10 +41,9 @@ const Card = ({ missionNum }: CardProps) => {
         missionType={type}
       />
       <CardDesign
-        imageSource={imageSource}
         type={type}
         missionTitle={missionTitle}
-        thisMissionNum={thisMissionNum}
+        thisMissionNum={missionNum}
         onClicked={onClicked}
       />
     </View>
