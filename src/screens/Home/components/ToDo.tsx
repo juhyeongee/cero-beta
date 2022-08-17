@@ -18,8 +18,7 @@ interface Props {
 }
 
 const ToDo = ({ navigateToTodayMission }: Props) => {
-  const { todoNum, versionNum, plusVersionNum, resetVersionNum } =
-    userInfoStore;
+  const { todoNum, versionNum, plusVersionNum } = userInfoStore;
   const version = `version${versionNum}`;
   const todoObject = missions[todoNum];
   const todo = todoObject[version].subtitle;
@@ -29,7 +28,7 @@ const ToDo = ({ navigateToTodayMission }: Props) => {
     if (versionNum < length) {
       plusVersionNum();
     } else {
-      resetVersionNum();
+      userInfoStore.resetVersionNum();
     }
   };
 
