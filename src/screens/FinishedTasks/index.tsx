@@ -6,15 +6,32 @@ import missions from "@constants/missions";
 import Header from "./components/Header";
 import userInfoStore from "@/store/UserInfoStore";
 import { observer } from "mobx-react";
+import EmptyCard from "./components/EmptyCard";
+import Toast from "react-native-toast-message";
+import { useNavigation } from "@react-navigation/native";
+import { MainBottomTabScreenProp } from "@/types";
 
 interface IContainerProps {
   theme: ITheme;
 }
 
 const FinishedTasks = () => {
+  const navigation = useNavigation<any>();
   const { todoNum } = userInfoStore;
   const missionArray = [...new Array(todoNum - 1)].map((_, i) => i + 1);
-  console.log(missionArray);
+  const showToast = () => {
+    Toast.show({
+      type: "error",
+      text1: "아직 미션을 해결하지 못했어요!",
+      text2: "차근차근 하나씩 미션을 완료하고 보도록해요!",
+      position: "bottom",
+    });
+  };
+
+  const navigateToTodayMission = async () => {
+    await navigation.navigate("Home");
+    setTimeout(() => navigation.navigate("TodayMission"), 600);
+  };
   return (
     <Container>
       <SafeAreaView style={{ flex: 1 }}>
@@ -22,8 +39,9 @@ const FinishedTasks = () => {
         <View style={{ flex: 4 }}>
           <ScrollView showsVerticalScrollIndicator={false}>
             {missionArray.map((index) => (
-              <Card key={index} missionNum={index} />
+              <Card showToast={showToast} key={index} missionNum={index} />
             ))}
+            {todoNum !== 14 && <EmptyCard onPress={navigateToTodayMission} />}
           </ScrollView>
         </View>
         {/* TODO: ScrollView => Flatlist로 변환 */}

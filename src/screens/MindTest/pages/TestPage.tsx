@@ -39,7 +39,7 @@ const TestPage = ({ swipeNextPage, pageNumber, onPressSubmitBtn }: IProps) => {
         <ButtonContainer>
           <AnswerBtn
             clickedBtnNumber={clickedBtnNumber}
-            number={10}
+            number={0}
             content="극히 드물게"
             onPress={() => onHandleClickBtnNumber(0)}
           />

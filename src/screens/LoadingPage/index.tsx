@@ -6,6 +6,7 @@ import { ITheme } from "@/types";
 import { OnBoardingStackScreenProps } from "@/types";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import userInfoStore from "@/store/UserInfoStore";
+import { lifeQuotes } from "@/constants/properties";
 
 interface LoadingTextProps {
   theme: ITheme;
@@ -38,7 +39,8 @@ const LoadingPage = ({
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <SvgIcon name="boilingSeed" />
       <LoadingText>마음 씨앗을 만드는 중이예요</LoadingText>
-      <GrayText>여기에 명언이나 글귀가 들어가면 좋겠어요</GrayText>
+      <GrayText>{lifeQuotes[1]}</GrayText>
+      {/* TODO: lifeQuotes 명언 랜덤으로 나가게  */}
     </View>
   );
 };
