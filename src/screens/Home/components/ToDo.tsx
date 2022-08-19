@@ -19,7 +19,7 @@ interface Props {
   todayMissionComplete: boolean;
 }
 
-const showfToast = () => {
+const showToast = () => {
   Toast.show({
     type: "success",
     text1: "오늘의 미션을 이미 완료했어요!",
@@ -88,7 +88,7 @@ const ToDo = ({ navigateToTodayMission, todayMissionComplete }: Props) => {
         }}
       >
         {todayMissionComplete ? (
-          <CompleteBtn onPress={showfToast}>
+          <CompleteBtn onPress={showToast}>
             <CompleteBtnText>오늘의 할 일을 완료했어요!</CompleteBtnText>
           </CompleteBtn>
         ) : (

@@ -9,15 +9,14 @@ import { observer } from "mobx-react";
 import EmptyCard from "./components/EmptyCard";
 import Toast from "react-native-toast-message";
 import { useNavigation } from "@react-navigation/native";
-import { MainBottomTabScreenProp } from "@/types";
-
+import dayjs from "dayjs";
 interface IContainerProps {
   theme: ITheme;
 }
 
 const FinishedTasks = () => {
   const navigation = useNavigation<any>();
-  const { todoNum } = userInfoStore;
+  const { todoNum, completeMissionDatesArray } = userInfoStore;
   const missionArray = [...new Array(todoNum - 1)].map((_, i) => i + 1);
   const showToast = () => {
     Toast.show({
@@ -28,10 +27,29 @@ const FinishedTasks = () => {
     });
   };
 
+  const showTaskDoneToast = () => {
+    Toast.show({
+      type: "success",
+      text1: "오늘의 미션을 이미 완료했어요!",
+      text2: "내일 새로운 미션으로 만나요!",
+      position: "bottom",
+    });
+  };
+
   const navigateToTodayMission = async () => {
     await navigation.navigate("Home");
     setTimeout(() => navigation.navigate("TodayMission"), 600);
   };
+  const navigateToHomeAndShowToast = async () => {
+    await navigation.navigate("Home");
+    setTimeout(() => showTaskDoneToast(), 600);
+  };
+
+  const lastCompletedMissionDate =
+    completeMissionDatesArray[completeMissionDatesArray.length - 1];
+  //TODO: Array에서 꺼내온 dayjs object에는 왜 .format등 메소드를 못쓴다고 해놓은걸까?
+  const todayDate = dayjs().format("YYMMDD");
+
   return (
     <Container>
       <SafeAreaView style={{ flex: 1 }}>
@@ -41,7 +59,15 @@ const FinishedTasks = () => {
             {missionArray.map((index) => (
               <Card showToast={showToast} key={index} missionNum={index} />
             ))}
-            {todoNum !== 14 && <EmptyCard onPress={navigateToTodayMission} />}
+            {todoNum !== 14 && (
+              <EmptyCard
+                onPress={
+                  lastCompletedMissionDate === todayDate
+                    ? navigateToHomeAndShowToast
+                    : navigateToTodayMission
+                }
+              />
+            )}
           </ScrollView>
         </View>
         {/* TODO: ScrollView => Flatlist로 변환 */}
