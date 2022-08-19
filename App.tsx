@@ -50,7 +50,7 @@ function App() {
   });
   useEffect(() => {
     userInfoStore.resetVersionNum;
-    AsyncStorage.clear();
+    // AsyncStorage.clear();
   }, []);
 
   if (!fontsLoaded) {

@@ -37,6 +37,7 @@ const Header = ({
   const { minusOne, todoNum, versionNum } = userInfoStore;
   const navigation = useNavigation();
   const pressCompleteBtn = () => {
+    const todayDate = dayjs().format("YYMMDD");
     Alert.alert(
       "미션 내용을 제출하시겠어요?",
       `완료한 내용은 '지난 할 일' 탭\n에서 완료할 수 있어요`,
@@ -47,6 +48,8 @@ const Header = ({
             AsyncStorage.setItem(
               `mission${todoNum}Result`,
               JSON.stringify({
+                missionName: missionTitle,
+                completeDate: todayDate,
                 todoNum: todoNum,
                 versionNum: versionNum,
                 resultText: missionText,

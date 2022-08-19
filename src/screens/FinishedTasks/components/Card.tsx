@@ -5,25 +5,40 @@ import DetailModal from "./DetailModal";
 import missions from "@constants/missions";
 import userInfoStore from "@/store/UserInfoStore";
 import CardDesign from "./CardDesign";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 interface CardProps {
   missionNum: number;
   showToast: () => void;
 }
+
 const Card = ({ missionNum, showToast }: CardProps) => {
   const [modalVisible, setModalVisible] = useState(false);
   const { todoNum, versionNum } = userInfoStore;
   const missionTitle = missions[missionNum].version1.subtitle;
+  const [missionNameFromAsyncStorage, setMissionNameFromAsyncStorage] =
+    useState();
+  const [completeDateFromAsyncStorage, setCompleteDateFromAsyncStorage] =
+    useState();
   const type = missions[missionNum].version1.type;
   //TODO: 완료한 미션의 버전따라 카드 타이틀명 설정
 
   const onClicked = () => {
-    if (missionNum > todoNum) {
-      showToast();
-    } else {
-      setModalVisible(!modalVisible);
-    }
+    setModalVisible(!modalVisible);
   };
+  AsyncStorage.getItem(`mission${missionNum}Result`).then((result) => {
+    if (typeof result === undefined) {
+      return null;
+    } else if (typeof result === "string") {
+      const resultObject = JSON.parse(result);
+      setMissionNameFromAsyncStorage(resultObject["missionName"]);
+      setCompleteDateFromAsyncStorage(resultObject["completeDate"]);
+      console.log(
+        'resultObject["completeDate"]:',
+        resultObject["completeDate"]
+      );
+    }
+  });
 
   return (
     <View>
@@ -35,9 +50,10 @@ const Card = ({ missionNum, showToast }: CardProps) => {
       />
       <CardDesign
         type={type}
-        missionTitle={missionTitle}
         thisMissionNum={missionNum}
         onClicked={onClicked}
+        missionNameFromAsyncStorage={missionNameFromAsyncStorage}
+        completeDateFromAsyncStorage={completeDateFromAsyncStorage}
       />
     </View>
   );
