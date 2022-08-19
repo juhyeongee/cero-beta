@@ -24,7 +24,7 @@ const PolicyDetail = () => {
             본 약관은 새로의 서비스 이용과 관련하여 필요한 사항을 규정합니다.
           </SubText>
         </View>
-        <ScrollView style={{ flex: 10 }}>
+        <ScrollView showsVerticalScrollIndicator={false} style={{ flex: 10 }}>
           <Text>{policyText.text}</Text>
         </ScrollView>
       </SafeArea>

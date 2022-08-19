@@ -1,11 +1,4 @@
-import {
-  View,
-  Text,
-  Modal,
-  Pressable,
-  ScrollView,
-  Platform,
-} from "react-native";
+import { View, Text, Modal } from "react-native";
 import styled from "styled-components/native";
 import { ITheme } from "@/types";
 import SvgIcon from "@assets/SvgIcon";

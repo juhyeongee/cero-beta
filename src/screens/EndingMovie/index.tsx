@@ -27,7 +27,7 @@ const EndingMovie = () => {
   return (
     <SafeArea>
       <BlackBG>
-        <ScrollContainer bounces={false}>
+        <ScrollContainer showsVerticalScrollIndicator={false} bounces={false}>
           <View style={{ flex: 1, alignItems: "center" }}>
             <ImageContainer style={{ flex: 1, alignItems: "center" }}>
               <SvgIcon name="LogoWithTitle" />

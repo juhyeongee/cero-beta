@@ -50,7 +50,7 @@ const DetailModal = ({
           </Pressable>
         </Header>
         <Body>
-          <ScrollView>
+          <ScrollView showsVerticalScrollIndicator={false}>
             <Pressable>
               <Image
                 style={{
