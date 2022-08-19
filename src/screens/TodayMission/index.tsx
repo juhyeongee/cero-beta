@@ -10,12 +10,7 @@ import { observer } from "mobx-react";
 import userInfoStore from "@/store/UserInfoStore";
 import missions from "@constants/missions";
 
-interface IContainerProps {
-  theme: ITheme;
-}
-
 const TodayMission = () => {
-  const [missionText, setMissionText] = useState("");
   const { todoNum, versionNum } = userInfoStore;
   const version = `version${versionNum}`;
   const missionType = missions[todoNum][version].type;
@@ -31,21 +26,8 @@ const TodayMission = () => {
   return (
     <>
       {missionType === "photo" && <PhotoMission pickImage={pickImage} />}
-      {missionType === "text" && (
-        <TextMission
-          setMissionText={(text) => {
-            setMissionText(text);
-          }}
-        />
-      )}
-      {missionType === "both" && (
-        <PhotoTextMission
-          pickImage={pickImage}
-          setMissionText={(text) => {
-            setMissionText(text);
-          }}
-        />
-      )}
+      {missionType === "text" && <TextMission />}
+      {missionType === "both" && <PhotoTextMission pickImage={pickImage} />}
     </>
   );
 };

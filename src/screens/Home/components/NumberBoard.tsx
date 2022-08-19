@@ -31,6 +31,7 @@ const NumberBoard = () => {
         <NumberBox text="13" />
         <NumberBox text="14" />
         <NumberBox
+          text=" "
           icon={
             <AutoHeightImage
               width={24}

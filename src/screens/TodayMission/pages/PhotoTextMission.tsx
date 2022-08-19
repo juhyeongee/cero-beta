@@ -10,9 +10,9 @@ interface IContainerProps {
 }
 interface Props {
   pickImage: () => void;
-  setMissionText: (props: string) => void;
 }
-const PhotoMission = ({ pickImage, setMissionText }: Props) => {
+const PhotoMission = ({ pickImage }: Props) => {
+  const [missionText, setMissionText] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
@@ -20,6 +20,7 @@ const PhotoMission = ({ pickImage, setMissionText }: Props) => {
       <Container>
         <SafeAreaView style={{ flex: 1 }}>
           <Header
+            missionText={missionText}
             modalVisible={modalVisible}
             setModalVisible={setModalVisible}
           />

@@ -29,6 +29,7 @@ class UserInfoStore {
         nickname: observable,
         birthday: observable,
         gender: observable,
+        age: observable,
         FIRST_DEPRESSION_SCORE: observable,
         depressionState: observable,
         completeMissionDatesArray: observable,
@@ -82,9 +83,11 @@ class UserInfoStore {
   updateFirstDepressionState(state: string) {
     this.depressionState = state;
   }
-
   updateCompleteMissionDatesArray(date: any) {
     this.completeMissionDatesArray = [...this.completeMissionDatesArray, date];
+  }
+  resetCompleteMissionDatesArray() {
+    this.completeMissionDatesArray = ["100000"];
   }
 }
 

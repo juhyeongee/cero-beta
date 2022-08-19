@@ -21,14 +21,20 @@ import {
   FinishBtn,
 } from "./Styled";
 import dayjs from "dayjs";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 interface HeaderModal {
   modalVisible: boolean;
   setModalVisible: (props: boolean) => void;
+  missionText: string;
 }
 
-const Header = ({ modalVisible, setModalVisible }: HeaderModal) => {
-  const { updateCompleteMissionDatesArray, addOne } = userInfoStore;
+const Header = ({
+  modalVisible,
+  setModalVisible,
+  missionText,
+}: HeaderModal) => {
+  const { minusOne, todoNum, versionNum } = userInfoStore;
   const navigation = useNavigation();
   const pressCompleteBtn = () => {
     Alert.alert(
@@ -38,16 +44,27 @@ const Header = ({ modalVisible, setModalVisible }: HeaderModal) => {
         {
           text: "네",
           onPress: async () => {
-            updateCompleteMissionDatesArray(dayjs().format("YYMMDD"));
-            addOne();
-            navigation.goBack();
+            AsyncStorage.setItem(
+              `mission${todoNum}Result`,
+              JSON.stringify({
+                todoNum: todoNum,
+                versionNum: versionNum,
+                resultText: missionText,
+              }),
+              () => {
+                userInfoStore.updateCompleteMissionDatesArray(
+                  dayjs().format("YYMMDD")
+                );
+                userInfoStore.addOne();
+                navigation.goBack();
+              }
+            );
           },
         },
-        { text: "아니요", onPress: () => console.log("취소~") },
+        { text: "아니요", onPress: () => minusOne() },
       ]
     );
   };
-  const { todoNum, versionNum } = userInfoStore;
   const version = `version${versionNum}`;
   const missionTitle = missions[todoNum][version].subtitle;
   const missionDescription = missions[todoNum][version].description;

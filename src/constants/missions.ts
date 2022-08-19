@@ -3,6 +3,15 @@ interface IMissionType {
 }
 
 const missions: IMissionType = {
+  0: {
+    version1: {
+      subtitle: "mock data missions",
+      description: ``,
+      type: "text",
+      articleTitle: "",
+      article: `mock`,
+    },
+  },
   1: {
     version1: {
       subtitle: "보내지 않을 편지쓰기 📨",

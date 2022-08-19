@@ -34,6 +34,9 @@ const ToDo = ({ navigateToTodayMission, todayMissionComplete }: Props) => {
   const todoObject = missions[todoNum];
   const todo = todoObject[version].subtitle;
 
+  const completedTodoObject = missions[todoNum - 1];
+  const completedTodo = completedTodoObject[version].subtitle;
+
   const rotateVersionNum = () => {
     let length = Object.keys(todoObject).length;
     if (versionNum < length) {
@@ -59,15 +62,22 @@ const ToDo = ({ navigateToTodayMission, todayMissionComplete }: Props) => {
             flexDirection: "row",
           }}
         >
-          <GrayText>변경하기 </GrayText>
-          <Pressable
-            style={{
-              justifyContent: Platform.OS === "ios" ? "flex-start" : "flex-end",
-            }}
-            onPress={rotateVersionNum}
-          >
-            <SvgIcon name="refresh" />
-          </Pressable>
+          {todayMissionComplete ? (
+            <></>
+          ) : (
+            <>
+              <GrayText>변경하기 </GrayText>
+              <Pressable
+                style={{
+                  justifyContent:
+                    Platform.OS === "ios" ? "flex-start" : "flex-end",
+                }}
+                onPress={rotateVersionNum}
+              >
+                <SvgIcon name="refresh" />
+              </Pressable>
+            </>
+          )}
         </View>
       </View>
       <ToDoGrayBox>
@@ -77,7 +87,7 @@ const ToDo = ({ navigateToTodayMission, todayMissionComplete }: Props) => {
             color: Theme.color.n900,
           }}
         >
-          {todo}
+          {todayMissionComplete ? completedTodo : todo}
         </Text>
       </ToDoGrayBox>
       <View
