@@ -20,6 +20,8 @@ const Card = ({ missionNum, showToast }: CardProps) => {
     useState();
   const [completeDateFromAsyncStorage, setCompleteDateFromAsyncStorage] =
     useState();
+  const [resultTextFromAsyncStorage, setResultTextFromAsyncStorage] =
+    useState();
   const type = missions[missionNum].version1.type;
   //TODO: 완료한 미션의 버전따라 카드 타이틀명 설정
 
@@ -33,6 +35,7 @@ const Card = ({ missionNum, showToast }: CardProps) => {
       const resultObject = JSON.parse(result);
       setMissionNameFromAsyncStorage(resultObject["missionName"]);
       setCompleteDateFromAsyncStorage(resultObject["completeDate"]);
+      setResultTextFromAsyncStorage(resultObject["resultText"]);
       console.log(
         'resultObject["completeDate"]:',
         resultObject["completeDate"]
@@ -47,6 +50,9 @@ const Card = ({ missionNum, showToast }: CardProps) => {
         setModalVisible={setModalVisible}
         missionTitle={missionTitle}
         missionType={type}
+        missionNameFromAsyncStorage={missionNameFromAsyncStorage}
+        completeDateFromAsyncStorage={completeDateFromAsyncStorage}
+        resultTextFromAsyncStorage={resultTextFromAsyncStorage}
       />
       <CardDesign
         type={type}
