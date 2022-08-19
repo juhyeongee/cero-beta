@@ -1,17 +1,20 @@
 import { action, observable, makeAutoObservable } from "mobx";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { makePersistable, stopPersisting } from "mobx-persist-store";
+import dayjs from "dayjs";
+
+const date2 = dayjs("2020-04-08 ");
 
 class UserInfoStore {
-  todoNum = 1;
-  versionNum = 1;
-  nickname = "유저";
-  birthday = "알려주세요!";
-  gender = "미정";
-  age = 0;
-  FIRST_DEPRESSION_SCORE = 0;
-  depressionState = "";
-  lastCompletedMissionDate = "220816";
+  todoNum: number = 1;
+  versionNum: number = 1;
+  nickname: string = "유저";
+  birthday: string = "알려주세요!";
+  gender: string = "미정";
+  age: number = 0;
+  FIRST_DEPRESSION_SCORE: number = 0;
+  depressionState: string = "";
+  completeMissionDatesArray = ["200000"];
 
   constructor() {
     makeAutoObservable(
@@ -28,7 +31,7 @@ class UserInfoStore {
         gender: observable,
         FIRST_DEPRESSION_SCORE: observable,
         depressionState: observable,
-        lastCompletedMissionDate: observable,
+        completeMissionDatesArray: observable,
       },
       { autoBind: true }
     );
@@ -41,7 +44,7 @@ class UserInfoStore {
         "birthday",
         "gender",
         "FIRST_DEPRESSION_SCORE",
-        "lastCompletedMissionDate",
+        "completeMissionDatesArray",
       ],
       storage: AsyncStorage,
     });
@@ -79,8 +82,9 @@ class UserInfoStore {
   updateFirstDepressionState(state: string) {
     this.depressionState = state;
   }
-  updateLastCompletedMissionDate(date: string) {
-    this.lastCompletedMissionDate = date;
+
+  updateCompleteMissionDatesArray(date: any) {
+    this.completeMissionDatesArray = [...this.completeMissionDatesArray, date];
   }
 }
 

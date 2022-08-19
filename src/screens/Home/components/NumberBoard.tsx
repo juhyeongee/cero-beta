@@ -2,7 +2,6 @@ import { View, Text } from "react-native";
 import styled from "styled-components/native";
 import { ITheme } from "@/types";
 import NumberBox from "./NumberBox";
-import CheckedBox from "./CheckedBox";
 import AutoHeightImage from "react-native-auto-height-image";
 
 interface IContainerProps {
@@ -13,7 +12,7 @@ const NumberBoard = () => {
   return (
     <Container>
       <View style={{ height: "33%", width: "100%", flexDirection: "row" }}>
-        <CheckedBox />
+        <NumberBox text="1" />
         <NumberBox text="2" />
         <NumberBox text="3" />
         <NumberBox text="4" />

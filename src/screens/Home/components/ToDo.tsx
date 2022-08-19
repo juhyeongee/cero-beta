@@ -8,6 +8,7 @@ import missions from "@constants/missions";
 import { observer } from "mobx-react";
 import userInfoStore from "@/store/UserInfoStore";
 import { heightRatio, widthRatio, fontsizeRatio } from "@/utils";
+import Toast from "react-native-toast-message";
 
 interface IContainerProps {
   theme: ITheme;
@@ -15,9 +16,19 @@ interface IContainerProps {
 
 interface Props {
   navigateToTodayMission: () => void;
+  todayMissionComplete: boolean;
 }
 
-const ToDo = ({ navigateToTodayMission }: Props) => {
+const showfToast = () => {
+  Toast.show({
+    type: "success",
+    text1: "오늘의 미션을 이미 완료했어요!",
+    text2: "내일 새로운 미션으로 만나요!",
+    position: "bottom",
+  });
+};
+
+const ToDo = ({ navigateToTodayMission, todayMissionComplete }: Props) => {
   const { todoNum, versionNum, plusVersionNum } = userInfoStore;
   const version = `version${versionNum}`;
   const todoObject = missions[todoNum];
@@ -72,11 +83,17 @@ const ToDo = ({ navigateToTodayMission }: Props) => {
       <View
         style={{
           width: "100%",
-          backgroundColor: Theme.color.n500,
+          backgroundColor: Theme.color.n50,
           height: "30%",
         }}
       >
-        <BigPrimaryBtn text="물 주기" onPress={navigateToTodayMission} />
+        {todayMissionComplete ? (
+          <CompleteBtn onPress={showfToast}>
+            <CompleteBtnText>오늘의 할 일을 완료했어요!</CompleteBtnText>
+          </CompleteBtn>
+        ) : (
+          <BigPrimaryBtn text="물 주기" onPress={navigateToTodayMission} />
+        )}
       </View>
     </Container>
   );
@@ -107,4 +124,18 @@ const ToDoGrayBox = styled.View`
   align-items: center;
   border-radius: 10px;
   margin-bottom: ${Platform.OS === "ios" ? "5%" : `${heightRatio(10)}px`};
+`;
+
+const CompleteBtnText = styled.Text`
+  font-size: 16px;
+  color: ${(props: IContainerProps) => props.theme.color.n900};
+`;
+const CompleteBtn = styled.Pressable`
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: ${(props: IContainerProps) => props.theme.color.n600};
+  border-radius: 10px;
+  height: 48px;
+  padding: ${Platform.OS === "ios" ? "10px" : "0px"} 20px;
 `;
