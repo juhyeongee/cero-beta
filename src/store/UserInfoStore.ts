@@ -16,6 +16,7 @@ class UserInfoStore {
   depressionState: string = "";
   completeMissionDatesArray = ["200000"];
   completeMissionName = "";
+  firstMindTestResultObject: { [key: number]: number } = {};
 
   constructor() {
     makeAutoObservable(
@@ -35,6 +36,7 @@ class UserInfoStore {
         depressionState: observable,
         completeMissionDatesArray: observable,
         completeMissionName: observable,
+        firstMindTestResultObject: observable,
       },
       { autoBind: true }
     );
@@ -48,6 +50,7 @@ class UserInfoStore {
         "gender",
         "FIRST_DEPRESSION_SCORE",
         "completeMissionDatesArray",
+        "firstMindTestResultObject",
       ],
       storage: AsyncStorage,
     });
@@ -93,6 +96,9 @@ class UserInfoStore {
   }
   updateCompleteMissionName(name: string) {
     this.completeMissionName = name;
+  }
+  updateFirstMindTestResultObject(answerNum: number, answer: number) {
+    this.firstMindTestResultObject[answerNum] = answer;
   }
 }
 

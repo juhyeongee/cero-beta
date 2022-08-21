@@ -26,6 +26,7 @@ const Home = ({ route, navigation }: HomeStackScreenProps<"Home">) => {
     todoNum,
     completeMissionDatesArray,
     updateCompleteMissionDatesArray,
+    firstMindTestResultObject,
   } = userInfoStore;
   const todayDate = dayjs().format("YYMMDD");
   const lastCompletedMissionDate =
@@ -37,8 +38,7 @@ const Home = ({ route, navigation }: HomeStackScreenProps<"Home">) => {
   };
 
   useEffect(() => {
-    console.log(completeMissionDatesArray);
-    console.log(todayDate === lastCompletedMissionDate);
+    console.log(firstMindTestResultObject);
   }, []);
 
   //todoNum = 1  , lastCompeletedMissionDate = [] today= 220818

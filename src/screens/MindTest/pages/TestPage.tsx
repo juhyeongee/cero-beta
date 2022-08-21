@@ -12,6 +12,7 @@ import {
   LastWeekTextContainer,
 } from "../components";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import userInfoStore from "@/store/UserInfoStore";
 
 interface IProps {
   pageNumber: number;
@@ -22,8 +23,8 @@ const TestPage = ({ swipeNextPage, pageNumber, onPressSubmitBtn }: IProps) => {
   const [clickedBtnNumber, setClickedBtnNumber] = useState(-1);
   const onHandleClickBtnNumber = async (pressedBtnNum: number) => {
     setClickedBtnNumber(pressedBtnNum);
-    await AsyncStorage.setItem(`answer${pageNumber}`, `${pressedBtnNum}`);
-    const result = await AsyncStorage.getItem(`answer${pageNumber}`);
+
+    userInfoStore.updateFirstMindTestResultObject(pageNumber, pressedBtnNum);
     setTimeout(() => swipeNextPage(), 200);
   };
 

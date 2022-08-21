@@ -1,6 +1,7 @@
 import { Animated } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { questionObj } from "@/constants/properties";
+import userInfoStore from "@/store/UserInfoStore";
 
 export const fadeOut = (seedOpacity: Animated.Value) => {
   Animated.timing(seedOpacity, {
@@ -57,9 +58,10 @@ export const moveDownSecond = (seedY: Animated.Value) => {
 };
 
 export const findNotAnsweredQuestion = async () => {
+  const { firstMindTestResultObject } = userInfoStore;
   const arr = await AsyncStorage.getAllKeys();
   for (let i = 1; i < Object.keys(questionObj).length + 1; i++) {
-    if (!arr.includes(`answer${i}`)) {
+    if (!firstMindTestResultObject[i]) {
       return i;
     }
   }
