@@ -32,7 +32,7 @@ const LoadingPage = ({
     } else {
       userInfoStore.updateFirstDepressionState("good");
     }
-    setTimeout(() => navigation.navigate("ResultPage"), 5000);
+    setTimeout(() => navigation.navigate("ResultPage"), 1000);
   }, []);
 
   return (

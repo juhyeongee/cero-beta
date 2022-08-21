@@ -15,6 +15,7 @@ class UserInfoStore {
   FIRST_DEPRESSION_SCORE: number = 0;
   depressionState: string = "";
   completeMissionDatesArray = ["200000"];
+  completeMissionName = "";
 
   constructor() {
     makeAutoObservable(
@@ -33,6 +34,7 @@ class UserInfoStore {
         FIRST_DEPRESSION_SCORE: observable,
         depressionState: observable,
         completeMissionDatesArray: observable,
+        completeMissionName: observable,
       },
       { autoBind: true }
     );
@@ -88,6 +90,9 @@ class UserInfoStore {
   }
   resetCompleteMissionDatesArray() {
     this.completeMissionDatesArray = ["100000"];
+  }
+  updateCompleteMissionName(name: string) {
+    this.completeMissionName = name;
   }
 }
 

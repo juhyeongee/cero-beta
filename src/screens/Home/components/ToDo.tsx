@@ -9,6 +9,8 @@ import { observer } from "mobx-react";
 import userInfoStore from "@/store/UserInfoStore";
 import { heightRatio, widthRatio, fontsizeRatio } from "@/utils";
 import Toast from "react-native-toast-message";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useEffect, useState } from "react";
 
 interface IContainerProps {
   theme: ITheme;
@@ -29,13 +31,36 @@ const showToast = () => {
 };
 
 const ToDo = ({ navigateToTodayMission, todayMissionComplete }: Props) => {
-  const { todoNum, versionNum, plusVersionNum } = userInfoStore;
+  const [completedTodoFromAsyncStorage, setCompletedTodoFromAsyncStorage] =
+    useState<undefined | string>();
+  const { todoNum, versionNum, plusVersionNum, completeMissionName } =
+    userInfoStore;
   const version = `version${versionNum}`;
   const todoObject = missions[todoNum];
   const todo = todoObject[version].subtitle;
 
-  const completedTodoObject = missions[todoNum - 1];
-  const completedTodo = completedTodoObject[version].subtitle;
+  const updateCompletedVersionFromAsyncStorage = () => {
+    AsyncStorage.getItem(`mission${todoNum - 1}Result`).then((res) => {
+      if (res === null) {
+        console.log("set버전 실패");
+        return null;
+      } else {
+        const parsedCompletedObject = JSON.parse(res);
+        const completedVersionFromAsyncStorage =
+          parsedCompletedObject["versionNum"];
+        const completedTodo =
+          missions[todoNum - 1][`version${completedVersionFromAsyncStorage}`]
+            .subtitle;
+        if (completedTodo === undefined) {
+          console.log("completedTodo is 'undefined'");
+        } else {
+          setCompletedTodoFromAsyncStorage(completedTodo);
+          userInfoStore.updateCompleteMissionName(completedTodo);
+        }
+      }
+    });
+  };
+  //TODO: 다만, 현재 rerender를 하지 않는한, 홈 화면에서  오늘의 할 일 텍스트가 백지로 나옴; reroad 할 때, 비동기함수라서 업데이트가 느려서 그런건가  싶음
 
   const rotateVersionNum = () => {
     let length = Object.keys(todoObject).length;
@@ -45,6 +70,10 @@ const ToDo = ({ navigateToTodayMission, todayMissionComplete }: Props) => {
       userInfoStore.resetVersionNum();
     }
   };
+
+  useEffect(() => {
+    updateCompletedVersionFromAsyncStorage();
+  }, []);
 
   return (
     <Container>
@@ -87,7 +116,7 @@ const ToDo = ({ navigateToTodayMission, todayMissionComplete }: Props) => {
             color: Theme.color.n900,
           }}
         >
-          {todayMissionComplete ? completedTodo : todo}
+          {todayMissionComplete ? completedTodoFromAsyncStorage : todo}
         </Text>
       </ToDoGrayBox>
       <View
