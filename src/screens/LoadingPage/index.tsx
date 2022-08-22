@@ -17,22 +17,22 @@ const LoadingPage = ({
   navigation,
 }: OnBoardingStackScreenProps<"LoadingPage">) => {
   useEffect(() => {
-    if (userInfoStore.FIRST_DEPRESSION_SCORE >= 25) {
-      userInfoStore.updateFirstDepressionState("serious");
+    if (userInfoStore.FIRST_DEPRESSION_SCORE >= 46) {
+      userInfoStore.updateFirstDepressionState("good");
     } else if (
-      userInfoStore.FIRST_DEPRESSION_SCORE > 20 &&
-      userInfoStore.FIRST_DEPRESSION_SCORE <= 24
-    ) {
-      userInfoStore.updateFirstDepressionState("attention");
-    } else if (
-      userInfoStore.FIRST_DEPRESSION_SCORE > 15 &&
-      userInfoStore.FIRST_DEPRESSION_SCORE <= 20
+      userInfoStore.FIRST_DEPRESSION_SCORE > 40 &&
+      userInfoStore.FIRST_DEPRESSION_SCORE <= 45
     ) {
       userInfoStore.updateFirstDepressionState("moderate");
+    } else if (
+      userInfoStore.FIRST_DEPRESSION_SCORE > 20 &&
+      userInfoStore.FIRST_DEPRESSION_SCORE <= 40
+    ) {
+      userInfoStore.updateFirstDepressionState("attention");
     } else {
-      userInfoStore.updateFirstDepressionState("good");
+      userInfoStore.updateFirstDepressionState("serious");
     }
-    setTimeout(() => navigation.navigate("ResultPage"), 1000);
+    setTimeout(() => navigation.navigate("ResultPage"), 500);
   }, []);
 
   return (

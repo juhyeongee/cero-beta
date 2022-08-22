@@ -23,7 +23,6 @@ const TestPage = ({ swipeNextPage, pageNumber, onPressSubmitBtn }: IProps) => {
   const [clickedBtnNumber, setClickedBtnNumber] = useState(-1);
   const onHandleClickBtnNumber = async (pressedBtnNum: number) => {
     setClickedBtnNumber(pressedBtnNum);
-
     userInfoStore.updateFirstMindTestResultObject(pageNumber, pressedBtnNum);
     setTimeout(() => swipeNextPage(), 200);
   };
@@ -40,15 +39,15 @@ const TestPage = ({ swipeNextPage, pageNumber, onPressSubmitBtn }: IProps) => {
         <ButtonContainer>
           <AnswerBtn
             clickedBtnNumber={clickedBtnNumber}
-            number={0}
+            number={4}
             content="극히 드물게"
-            onPress={() => onHandleClickBtnNumber(0)}
+            onPress={() => onHandleClickBtnNumber(4)}
           />
           <AnswerBtn
             clickedBtnNumber={clickedBtnNumber}
-            number={1}
+            number={3}
             content="가끔 (1~2일)"
-            onPress={() => onHandleClickBtnNumber(1)}
+            onPress={() => onHandleClickBtnNumber(3)}
           />
           <AnswerBtn
             clickedBtnNumber={clickedBtnNumber}
@@ -58,9 +57,9 @@ const TestPage = ({ swipeNextPage, pageNumber, onPressSubmitBtn }: IProps) => {
           />
           <AnswerBtn
             clickedBtnNumber={clickedBtnNumber}
-            number={3}
+            number={1}
             content="거의 대부분 (5~7일)"
-            onPress={() => onHandleClickBtnNumber(3)}
+            onPress={() => onHandleClickBtnNumber(1)}
           />
         </ButtonContainer>
         <View style={{ width: "100%", position: "absolute", bottom: "5%" }}>

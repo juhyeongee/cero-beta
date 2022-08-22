@@ -67,3 +67,16 @@ export const findNotAnsweredQuestion = async () => {
   }
   return -1;
 };
+
+export const calculateDepressionScore = async () => {
+  const QUESTION_OBJ_LENGTH = Object.keys(questionObj).length;
+  const { firstMindTestResultObject } = userInfoStore;
+  let totalScore = 0;
+  for (let i = 1; i < QUESTION_OBJ_LENGTH + 1; i++) {
+    const eachScore = firstMindTestResultObject[i];
+    totalScore += eachScore;
+  }
+  totalScore = totalScore - QUESTION_OBJ_LENGTH;
+  console.log(totalScore);
+  return totalScore;
+};
