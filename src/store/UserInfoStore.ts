@@ -17,6 +17,7 @@ class UserInfoStore {
   completeMissionDatesArray = ["200000"];
   completeMissionName = "";
   firstMindTestResultObject: { [key: number]: number } = {};
+  todayDate = "200101";
 
   constructor() {
     makeAutoObservable(
@@ -37,6 +38,7 @@ class UserInfoStore {
         completeMissionDatesArray: observable,
         completeMissionName: observable,
         firstMindTestResultObject: observable,
+        todayDate: observable,
       },
       { autoBind: true }
     );
@@ -51,6 +53,7 @@ class UserInfoStore {
         "FIRST_DEPRESSION_SCORE",
         "completeMissionDatesArray",
         "firstMindTestResultObject",
+        "todayDate",
       ],
       storage: AsyncStorage,
     });
@@ -100,6 +103,12 @@ class UserInfoStore {
   updateFirstMindTestResultObject(answerNum: number, answer: number) {
     this.firstMindTestResultObject[answerNum] = answer;
   }
+  updateTodayDate() {
+    this.todayDate = dayjs().format("YYMMDD");
+  }
+  updateTempTodayDate(date: string) {
+    this.todayDate = date;
+  }
 }
 
 const userInfoStore = new UserInfoStore();
@@ -109,6 +118,6 @@ export default userInfoStore;
 //미션 완료 () =>
 //   Update Last Completed Mission Date
 //   plusVersionNum ()
-//   if ( Last Completed Mission Date === todayDate)
+//   if ( Last Completedf Mission Date === todayDate)
 //   => show "오늘의 미션을 완료했어요"
 //

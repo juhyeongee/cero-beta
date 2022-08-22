@@ -73,6 +73,9 @@ const Devtool = () => {
       <Pressable onPress={() => userInfoStore.resetCompleteMissionDatesArray()}>
         <Text>오늘날짜 없애기 </Text>
       </Pressable>
+      <Pressable onPress={() => userInfoStore.updateTempTodayDate("220823")}>
+        <Text> 220823으로 날짜 바꾸기 </Text>
+      </Pressable>
     </CenterView>
   );
 };

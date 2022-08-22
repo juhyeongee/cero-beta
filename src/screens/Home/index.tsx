@@ -28,7 +28,7 @@ const Home = ({ route, navigation }: HomeStackScreenProps<"Home">) => {
     updateCompleteMissionDatesArray,
     firstMindTestResultObject,
   } = userInfoStore;
-  const todayDate = dayjs().format("YYMMDD");
+  const { todayDate } = userInfoStore;
   const lastCompletedMissionDate =
     completeMissionDatesArray[completeMissionDatesArray.length - 1];
   //TODO: Array에서 꺼내온 dayjs object에는 왜 .format등 메소드를 못쓴다고 해놓은걸까?
@@ -38,18 +38,8 @@ const Home = ({ route, navigation }: HomeStackScreenProps<"Home">) => {
   };
 
   useEffect(() => {
-    console.log(firstMindTestResultObject);
+    console.log(userInfoStore);
   }, []);
-
-  //todoNum = 1  , lastCompeletedMissionDate = [] today= 220818
-  // mission  완료!
-  // todoNum = 2 lastCompletedMIssionDate = [ 220818 ] , today= 220818
-  // 이때는 lastCompleted의 마지막 요소가 오늘 날짜와 같을때, "오늘 미션을 완료했어요 버튼"
-  // 하루가 지나고 나서!
-  // todoNum = 2 lastCompletedMIssionDate = [ 220818 ] , today= 220819
-  // 마지막 날짜와 오늘 날짜가 다르다, 고로 미션 버튼 가능하게 해준다.
-  // 처음에 미션Date에 공갈값 하나 넣어줘야하고 그러면 또 todoNum이랑 순서 맞출 수 있을 것 같고
-  // Date 값이 들어가는 Array 로 변경해야함
 
   //TODO: 미션 14일차 미션 다 끝나면 엔딩보러가기 페이지가 생겨야함 , 미션num이 15일 일떄랑 ㅇ
   const imageSourceArray = [

@@ -49,7 +49,8 @@ function App() {
     GothicA1_600SemiBold,
   });
   useEffect(() => {
-    userInfoStore.resetVersionNum;
+    userInfoStore.resetVersionNum();
+    userInfoStore.updateTodayDate();
     // AsyncStorage.clear();
   }, []);
 
