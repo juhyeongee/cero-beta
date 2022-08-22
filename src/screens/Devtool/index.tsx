@@ -4,6 +4,7 @@ import userInfoStore from "@/store/UserInfoStore";
 import { observer } from "mobx-react";
 import currentPageStore from "@/store/CurrentPageStore";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import dayjs from "dayjs";
 
 const Devtool = () => {
   function addOne() {
@@ -73,8 +74,12 @@ const Devtool = () => {
       <Pressable onPress={() => userInfoStore.resetCompleteMissionDatesArray()}>
         <Text>오늘날짜 없애기 </Text>
       </Pressable>
-      <Pressable onPress={() => userInfoStore.updateTempTodayDate("220823")}>
-        <Text> 220823으로 날짜 바꾸기 </Text>
+      <Pressable
+        onPress={() => {
+          userInfoStore.updateTempTodayDate("220830");
+        }}
+      >
+        <Text> 220830으로 날짜 바꾸기 </Text>
       </Pressable>
     </CenterView>
   );

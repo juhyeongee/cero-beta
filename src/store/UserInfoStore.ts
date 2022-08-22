@@ -3,8 +3,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { makePersistable, stopPersisting } from "mobx-persist-store";
 import dayjs from "dayjs";
 
-const date2 = dayjs("2020-04-08 ");
-
 class UserInfoStore {
   todoNum: number = 1;
   versionNum: number = 1;
@@ -17,7 +15,7 @@ class UserInfoStore {
   completeMissionDatesArray = ["200000"];
   completeMissionName = "";
   firstMindTestResultObject: { [key: number]: number } = {};
-  todayDate = "200101";
+  todayDate = dayjs().format("YYMMDD");
 
   constructor() {
     makeAutoObservable(

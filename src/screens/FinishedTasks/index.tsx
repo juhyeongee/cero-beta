@@ -9,7 +9,6 @@ import { observer } from "mobx-react";
 import EmptyCard from "./components/EmptyCard";
 import Toast from "react-native-toast-message";
 import { useNavigation } from "@react-navigation/native";
-import dayjs from "dayjs";
 interface IContainerProps {
   theme: ITheme;
 }

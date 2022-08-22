@@ -22,20 +22,7 @@ interface IContainerProps {
 }
 
 const Home = ({ route, navigation }: HomeStackScreenProps<"Home">) => {
-  const {
-    todoNum,
-    completeMissionDatesArray,
-    updateCompleteMissionDatesArray,
-    firstMindTestResultObject,
-  } = userInfoStore;
-  const { todayDate } = userInfoStore;
-  const lastCompletedMissionDate =
-    completeMissionDatesArray[completeMissionDatesArray.length - 1];
-  //TODO: Array에서 꺼내온 dayjs object에는 왜 .format등 메소드를 못쓴다고 해놓은걸까?
-
-  const navigateToTodayMission = () => {
-    navigation.navigate("TodayMission");
-  };
+  const { todoNum, completeMissionDatesArray } = userInfoStore;
 
   useEffect(() => {
     console.log(userInfoStore);
@@ -59,23 +46,6 @@ const Home = ({ route, navigation }: HomeStackScreenProps<"Home">) => {
     require("@/assets/images/14.png"),
   ];
 
-  const badImageSourceArray = [
-    require("@/assets/images/bad1.png"),
-    require("@/assets/images/bad2.png"),
-    require("@/assets/images/bad3.png"),
-    require("@/assets/images/bad4.png"),
-    require("@/assets/images/bad5.png"),
-    require("@/assets/images/bad6.png"),
-    require("@/assets/images/bad7.png"),
-    require("@/assets/images/bad8.png"),
-    require("@/assets/images/bad9.png"),
-    require("@/assets/images/bad10.png"),
-    require("@/assets/images/bad11.png"),
-    require("@/assets/images/bad12.png"),
-    require("@/assets/images/bad13.png"),
-    require("@/assets/images/bad14.png"),
-  ];
-
   const plantSource = imageSourceArray[todoNum - 1];
 
   return (
@@ -91,8 +61,9 @@ const Home = ({ route, navigation }: HomeStackScreenProps<"Home">) => {
               activeDotColor="#40B08F"
             >
               <ToDo
-                todayMissionComplete={todayDate === lastCompletedMissionDate}
-                navigateToTodayMission={navigateToTodayMission}
+                navigateToTodayMission={() =>
+                  navigation.navigate("TodayMission")
+                }
               />
               <NumberBoard />
             </Swiper>

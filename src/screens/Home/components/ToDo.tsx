@@ -18,7 +18,6 @@ interface IContainerProps {
 
 interface Props {
   navigateToTodayMission: () => void;
-  todayMissionComplete: boolean;
 }
 
 const showToast = () => {
@@ -30,19 +29,29 @@ const showToast = () => {
   });
 };
 
-const ToDo = ({ navigateToTodayMission, todayMissionComplete }: Props) => {
+const ToDo = ({ navigateToTodayMission }: Props) => {
   const [completedTodoFromAsyncStorage, setCompletedTodoFromAsyncStorage] =
     useState<undefined | string>();
-  const { todoNum, versionNum, plusVersionNum, completeMissionName } =
-    userInfoStore;
+  const {
+    todoNum,
+    todayDate,
+    versionNum,
+    plusVersionNum,
+    completeMissionDatesArray,
+  } = userInfoStore;
   const version = `version${versionNum}`;
   const todoObject = missions[todoNum];
   const todo = todoObject[version].subtitle;
 
+  const lastCompletedMissionDate =
+    completeMissionDatesArray[completeMissionDatesArray.length - 1];
+  const todayMissionComplete = todayDate === lastCompletedMissionDate;
+  console.log(todayMissionComplete);
+
   const updateCompletedVersionFromAsyncStorage = () => {
     AsyncStorage.getItem(`mission${todoNum - 1}Result`).then((res) => {
       if (res === null) {
-        console.log("set버전 실패");
+        console.log(" 'Home어제자 미션 정보가 없습니다.");
         return null;
       } else {
         const parsedCompletedObject = JSON.parse(res);

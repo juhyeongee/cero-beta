@@ -22,6 +22,7 @@ import {
 } from "./Styled";
 import dayjs from "dayjs";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { observer } from "mobx-react";
 
 interface HeaderModal {
   modalVisible: boolean;
@@ -45,7 +46,7 @@ const Header = ({
         {
           text: "네",
           onPress: async () => {
-            AsyncStorage.setItem(
+            await AsyncStorage.setItem(
               `mission${todoNum}Result`,
               JSON.stringify({
                 missionName: missionTitle,
@@ -55,9 +56,7 @@ const Header = ({
                 resultText: missionText,
               }),
               () => {
-                userInfoStore.updateCompleteMissionDatesArray(
-                  dayjs().format("YYMMDD")
-                );
+                userInfoStore.updateCompleteMissionDatesArray(todayDate);
                 userInfoStore.addOne();
                 navigation.goBack();
               }
@@ -120,4 +119,4 @@ const Header = ({
     </>
   );
 };
-export default Header;
+export default observer(Header);
