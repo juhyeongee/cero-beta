@@ -20,7 +20,6 @@ import {
   Subtitle,
   FinishBtn,
 } from "./Styled";
-import dayjs from "dayjs";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { observer } from "mobx-react";
 

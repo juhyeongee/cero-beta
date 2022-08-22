@@ -7,6 +7,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import dayjs from "dayjs";
 
 const Devtool = () => {
+  const { todoNum } = userInfoStore;
   function addOne() {
     userInfoStore.addOne();
     userInfoStore.resetVersionNum();
@@ -17,6 +18,20 @@ const Devtool = () => {
   }
   function resetVersion() {
     userInfoStore.resetVersionNum();
+  }
+  function set14thMissionDay() {
+    for (let i = todoNum + 1; i < 13; i++) {
+      AsyncStorage.setItem(
+        `mission${i}Result`,
+        JSON.stringify({
+          missionName: "missionTitle",
+          completeDate: `${i}번째`,
+          todoNum: i + 2,
+          versionNum: `7`,
+          resultText: "임시로  만든 카드입니다",
+        })
+      );
+    }
   }
   return (
     <CenterView>
@@ -76,10 +91,17 @@ const Devtool = () => {
       </Pressable>
       <Pressable
         onPress={() => {
-          userInfoStore.updateTempTodayDate("220830");
+          userInfoStore.updateTempTodayDate("220907");
         }}
       >
-        <Text> 220830으로 날짜 바꾸기 </Text>
+        <Text> 220907 으로 날짜 바꾸기 </Text>
+      </Pressable>
+
+      <Text>---------------------------------------------------</Text>
+      <Text>---------------------------------------------------</Text>
+
+      <Pressable onPress={set14thMissionDay}>
+        <Text> 마지막 미션으로 가기 </Text>
       </Pressable>
     </CenterView>
   );

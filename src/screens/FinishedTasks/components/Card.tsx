@@ -36,10 +36,6 @@ const Card = ({ missionNum, showToast }: CardProps) => {
       setMissionNameFromAsyncStorage(resultObject["missionName"]);
       setCompleteDateFromAsyncStorage(resultObject["completeDate"]);
       setResultTextFromAsyncStorage(resultObject["resultText"]);
-      console.log(
-        'resultObject["completeDate"]:',
-        resultObject["completeDate"]
-      );
     }
   });
 

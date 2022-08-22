@@ -18,6 +18,7 @@ interface IContainerProps {
 
 interface Props {
   navigateToTodayMission: () => void;
+  navigateToLastMindTest: () => void;
 }
 
 const showToast = () => {
@@ -29,7 +30,7 @@ const showToast = () => {
   });
 };
 
-const ToDo = ({ navigateToTodayMission }: Props) => {
+const ToDo = ({ navigateToTodayMission, navigateToLastMindTest }: Props) => {
   const [completedTodoFromAsyncStorage, setCompletedTodoFromAsyncStorage] =
     useState<undefined | string>();
   const {
@@ -46,7 +47,6 @@ const ToDo = ({ navigateToTodayMission }: Props) => {
   const lastCompletedMissionDate =
     completeMissionDatesArray[completeMissionDatesArray.length - 1];
   const todayMissionComplete = todayDate === lastCompletedMissionDate;
-  console.log(todayMissionComplete);
 
   const updateCompletedVersionFromAsyncStorage = () => {
     AsyncStorage.getItem(`mission${todoNum - 1}Result`).then((res) => {
@@ -135,7 +135,12 @@ const ToDo = ({ navigateToTodayMission }: Props) => {
           height: "30%",
         }}
       >
-        {todayMissionComplete ? (
+        {todoNum === 15 ? (
+          <BigPrimaryBtn
+            text="마지막 물주기"
+            onPress={navigateToLastMindTest}
+          />
+        ) : todayMissionComplete ? (
           <CompleteBtn onPress={showToast}>
             <CompleteBtnText>오늘의 할 일을 완료했어요!</CompleteBtnText>
           </CompleteBtn>

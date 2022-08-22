@@ -58,7 +58,7 @@ const FinishedTasks = () => {
             {missionArray.map((index) => (
               <Card showToast={showToast} key={index} missionNum={index} />
             ))}
-            {todoNum !== 14 && (
+            {todoNum !== 15 && (
               <EmptyCard
                 onPress={
                   lastCompletedMissionDate === todayDate

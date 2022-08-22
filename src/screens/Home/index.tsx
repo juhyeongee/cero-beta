@@ -12,10 +12,10 @@ import Swiper from "react-native-swiper";
 import ToDo from "./components/ToDo";
 import NumberBoard from "./components/NumberBoard";
 import userInfoStore from "@/store/UserInfoStore";
-import dayjs from "dayjs";
 import { useEffect } from "react";
 import PlantContainer from "./components/PlantContainer";
 import { observer } from "mobx-react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 interface IContainerProps {
   theme: ITheme;
@@ -26,7 +26,8 @@ const Home = ({ route, navigation }: HomeStackScreenProps<"Home">) => {
 
   useEffect(() => {
     console.log(userInfoStore);
-  }, []);
+    AsyncStorage.getAllKeys().then((res) => console.log(res));
+  }, [todoNum]);
 
   //TODO: 미션 14일차 미션 다 끝나면 엔딩보러가기 페이지가 생겨야함 , 미션num이 15일 일떄랑 ㅇ
   const imageSourceArray = [
@@ -44,6 +45,7 @@ const Home = ({ route, navigation }: HomeStackScreenProps<"Home">) => {
     require("@/assets/images/12.png"),
     require("@/assets/images/13.png"),
     require("@/assets/images/14.png"),
+    require("@/assets/images/15.png"),
   ];
 
   const plantSource = imageSourceArray[todoNum - 1];
@@ -64,6 +66,7 @@ const Home = ({ route, navigation }: HomeStackScreenProps<"Home">) => {
                 navigateToTodayMission={() =>
                   navigation.navigate("TodayMission")
                 }
+                navigateToLastMindTest={() => navigation.navigate("MindTest")}
               />
               <NumberBoard />
             </Swiper>
