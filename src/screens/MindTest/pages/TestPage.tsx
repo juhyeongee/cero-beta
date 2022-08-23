@@ -20,10 +20,17 @@ interface IProps {
   swipeNextPage: () => void;
 }
 const TestPage = ({ swipeNextPage, pageNumber, onPressSubmitBtn }: IProps) => {
+  const { todoNum } = userInfoStore;
   const [clickedBtnNumber, setClickedBtnNumber] = useState(-1);
   const onHandleClickBtnNumber = async (pressedBtnNum: number) => {
     setClickedBtnNumber(pressedBtnNum);
-    userInfoStore.updateFirstMindTestResultObject(pageNumber, pressedBtnNum);
+    if (todoNum === 15) {
+      userInfoStore.updateLastMindTestResultObject(pageNumber, pressedBtnNum);
+      console.log(`${pageNumber}페이지 클릭`);
+    } else {
+      userInfoStore.updateFirstMindTestResultObject(pageNumber, pressedBtnNum);
+      console.log(`${pageNumber}페이지 클릭`);
+    }
     setTimeout(() => swipeNextPage(), 200);
   };
 

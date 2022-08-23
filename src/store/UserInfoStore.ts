@@ -11,11 +11,14 @@ class UserInfoStore {
   gender: string = "미정";
   age: number = 0;
   FIRST_DEPRESSION_SCORE: number = 0;
-  depressionState: string = "";
+  LAST_DEPRESSION_SCORE: number = 0;
+  firstDepressionState: string = "";
+  lastDepressionState: string = "";
   completeMissionDatesArray = ["200000"];
   completeMissionName = "";
   firstMindTestResultObject: { [key: number]: number } = {};
   todayDate = dayjs().format("YYMMDD");
+  lastMindTestResultObject: { [key: number]: number } = {};
 
   constructor() {
     makeAutoObservable(
@@ -32,7 +35,9 @@ class UserInfoStore {
         gender: observable,
         age: observable,
         FIRST_DEPRESSION_SCORE: observable,
-        depressionState: observable,
+        LAST_DEPRESSION_SCORE: observable,
+        firstDepressionState: observable,
+        lastDepressionState: observable,
         completeMissionDatesArray: observable,
         completeMissionName: observable,
         firstMindTestResultObject: observable,
@@ -49,9 +54,11 @@ class UserInfoStore {
         "birthday",
         "gender",
         "FIRST_DEPRESSION_SCORE",
+        "LAST_DEPRESSION_SCORE",
         "completeMissionDatesArray",
         "firstMindTestResultObject",
         "todayDate",
+        "firstDepressionState",
       ],
       storage: AsyncStorage,
     });
@@ -87,7 +94,13 @@ class UserInfoStore {
     this.FIRST_DEPRESSION_SCORE = score;
   }
   updateFirstDepressionState(state: string) {
-    this.depressionState = state;
+    this.firstDepressionState = state;
+  }
+  updateLastDepressionScore(score: number) {
+    this.LAST_DEPRESSION_SCORE = score;
+  }
+  updateLastDepressionState(state: string) {
+    this.lastDepressionState = state;
   }
   updateCompleteMissionDatesArray(date: any) {
     this.completeMissionDatesArray = [...this.completeMissionDatesArray, date];
@@ -100,6 +113,9 @@ class UserInfoStore {
   }
   updateFirstMindTestResultObject(answerNum: number, answer: number) {
     this.firstMindTestResultObject[answerNum] = answer;
+  }
+  updateLastMindTestResultObject(answerNum: number, answer: number) {
+    this.lastMindTestResultObject[answerNum] = answer;
   }
   updateTodayDate() {
     this.todayDate = dayjs().format("YYMMDD");

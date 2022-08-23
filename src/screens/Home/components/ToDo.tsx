@@ -11,6 +11,7 @@ import { heightRatio, widthRatio, fontsizeRatio } from "@/utils";
 import Toast from "react-native-toast-message";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect, useState } from "react";
+import currentPageStore from "@/store/CurrentPageStore";
 
 interface IContainerProps {
   theme: ITheme;
@@ -18,7 +19,6 @@ interface IContainerProps {
 
 interface Props {
   navigateToTodayMission: () => void;
-  navigateToLastMindTest: () => void;
 }
 
 const showToast = () => {
@@ -30,7 +30,7 @@ const showToast = () => {
   });
 };
 
-const ToDo = ({ navigateToTodayMission, navigateToLastMindTest }: Props) => {
+const ToDo = ({ navigateToTodayMission }: Props) => {
   const [completedTodoFromAsyncStorage, setCompletedTodoFromAsyncStorage] =
     useState<undefined | string>();
   const {
@@ -138,7 +138,7 @@ const ToDo = ({ navigateToTodayMission, navigateToLastMindTest }: Props) => {
         {todoNum === 15 ? (
           <BigPrimaryBtn
             text="마지막 물주기"
-            onPress={navigateToLastMindTest}
+            onPress={() => currentPageStore.updateScreen("EndingStackNav")}
           />
         ) : todayMissionComplete ? (
           <CompleteBtn onPress={showToast}>

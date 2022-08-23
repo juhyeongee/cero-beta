@@ -66,7 +66,6 @@ const Home = ({ route, navigation }: HomeStackScreenProps<"Home">) => {
                 navigateToTodayMission={() =>
                   navigation.navigate("TodayMission")
                 }
-                navigateToLastMindTest={() => navigation.navigate("MindTest")}
               />
               <NumberBoard />
             </Swiper>

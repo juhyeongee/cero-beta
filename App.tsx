@@ -27,9 +27,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import Toast from "react-native-toast-message";
 import userInfoStore from "@/store/UserInfoStore";
 import currentPageStore from "@/store/CurrentPageStore";
+import { EndingStackNav } from "@navigations/index";
 import { observer } from "mobx-react";
-import { SettingStackNav } from "@/navigations/SettingStackNav";
-import EndingResult from "@/screens/EndingResult";
 
 function App() {
   const { currentScreen } = currentPageStore;
@@ -69,6 +68,7 @@ function App() {
         {currentScreen === "IntroNav" && <IntroNav />}
         {currentScreen === "OnBoardingNav" && <OnBoardingNav />}
         {currentScreen === "MainBottomTabNav" && <MainBottomTabNav />}
+        {currentScreen === "EndingStackNav" && <EndingStackNav />}
 
         {/* {onPage === "Setting" && <SettingStackNav />} */}
 

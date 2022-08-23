@@ -22,12 +22,18 @@ const MindTest = ({
       console.log("MindTest, 대답안한 number는: ", number);
       swiperRef.current.scrollBy(-(20 - number));
     } else {
-      console.log("출력 완료");
-      const totalDepressionScore = await calculateDepressionScore();
-      userInfoStore.updateFirstDepressionScore(totalDepressionScore);
-      const result = await AsyncStorage.getItem("FIRST_DEPRESSION_SCORE");
-      console.log(result);
-      navigation.navigate("LoadingPage");
+      if (userInfoStore.todoNum !== 15) {
+        const totalDepressionScore = await calculateDepressionScore("first");
+        userInfoStore.updateFirstDepressionScore(totalDepressionScore);
+        const result = await AsyncStorage.getItem("FIRST_DEPRESSION_SCORE");
+        console.log("첫 마음점검 결과점수 : ", result);
+        navigation.navigate("LoadingPage");
+      } else if (userInfoStore.todoNum === 15) {
+        const totalDepressionScore = await calculateDepressionScore("last");
+        userInfoStore.updateLastDepressionScore(totalDepressionScore);
+        const result = await AsyncStorage.getItem("LAST_DEPRESSION_SCORE");
+        console.log("마지막 마음점검 결과점수 : ", result);
+      }
     }
   };
 

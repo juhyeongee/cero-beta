@@ -23,6 +23,7 @@ export type MainBottomTabParamList = {
 export type HomeStackParamList = {
   TodayMission: undefined;
   Home: { missionNum: number };
+  MindTest: undefined;
 };
 export type OnBoardingStackParamList = {
   TakeUserInfo: undefined;
@@ -38,6 +39,11 @@ export type SettingStackParamList = {
   ResetNickname: undefined;
   SettingAlarm: undefined;
   SettingHome: undefined;
+};
+
+export type EndingStackParamList = {
+  LoadingPage: undefined;
+  MindTest: undefined;
 };
 
 export type HomeStackScreenProps<Screen extends keyof HomeStackParamList> =

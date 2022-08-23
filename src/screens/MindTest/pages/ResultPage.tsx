@@ -31,7 +31,7 @@ interface StyledProps {
 const ResultPage = () => {
   const [pageNumber, setPageNubmer] = useState(0);
   const { updateScreen } = currentPageStore;
-  const { depressionState } = userInfoStore;
+  const { firstDepressionState } = userInfoStore;
   const TOGO_SCREEN = "MainBottomTabNav";
 
   const seedOpacity: Animated.Value = useRef(new Animated.Value(1)).current;
@@ -65,7 +65,9 @@ const ResultPage = () => {
     <BG>
       <SafeAreaView style={{ flex: 1 }}>
         <Container>
-          <MainText>{mindTestResult[depressionState][pageNumber]}</MainText>
+          <MainText>
+            {mindTestResult[firstDepressionState][pageNumber]}
+          </MainText>
         </Container>
         <ImageContainer>
           <Animated.View
