@@ -1,6 +1,7 @@
 import { Animated } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { questionObj } from "@/constants/properties";
+import userInfoStore from "@/store/UserInfoStore";
 
 export const fadeOut = (seedOpacity: Animated.Value) => {
   Animated.timing(seedOpacity, {
@@ -57,11 +58,31 @@ export const moveDownSecond = (seedY: Animated.Value) => {
 };
 
 export const findNotAnsweredQuestion = async () => {
+  const { firstMindTestResultObject } = userInfoStore;
   const arr = await AsyncStorage.getAllKeys();
   for (let i = 1; i < Object.keys(questionObj).length + 1; i++) {
-    if (!arr.includes(`answer${i}`)) {
+    if (!firstMindTestResultObject[i]) {
       return i;
     }
   }
   return -1;
+};
+
+export const calculateDepressionScore = async (type: string) => {
+  const QUESTION_OBJ_LENGTH = Object.keys(questionObj).length;
+  const { firstMindTestResultObject, lastMindTestResultObject } = userInfoStore;
+  let totalScore = 0;
+  for (let i = 1; i < QUESTION_OBJ_LENGTH + 1; i++) {
+    if (type == "first") {
+      const eachScore = firstMindTestResultObject[i];
+      totalScore += eachScore;
+    } else if (type == "last") {
+      const eachScore = lastMindTestResultObject[i];
+      totalScore += eachScore;
+      console.log(eachScore);
+    }
+  }
+  totalScore = totalScore - QUESTION_OBJ_LENGTH;
+  console.log("totalScore", totalScore);
+  return totalScore;
 };

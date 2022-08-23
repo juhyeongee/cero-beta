@@ -1,28 +1,32 @@
 import styled from "styled-components/native";
-import { View, Text } from "react-native";
+import { View, Text, Image } from "react-native";
 import { ITheme } from "@/types";
 import SvgIcon from "@/assets/SvgIcon";
 import AutoHeightImage from "react-native-auto-height-image";
 
-interface IContainerProps {
-  theme: ITheme;
-}
 interface IProps {
   type: string;
+  photo: number;
 }
-const Tag = ({ type }: IProps) => {
+const Tag = ({ type, photo }: IProps) => {
   return (
     <View>
       {type === "photo" && (
-        <AutoHeightImage
-          width={60}
-          source={require("@assets/images/textMissionIcon.png")}
+        <Image
+          style={{
+            width: 60,
+            height: 60,
+            resizeMode: "cover",
+            borderRadius: 10,
+            marginLeft: 5,
+          }}
+          source={photo}
         />
       )}
       {type === "text" && (
         <AutoHeightImage
           width={60}
-          source={require("@assets/images/file.png")}
+          source={require("@assets/images/textMissionIcon.png")}
         />
       )}
       {type === "both" && (
@@ -31,9 +35,15 @@ const Tag = ({ type }: IProps) => {
             width={60}
             source={require("@assets/images/textMissionIcon.png")}
           />
-          <AutoHeightImage
-            width={60}
-            source={require("@assets/images/textMissionIcon.png")}
+          <Image
+            style={{
+              width: 60,
+              height: 60,
+              resizeMode: "cover",
+              borderRadius: 10,
+              marginLeft: 5,
+            }}
+            source={photo}
           />
         </View>
       )}

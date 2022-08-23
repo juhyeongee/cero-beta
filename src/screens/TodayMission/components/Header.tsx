@@ -6,6 +6,7 @@ import {
   Modal,
   ScrollView,
   Platform,
+  Alert,
 } from "react-native";
 import SvgIcon from "@/assets/SvgIcon";
 import { useNavigation } from "@react-navigation/native";
@@ -19,19 +20,52 @@ import {
   Subtitle,
   FinishBtn,
 } from "./Styled";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { observer } from "mobx-react";
 
 interface HeaderModal {
   modalVisible: boolean;
   setModalVisible: (props: boolean) => void;
+  missionText: string;
 }
 
-const Header = ({ modalVisible, setModalVisible }: HeaderModal) => {
+const Header = ({
+  modalVisible,
+  setModalVisible,
+  missionText,
+}: HeaderModal) => {
+  const { minusOne, todoNum, versionNum } = userInfoStore;
   const navigation = useNavigation();
   const pressCompleteBtn = () => {
-    //TODO: 이 함수를 pages 단계로 올리고, 완료시 데이터 업로드 로직을 추가할 것
-    navigation.goBack();
+    const { todayDate } = userInfoStore;
+    Alert.alert(
+      "미션 내용을 제출하시겠어요?",
+      `완료한 내용은 '지난 할 일' 탭\n에서 완료할 수 있어요`,
+      [
+        {
+          text: "네",
+          onPress: async () => {
+            await AsyncStorage.setItem(
+              `mission${todoNum}Result`,
+              JSON.stringify({
+                missionName: missionTitle,
+                completeDate: todayDate,
+                todoNum: todoNum,
+                versionNum: versionNum,
+                resultText: missionText,
+              }),
+              () => {
+                userInfoStore.updateCompleteMissionDatesArray(todayDate);
+                userInfoStore.addOne();
+                navigation.goBack();
+              }
+            );
+          },
+        },
+        { text: "아니요", onPress: () => minusOne() },
+      ]
+    );
   };
-  const { todoNum, versionNum } = userInfoStore;
   const version = `version${versionNum}`;
   const missionTitle = missions[todoNum][version].subtitle;
   const missionDescription = missions[todoNum][version].description;
@@ -84,4 +118,4 @@ const Header = ({ modalVisible, setModalVisible }: HeaderModal) => {
     </>
   );
 };
-export default Header;
+export default observer(Header);

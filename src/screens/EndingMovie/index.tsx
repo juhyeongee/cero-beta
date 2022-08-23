@@ -10,23 +10,26 @@ import {
   ScrollView,
 } from "react-native";
 import userInfoStore from "@/store/UserInfoStore";
+import currentPageStore from "@/store/CurrentPageStore";
 import SvgIcon from "@/assets/SvgIcon";
 import styled from "styled-components/native";
 import { ITheme } from "@/types";
 import AutoHeightImage from "react-native-auto-height-image";
 import { EndingMovieText } from "@constants/properties";
 import { BigPrimaryBtn } from "@/components";
+
 interface IContainerProps {
   theme: ITheme;
 }
+
 const EndingMovie = () => {
   const [pageNumber, setPageNubmer] = useState(1);
   const { nickname } = userInfoStore;
-
+  const { currentScreen } = currentPageStore;
   return (
     <SafeArea>
       <BlackBG>
-        <ScrollContainer bounces={false}>
+        <ScrollContainer showsVerticalScrollIndicator={false} bounces={false}>
           <View style={{ flex: 1, alignItems: "center" }}>
             <ImageContainer style={{ flex: 1, alignItems: "center" }}>
               <SvgIcon name="LogoWithTitle" />
@@ -84,7 +87,12 @@ const EndingMovie = () => {
                 source={require("@assets/images/flower-complete-ver1.png")}
               />
               <View style={{ position: "absolute", bottom: 60, width: "50%" }}>
-                <BigPrimaryBtn text="마지막 물 주기" />
+                <BigPrimaryBtn
+                  text="마지막 물 주기"
+                  onPress={() =>
+                    currentPageStore.updateScreen("MainBottomTabNav")
+                  }
+                />
               </View>
             </View>
           </View>

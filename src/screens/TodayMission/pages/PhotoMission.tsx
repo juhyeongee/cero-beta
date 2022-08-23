@@ -13,12 +13,17 @@ interface Props {
   pickImage: () => void;
 }
 const PhotoMission = ({ pickImage }: Props) => {
+  const [missionText, setMissionText] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
     <Container>
       <SafeAreaView style={{ flex: 1 }}>
-        <Header modalVisible={modalVisible} setModalVisible={setModalVisible} />
+        <Header
+          missionText={missionText}
+          modalVisible={modalVisible}
+          setModalVisible={setModalVisible}
+        />
         <Main>
           <PhotoBtn onPress={pickImage}>
             <AutoHeightImage

@@ -1,21 +1,30 @@
 import { View, Text } from "react-native";
 import styled from "styled-components/native";
 import { ITheme } from "@/types";
+import CheckedBox from "./CheckedBox";
+import userInfoStore from "@/store/UserInfoStore";
+import { observer } from "mobx-react";
 
 interface IContainerProps {
   theme: ITheme;
 }
 interface Props {
-  text?: string;
+  text: string;
   icon?: JSX.Element;
 }
 
 const NumberBox = ({ text, icon }: Props) => {
   return (
-    <Container>
-      {text && <GrayText>{text}</GrayText>}
-      {icon && icon}
-    </Container>
+    <>
+      {text && parseInt(text) < userInfoStore.todoNum ? (
+        <CheckedBox />
+      ) : (
+        <Container>
+          {text && <GrayText>{text}</GrayText>}
+          {icon && icon}
+        </Container>
+      )}
+    </>
   );
 };
 
@@ -35,4 +44,4 @@ const Container = styled.View`
   border: 1px solid white;
 `;
 
-export default NumberBox;
+export default observer(NumberBox);

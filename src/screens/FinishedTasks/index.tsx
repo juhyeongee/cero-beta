@@ -1,18 +1,54 @@
 import { View, Text, SafeAreaView, ScrollView, Platform } from "react-native";
-import styled, { css } from "styled-components/native";
+import styled from "styled-components/native";
 import { ITheme } from "@/types";
-import AutoHeightImage from "react-native-auto-height-image";
 import Card from "./components/Card";
 import missions from "@constants/missions";
-import { heightRatio, widthRatio, fontsizeRatio } from "@/utils";
 import Header from "./components/Header";
-
+import userInfoStore from "@/store/UserInfoStore";
+import { observer } from "mobx-react";
+import EmptyCard from "./components/EmptyCard";
+import Toast from "react-native-toast-message";
+import { useNavigation } from "@react-navigation/native";
 interface IContainerProps {
   theme: ITheme;
 }
 
 const FinishedTasks = () => {
-  const missionArray = Object.keys(missions);
+  const navigation = useNavigation<any>();
+  const { todoNum, completeMissionDatesArray } = userInfoStore;
+  const missionArray = [...new Array(todoNum - 1)].map((_, i) => i + 1);
+  const showToast = () => {
+    Toast.show({
+      type: "error",
+      text1: "아직 미션을 해결하지 못했어요!",
+      text2: "차근차근 하나씩 미션을 완료하고 보도록해요!",
+      position: "bottom",
+    });
+  };
+
+  const showTaskDoneToast = () => {
+    Toast.show({
+      type: "success",
+      text1: "오늘의 미션을 이미 완료했어요!",
+      text2: "내일 새로운 미션으로 만나요!",
+      position: "bottom",
+    });
+  };
+
+  const navigateToTodayMission = async () => {
+    await navigation.navigate("Home");
+    setTimeout(() => navigation.navigate("TodayMission"), 600);
+  };
+  const navigateToHomeAndShowToast = async () => {
+    await navigation.navigate("Home");
+    setTimeout(() => showTaskDoneToast(), 600);
+  };
+
+  const lastCompletedMissionDate =
+    completeMissionDatesArray[completeMissionDatesArray.length - 1];
+  //TODO: Array에서 꺼내온 dayjs object에는 왜 .format등 메소드를 못쓴다고 해놓은걸까?
+  const { todayDate } = userInfoStore;
+
   return (
     <Container>
       <SafeAreaView style={{ flex: 1 }}>
@@ -20,8 +56,17 @@ const FinishedTasks = () => {
         <View style={{ flex: 4 }}>
           <ScrollView showsVerticalScrollIndicator={false}>
             {missionArray.map((index) => (
-              <Card key={index} missionNum={index} />
+              <Card showToast={showToast} key={index} missionNum={index} />
             ))}
+            {todoNum !== 15 && (
+              <EmptyCard
+                onPress={
+                  lastCompletedMissionDate === todayDate
+                    ? navigateToHomeAndShowToast
+                    : navigateToTodayMission
+                }
+              />
+            )}
           </ScrollView>
         </View>
         {/* TODO: ScrollView => Flatlist로 변환 */}
@@ -30,7 +75,7 @@ const FinishedTasks = () => {
   );
 };
 
-export default FinishedTasks;
+export default observer(FinishedTasks);
 
 const Container = styled.View`
   background-color: ${(props: IContainerProps) => props.theme.color.n50};

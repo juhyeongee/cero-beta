@@ -27,8 +27,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import Toast from "react-native-toast-message";
 import userInfoStore from "@/store/UserInfoStore";
 import currentPageStore from "@/store/CurrentPageStore";
+import { EndingStackNav } from "@navigations/index";
 import { observer } from "mobx-react";
-import { SettingStackNav } from "@/navigations/SettingStackNav";
 
 function App() {
   const { currentScreen } = currentPageStore;
@@ -48,7 +48,11 @@ function App() {
     GothicA1_600SemiBold,
   });
   useEffect(() => {
-    userInfoStore.resetVersionNum;
+    userInfoStore.resetVersionNum();
+    // userInfoStore.updateTodayDate();
+    // TODO: 앱 빌드를 만들때는, 매일 날짜 갱신 되도록 위 코드를 꼭 주석을 해제해줘야함.
+    // AsyncStorage.clear();
+    // currentPageStore.updateScreen("MainBottomTabNav");
   }, []);
 
   if (!fontsLoaded) {
@@ -65,10 +69,11 @@ function App() {
         {currentScreen === "IntroNav" && <IntroNav />}
         {currentScreen === "OnBoardingNav" && <OnBoardingNav />}
         {currentScreen === "MainBottomTabNav" && <MainBottomTabNav />}
+        {currentScreen === "EndingStackNav" && <EndingStackNav />}
 
         {/* {onPage === "Setting" && <SettingStackNav />} */}
 
-        {/* <Toast /> */}
+        <Toast />
       </ThemeProvider>
     </NavigationContainer>
   );

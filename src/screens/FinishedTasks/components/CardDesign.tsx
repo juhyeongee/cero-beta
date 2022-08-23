@@ -7,9 +7,8 @@ import {
   Pressable,
   StyleSheet,
 } from "react-native";
-import Tag from "../Tag";
+import Tag from "./Tag";
 import SvgIcon from "@/assets/SvgIcon";
-
 import styled from "styled-components/native";
 import { heightRatio, widthRatio, fontsizeRatio } from "@/utils";
 import { ITheme } from "@/types";
@@ -20,19 +19,24 @@ interface IContainerProps {
 
 interface CardProps {
   thisMissionNum: number;
-  missionTitle: string;
   type: string;
   onClicked: () => void;
-  imageSource: ImageProps["source"];
+  missionNameFromAsyncStorage: string | undefined;
+  completeDateFromAsyncStorage: string | undefined;
 }
 
 const CardDesign = ({
   type,
-  missionTitle,
   thisMissionNum,
   onClicked,
-  imageSource,
+  missionNameFromAsyncStorage,
+  completeDateFromAsyncStorage,
 }: CardProps) => {
+  const photo = require("@assets/images/exampleImage.png");
+  const year = completeDateFromAsyncStorage?.slice(0, 2);
+  const month = completeDateFromAsyncStorage?.slice(2, 4);
+  const day = completeDateFromAsyncStorage?.slice(4, 6);
+
   return (
     <Pressable
       style={[styles.cardContainer, styles.shadow]}
@@ -42,15 +46,17 @@ const CardDesign = ({
         <GrayBox>
           <MissionNumText>{thisMissionNum}</MissionNumText>
         </GrayBox>
-        <TitleText>{missionTitle}</TitleText>
+        <TitleText>{missionNameFromAsyncStorage}</TitleText>
       </View>
-      <DateText>2022 5월 28일</DateText>
+      <DateText>
+        {year}년 {month}월 {day}일
+      </DateText>
       <View style={styles.underBox}>
         <View style={{ flexDirection: "row", alignItems: "center" }}>
-          <SpreadText>펼쳐보기</SpreadText>
-          <SvgIcon name="bottomArrow" />
+          <SpreadText>돌아보기</SpreadText>
+          {/* <SvgIcon name="bottomArrow" /> */}
         </View>
-        <Tag type={type} />
+        <Tag photo={photo} type={type} />
       </View>
     </Pressable>
   );

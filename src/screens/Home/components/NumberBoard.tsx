@@ -2,18 +2,17 @@ import { View, Text } from "react-native";
 import styled from "styled-components/native";
 import { ITheme } from "@/types";
 import NumberBox from "./NumberBox";
-import CheckedBox from "./CheckedBox";
 import AutoHeightImage from "react-native-auto-height-image";
 
 interface IContainerProps {
   theme: ITheme;
 }
 
-const MissionBoard = () => {
+const NumberBoard = () => {
   return (
     <Container>
       <View style={{ height: "33%", width: "100%", flexDirection: "row" }}>
-        <CheckedBox />
+        <NumberBox text="1" />
         <NumberBox text="2" />
         <NumberBox text="3" />
         <NumberBox text="4" />
@@ -32,6 +31,7 @@ const MissionBoard = () => {
         <NumberBox text="13" />
         <NumberBox text="14" />
         <NumberBox
+          text=" "
           icon={
             <AutoHeightImage
               width={24}
@@ -44,7 +44,7 @@ const MissionBoard = () => {
   );
 };
 
-export default MissionBoard;
+export default NumberBoard;
 
 const Container = styled.View`
   width: 100%;

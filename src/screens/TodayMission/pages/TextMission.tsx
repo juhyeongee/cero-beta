@@ -19,7 +19,8 @@ interface Props {
   setMissionText: (props: string) => void;
 }
 
-const TextMission = ({ setMissionText }: Props) => {
+const TextMission = () => {
+  const [missionText, setMissionText] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
@@ -29,6 +30,7 @@ const TextMission = ({ setMissionText }: Props) => {
           <Header
             modalVisible={modalVisible}
             setModalVisible={setModalVisible}
+            missionText={missionText}
           />
         </View>
       </SafeAreaView>

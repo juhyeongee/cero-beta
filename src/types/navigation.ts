@@ -23,12 +23,13 @@ export type MainBottomTabParamList = {
 export type HomeStackParamList = {
   TodayMission: undefined;
   Home: { missionNum: number };
+  MindTest: undefined;
 };
 export type OnBoardingStackParamList = {
   TakeUserInfo: undefined;
   OnBoarding: undefined;
   MindTest: undefined;
-  LoadingPage: undefined;
+  FirstLoadingScreen: undefined;
   ResultPage: undefined;
 };
 
@@ -38,6 +39,13 @@ export type SettingStackParamList = {
   ResetNickname: undefined;
   SettingAlarm: undefined;
   SettingHome: undefined;
+};
+
+export type EndingStackParamList = {
+  LastLoadingScreen: undefined;
+  MindTest: undefined;
+  EndingResult: undefined;
+  EndingMovie: undefined;
 };
 
 export type HomeStackScreenProps<Screen extends keyof HomeStackParamList> =
@@ -54,8 +62,11 @@ export type SettingStackScreenProps<
   Screen extends keyof SettingStackParamList
 > = NativeStackScreenProps<SettingStackParamList, Screen>;
 
-export type MainBottomTabScreenProp<
+export type MainBottomTabScreenProps<
   Screen extends keyof MainBottomTabParamList
 > = BottomTabNavigationProp<MainBottomTabParamList, Screen>;
+
+export type EndingStackScreenProps<Screen extends keyof EndingStackParamList> =
+  NativeStackScreenProps<EndingStackParamList, Screen>;
 
 //navigation props , useNavigation 혼용 사용중

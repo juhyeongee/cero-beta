@@ -46,7 +46,7 @@ const ModalDescription = ({
         <ModalBox>
           <ModalContainer>
             <MissionTitle>{missionArticleTitle}</MissionTitle>
-            <ScrollView>
+            <ScrollView showsVerticalScrollIndicator={false}>
               <MissionContext>{missionArticle}</MissionContext>
             </ScrollView>
           </ModalContainer>

@@ -1,16 +1,24 @@
 import { action, observable, makeAutoObservable } from "mobx";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { makePersistable, stopPersisting } from "mobx-persist-store";
+import dayjs from "dayjs";
 
 class UserInfoStore {
-  todoNum = 1;
-  versionNum = 1;
-  nickname = "유저";
-  birthday = "알려주세요!";
-  gender = "미정";
-  age = 0;
-  FIRST_DEPRESSION_SCORE = 0;
-  depressionState = "";
+  todoNum: number = 1;
+  versionNum: number = 1;
+  nickname: string = "유저";
+  birthday: string = "알려주세요!";
+  gender: string = "미정";
+  age: number = 0;
+  FIRST_DEPRESSION_SCORE: number = 0;
+  LAST_DEPRESSION_SCORE: number = 0;
+  firstDepressionState: string = "";
+  lastDepressionState: string = "";
+  completeMissionDatesArray = ["200000"];
+  completeMissionName = "";
+  firstMindTestResultObject: { [key: number]: number } = {};
+  todayDate = dayjs().format("YYMMDD");
+  lastMindTestResultObject: { [key: number]: number } = {};
 
   constructor() {
     makeAutoObservable(
@@ -25,8 +33,15 @@ class UserInfoStore {
         nickname: observable,
         birthday: observable,
         gender: observable,
+        age: observable,
         FIRST_DEPRESSION_SCORE: observable,
-        depressionState: observable,
+        LAST_DEPRESSION_SCORE: observable,
+        firstDepressionState: observable,
+        lastDepressionState: observable,
+        completeMissionDatesArray: observable,
+        completeMissionName: observable,
+        firstMindTestResultObject: observable,
+        todayDate: observable,
       },
       { autoBind: true }
     );
@@ -39,6 +54,11 @@ class UserInfoStore {
         "birthday",
         "gender",
         "FIRST_DEPRESSION_SCORE",
+        "LAST_DEPRESSION_SCORE",
+        "completeMissionDatesArray",
+        "firstMindTestResultObject",
+        "todayDate",
+        "firstDepressionState",
       ],
       storage: AsyncStorage,
     });
@@ -74,10 +94,44 @@ class UserInfoStore {
     this.FIRST_DEPRESSION_SCORE = score;
   }
   updateFirstDepressionState(state: string) {
-    this.depressionState = state;
+    this.firstDepressionState = state;
+  }
+  updateLastDepressionScore(score: number) {
+    this.LAST_DEPRESSION_SCORE = score;
+  }
+  updateLastDepressionState(state: string) {
+    this.lastDepressionState = state;
+  }
+  updateCompleteMissionDatesArray(date: any) {
+    this.completeMissionDatesArray = [...this.completeMissionDatesArray, date];
+  }
+  resetCompleteMissionDatesArray() {
+    this.completeMissionDatesArray = ["100000"];
+  }
+  updateCompleteMissionName(name: string) {
+    this.completeMissionName = name;
+  }
+  updateFirstMindTestResultObject(answerNum: number, answer: number) {
+    this.firstMindTestResultObject[answerNum] = answer;
+  }
+  updateLastMindTestResultObject(answerNum: number, answer: number) {
+    this.lastMindTestResultObject[answerNum] = answer;
+  }
+  updateTodayDate() {
+    this.todayDate = dayjs().format("YYMMDD");
+  }
+  updateTempTodayDate(date: string) {
+    this.todayDate = date;
   }
 }
 
 const userInfoStore = new UserInfoStore();
 
 export default userInfoStore;
+
+//미션 완료 () =>
+//   Update Last Completed Mission Date
+//   plusVersionNum ()
+//   if ( Last Completedf Mission Date === todayDate)
+//   => show "오늘의 미션을 완료했어요"
+//

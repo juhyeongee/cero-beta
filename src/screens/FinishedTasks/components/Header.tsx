@@ -22,7 +22,7 @@ const Header = () => {
           flex: 1,
         }}
       >
-        <Title>지난 할 일 </Title>
+        <TitleText>지난 할 일 </TitleText>
       </View>
       <View style={{ flex: 1 }}>
         <Subtitle>지금까지의 여정을 살펴보세요.</Subtitle>
@@ -33,7 +33,7 @@ const Header = () => {
 
 export default Header;
 
-const Title = styled.Text`
+const TitleText = styled.Text`
   font-family: ${(props: IContainerProps) => props.theme.font.thickFont};
   font-size: ${Platform.select({
     ios: css`

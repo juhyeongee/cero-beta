@@ -1,43 +1,43 @@
 import { View, Text, Image, ImageBackground, Pressable } from "react-native";
 import { ITheme } from "@/types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DetailModal from "./DetailModal";
 import missions from "@constants/missions";
 import userInfoStore from "@/store/UserInfoStore";
-import Toast from "react-native-toast-message";
-import CardDesign from "./CardType/CardDesign";
-
-interface IContainerProps {
-  theme: ITheme;
-}
+import CardDesign from "./CardDesign";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 interface CardProps {
-  missionNum: string;
+  missionNum: number;
+  showToast: () => void;
 }
-const Card = ({ missionNum }: CardProps) => {
+
+const Card = ({ missionNum, showToast }: CardProps) => {
   const [modalVisible, setModalVisible] = useState(false);
-  const thisMissionNum = parseInt(missionNum);
   const { todoNum, versionNum } = userInfoStore;
-  const missionTitle = missions[thisMissionNum].version1.subtitle;
-  const type = missions[thisMissionNum].version1.type;
+  const missionTitle = missions[missionNum].version1.subtitle;
+  const [missionNameFromAsyncStorage, setMissionNameFromAsyncStorage] =
+    useState();
+  const [completeDateFromAsyncStorage, setCompleteDateFromAsyncStorage] =
+    useState();
+  const [resultTextFromAsyncStorage, setResultTextFromAsyncStorage] =
+    useState();
+  const type = missions[missionNum].version1.type;
   //TODO: 완료한 미션의 버전따라 카드 타이틀명 설정
-  const showToast = () => {
-    Toast.show({
-      type: "error",
-      text1: "아직 미션을 해결하지 못했어요!",
-      text2: "차근차근 하나씩 미션을 완료하고 보도록해요!",
-      position: "bottom",
-    });
-  };
+
   const onClicked = () => {
-    if (thisMissionNum > todoNum) {
-      showToast();
-    } else {
-      setModalVisible(!modalVisible);
-    }
+    setModalVisible(!modalVisible);
   };
-  const imageSource = require("@assets/images/exampleImage.png");
-  //TODO: 텍스트 콘텐츠와 사진이미지별로 BG이미지 다르게 설정하기
+  AsyncStorage.getItem(`mission${missionNum}Result`).then((result) => {
+    if (typeof result === undefined) {
+      return null;
+    } else if (typeof result === "string") {
+      const resultObject = JSON.parse(result);
+      setMissionNameFromAsyncStorage(resultObject["missionName"]);
+      setCompleteDateFromAsyncStorage(resultObject["completeDate"]);
+      setResultTextFromAsyncStorage(resultObject["resultText"]);
+    }
+  });
 
   return (
     <View>
@@ -46,13 +46,16 @@ const Card = ({ missionNum }: CardProps) => {
         setModalVisible={setModalVisible}
         missionTitle={missionTitle}
         missionType={type}
+        missionNameFromAsyncStorage={missionNameFromAsyncStorage}
+        completeDateFromAsyncStorage={completeDateFromAsyncStorage}
+        resultTextFromAsyncStorage={resultTextFromAsyncStorage}
       />
       <CardDesign
-        imageSource={imageSource}
         type={type}
-        missionTitle={missionTitle}
-        thisMissionNum={thisMissionNum}
+        thisMissionNum={missionNum}
         onClicked={onClicked}
+        missionNameFromAsyncStorage={missionNameFromAsyncStorage}
+        completeDateFromAsyncStorage={completeDateFromAsyncStorage}
       />
     </View>
   );

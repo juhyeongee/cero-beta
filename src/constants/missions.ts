@@ -3,6 +3,15 @@ interface IMissionType {
 }
 
 const missions: IMissionType = {
+  0: {
+    version1: {
+      subtitle: "mock data missions",
+      description: ``,
+      type: "text",
+      articleTitle: "",
+      article: `mock`,
+    },
+  },
   1: {
     version1: {
       subtitle: "보내지 않을 편지쓰기 📨",
@@ -459,6 +468,15 @@ const missions: IMissionType = {
       마지막 할 일은 매일 조금씩 괜찮은 사람이 된 자신에게 그간 고생했다는 말을 남겨주시는 거예요.
       
       가장 힘든 시기는 이제 지났다고, 앞으로는 분명 더 괜찮아질 거라고 말해주세요. 새로운 시작을 향한 응원과 각오도 곁들여 주시면 앞으로의 여정에도 큰 힘이 될 겁니다.`,
+    },
+  },
+  15: {
+    version1: {
+      subtitle: "last mock data missions",
+      description: `마지막 미션 진행후 version 변수를 위한 목데이터입니다`,
+      type: "text",
+      articleTitle: "",
+      article: `mock`,
     },
   },
 };
