@@ -62,3 +62,9 @@ export { default as alarm } from "./alarm.svg";
 export { default as logout } from "./logout.svg";
 
 export { default as textMissionIcon } from "./textMissionIcon.svg";
+
+export { default as redReverseTriangle } from "./redReverseTriangle.svg";
+export { default as yellowReverseTriangle } from "./yellowReverseTriangle.svg";
+export { default as transparentReverseTriangle } from "./transparentReverseTriangle.svg";
+export { default as blueReverseTriangle } from "./blueReverseTriangle.svg";
+export { default as greenReverseTriangle } from "./greenReverseTriangle.svg";
