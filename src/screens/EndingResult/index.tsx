@@ -14,13 +14,20 @@ import userInfoStore from "@/store/UserInfoStore";
 import ThirdPage from "./pages/ThirdPage";
 import FourthPage from "./pages/FourthPage";
 import { Container } from "./components/Styled";
+import { EndingStackScreenProps } from "@/types";
 
-const EndingResult = () => {
+const EndingResult = ({
+  route,
+  navigation,
+}: EndingStackScreenProps<"LastLoadingScreen">) => {
   const [pageNumber, setPageNubmer] = useState(1);
-  const { depressionState } = userInfoStore;
 
   const goNextPage = () => {
     setPageNubmer(pageNumber + 1);
+  };
+
+  const navigateToEndingMovie = () => {
+    navigation.navigate("EndingMovie");
   };
   return (
     <Container>
@@ -28,7 +35,9 @@ const EndingResult = () => {
         {pageNumber === 1 && <FirstPage goNextPage={goNextPage} />}
         {pageNumber === 2 && <SecondPage goNextPage={goNextPage} />}
         {pageNumber === 3 && <ThirdPage goNextPage={goNextPage} />}
-        {pageNumber === 4 && <FourthPage />}
+        {pageNumber === 4 && (
+          <FourthPage navigateToEndingMovie={navigateToEndingMovie} />
+        )}
       </SafeAreaView>
     </Container>
   );

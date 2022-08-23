@@ -83,5 +83,6 @@ export const calculateDepressionScore = async (type: string) => {
     }
   }
   totalScore = totalScore - QUESTION_OBJ_LENGTH;
+  console.log("totalScore", totalScore);
   return totalScore;
 };

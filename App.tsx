@@ -52,6 +52,7 @@ function App() {
     // userInfoStore.updateTodayDate();
     // TODO: 앱 빌드를 만들때는, 매일 날짜 갱신 되도록 위 코드를 꼭 주석을 해제해줘야함.
     // AsyncStorage.clear();
+    // currentPageStore.updateScreen("MainBottomTabNav");
   }, []);
 
   if (!fontsLoaded) {

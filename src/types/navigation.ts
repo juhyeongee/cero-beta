@@ -29,7 +29,7 @@ export type OnBoardingStackParamList = {
   TakeUserInfo: undefined;
   OnBoarding: undefined;
   MindTest: undefined;
-  LoadingPage: undefined;
+  FirstLoadingScreen: undefined;
   ResultPage: undefined;
 };
 
@@ -42,8 +42,10 @@ export type SettingStackParamList = {
 };
 
 export type EndingStackParamList = {
-  LoadingPage: undefined;
+  LastLoadingScreen: undefined;
   MindTest: undefined;
+  EndingResult: undefined;
+  EndingMovie: undefined;
 };
 
 export type HomeStackScreenProps<Screen extends keyof HomeStackParamList> =
@@ -60,8 +62,11 @@ export type SettingStackScreenProps<
   Screen extends keyof SettingStackParamList
 > = NativeStackScreenProps<SettingStackParamList, Screen>;
 
-export type MainBottomTabScreenProp<
+export type MainBottomTabScreenProps<
   Screen extends keyof MainBottomTabParamList
 > = BottomTabNavigationProp<MainBottomTabParamList, Screen>;
+
+export type EndingStackScreenProps<Screen extends keyof EndingStackParamList> =
+  NativeStackScreenProps<EndingStackParamList, Screen>;
 
 //navigation props , useNavigation 혼용 사용중
