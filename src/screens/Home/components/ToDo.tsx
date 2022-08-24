@@ -104,14 +104,17 @@ const ToDo = ({ navigateToTodayMission }: Props) => {
             <></>
           ) : (
             <>
-              <GrayText>변경하기 </GrayText>
               <Pressable
                 style={{
+                  flexDirection: "row",
                   justifyContent:
                     Platform.OS === "ios" ? "flex-start" : "flex-end",
                 }}
                 onPress={rotateVersionNum}
               >
+                <GrayText>
+                  변경하기 ({versionNum}/{Object.keys(todoObject).length})
+                </GrayText>
                 <SvgIcon name="refresh" />
               </Pressable>
             </>
@@ -164,6 +167,7 @@ const Container = styled.View`
 
 const GrayText = styled.Text`
   font-size: 12px;
+  margin-right: 4px;
   font-family: ${(props: IContainerProps) => props.theme.font.mainFont};
   color: ${(props: IContainerProps) => props.theme.color.n700};
 `;
