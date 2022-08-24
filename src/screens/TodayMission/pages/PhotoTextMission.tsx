@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { createRef, useState } from "react";
 import { View, Text, Pressable, TextInput, SafeAreaView } from "react-native";
 import styled from "styled-components/native";
 import { ITheme } from "@/types";
@@ -11,9 +11,10 @@ interface IContainerProps {
 interface Props {
   pickImage: () => void;
 }
-const PhotoMission = ({ pickImage }: Props) => {
+const PhotoTextMission = ({ pickImage }: Props) => {
   const [missionText, setMissionText] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
+  const inputRef = createRef<TextInput>();
 
   return (
     <>
@@ -35,9 +36,11 @@ const PhotoMission = ({ pickImage }: Props) => {
         </SafeAreaView>
       </Container>
       <TextBox>
-        <Main>
+        <Main onPress={() => inputRef.current?.focus()}>
           <TextInput
-            style={{ fontSize: 18 }}
+            multiline={true}
+            ref={inputRef}
+            style={{ fontSize: 18, flexShrink: 1, lineHeight: 10 }}
             placeholder="여기에 적어 주세요"
             onChangeText={setMissionText}
           />
@@ -47,7 +50,7 @@ const PhotoMission = ({ pickImage }: Props) => {
   );
 };
 
-export default PhotoMission;
+export default PhotoTextMission;
 
 const Container = styled.View`
   background-color: ${(props: IContainerProps) => props.theme.color.n0};
@@ -78,7 +81,7 @@ const PhotoBtn = styled.Pressable`
   margin-bottom: 16px;
 `;
 
-const Main = styled.View`
+const Main = styled.Pressable`
   flex: 5;
   padding: 8%;
   width: 100%;

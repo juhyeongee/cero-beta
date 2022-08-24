@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { createRef, useRef, useState } from "react";
 import {
   View,
   Text,
@@ -22,7 +22,7 @@ interface Props {
 const TextMission = () => {
   const [missionText, setMissionText] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
-
+  const inputRef = createRef<TextInput>();
   return (
     <Container>
       <SafeAreaView style={{ flex: 2 }}>
@@ -34,9 +34,11 @@ const TextMission = () => {
           />
         </View>
       </SafeAreaView>
-      <Main>
+      <Main onPress={() => inputRef.current?.focus()}>
         <TextInput
-          style={{ fontSize: 18 }}
+          multiline={true}
+          ref={inputRef}
+          style={{ fontSize: 18, flexShrink: 1, lineHeight: 25 }}
           onChangeText={setMissionText}
           placeholder="여기에 적어 주세요"
         />
@@ -53,7 +55,7 @@ const Container = styled.View`
   width: 100%;
 `;
 
-const Main = styled.View`
+const Main = styled.Pressable`
   flex: 5;
   padding: 8%;
   width: 100%;
