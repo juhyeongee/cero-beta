@@ -89,9 +89,14 @@ const EndingMovie = () => {
               <View style={{ position: "absolute", bottom: 60, width: "50%" }}>
                 <BigPrimaryBtn
                   text="마지막 물 주기"
-                  onPress={() =>
-                    currentPageStore.updateScreen("MainBottomTabNav")
-                  }
+                  onPress={() => {
+                    currentPageStore.updateScreen("MainBottomTabNav");
+                    currentPageStore.finishEndingMovie();
+                    console.log(
+                      "isCurriculumEnd: ",
+                      currentPageStore.isCurriculumEnd
+                    );
+                  }}
                 />
               </View>
             </View>

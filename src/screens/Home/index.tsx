@@ -16,6 +16,7 @@ import { useEffect } from "react";
 import PlantContainer from "./components/PlantContainer";
 import { observer } from "mobx-react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import currentPageStore from "@/store/CurrentPageStore";
 
 interface IContainerProps {
   theme: ITheme;
@@ -23,6 +24,7 @@ interface IContainerProps {
 
 const Home = ({ route, navigation }: HomeStackScreenProps<"Home">) => {
   const { todoNum, completeMissionDatesArray } = userInfoStore;
+  const { isCurriculumEnd } = currentPageStore;
 
   useEffect(() => {
     console.log(userInfoStore);
@@ -46,32 +48,37 @@ const Home = ({ route, navigation }: HomeStackScreenProps<"Home">) => {
     require("@/assets/images/13.png"),
     require("@/assets/images/14.png"),
     require("@/assets/images/15.png"),
+    require("@/assets/images/16.png"),
   ];
 
-  const plantSource = imageSourceArray[todoNum - 1];
+  const plantSource = isCurriculumEnd
+    ? imageSourceArray[imageSourceArray.length - 1]
+    : imageSourceArray[todoNum - 1];
 
   return (
     <Container>
       <PlantContainer plantSource={plantSource} />
-      <View style={{ flex: 0.3 }}>
-        <ContentsCont>
-          <Bar />
-          <View style={{ height: "90%" }}>
-            <Swiper
-              showsPagination={true}
-              paginationStyle={{ bottom: 7 }}
-              activeDotColor="#40B08F"
-            >
-              <ToDo
-                navigateToTodayMission={() =>
-                  navigation.navigate("TodayMission")
-                }
-              />
-              <NumberBoard />
-            </Swiper>
-          </View>
-        </ContentsCont>
-      </View>
+      {!isCurriculumEnd && (
+        <View style={{ flex: 0.3 }}>
+          <ContentsCont>
+            <Bar />
+            <View style={{ height: "90%" }}>
+              <Swiper
+                showsPagination={true}
+                paginationStyle={{ bottom: 7 }}
+                activeDotColor="#40B08F"
+              >
+                <ToDo
+                  navigateToTodayMission={() =>
+                    navigation.navigate("TodayMission")
+                  }
+                />
+                <NumberBoard />
+              </Swiper>
+            </View>
+          </ContentsCont>
+        </View>
+      )}
     </Container>
   );
 };

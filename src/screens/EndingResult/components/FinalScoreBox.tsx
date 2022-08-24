@@ -20,23 +20,19 @@ export const FinalScoreBox = ({
   let text: string;
   let color: string;
   if (lastDepressionScore >= 46) {
-    text = "더 나아졌어요";
+    text = "새로운 마음을 틔워내셨어요 😆";
     color = "blue";
   } else if (lastDepressionScore < 45 && lastDepressionScore > 40) {
-    text = "좋아요";
+    text = "지금처럼 마음을 돌봐주세요 😊";
     color = "green";
   } else if (lastDepressionScore <= 40 && lastDepressionScore > 20) {
-    text = "주의가 필요해요";
+    text = "조금 더 시간이 필요해요 🥲";
     color = "yellow";
   } else {
-    text = "망했어요";
+    text = "아직 이별 중이시군요 🥺";
     color = "red";
   }
-  const VerticalBar = styled.View`
-    height: 40px;
-    width: 2px;
-    background-color: black;
-  `;
+
   const FinalText = styled.Text`
     font-size: 16px;
     color: ${(props: IContainerProps) =>

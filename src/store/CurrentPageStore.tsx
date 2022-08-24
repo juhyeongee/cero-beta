@@ -4,18 +4,20 @@ import { makePersistable, stopPersisting } from "mobx-persist-store";
 
 class CurrentPageStore {
   currentScreen = "IntroNav";
+  isCurriculumEnd: boolean = false;
 
   constructor() {
     makeAutoObservable(
       this,
       {
         currentScreen: observable,
+        isCurriculumEnd: observable,
       },
       { autoBind: true }
     );
     makePersistable(this, {
       name: "CurrentPagePersistStore",
-      properties: ["currentScreen"],
+      properties: ["currentScreen", "isCurriculumEnd"],
       storage: AsyncStorage,
     });
 
@@ -24,6 +26,9 @@ class CurrentPageStore {
 
   updateScreen(newCurrentScreen: string) {
     this.currentScreen = newCurrentScreen;
+  }
+  finishEndingMovie() {
+    this.isCurriculumEnd = true;
   }
 }
 

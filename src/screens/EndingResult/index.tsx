@@ -15,6 +15,7 @@ import ThirdPage from "./pages/ThirdPage";
 import FourthPage from "./pages/FourthPage";
 import { Container } from "./components/Styled";
 import { EndingStackScreenProps } from "@/types";
+import currentPageStore from "@/store/CurrentPageStore";
 
 const EndingResult = ({
   route,
@@ -28,6 +29,7 @@ const EndingResult = ({
 
   const navigateToEndingMovie = () => {
     navigation.navigate("EndingMovie");
+    console.log("isCurriculumEnd: ", currentPageStore.isCurriculumEnd);
   };
   return (
     <Container>

@@ -15,7 +15,7 @@ interface LoadingTextProps {
 const FirstLoadingScreen = ({
   route,
   navigation,
-}: OnBoardingStackScreenProps<"LoadingPage">) => {
+}: OnBoardingStackScreenProps<"FirstLoadingScreen">) => {
   useEffect(() => {
     if (userInfoStore.FIRST_DEPRESSION_SCORE >= 46) {
       userInfoStore.updateFirstDepressionState("good");
