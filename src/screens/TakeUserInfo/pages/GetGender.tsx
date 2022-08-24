@@ -35,13 +35,6 @@ const GetGender = ({ swipeNextPage }: IPageProps) => {
               setGender("기타");
             }}
           />
-          <MultiChoiceBtn
-            checkedBtnName={gender}
-            text="말하지 않을래요"
-            onPress={() => {
-              setGender("말하지 않을래요");
-            }}
-          />
         </View>
         <View
           style={{

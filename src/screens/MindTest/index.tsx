@@ -33,7 +33,7 @@ const MindTest = ({
         const result = userInfoStore.LAST_DEPRESSION_SCORE;
         console.log("마지막 마음점검 결과점수 : ", result);
       }
-      navigation.navigate("LastLoadingScreen");
+      navigation.navigate("FirstLoadingScreen");
     }
   };
 

@@ -116,7 +116,7 @@ const BG = styled.View`
 
 const MainText = styled.Text`
   font-size: ${(props: StyledProps) =>
-    Platform.OS === "ios" ? fontsizeRatio(20) : fontsizeRatio(18)};
+    Platform.OS === "ios" ? "18px" : "16px"};
   font-family: ${(props: StyledProps) =>
     Platform.OS === "ios"
       ? props.theme.font.mainFont

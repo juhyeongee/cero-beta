@@ -30,7 +30,7 @@ const FourthPage = ({ navigateToMindText }: IPageProps) => {
   //   }).start();
   // };
   return (
-    <Container>
+    <Container onPress={() => setModalVisible(true)}>
       <SvgIcon
         name="yellowHighlight"
         style={{ position: "relative", bottom: "3%" }}

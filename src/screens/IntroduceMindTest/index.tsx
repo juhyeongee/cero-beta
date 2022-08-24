@@ -4,6 +4,7 @@ import SecondPage from "./pages/SecondPage";
 import ThirdPage from "./pages/ThirdPage";
 import FourthPage from "./pages/FourthPage";
 import { OnBoardingStackScreenProps } from "@/types";
+import { useRef } from "react";
 
 const OnBoarding = ({
   route,
@@ -12,12 +13,23 @@ const OnBoarding = ({
   const navigateToMindText = () => {
     navigation.navigate("MindTest");
   };
+  const swiperRef = useRef(1);
+  const swipeNextPage = () => {
+    swiperRef.current.scrollBy(1);
+  };
+  //TODO: Swiper type적용
 
   return (
-    <Swiper loop={false} dotColor={"gray"} activeDotColor={"brown"}>
-      <FirstPage />
-      <SecondPage />
-      <ThirdPage />
+    <Swiper
+      ref={swiperRef}
+      loop={false}
+      showsPagination={false}
+      dotColor={"gray"}
+      activeDotColor={"brown"}
+    >
+      <FirstPage swipeNextPage={swipeNextPage} />
+      <SecondPage swipeNextPage={swipeNextPage} />
+      <ThirdPage swipeNextPage={swipeNextPage} />
       <FourthPage navigateToMindText={navigateToMindText} />
     </Swiper>
   );

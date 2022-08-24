@@ -6,7 +6,7 @@ interface IContainerProps {
   theme: ITheme;
 }
 
-export const Container = styled.View`
+export const Container = styled.Pressable`
   flex: 1;
   width: 100%;
   align-items: center;

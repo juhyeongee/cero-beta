@@ -59,7 +59,6 @@ export const moveDownSecond = (seedY: Animated.Value) => {
 
 export const findNotAnsweredQuestion = async () => {
   const { firstMindTestResultObject } = userInfoStore;
-  const arr = await AsyncStorage.getAllKeys();
   for (let i = 1; i < Object.keys(questionObj).length + 1; i++) {
     if (!firstMindTestResultObject[i]) {
       return i;
