@@ -32,7 +32,7 @@ const FirstLoadingScreen = ({
     } else {
       userInfoStore.updateFirstDepressionState("serious");
     }
-    setTimeout(() => navigation.navigate("ResultPage"), 500);
+    setTimeout(() => navigation.navigate("ResultPage"), 4000);
   }, []);
 
   return (

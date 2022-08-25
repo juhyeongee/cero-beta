@@ -38,7 +38,7 @@ const TextMission = () => {
         <TextInput
           multiline={true}
           ref={inputRef}
-          style={{ fontSize: 18, flexShrink: 1, lineHeight: 25 }}
+          style={{ fontSize: 18, flexShrink: 1, lineHeight: 30 }}
           onChangeText={setMissionText}
           placeholder="여기에 적어 주세요"
         />

@@ -42,11 +42,19 @@ const CardDesign = ({
       style={[styles.cardContainer, styles.shadow]}
       onPress={onClicked}
     >
-      <View style={{ flexDirection: "row", alignItems: "center" }}>
+      <View
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          width: "100%",
+        }}
+      >
         <GrayBox>
           <MissionNumText>{thisMissionNum}</MissionNumText>
         </GrayBox>
-        <TitleText>{missionNameFromAsyncStorage}</TitleText>
+        <TitleText numberOfLines={1} ellipsizeMode="tail">
+          {missionNameFromAsyncStorage}
+        </TitleText>
       </View>
       <DateText>
         {year}년 {month}월 {day}일
@@ -87,6 +95,7 @@ const styles = StyleSheet.create({
 });
 
 const TitleText = styled.Text`
+  width: 90%;
   font-size: 16px;
   font-family: ${(props: IContainerProps) =>
     Platform.OS === "ios"

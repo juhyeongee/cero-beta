@@ -68,3 +68,5 @@ export { default as yellowReverseTriangle } from "./yellowReverseTriangle.svg";
 export { default as transparentReverseTriangle } from "./transparentReverseTriangle.svg";
 export { default as blueReverseTriangle } from "./blueReverseTriangle.svg";
 export { default as greenReverseTriangle } from "./greenReverseTriangle.svg";
+
+export { default as articleInfo } from "./articleInfo.svg";

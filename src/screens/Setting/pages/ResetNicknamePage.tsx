@@ -42,11 +42,9 @@ const ResetNicknamePage = ({
           />
           <GrayBar nickname={nickname} />
         </View>
-        <View style={{ flex: 4 }}>
-          <SubText>
-            가입 시 설정한 닉네임을 변경합니다.닉네임은 6글자 이내로 언제든지
-            변경 가능합니다.
-          </SubText>
+        <View style={{ flex: 4, paddingTop: 10 }}>
+          <SubText>가입 시 설정한 닉네임을 변경합니다.</SubText>
+          <SubText>닉네임은 6글자 이내로 언제든지 바꿀 수 있어요.</SubText>
         </View>
         <BigPrimaryBtn
           text="변경하기"
@@ -69,7 +67,7 @@ const AnswerText = styled.TextInput`
 const GrayBar = styled.View`
   background-color: ${(props: StyledProps) =>
     props.nickname.length > 6 ? "#E26D66" : props.theme.color.n500};
-  height: 1px;
-  width: 100%;
+  height: 2px;
+  width: 100%; ;
 `;
 export default ResetNicknamePage;

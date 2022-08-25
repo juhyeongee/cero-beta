@@ -29,7 +29,7 @@ const ResetDataPage = ({
   };
 
   const onClickResetBtn = () => {
-    Alert.alert("정말로 초기화하시겠습니까?", "", [
+    Alert.alert("정말 초기화하시겠어요?", "", [
       { text: "네", onPress: () => resetData() },
       { text: "아니요", onPress: () => console.log("취소했습니다") },
     ]);

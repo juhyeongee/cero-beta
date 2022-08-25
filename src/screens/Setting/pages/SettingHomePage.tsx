@@ -33,7 +33,7 @@ const SettingHomePage = ({
     navigation.navigate("Notice");
   }
   function logout() {
-    Alert.alert("로그아웃 하시겠어요?", "하지마~", [
+    Alert.alert("로그아웃 하시겠어요?", "", [
       { text: "네", onPress: () => console.log("logout") },
       { text: "아니요", onPress: () => console.log("취소~") },
     ]);

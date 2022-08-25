@@ -34,7 +34,6 @@ const EndingMovie = () => {
             <ImageContainer style={{ flex: 1, alignItems: "center" }}>
               <SvgIcon name="LogoWithTitle" />
             </ImageContainer>
-
             <TextContainer>
               <TitleText>{EndingMovieText[1]}</TitleText>
             </TextContainer>
@@ -56,7 +55,6 @@ const EndingMovie = () => {
                 source={require("@assets/images/ending-image-second.png")}
               />
             </ImageContainer>
-
             <TextContainer>
               <MainText>{EndingMovieText[4]}</MainText>
             </TextContainer>
@@ -81,6 +79,10 @@ const EndingMovie = () => {
             <TextContainer style={{ alignItems: "center" }}>
               <SubText>{EndingMovieText[7]}</SubText>
             </TextContainer>
+
+            <EmptySpace />
+            <EmptySpace />
+
             <View style={{ alignItems: "center" }}>
               <AutoHeightImage
                 width={300}
@@ -109,6 +111,10 @@ const EndingMovie = () => {
 
 export default EndingMovie;
 
+const EmptySpace = styled.View`
+  height: 200px;
+  width: 100%;
+`;
 const BlackBG = styled.View`
   flex: 1;
   justify-content: center;

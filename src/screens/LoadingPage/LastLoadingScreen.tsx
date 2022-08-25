@@ -32,7 +32,7 @@ const LastLoadingScreen = ({
     } else {
       userInfoStore.updateLastDepressionState("serious");
     }
-    setTimeout(() => navigation.navigate("EndingResult"), 500);
+    setTimeout(() => navigation.navigate("EndingResult"), 4000);
   }, []);
 
   return (

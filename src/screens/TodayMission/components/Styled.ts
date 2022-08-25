@@ -24,7 +24,7 @@ export const MissionTitle = styled.Text`
 
 export const Subtitle = styled.Text`
   margin-top: ${Platform.OS === "ios" ? "10px" : "0px"};
-  color: ${(props: IContainerProps) => props.theme.color.n700};
+  color: ${(props: IContainerProps) => props.theme.color.n900};
   font-family: ${(props: IContainerProps) => props.theme.font.thinFont};
 `;
 
@@ -62,4 +62,9 @@ export const MissionContext = styled.Text`
   font-family: ${(props: IContainerProps) => props.theme.font.mainFont};
   margin-top: 20px;
   color: ${(props: IContainerProps) => props.theme.color.n900};
+`;
+
+export const GreenText = styled.Text`
+  color: ${(props: IContainerProps) => props.theme.color.primary};
+  font-family: ${(props: IContainerProps) => props.theme.font.mainFont};
 `;

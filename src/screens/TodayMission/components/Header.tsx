@@ -19,6 +19,7 @@ import {
   MissionTitle,
   Subtitle,
   FinishBtn,
+  GreenText,
 } from "./Styled";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { observer } from "mobx-react";
@@ -40,7 +41,7 @@ const Header = ({
     const { todayDate } = userInfoStore;
     Alert.alert(
       "미션 내용을 제출하시겠어요?",
-      `완료한 내용은 '지난 할 일' 탭\n에서 완료할 수 있어요`,
+      `제출한 내용은 '지난 할 일' 탭에서 \n확인할 수 있어요`,
       [
         {
           text: "네",
@@ -108,11 +109,11 @@ const Header = ({
             }}
           >
             <MissionTitle>{missionTitle}</MissionTitle>
-            <Pressable onPress={() => setModalVisible(!modalVisible)}>
-              <SvgIcon name="information" />
-            </Pressable>
           </View>
-          <Subtitle>{missionDescription}</Subtitle>
+          <Pressable onPress={() => setModalVisible(!modalVisible)}>
+            <Subtitle>{missionDescription}</Subtitle>
+            <GreenText>...더보기</GreenText>
+          </Pressable>
         </View>
       </Container>
     </>

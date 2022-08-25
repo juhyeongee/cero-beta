@@ -11,6 +11,8 @@ import styled from "styled-components/native";
 import { ITheme } from "@/types";
 import { Layout } from "@/components";
 import SvgIcon from "@/assets/SvgIcon";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useEffect, useState } from "react";
 
 // TODO 1 : mission type 별로 이미지 띄우기,텍스트만띄우기 화면  수정하기
 // TODO 2: 텍스트와  이미지 서버에서  가져오기
@@ -22,6 +24,7 @@ interface Props {
   setModalVisible: (visible: boolean) => void;
   missionTitle: string;
   missionType: string;
+  thisMissionNum: number;
   resultTextFromAsyncStorage: string | undefined;
   missionNameFromAsyncStorage: string | undefined;
   completeDateFromAsyncStorage: string | undefined;
@@ -31,6 +34,7 @@ const DetailModal = ({
   setModalVisible,
   missionTitle,
   missionType,
+  thisMissionNum,
   missionNameFromAsyncStorage,
   completeDateFromAsyncStorage,
   resultTextFromAsyncStorage,
@@ -38,6 +42,10 @@ const DetailModal = ({
   const year = completeDateFromAsyncStorage?.slice(0, 2);
   const month = completeDateFromAsyncStorage?.slice(2, 4);
   const day = completeDateFromAsyncStorage?.slice(4, 6);
+  const photoUriPath = {
+    example: require("@assets/images/exampleImage.png"),
+  };
+
   return (
     <Modal
       style={{ flex: 1 }}
@@ -50,8 +58,10 @@ const DetailModal = ({
     >
       <Layout>
         <Header>
-          <View>
-            <MainText>{missionNameFromAsyncStorage}</MainText>
+          <View style={{ width: "90%" }}>
+            <MainText numberOfLines={1} ellipsizeMode="tail">
+              {missionNameFromAsyncStorage}
+            </MainText>
             <DateText>
               {year}년 {month}월 {day}일
             </DateText>
@@ -71,7 +81,7 @@ const DetailModal = ({
                   borderRadius: 20,
                 }}
                 resizeMode="stretch"
-                source={require("@assets/images/exampleImage.png")}
+                source={photoUriPath.example}
               />
             </Pressable>
             <Words>{resultTextFromAsyncStorage}</Words>
@@ -98,8 +108,9 @@ const Body = styled.View`
 `;
 
 const MainText = styled.Text`
+  width: 95%;
   font-family: ${(props: IContainerProps) => props.theme.font.thickFont};
-  font-size: 20px;
+  font-size: 18px;
   color: ${(props: IContainerProps) => props.theme.color.n900};
 `;
 

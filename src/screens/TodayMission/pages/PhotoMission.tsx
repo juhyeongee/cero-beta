@@ -26,8 +26,9 @@ const PhotoMission = ({ pickImage }: Props) => {
         />
         <Main>
           <PhotoBtn onPress={pickImage}>
-            <AutoHeightImage
-              width={40}
+            <Image
+              width={100}
+              height={300}
               source={require("@assets/images/camera.png")}
             />
           </PhotoBtn>

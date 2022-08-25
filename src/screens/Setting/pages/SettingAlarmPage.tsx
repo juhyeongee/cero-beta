@@ -83,11 +83,11 @@ const SettingAlarmPage = ({
               }}
             >
               <View style={{ width: "80%" }}>
-                <SubText>안부알림 받기</SubText>
+                <SubText>안부 알림 받기</SubText>
                 <SmallGrayText>
-                  할 일 인증 기간이 2시간 남았을 때 혹은 인증 시간이 지났을 때
-                  리마인드 알림을 받습니다.
+                  오늘의 할 일 인증 시간이 지났을 때
                 </SmallGrayText>
+                <SmallGrayText>리마인드 알림을 받습니다.</SmallGrayText>
               </View>
               <Switch
                 trackColor={{ false: "#767577", true: "#81b0ff" }}

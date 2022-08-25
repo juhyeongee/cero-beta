@@ -104,19 +104,23 @@ const ToDo = ({ navigateToTodayMission }: Props) => {
             <></>
           ) : (
             <>
-              <Pressable
-                style={{
-                  flexDirection: "row",
-                  justifyContent:
-                    Platform.OS === "ios" ? "flex-start" : "flex-end",
-                }}
-                onPress={rotateVersionNum}
-              >
-                <GrayText>
-                  변경하기 ({versionNum}/{Object.keys(todoObject).length})
-                </GrayText>
-                <SvgIcon name="refresh" />
-              </Pressable>
+              {todoNum === 14 || todoNum === 1 ? (
+                <></>
+              ) : (
+                <Pressable
+                  style={{
+                    flexDirection: "row",
+                    justifyContent:
+                      Platform.OS === "ios" ? "flex-start" : "flex-end",
+                  }}
+                  onPress={rotateVersionNum}
+                >
+                  <GrayText>
+                    변경하기 ({versionNum}/{Object.keys(todoObject).length})
+                  </GrayText>
+                  <SvgIcon name="refresh" />
+                </Pressable>
+              )}
             </>
           )}
         </View>
@@ -145,7 +149,7 @@ const ToDo = ({ navigateToTodayMission }: Props) => {
           />
         ) : todayMissionComplete ? (
           <CompleteBtn onPress={showToast}>
-            <CompleteBtnText>오늘의 할 일을 완료했어요!</CompleteBtnText>
+            <CompleteBtnText>오늘의 할 일 완료!</CompleteBtnText>
           </CompleteBtn>
         ) : (
           <BigPrimaryBtn text="물 주기" onPress={navigateToTodayMission} />
@@ -174,7 +178,7 @@ const GrayText = styled.Text`
 
 const ToDoGrayBox = styled.View`
   width: 100%;
-  background-color: ${(props: IContainerProps) => props.theme.color.n500};
+  background-color: ${(props: IContainerProps) => props.theme.color.n100};
   height: ${Platform.OS === "ios" ? "40%" : "46%"};
   padding: ${Platform.OS === "ios" ? "5%" : "2%"};
   justify-content: center;

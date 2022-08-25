@@ -32,8 +32,8 @@ const missions: IMissionType = {
   2: {
     version1: {
       subtitle: "이별 영화 감상하기 🎥",
-      description: `오늘은 영화 한 편 어떠세요? 이별을 극복한 사람들이 추천하는 영화, 베스트 5입니다. `,
-      type: "text",
+      description: `오늘은 영화 한 편 어떠세요?\n 인상 깊은 장면을 캡쳐해서 소감을 나눠주세요.`,
+      type: "both",
       articleTitle: "우리가 주인공이었던 이야기",
       article: `울리지 않는 핸드폰은 잠시 내려놓고 오직 나만을 위한 두 시간을 보내봅니다. 이별을 극복한 사람들이 추천하는 영화 다섯 편을 추천해드릴게요.  
 
@@ -459,13 +459,6 @@ const missions: IMissionType = {
       subtitle: `나에게 쓰는 편지 💌`,
       description: `지금까지 아주 잘하셨어요. 더 좋은 사람이 되신 ${nickname}님께 한 마디 남겨주세요.`,
       type: "both",
-      articleTitle: "새로 시작하는 너에게",
-      article: ``,
-    },
-    version2: {
-      subtitle: `내 마음 확인하기 👍🏻`,
-      description: ``,
-      type: "text",
       articleTitle: "새로 시작하는 너에게",
       article: `14일의 여정도 어느덧 막바지에 다다랐습니다. 그간의 아픔과 슬픔을 멋지게 이겨내고 마음의 새싹을 틔워내신 ${nickname}님, 진심으로 축하드려요.
 
