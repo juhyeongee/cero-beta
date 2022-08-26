@@ -10,15 +10,14 @@ interface IPageProps {
   swipeNextPage: () => void;
 }
 const GetBirthday = ({ swipeNextPage }: IPageProps) => {
-  const [birthday, setBirthday] = useState<string>("");
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
-  const { nickname } = userInfoStore;
+  const { nickname, birthday } = userInfoStore;
 
   const handleConfirm = (date: Date) => {
     const age = new Date().getFullYear() - date.getFullYear();
     userInfoStore.updateAge(age);
     const newDay = dayjs(date);
-    setBirthday(newDay.format("YYYY년 M월 DD일"));
+    userInfoStore.updateBirthday(newDay.format("YYYY년 M월 DD일"));
     setDatePickerVisibility(false);
     setTimeout(() => swipeNextPage(), 700);
   };

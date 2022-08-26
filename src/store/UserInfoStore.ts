@@ -7,7 +7,7 @@ class UserInfoStore {
   todoNum: number = 1;
   versionNum: number = 1;
   nickname: string = "유저";
-  birthday: string = "알려주세요!";
+  birthday: string = "";
   gender: string = "미정";
   age: number = 0;
   FIRST_DEPRESSION_SCORE: number = 0;
