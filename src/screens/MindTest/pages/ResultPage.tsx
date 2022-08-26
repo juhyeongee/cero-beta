@@ -104,9 +104,9 @@ const ResultPage = () => {
 export default ResultPage;
 
 const Container = styled.View`
-  justify-content: center;
   flex: 8;
-  padding: 32px;
+  padding: 12% 8%;
+  box-sizing: border-box;
 `;
 
 const BG = styled.View`

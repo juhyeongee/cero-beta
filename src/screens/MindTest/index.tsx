@@ -1,16 +1,16 @@
 import { useRef } from "react";
 import Swiper from "react-native-swiper";
-import { questionObj } from "@constants/mindtestProperties";
+import { questionObj } from "@constants/properties";
 import TestPage from "./pages/TestPage";
 import { OnBoardingStackScreenProps, EndingStackScreenProps } from "@/types";
 import { findNotAnsweredQuestion, calculateDepressionScore } from "./functions";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import userInfoStore from "@/store/UserInfoStore";
 
 const MindTest = ({
   route,
   navigation,
 }: OnBoardingStackScreenProps<"MindTest">) => {
+  //TODO: 조건부 TYPE설정 어떻게 할지 알아보기
   const swiperRef = useRef();
   const swipeNextPage = () => {
     swiperRef.current.scrollBy(1);
@@ -27,13 +27,14 @@ const MindTest = ({
         userInfoStore.updateFirstDepressionScore(totalDepressionScore);
         const result = userInfoStore.FIRST_DEPRESSION_SCORE;
         console.log("첫 마음점검 결과점수 : ", result);
+        navigation.navigate("FirstLoadingScreen");
       } else if (userInfoStore.todoNum === 15) {
         const totalDepressionScore = await calculateDepressionScore("last");
         userInfoStore.updateLastDepressionScore(totalDepressionScore);
         const result = userInfoStore.LAST_DEPRESSION_SCORE;
         console.log("마지막 마음점검 결과점수 : ", result);
+        navigation.navigate("LastLoadingScreen");
       }
-      navigation.navigate("LastLoadingScreen");
     }
   };
 
