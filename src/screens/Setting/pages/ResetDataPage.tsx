@@ -5,7 +5,8 @@ import { SafeAreaView } from "react-native";
 import styled from "styled-components/native";
 import { Container, TitleText, SubText } from "../components/Styled";
 import { useState } from "react";
-import GreenTimePicker from "../components/settingHomeComp/NoticeBar";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import * as Update from "expo-updates";
 
 interface StyledProps {
   theme: ITheme;
@@ -25,12 +26,19 @@ const ResetDataPage = ({
   };
 
   const resetData = () => {
-    console.log("reset data finished");
+    AsyncStorage.clear();
   };
 
   const onClickResetBtn = () => {
     Alert.alert("정말 초기화하시겠어요?", "", [
-      { text: "네", onPress: () => resetData() },
+      {
+        text: "네",
+        onPress: () => {
+          resetData();
+          Update.reloadAsync();
+        },
+        style: "destructive",
+      },
       { text: "아니요", onPress: () => console.log("취소했습니다") },
     ]);
   };
@@ -41,7 +49,6 @@ const ResetDataPage = ({
           <Pressable onPress={navigateToBack}>
             <SvgIcon name="leftArrow" />
           </Pressable>
-
           <TitleText>데이터 초기화하기</TitleText>
         </View>
         <View style={{ flex: 4 }}>
@@ -55,7 +62,9 @@ const ResetDataPage = ({
               한 번 지워진 데이터는 복구가 불가능하니 신중하게 고민해주세요.
             </SubText>
           </View>
-          <View style={{ flex: 1, justifyContent: "flex-end" }}>
+          <View
+            style={{ flex: 1, justifyContent: "flex-end", paddingBottom: 30 }}
+          >
             <ButtonBG onPress={onClickResetBtn}>
               <ButtonInnerText>데이터 초기화</ButtonInnerText>
             </ButtonBG>
