@@ -36,7 +36,14 @@ const FirstLoadingScreen = ({
   }, []);
 
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        padding: "8%",
+      }}
+    >
       <SvgIcon name="boilingSeed" />
       <LoadingText>마음 씨앗을 만드는 중이예요</LoadingText>
       <GrayText>{lifeQuotes[1]}</GrayText>
@@ -54,6 +61,7 @@ const LoadingText = styled.Text`
 `;
 
 const GrayText = styled.Text`
+  text-align: center;
   font-family: ${(props: LoadingTextProps) => props.theme.font.thinFont};
   font-size: 16px;
   position: absolute;
