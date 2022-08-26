@@ -27,13 +27,7 @@ export interface ITheme {
     yellow600: string;
     yellow300: string;
   };
-  introBgColor: {
-    firstBg: string;
-    secondBg: string;
-    thirdBg: string;
-    fourthBg: string;
-    fifthBg: string;
-  };
+
   font: {
     androidThickFont: string;
     androidFont: string;

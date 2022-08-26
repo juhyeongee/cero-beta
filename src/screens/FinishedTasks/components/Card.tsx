@@ -49,6 +49,7 @@ const Card = ({ missionNum, showToast }: CardProps) => {
         missionNameFromAsyncStorage={missionNameFromAsyncStorage}
         completeDateFromAsyncStorage={completeDateFromAsyncStorage}
         resultTextFromAsyncStorage={resultTextFromAsyncStorage}
+        thisMissionNum={missionNum}
       />
       <CardDesign
         type={type}
