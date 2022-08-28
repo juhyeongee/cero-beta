@@ -63,7 +63,7 @@ const Header = ({
             );
           },
         },
-        { text: "아니요", onPress: () => minusOne() },
+        { text: "아니요", onPress: () => {} },
       ]
     );
   };

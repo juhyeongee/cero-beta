@@ -1,5 +1,12 @@
-import React, { useState } from "react";
-import { View, Text, Pressable, Image, SafeAreaView } from "react-native";
+import React, { useEffect, useState } from "react";
+import {
+  View,
+  Text,
+  Pressable,
+  Image,
+  SafeAreaView,
+  Keyboard,
+} from "react-native";
 import styled from "styled-components/native";
 import { ITheme } from "@/types";
 import PhotoMission from "./pages/PhotoMission";
@@ -34,6 +41,7 @@ const TodayMission = () => {
     }
   };
   //TODO: firebase 연결하기 - :https://docs.expo.dev/versions/latest/sdk/imagepicker/
+
   return (
     <>
       {missionType === "photo" && <PhotoMission pickImage={pickImage} />}

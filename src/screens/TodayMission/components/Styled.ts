@@ -22,6 +22,12 @@ export const MissionTitle = styled.Text`
   margin-right: 8px;
 `;
 
+export const ModalTitle = styled.Text`
+  font-family: ${(props: IContainerProps) => props.theme.font.thickFont};
+  color: ${(props: IContainerProps) => props.theme.color.n900};
+  font-size: 20px;
+`;
+
 export const Subtitle = styled.Text`
   margin-top: ${Platform.OS === "ios" ? "10px" : "0px"};
   color: ${(props: IContainerProps) => props.theme.color.n900};
@@ -35,7 +41,7 @@ export const FinishBtn = styled.Text`
 
 export const ModalBox = styled.View`
   width: 100%;
-  height: 45%;
+  height: 60%;
   position: absolute;
   bottom: 0%;
 `;
@@ -60,7 +66,6 @@ export const GrayBG = styled.Pressable`
 export const MissionContext = styled.Text`
   font-size: 16px;
   font-family: ${(props: IContainerProps) => props.theme.font.mainFont};
-  margin-top: 20px;
   color: ${(props: IContainerProps) => props.theme.color.n900};
 `;
 

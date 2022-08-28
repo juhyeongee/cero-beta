@@ -1,8 +1,9 @@
+import Theme from "@/constants/Theme";
 import React from "react";
-import { Modal, Pressable, ScrollView, Platform } from "react-native";
+import { Modal, Pressable, ScrollView, Platform, View } from "react-native";
 
 import {
-  MissionTitle,
+  ModalTitle,
   ModalBox,
   ModalContainer,
   GrayBG,
@@ -45,7 +46,16 @@ const ModalDescription = ({
         />
         <ModalBox>
           <ModalContainer>
-            <MissionTitle>{missionArticleTitle}</MissionTitle>
+            <ModalTitle>{missionArticleTitle}</ModalTitle>
+            <View
+              style={{
+                height: 0.5,
+                width: "100%",
+                backgroundColor: Theme.color.n700,
+                marginTop: 30,
+                marginBottom: 30,
+              }}
+            ></View>
             <ScrollView showsVerticalScrollIndicator={false}>
               <MissionContext>{missionArticle}</MissionContext>
             </ScrollView>

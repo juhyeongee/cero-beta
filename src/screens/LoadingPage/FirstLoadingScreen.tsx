@@ -45,7 +45,7 @@ const FirstLoadingScreen = ({
       }}
     >
       <SvgIcon name="boilingSeed" />
-      <LoadingText>마음 씨앗을 만드는 중이예요</LoadingText>
+      <LoadingText>마음 씨앗을 만드는 중이에요</LoadingText>
       <GrayText>{lifeQuotes[1]}</GrayText>
       {/* TODO: lifeQuotes 명언 랜덤으로 나가게  */}
     </View>

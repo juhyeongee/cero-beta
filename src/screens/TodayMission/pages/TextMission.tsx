@@ -1,4 +1,4 @@
-import React, { createRef, useRef, useState } from "react";
+import React, { createRef, useEffect, useRef, useState } from "react";
 import {
   View,
   Text,
@@ -6,6 +6,11 @@ import {
   Image,
   SafeAreaView,
   TextInput,
+  KeyboardAvoidingView,
+  Keyboard,
+  TouchableWithoutFeedback,
+  ScrollView,
+  Platform,
 } from "react-native";
 import styled from "styled-components/native";
 import { ITheme } from "@/types";
@@ -15,14 +20,34 @@ interface IContainerProps {
   theme: ITheme;
 }
 
-interface Props {
-  setMissionText: (props: string) => void;
-}
-
 const TextMission = () => {
+  const scrollViewRef = useRef<any>();
+
   const [missionText, setMissionText] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
   const inputRef = createRef<TextInput>();
+
+  const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+
+  const keyboardDidShowListener = Keyboard.addListener(
+    "keyboardDidShow",
+    () => {
+      setKeyboardVisible(true);
+    }
+  );
+  const keyboardDidHideListener = Keyboard.addListener(
+    "keyboardDidHide",
+    () => {
+      setKeyboardVisible(false);
+    }
+  );
+  useEffect(() => {
+    return () => {
+      keyboardDidHideListener.remove();
+      keyboardDidShowListener.remove();
+    };
+  }, []);
+
   return (
     <Container>
       <SafeAreaView style={{ flex: 2 }}>
@@ -34,15 +59,35 @@ const TextMission = () => {
           />
         </View>
       </SafeAreaView>
-      <Main onPress={() => inputRef.current?.focus()}>
-        <TextInput
-          multiline={true}
-          ref={inputRef}
-          style={{ fontSize: 18, flexShrink: 1, lineHeight: 30 }}
-          onChangeText={setMissionText}
-          placeholder="여기에 적어 주세요"
-        />
-      </Main>
+      <KeyboardAvoidingView
+        style={{ flex: 5 }}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+      >
+        <TouchableWithoutFeedback
+          onPress={() => keyboardDidHideListener.remove()}
+        >
+          <Main onPress={() => inputRef.current?.focus()}>
+            <View style={{ flex: 1 }}>
+              <ScrollView
+                style={{ flex: 1 }}
+                ref={scrollViewRef}
+                onContentSizeChange={() =>
+                  scrollViewRef.current.scrollToEnd({ animated: true })
+                }
+              >
+                <TextInput
+                  multiline={true}
+                  ref={inputRef}
+                  style={{ fontSize: 18, flexShrink: 1, lineHeight: 30 }}
+                  onChangeText={setMissionText}
+                  placeholder="여기에 적어 주세요"
+                  autoCorrect={false}
+                />
+              </ScrollView>
+            </View>
+          </Main>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
     </Container>
   );
 };
