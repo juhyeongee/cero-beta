@@ -49,11 +49,13 @@ const ToDo = ({ navigateToTodayMission }: Props) => {
   const todayMissionComplete = todayDate === lastCompletedMissionDate;
 
   const updateCompletedVersionFromAsyncStorage = () => {
+    console.log("todoNum", todoNum);
     AsyncStorage.getItem(`mission${todoNum - 1}Result`).then((res) => {
       if (res === null) {
-        console.log(" 'Home어제자 미션 정보가 없습니다.");
+        console.log("Home어제자 미션 정보가 없습니다.");
         return null;
       } else {
+        console.log("어제자 미션 정보 존재함 확인");
         const parsedCompletedObject = JSON.parse(res);
         const completedVersionFromAsyncStorage =
           parsedCompletedObject["versionNum"];
@@ -65,10 +67,12 @@ const ToDo = ({ navigateToTodayMission }: Props) => {
         } else {
           setCompletedTodoFromAsyncStorage(completedTodo);
           userInfoStore.updateCompleteMissionName(completedTodo);
+          console.log("completedTodo: ", completedTodo);
         }
       }
     });
   };
+
   //TODO: 다만, 현재 rerender를 하지 않는한, 홈 화면에서  오늘의 할 일 텍스트가 백지로 나옴; reroad 할 때, 비동기함수라서 업데이트가 느려서 그런건가  싶음
 
   const rotateVersionNum = () => {
@@ -82,7 +86,7 @@ const ToDo = ({ navigateToTodayMission }: Props) => {
 
   useEffect(() => {
     updateCompletedVersionFromAsyncStorage();
-  }, []);
+  }, [todoNum]);
 
   return (
     <Container>

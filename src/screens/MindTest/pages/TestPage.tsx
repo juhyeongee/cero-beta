@@ -26,10 +26,10 @@ const TestPage = ({ swipeNextPage, pageNumber, onPressSubmitBtn }: IProps) => {
     setClickedBtnNumber(pressedBtnNum);
     if (todoNum === 15) {
       userInfoStore.updateLastMindTestResultObject(pageNumber, pressedBtnNum);
-      console.log(`${pageNumber}페이지 클릭`);
+      // console.log(`${pageNumber}페이지 클릭`);
     } else {
       userInfoStore.updateFirstMindTestResultObject(pageNumber, pressedBtnNum);
-      console.log(`${pageNumber}페이지 클릭`);
+      // console.log(`${pageNumber}페이지 클릭`);
     }
     setTimeout(() => swipeNextPage(), 200);
   };

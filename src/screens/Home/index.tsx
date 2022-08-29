@@ -30,11 +30,6 @@ const Home = ({ route, navigation }: HomeStackScreenProps<"Home">) => {
   const { todoNum, completeMissionDatesArray } = userInfoStore;
   const { isCurriculumEnd } = currentPageStore;
 
-  useEffect(() => {
-    console.log(userInfoStore);
-    AsyncStorage.getAllKeys().then((res) => console.log(res));
-  }, [todoNum]);
-
   //TODO: 미션 14일차 미션 다 끝나면 엔딩보러가기 페이지가 생겨야함 , 미션num이 15일 일떄랑 ㅇ
   const imageSourceArray = [
     require("@/assets/images/1.png"),
