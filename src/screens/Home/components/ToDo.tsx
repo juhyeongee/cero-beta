@@ -142,12 +142,7 @@ const ToDo = ({ navigateToTodayMission }: Props) => {
           height: "30%",
         }}
       >
-        {todoNum === 15 ? (
-          <BigPrimaryBtn
-            text="마지막 물주기"
-            onPress={() => currentPageStore.updateScreen("EndingStackNav")}
-          />
-        ) : todayMissionComplete ? (
+        {todayMissionComplete ? (
           <CompleteBtn onPress={showToast}>
             <CompleteBtnText>오늘의 할 일 완료!</CompleteBtnText>
           </CompleteBtn>

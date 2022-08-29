@@ -5,15 +5,19 @@ import {
   Image,
   SafeAreaView,
   Platform,
+  Modal,
 } from "react-native";
 import styled, { css } from "styled-components/native";
 import { HomeStackScreenProps, ITheme } from "@/types";
 import Swiper from "react-native-swiper";
-import ToDo from "./components/ToDo";
-import NumberBoard from "./components/NumberBoard";
+import {
+  NumberBoard,
+  ToDo,
+  PlantContainer,
+  LastWateringModal,
+} from "./components";
 import userInfoStore from "@/store/UserInfoStore";
-import { useEffect } from "react";
-import PlantContainer from "./components/PlantContainer";
+import React, { useEffect } from "react";
 import { observer } from "mobx-react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import currentPageStore from "@/store/CurrentPageStore";
@@ -61,21 +65,27 @@ const Home = ({ route, navigation }: HomeStackScreenProps<"Home">) => {
       {!isCurriculumEnd && (
         <View style={{ flex: 0.3 }}>
           <ContentsCont>
-            <Bar />
-            <View style={{ height: "90%" }}>
-              <Swiper
-                showsPagination={true}
-                paginationStyle={{ bottom: 7 }}
-                activeDotColor="#40B08F"
-              >
-                <ToDo
-                  navigateToTodayMission={() =>
-                    navigation.navigate("TodayMission")
-                  }
-                />
-                <NumberBoard />
-              </Swiper>
-            </View>
+            {todoNum === 15 ? (
+              <LastWateringModal />
+            ) : (
+              <>
+                <Bar />
+                <View style={{ height: "90%" }}>
+                  <Swiper
+                    showsPagination={true}
+                    paginationStyle={{ bottom: 7 }}
+                    activeDotColor="#40B08F"
+                  >
+                    <ToDo
+                      navigateToTodayMission={() =>
+                        navigation.navigate("TodayMission")
+                      }
+                    />
+                    <NumberBoard />
+                  </Swiper>
+                </View>
+              </>
+            )}
           </ContentsCont>
         </View>
       )}
