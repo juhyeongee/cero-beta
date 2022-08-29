@@ -11,8 +11,9 @@ interface IContainerProps {
 }
 interface Props {
   pickImage: () => void;
+  imageUri: string | null | undefined;
 }
-const PhotoMission = ({ pickImage }: Props) => {
+const PhotoMission = ({ pickImage, imageUri }: Props) => {
   const [missionText, setMissionText] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -25,13 +26,28 @@ const PhotoMission = ({ pickImage }: Props) => {
           setModalVisible={setModalVisible}
         />
         <Main>
-          <PhotoBtn onPress={pickImage}>
+          {typeof imageUri === "string" ? (
             <Image
-              width={100}
-              height={300}
-              source={require("@assets/images/camera.png")}
+              style={{
+                marginBottom: 24,
+                width: "100%",
+                height: 300,
+                borderRadius: 20,
+              }}
+              resizeMode="contain"
+              source={{
+                uri: imageUri,
+              }}
             />
-          </PhotoBtn>
+          ) : (
+            <PhotoBtn onPress={pickImage}>
+              <Image
+                width={100}
+                height={300}
+                source={require("@assets/images/camera.png")}
+              />
+            </PhotoBtn>
+          )}
         </Main>
       </SafeAreaView>
     </Container>

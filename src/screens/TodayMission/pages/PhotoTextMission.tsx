@@ -10,6 +10,7 @@ import {
   TouchableWithoutFeedback,
   ScrollView,
   Keyboard,
+  Image,
 } from "react-native";
 import styled from "styled-components/native";
 import { ITheme } from "@/types";
@@ -20,10 +21,11 @@ interface IContainerProps {
   theme: ITheme;
 }
 interface Props {
+  imageUri: string | null | undefined;
   pickImage: () => void;
 }
 
-const PhotoTextMission = ({ pickImage }: Props) => {
+const PhotoTextMission = ({ pickImage, imageUri }: Props) => {
   const scrollViewRef = useRef<any>();
   const [missionText, setMissionText] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
@@ -58,12 +60,27 @@ const PhotoTextMission = ({ pickImage }: Props) => {
             setModalVisible={setModalVisible}
           />
           <PhotoTab>
-            <PhotoBtn onPress={pickImage}>
-              <AutoHeightImage
-                width={40}
-                source={require("@assets/images/camera.png")}
+            {typeof imageUri === "string" ? (
+              <Image
+                style={{
+                  marginBottom: 24,
+                  width: "100%",
+                  height: 300,
+                  borderRadius: 20,
+                }}
+                resizeMode="contain"
+                source={{
+                  uri: imageUri,
+                }}
               />
-            </PhotoBtn>
+            ) : (
+              <PhotoBtn onPress={pickImage}>
+                <AutoHeightImage
+                  width={40}
+                  source={require("@assets/images/camera.png")}
+                />
+              </PhotoBtn>
+            )}
           </PhotoTab>
           <KeyboardAvoidingView
             behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -108,6 +125,7 @@ const Container = styled.View`
 `;
 
 const PhotoTab = styled.View`
+  padding: 3%;
   flex: 2.5;
   width: 100%;
 `;

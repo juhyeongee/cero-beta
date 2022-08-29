@@ -24,21 +24,32 @@ const Card = ({ missionNum, showToast }: CardProps) => {
     useState();
   const type = missions[missionNum].version1.type;
   //TODO: 완료한 미션의 버전따라 카드 타이틀명 설정
+  const [imageUri, setImageUri] = useState<string | null>();
 
   const onClicked = () => {
     setModalVisible(!modalVisible);
   };
-  AsyncStorage.getItem(`mission${missionNum}Result`).then((result) => {
-    if (typeof result === undefined) {
-      return null;
-    } else if (typeof result === "string") {
-      const resultObject = JSON.parse(result);
-      setMissionNameFromAsyncStorage(resultObject["missionName"]);
-      setCompleteDateFromAsyncStorage(resultObject["completeDate"]);
-      setResultTextFromAsyncStorage(resultObject["resultText"]);
-    }
-  });
 
+  useEffect(() => {
+    AsyncStorage.getItem(`mission${missionNum}Result`).then((result) => {
+      if (typeof result === undefined) {
+        return null;
+      } else if (typeof result === "string") {
+        const resultObject = JSON.parse(result);
+        setMissionNameFromAsyncStorage(resultObject["missionName"]);
+        setCompleteDateFromAsyncStorage(resultObject["completeDate"]);
+        setResultTextFromAsyncStorage(resultObject["resultText"]);
+      }
+    });
+    AsyncStorage.getItem(`mission${missionNum}ImageUri`).then((res) => {
+      console.log("res:", res);
+      if (res === null) {
+        console.log("ImageUri가 없습니다");
+      } else {
+        setImageUri(res);
+      }
+    });
+  }, [todoNum]);
   return (
     <View>
       <DetailModal
@@ -50,6 +61,7 @@ const Card = ({ missionNum, showToast }: CardProps) => {
         completeDateFromAsyncStorage={completeDateFromAsyncStorage}
         resultTextFromAsyncStorage={resultTextFromAsyncStorage}
         thisMissionNum={missionNum}
+        imageUri={imageUri}
       />
       <CardDesign
         type={type}

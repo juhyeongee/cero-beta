@@ -13,6 +13,7 @@ import { Layout } from "@/components";
 import SvgIcon from "@/assets/SvgIcon";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect, useState } from "react";
+import userInfoStore from "@/store/UserInfoStore";
 
 // TODO 1 : mission type 별로 이미지 띄우기,텍스트만띄우기 화면  수정하기
 // TODO 2: 텍스트와  이미지 서버에서  가져오기
@@ -28,6 +29,7 @@ interface Props {
   resultTextFromAsyncStorage: string | undefined;
   missionNameFromAsyncStorage: string | undefined;
   completeDateFromAsyncStorage: string | undefined;
+  imageUri: string | undefined;
 }
 const DetailModal = ({
   modalVisible,
@@ -38,13 +40,12 @@ const DetailModal = ({
   missionNameFromAsyncStorage,
   completeDateFromAsyncStorage,
   resultTextFromAsyncStorage,
+  imageUri,
 }: Props) => {
   const year = completeDateFromAsyncStorage?.slice(0, 2);
   const month = completeDateFromAsyncStorage?.slice(2, 4);
   const day = completeDateFromAsyncStorage?.slice(4, 6);
-  const photoUriPath = {
-    example: require("@assets/images/exampleImage.png"),
-  };
+  const { todoNum } = userInfoStore;
 
   return (
     <Modal
@@ -72,18 +73,18 @@ const DetailModal = ({
         </Header>
         <Body>
           <ScrollView showsVerticalScrollIndicator={false}>
-            <Pressable>
-              <Image
-                style={{
-                  marginBottom: 24,
-                  width: "100%",
-                  height: 300,
-                  borderRadius: 20,
-                }}
-                resizeMode="stretch"
-                source={photoUriPath.example}
-              />
-            </Pressable>
+            <Image
+              style={{
+                marginBottom: 24,
+                width: "100%",
+                height: 300,
+                borderRadius: 20,
+              }}
+              resizeMode="stretch"
+              source={{
+                uri: imageUri,
+              }}
+            />
             <Words>{resultTextFromAsyncStorage}</Words>
           </ScrollView>
         </Body>

@@ -25,6 +25,7 @@ const TodayMission = () => {
   const [thisMissionImagePath, setThisMissionImagePath] = useState({
     missionUri: require("@assets/images/camera.png"),
   });
+  const [imageUri, setImageUri] = useState<string | undefined | null>();
 
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -35,18 +36,21 @@ const TodayMission = () => {
     console.log(result);
     if (!result.cancelled) {
       await AsyncStorage.setItem(`mission${todoNum}ImageUri`, result.uri);
-      console.log("result.uri:", result.uri);
-      console.log(`mission${todoNum}ImageUri`);
-      // setThisMissionImagePath();
+      setImageUri(result.uri);
+      return result.uri;
     }
   };
   //TODO: firebase 연결하기 - :https://docs.expo.dev/versions/latest/sdk/imagepicker/
 
   return (
     <>
-      {missionType === "photo" && <PhotoMission pickImage={pickImage} />}
+      {missionType === "photo" && (
+        <PhotoMission pickImage={pickImage} imageUri={imageUri} />
+      )}
       {missionType === "text" && <TextMission />}
-      {missionType === "both" && <PhotoTextMission pickImage={pickImage} />}
+      {missionType === "both" && (
+        <PhotoTextMission pickImage={pickImage} imageUri={imageUri} />
+      )}
     </>
   );
 };
