@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { View, Text, Pressable } from "react-native";
+import React, { useState, useEffect, useRef } from "react";
+import { View, Text, Pressable, Platform } from "react-native";
 import { ThemeProvider } from "styled-components/native";
 import styled from "styled-components/native";
 import Theme from "./src/constants/Theme";
@@ -30,9 +30,6 @@ import currentPageStore from "@/store/CurrentPageStore";
 import { EndingStackNav } from "@navigations/index";
 import { observer } from "mobx-react";
 import * as Notifications from "expo-notifications";
-import * as Permissions from "expo-permissions";
-import createSender from "@/utils/notification";
-import { addNotificationReceivedListener } from "expo-notifications";
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -60,30 +57,22 @@ function App() {
     GothicA1_600SemiBold,
   });
 
-  const [sender, setSender] = useState();
+  useEffect(() => {
+    const subscription = Notifications.addNotificationReceivedListener(
+      (notification) => {
+        console.log(notification);
+      }
+    );
+    const responseSubscription =
+      Notifications.addNotificationResponseReceivedListener((notification) => {
+        console.log(notification);
+      });
 
-  useEffect(() => {
     userInfoStore.resetVersionNum();
-    const a = createSender();
-    addNotificationReceivedListener((notification) => {
-      console.log("noti", notification);
-    });
-    a.then((sendFunc) => {
-      console.log(typeof sendFunc);
-      console.log("sendFunc", sendFunc);
-      setSender({ sendFunc });
-    });
-    // userInfoStore.updateTodayDate();
-    // TODO: 앱 빌드를 만들때는, 매일 날짜 갱신 되도록 위 코드를 꼭 주석을 해제해줘야함.
-    // AsyncStorage.clear();
-    // currentPageStore.updateScreen("MainBottomTabNav");
+    return () => {
+      subscription.remove(), responseSubscription.remove();
+    };
   }, []);
-  useEffect(() => {
-    if (sender && sender.sendFunc instanceof Function) {
-      console.log("Sender", sender);
-      sender.sendFunc("hellooooo");
-    }
-  }, [sender]);
 
   if (!fontsLoaded) {
     return (
@@ -94,21 +83,18 @@ function App() {
   }
 
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>알림울리기</Text>
-    </View>
-    // <NavigationContainer>
-    //   <ThemeProvider theme={Theme}>
-    //     {currentScreen === "IntroNav" && <IntroNav />}
-    //     {currentScreen === "OnBoardingNav" && <OnBoardingNav />}
-    //     {currentScreen === "MainBottomTabNav" && <MainBottomTabNav />}
-    //     {currentScreen === "EndingStackNav" && <EndingStackNav />}
+    <NavigationContainer>
+      <ThemeProvider theme={Theme}>
+        {currentScreen === "IntroNav" && <IntroNav />}
+        {currentScreen === "OnBoardingNav" && <OnBoardingNav />}
+        {currentScreen === "MainBottomTabNav" && <MainBottomTabNav />}
+        {currentScreen === "EndingStackNav" && <EndingStackNav />}
 
-    //     {/* {onPage === "Setting" && <SettingStackNav />} */}
+        {/* {onPage === "Setting" && <SettingStackNav />} */}
 
-    //     <Toast />
-    //   </ThemeProvider>
-    // </NavigationContainer>
+        <Toast />
+      </ThemeProvider>
+    </NavigationContainer>
   );
 }
 

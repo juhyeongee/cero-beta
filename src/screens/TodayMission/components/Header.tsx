@@ -23,6 +23,7 @@ import {
 } from "./Styled";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { observer } from "mobx-react";
+import { scheduleAfterMissionNotiHandler } from "@/utils/notification";
 
 interface HeaderModal {
   modalVisible: boolean;
@@ -58,6 +59,7 @@ const Header = ({
               () => {
                 userInfoStore.updateCompleteMissionDatesArray(todayDate);
                 userInfoStore.addOne();
+                scheduleAfterMissionNotiHandler();
                 navigation.goBack();
               }
             );
