@@ -32,22 +32,22 @@ const Home = ({ route, navigation }: HomeStackScreenProps<"Home">) => {
 
   //TODO: 미션 14일차 미션 다 끝나면 엔딩보러가기 페이지가 생겨야함 , 미션num이 15일 일떄랑 ㅇ
   const imageSourceArray = [
-    require("@/assets/images/1.png"),
-    require("@/assets/images/2.png"),
-    require("@/assets/images/3.png"),
-    require("@/assets/images/4.png"),
-    require("@/assets/images/5.png"),
-    require("@/assets/images/6.png"),
-    require("@/assets/images/7.png"),
-    require("@/assets/images/8.png"),
-    require("@/assets/images/9.png"),
-    require("@/assets/images/10.png"),
-    require("@/assets/images/11.png"),
-    require("@/assets/images/12.png"),
-    require("@/assets/images/13.png"),
-    require("@/assets/images/14.png"),
-    require("@/assets/images/15.png"),
-    require("@/assets/images/16.png"),
+    require("@/assets/images/silver-day0.png"),
+    require("@/assets/images/silver-day1.png"),
+    require("@/assets/images/silver-day2.png"),
+    require("@/assets/images/silver-day3.png"),
+    require("@/assets/images/silver-day4.png"),
+    require("@/assets/images/silver-day5.png"),
+    require("@/assets/images/silver-day6.png"),
+    require("@/assets/images/silver-day7.png"),
+    require("@/assets/images/silver-day8.png"),
+    require("@/assets/images/silver-day9.png"),
+    require("@/assets/images/silver-day10.png"),
+    require("@/assets/images/silver-day11.png"),
+    require("@/assets/images/silver-day12.png"),
+    require("@/assets/images/silver-day13.png"),
+    require("@/assets/images/silver-day14.png"),
+    require("@/assets/images/silver-day15.png"),
   ];
 
   const plantSource = isCurriculumEnd

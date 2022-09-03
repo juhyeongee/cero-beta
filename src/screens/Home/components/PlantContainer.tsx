@@ -4,7 +4,6 @@ import SvgIcon from "@/assets/SvgIcon";
 import userInfoStore from "@/store/UserInfoStore";
 import AutoHeightImage from "react-native-auto-height-image";
 import { observer } from "mobx-react";
-import { Image } from "react-native-svg";
 
 interface IPlantContainerProps {
   plantSource: number;
@@ -15,13 +14,12 @@ const PlantContainer = ({ plantSource }: IPlantContainerProps) => {
       <View style={{ position: "absolute", right: "0%", top: "18%" }}>
         <SvgIcon name="LastWindow" />
       </View>
-      <View style={{ position: "absolute", bottom: "20%" }}>
-        <AutoHeightImage width={200} source={plantSource} />
+      <View style={{ flex: 4, justifyContent: "flex-end" }}>
+        <AutoHeightImage width={370} source={plantSource} />
       </View>
       <View
         style={{
-          position: "absolute",
-          bottom: Platform.OS === "ios" ? "-10%" : "-15%",
+          flex: 1,
         }}
       >
         <SvgIcon name="LastPot" />
