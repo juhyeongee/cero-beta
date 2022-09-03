@@ -75,3 +75,10 @@ export { default as grayFlowerReaf } from "./grayFlowerReaf.svg";
 export { default as format } from "./format.svg";
 export { default as name } from "./name.svg";
 export { default as photosynthesis } from "./photosynthesis.svg";
+
+export { default as yellowRightTriangle } from "./yellowRightTriangle.svg";
+export { default as blueRightTriangle } from "./blueRightTriangle.svg";
+export { default as greenRightTriangle } from "./greenRightTriangle.svg";
+export { default as redRightTriangle } from "./redRightTriangle.svg";
+
+export { default as x } from "./x.svg";

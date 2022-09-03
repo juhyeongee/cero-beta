@@ -33,21 +33,12 @@ const ThirdPage = ({ goNextPage }: IFirstPageProps) => {
       <View style={{ flex: 2 }}>
         <TitleText>{EndingResultText["thirdPageTitle"]}</TitleText>
       </View>
+      <Graph />
       <FinalScoreBox
         onPress={() => setModalVisible(true)}
         firstDepressionScore={firstScore}
         lastDepressionScore={lastScore}
       />
-      <Graph />
-      <View
-        style={{
-          flex: 0.4,
-          alignItems: "flex-end",
-          justifyContent: "flex-end",
-        }}
-      >
-        <SvgIcon name="statusCompare" />
-      </View>
       <View style={{ flex: 6.5, paddingTop: "10%" }}>
         <SubText>
           {MindTestResultText[userInfoStore.lastDepressionState]}
