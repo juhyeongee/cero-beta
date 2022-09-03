@@ -10,6 +10,16 @@ import * as Device from "expo-device";
 import { Platform } from "react-native";
 import dayjs from "dayjs";
 
+export function exampleAlarm() {
+  Notifications.scheduleNotificationAsync({
+    content: {
+      title: notificationTexts.missionAfterNoti[getRandomInt(0, 5)].title,
+      body: notificationTexts.missionAfterNoti[getRandomInt(0, 5)].body,
+      // data: { userName: "주형" },
+    },
+    trigger: { seconds: 3 },
+  });
+}
 function getRandomInt(min: number, max: number) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -27,8 +37,8 @@ export function scheduleAfterMissionNotiHandler() {
   console.log(trigger);
   Notifications.scheduleNotificationAsync({
     content: {
-      title: notificationTexts.morningNoti[getRandomInt(0, 5)].title,
-      body: notificationTexts.morningNoti[getRandomInt(0, 5)].body,
+      title: notificationTexts.missionAfterNoti[getRandomInt(0, 5)].title,
+      body: notificationTexts.missionAfterNoti[getRandomInt(0, 5)].body,
       // data: { userName: "주형" },
     },
     trigger,
@@ -38,8 +48,8 @@ export function scheduleAfterMissionNotiHandler() {
 export function scheduledRemindNotiHandler(hour: number, minute: number) {
   Notifications.scheduleNotificationAsync({
     content: {
-      title: notificationTexts.nightNoti[getRandomInt(0, 2)].title,
-      body: notificationTexts.nightNoti[getRandomInt(0, 2)].body,
+      title: notificationTexts.missionAfterNoti[getRandomInt(0, 2)].title,
+      body: notificationTexts.missionAfterNoti[getRandomInt(0, 2)].body,
     },
     trigger: {
       hour: hour,
