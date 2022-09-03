@@ -71,3 +71,6 @@ export { default as greenReverseTriangle } from "./greenReverseTriangle.svg";
 
 export { default as articleInfo } from "./articleInfo.svg";
 export { default as grayFlowerReaf } from "./grayFlowerReaf.svg";
+
+export { default as format } from "./format.svg";
+export { default as name } from "./name.svg";

@@ -59,13 +59,13 @@ const SettingHomePage = ({
               onPress={navigateToResetNickname}
               arrow={true}
               text="닉네임 바꾸기"
-              icon={<SvgIcon name="alarm" />}
+              icon={<SvgIcon name="name" />}
             />
             <OptionBox
               onPress={navigateToResetData}
               arrow={true}
               text="데이터 초기화하기"
-              icon={<SvgIcon name="alarm" />}
+              icon={<SvgIcon name="format" />}
             />
             <OptionBox
               onPress={logout}
