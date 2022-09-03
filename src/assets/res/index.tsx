@@ -74,3 +74,4 @@ export { default as grayFlowerReaf } from "./grayFlowerReaf.svg";
 
 export { default as format } from "./format.svg";
 export { default as name } from "./name.svg";
+export { default as photosynthesis } from "./photosynthesis.svg";

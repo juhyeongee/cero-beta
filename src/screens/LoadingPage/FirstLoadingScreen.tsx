@@ -16,6 +16,11 @@ const FirstLoadingScreen = ({
   route,
   navigation,
 }: OnBoardingStackScreenProps<"FirstLoadingScreen">) => {
+  function getRandomInt(min: number, max: number) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min; //최댓값은 제외, 최솟값은 포함
+  }
   useEffect(() => {
     if (userInfoStore.FIRST_DEPRESSION_SCORE >= 46) {
       userInfoStore.updateFirstDepressionState("good");
@@ -46,8 +51,9 @@ const FirstLoadingScreen = ({
     >
       <SvgIcon name="boilingSeed" />
       <LoadingText>마음 씨앗을 만드는 중이에요</LoadingText>
-      <GrayText>{lifeQuotes[1]}</GrayText>
-      {/* TODO: lifeQuotes 명언 랜덤으로 나가게  */}
+      <GrayText>
+        {lifeQuotes[getRandomInt(0, Object.keys(lifeQuotes).length + 1)]}
+      </GrayText>
     </View>
   );
 };
