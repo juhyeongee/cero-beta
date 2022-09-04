@@ -87,7 +87,8 @@ const FourthPage = () => {
 
 export default FourthPage;
 
-const BoxContainer = styled.View`
+const BoxContainer = styled.Pressable`
+  padding: 3%;
   justify-content: space-around;
   flex: 3;
   width: 100%;

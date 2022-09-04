@@ -3,6 +3,7 @@ import Home from "@/screens/Home";
 import TodayMission from "@/screens/TodayMission";
 import { HomeStackParamList } from "@/types";
 import MindTest from "@/screens/MindTest";
+import FeedBack from "@/screens/Feedback";
 
 const HomeStack = createNativeStackNavigator<HomeStackParamList>();
 
@@ -23,6 +24,7 @@ export const HomeStackNav = () => {
       />
       <HomeStack.Screen name="TodayMission" component={TodayMission} />
       <HomeStack.Screen name="MindTest" component={MindTest} />
+      <HomeStack.Screen name="FeedBack" component={FeedBack} />
     </HomeStack.Navigator>
   );
 };

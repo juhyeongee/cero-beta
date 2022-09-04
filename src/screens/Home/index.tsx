@@ -23,6 +23,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import currentPageStore from "@/store/CurrentPageStore";
 import AutoHeightImage from "react-native-auto-height-image";
 import SvgIcon from "@/assets/SvgIcon";
+import { BigPrimaryBtn } from "@/components";
 
 interface IContainerProps {
   theme: ITheme;
@@ -53,7 +54,7 @@ const Home = ({ route, navigation }: HomeStackScreenProps<"Home">) => {
   ];
 
   const plantSource = isCurriculumEnd
-    ? imageSourceArray[imageSourceArray.length - 1]
+    ? require("@/assets/images/lastFlower.png")
     : imageSourceArray[todoNum - 1];
 
   return (
@@ -91,8 +92,30 @@ const Home = ({ route, navigation }: HomeStackScreenProps<"Home">) => {
         <View
           style={{ flex: 1, justifyContent: "flex-end", alignItems: "center" }}
         >
+          <View
+            style={{
+              flex: 1.2,
+              justifyContent: "flex-end",
+              alignItems: "center",
+            }}
+          >
+            <Text
+              style={{
+                marginBottom: 20,
+                fontWeight: "600",
+                color: "#5E686A",
+              }}
+            >
+              {userInfoStore.nickname}님의 꽃이 화사하게 피었어요.
+            </Text>
+
+            <BigPrimaryBtn
+              text="새로 팀에 말 걸기"
+              onPress={() => navigation.navigate("FeedBack")}
+            />
+          </View>
           <View style={{ flex: 3.5, justifyContent: "flex-end" }}>
-            <AutoHeightImage width={430} source={plantSource} />
+            <AutoHeightImage width={240} source={plantSource} />
           </View>
           <View
             style={{
