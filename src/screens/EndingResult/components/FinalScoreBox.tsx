@@ -25,7 +25,7 @@ export const FinalScoreBox = ({
   } else if (lastDepressionScore < 45 && lastDepressionScore > 40) {
     text = "지금처럼 마음을 돌봐주세요 😊";
     color = "green";
-  } else if (lastDepressionScore <= 40 && lastDepressionScore > 20) {
+  } else if (lastDepressionScore <= 40 && lastDepressionScore > 35) {
     text = "조금 더 시간이 필요해요 🥲";
     color = "yellow";
   } else {

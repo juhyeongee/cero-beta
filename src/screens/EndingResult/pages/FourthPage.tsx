@@ -1,6 +1,6 @@
 import { View, Text, Pressable } from "react-native";
 import { CompareResultText } from "@constants/properties";
-import { SubText } from "../components/Styled";
+import { SubText, TitleText } from "../components/Styled";
 import { BigPrimaryBtn } from "@/components";
 import userInfoStore from "@/store/UserInfoStore";
 import { useEffect, useState } from "react";
@@ -47,9 +47,14 @@ const FourthPage = ({ navigateToEndingMovie }: IFourthPageProps) => {
   };
   return (
     <>
-      <SubText>{CompareResultText[result]}</SubText>
+      <TitleText>{CompareResultText[result].title}</TitleText>
+      <SubText>{CompareResultText[result].body}</SubText>
       <View style={{ flex: 1, alignItems: "flex-end" }}></View>
-      <BigPrimaryBtn text="엔딩 보기" onPress={navigateToEndingMovie} />
+      <BigPrimaryBtn
+        textBold={true}
+        text="마지막 물주기💧"
+        onPress={navigateToEndingMovie}
+      />
     </>
   );
 };

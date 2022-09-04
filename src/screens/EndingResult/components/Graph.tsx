@@ -18,7 +18,7 @@ const Graph = () => {
     color = "blue";
   } else if (lastScore < 45 && lastScore > 40) {
     color = "green";
-  } else if (lastScore <= 40 && lastScore > 20) {
+  } else if (lastScore <= 40 && lastScore > 35) {
     color = "yellow";
   } else {
     color = "red";
@@ -103,35 +103,6 @@ const ColorScoreText = styled.Text`
   font-weight: 500;
   font-size: 66px;
   color: ${(props: StyledProps) => props.theme.color.n0};
-`;
-
-const RedZone = styled.View`
-  width: 60%;
-  background-color: ${(props: StyledProps) => props.theme.color.red600};
-  height: 30px;
-`;
-const YellowZone = styled.View`
-  width: 8%;
-  background-color: ${(props: StyledProps) => props.theme.color.yellow600};
-  height: 30px;
-  color: ${(props: StyledProps) => props.theme.color.n600};
-`;
-const GreenZone = styled.View`
-  width: 8%;
-  background-color: ${(props: StyledProps) => props.theme.color.primary};
-  height: 30px;
-`;
-const BlueZone = styled.View`
-  width: 24%;
-  background-color: ${(props: StyledProps) => props.theme.color.blue600};
-  height: 30px;
-`;
-const GraphContainer = styled.View`
-  flex-direction: row;
-  width: 100%;
-  height: 30px;
-  background-color: ${(props: StyledProps) => props.theme.color.red600};
-  justify-content: space-between;
 `;
 
 export default Graph;
