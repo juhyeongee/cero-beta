@@ -14,6 +14,7 @@ import SvgIcon from "@/assets/SvgIcon";
 import { Container, IntroText } from "./components/Styled";
 import { introText } from "@/constants/properties";
 import LastPageComp from "./components/LastPageComp";
+import currentPageStore from "@/store/CurrentPageStore";
 
 const Intro = ({ route, navigation }: IntroStackScreenProps<"Intro">) => {
   const [animation, setAnimation] = useState(new Animated.Value(0));
@@ -106,6 +107,10 @@ const Intro = ({ route, navigation }: IntroStackScreenProps<"Intro">) => {
     navigation.navigate("SignIn");
   };
 
+  const navigateToOnboarding = () => {
+    currentPageStore.updateScreen("OnBoardingNav");
+  };
+
   const opacityInterpolation = animation.interpolate({
     inputRange: [0, 1, 2, 3, 4, 5, 6],
     outputRange: [1, 0.9, 0.85, 0.8, 0.7, 0.6, 0],
@@ -151,7 +156,7 @@ const Intro = ({ route, navigation }: IntroStackScreenProps<"Intro">) => {
         />
         <IntroText>{introText[pageNum - 1]}</IntroText>
         {pageNum === 7 && (
-          <LastPageComp navigateToSignInScreen={navigateToSignInScreen} />
+          <LastPageComp navigateToSignInScreen={navigateToOnboarding} />
         )}
       </Pressable>
     </Container>

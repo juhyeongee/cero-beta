@@ -17,7 +17,7 @@ const GetBirthday = ({ swipeNextPage }: IPageProps) => {
     const age = new Date().getFullYear() - date.getFullYear();
     userInfoStore.updateAge(age);
     const newDay = dayjs(date);
-    userInfoStore.updateBirthday(newDay.format("YYYY년 M월 DD일"));
+    userInfoStore.updateBirthday(newDay.format("YY년 M월 D일"));
     setDatePickerVisibility(false);
     setTimeout(() => swipeNextPage(), 700);
   };
