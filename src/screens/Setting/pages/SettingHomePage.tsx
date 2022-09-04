@@ -76,7 +76,11 @@ const SettingHomePage = ({
 
             <FAQTitle>자주 묻는 질문 (FAQ)</FAQTitle>
             {Object.keys(FAQText).map((item, index) => (
-              <GrayAcchodion key={index} questionNum={parseInt(item)} />
+              <GrayAcchodion
+                texts={FAQText}
+                key={index}
+                questionNum={parseInt(item)}
+              />
             ))}
           </View>
         </ScrollView>

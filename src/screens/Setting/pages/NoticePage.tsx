@@ -5,6 +5,7 @@ import { SafeAreaView } from "react-native";
 import styled from "styled-components/native";
 import { Container, TitleText, SubText } from "../components/Styled";
 import GrayAcchodion from "../components/GrayAcchodion";
+import { NoticeTexts } from "@constants/properties";
 
 const NoticePage = ({
   route,
@@ -20,13 +21,10 @@ const NoticePage = ({
           <Pressable onPress={navigateToBack}>
             <SvgIcon name="leftArrow" />
           </Pressable>
-
           <TitleText>공지사항</TitleText>
         </View>
         <View style={{ flex: 4 }}>
-          <GrayAcchodion questionNum={3} />
-          <GrayAcchodion questionNum={4} />
-          <GrayAcchodion questionNum={6} />
+          <GrayAcchodion texts={NoticeTexts} questionNum={3} />
         </View>
       </SafeAreaView>
     </Container>

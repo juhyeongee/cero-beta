@@ -1,7 +1,6 @@
 import { View, Text, Pressable, SafeAreaView, Platform } from "react-native";
 import { observer } from "mobx-react";
 import SvgIcon from "@assets/SvgIcon";
-import { FAQText } from "@constants/properties";
 import styled from "styled-components/native";
 import { ITheme } from "@/types";
 import { useState } from "react";
@@ -11,15 +10,16 @@ interface StyledProps {
 }
 interface IAccodionProps {
   questionNum: number;
+  texts: any;
 }
 
-const GrayAcchodion = ({ questionNum }: IAccodionProps) => {
+const GrayAcchodion = ({ questionNum, texts }: IAccodionProps) => {
   const [clicked, setClicked] = useState(false);
 
   return (
     <Container onPress={() => setClicked(!clicked)}>
-      <QuestionText>{FAQText[questionNum]["Q"]}</QuestionText>
-      {clicked && <SmallGrayText>{FAQText[questionNum]["A"]}</SmallGrayText>}
+      <QuestionText>{texts[questionNum]["Q"]}</QuestionText>
+      {clicked && <SmallGrayText>{texts[questionNum]["A"]}</SmallGrayText>}
     </Container>
   );
 };
