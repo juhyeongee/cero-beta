@@ -57,6 +57,9 @@ const Home = ({ route, navigation }: HomeStackScreenProps<"Home">) => {
     ? require("@/assets/images/lastFlower.png")
     : imageSourceArray[todoNum - 1];
 
+  useEffect(() => {
+    console.log(userInfoStore.completeMissionVersionArray);
+  }, []);
   return (
     <>
       {!isCurriculumEnd ? (

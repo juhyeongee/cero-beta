@@ -7,6 +7,7 @@ import {
   ScrollView,
   Platform,
   Alert,
+  Keyboard,
 } from "react-native";
 import SvgIcon from "@/assets/SvgIcon";
 import { useNavigation } from "@react-navigation/native";
@@ -59,16 +60,23 @@ const Header = ({
               () => {
                 userInfoStore.updateCompleteMissionDatesArray(todayDate);
                 userInfoStore.addOne();
+
                 userInfoStore.updateCompleteMissionVersionArray(
                   `version${versionNum}`
                 );
+
                 scheduleAfterMissionNotiHandler();
                 navigation.goBack();
               }
             );
           },
         },
-        { text: "아니요", onPress: () => {} },
+        {
+          text: "아니요",
+          onPress: () => {
+            Keyboard.dismiss();
+          },
+        },
       ]
     );
   };

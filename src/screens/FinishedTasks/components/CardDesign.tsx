@@ -7,10 +7,8 @@ import {
   Pressable,
   StyleSheet,
 } from "react-native";
-import Tag from "./Tag";
-import SvgIcon from "@/assets/SvgIcon";
+
 import styled from "styled-components/native";
-import { heightRatio, widthRatio, fontsizeRatio } from "@/utils";
 import { ITheme } from "@/types";
 
 interface IContainerProps {
@@ -19,20 +17,17 @@ interface IContainerProps {
 
 interface CardProps {
   thisMissionNum: number;
-  type: string | undefined;
   onClicked: () => void;
   missionNameFromAsyncStorage: string | undefined;
   completeDateFromAsyncStorage: string | undefined;
 }
 
 const CardDesign = ({
-  type,
   thisMissionNum,
   onClicked,
   missionNameFromAsyncStorage,
   completeDateFromAsyncStorage,
 }: CardProps) => {
-  const photo = require("@assets/images/exampleImage.png");
   const year = completeDateFromAsyncStorage?.slice(0, 2);
   const month = completeDateFromAsyncStorage?.slice(2, 4);
   const day = completeDateFromAsyncStorage?.slice(4, 6);
@@ -64,7 +59,6 @@ const CardDesign = ({
           <SpreadText>돌아보기</SpreadText>
           {/* <SvgIcon name="bottomArrow" /> */}
         </View>
-        <Tag photo={photo} type={type} />
       </View>
     </Pressable>
   );

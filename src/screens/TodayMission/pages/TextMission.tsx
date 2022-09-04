@@ -35,12 +35,14 @@ const TextMission = () => {
       setKeyboardVisible(true);
     }
   );
+
   const keyboardDidHideListener = Keyboard.addListener(
     "keyboardDidHide",
     () => {
       setKeyboardVisible(false);
     }
   );
+
   useEffect(() => {
     return () => {
       keyboardDidHideListener.remove();
@@ -63,9 +65,7 @@ const TextMission = () => {
         style={{ flex: 5 }}
         behavior={Platform.OS === "ios" ? "padding" : "height"}
       >
-        <TouchableWithoutFeedback
-          onPress={() => keyboardDidHideListener.remove()}
-        >
+        <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
           <Main onPress={() => inputRef.current?.focus()}>
             <View style={{ flex: 1 }}>
               <ScrollView

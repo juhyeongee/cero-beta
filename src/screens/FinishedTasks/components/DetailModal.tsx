@@ -24,7 +24,6 @@ interface Props {
   modalVisible: boolean;
   setModalVisible: (visible: boolean) => void;
   missionTitle: string;
-  missionType: string | undefined;
   thisMissionNum: number;
   resultTextFromAsyncStorage: string | undefined;
   missionNameFromAsyncStorage: string | undefined;
@@ -34,9 +33,6 @@ interface Props {
 const DetailModal = ({
   modalVisible,
   setModalVisible,
-  missionTitle,
-  missionType,
-  thisMissionNum,
   missionNameFromAsyncStorage,
   completeDateFromAsyncStorage,
   resultTextFromAsyncStorage,

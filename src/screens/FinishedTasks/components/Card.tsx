@@ -14,7 +14,6 @@ interface CardProps {
 
 const Card = ({ missionNum }: CardProps) => {
   const [modalVisible, setModalVisible] = useState(false);
-  const [type, setType] = useState<string | undefined>();
   const missionTitle = missions[missionNum].version1.subtitle;
   const [missionNameFromAsyncStorage, setMissionNameFromAsyncStorage] =
     useState();
@@ -31,14 +30,6 @@ const Card = ({ missionNum }: CardProps) => {
   const onClicked = () => {
     setModalVisible(!modalVisible);
   };
-
-  useEffect(() => {
-    const { completeMissionVersionArray } = userInfoStore;
-    console.log("completeMissionVersionArray", completeMissionVersionArray);
-    const thisVersion = completeMissionVersionArray[missionNum];
-    const type = missions[todoNum][thisVersion].type;
-    setType(type);
-  }, []);
 
   useEffect(() => {
     AsyncStorage.getItem(`mission${missionNum}Result`).then((result) => {
@@ -65,7 +56,6 @@ const Card = ({ missionNum }: CardProps) => {
         modalVisible={modalVisible}
         setModalVisible={setModalVisible}
         missionTitle={missionTitle}
-        missionType={type}
         missionNameFromAsyncStorage={missionNameFromAsyncStorage}
         completeDateFromAsyncStorage={completeDateFromAsyncStorage}
         resultTextFromAsyncStorage={resultTextFromAsyncStorage}
@@ -73,7 +63,6 @@ const Card = ({ missionNum }: CardProps) => {
         imageUri={imageUri}
       />
       <CardDesign
-        type={type}
         thisMissionNum={missionNum}
         onClicked={onClicked}
         missionNameFromAsyncStorage={missionNameFromAsyncStorage}

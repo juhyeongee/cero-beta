@@ -3,6 +3,7 @@ import { View, Text, Image } from "react-native";
 import { ITheme } from "@/types";
 import SvgIcon from "@/assets/SvgIcon";
 import AutoHeightImage from "react-native-auto-height-image";
+import { useEffect } from "react";
 
 interface IProps {
   type?: string;
