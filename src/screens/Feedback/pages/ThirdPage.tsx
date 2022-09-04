@@ -12,6 +12,7 @@ import {
   BtnInnerText,
   Container,
 } from "../components/Styled";
+import * as StoreReview from "expo-store-review";
 
 interface IContainerProps {
   theme: ITheme;
@@ -36,7 +37,11 @@ const ThirdPage = ({ goFeedbackPage }: IFirstPageProps) => {
           alignItems: "center",
         }}
       >
-        <BigPrimaryBtn text="1:1 문의하기" textBold={true} />
+        <BigPrimaryBtn
+          text="1:1 문의하기"
+          textBold={true}
+          onPress={() => StoreReview.requestReview()}
+        />
         <GrayBtn onPress={goFeedbackPage}>
           <BtnInnerText>다음에 할게요</BtnInnerText>
         </GrayBtn>
