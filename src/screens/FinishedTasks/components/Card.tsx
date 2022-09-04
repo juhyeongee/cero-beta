@@ -12,9 +12,9 @@ interface CardProps {
   showToast: () => void;
 }
 
-const Card = ({ missionNum, showToast }: CardProps) => {
+const Card = ({ missionNum }: CardProps) => {
   const [modalVisible, setModalVisible] = useState(false);
-  const { todoNum, versionNum } = userInfoStore;
+  const [type, setType] = useState<string | undefined>();
   const missionTitle = missions[missionNum].version1.subtitle;
   const [missionNameFromAsyncStorage, setMissionNameFromAsyncStorage] =
     useState();
@@ -22,13 +22,23 @@ const Card = ({ missionNum, showToast }: CardProps) => {
     useState();
   const [resultTextFromAsyncStorage, setResultTextFromAsyncStorage] =
     useState();
-  const type = missions[missionNum].version1.type;
+
+  const { todoNum } = userInfoStore;
+
   //TODO: 완료한 미션의 버전따라 카드 타이틀명 설정
   const [imageUri, setImageUri] = useState<string | null>();
 
   const onClicked = () => {
     setModalVisible(!modalVisible);
   };
+
+  useEffect(() => {
+    const { completeMissionVersionArray } = userInfoStore;
+    console.log("completeMissionVersionArray", completeMissionVersionArray);
+    const thisVersion = completeMissionVersionArray[missionNum];
+    const type = missions[todoNum][thisVersion].type;
+    setType(type);
+  }, []);
 
   useEffect(() => {
     AsyncStorage.getItem(`mission${missionNum}Result`).then((result) => {
@@ -42,7 +52,6 @@ const Card = ({ missionNum, showToast }: CardProps) => {
       }
     });
     AsyncStorage.getItem(`mission${missionNum}ImageUri`).then((res) => {
-      console.log("res:", res);
       if (res === null) {
         console.log("ImageUri가 없습니다");
       } else {

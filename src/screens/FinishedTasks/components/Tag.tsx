@@ -5,7 +5,7 @@ import SvgIcon from "@/assets/SvgIcon";
 import AutoHeightImage from "react-native-auto-height-image";
 
 interface IProps {
-  type: string;
+  type?: string;
   photo: number;
 }
 const Tag = ({ type, photo }: IProps) => {

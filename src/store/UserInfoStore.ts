@@ -15,6 +15,7 @@ class UserInfoStore {
   firstDepressionState: string = "";
   lastDepressionState: string = "";
   completeMissionDatesArray = ["200000"];
+  completeMissionVersionArray = ["version0"];
   completeMissionName = "";
   firstMindTestResultObject: { [key: number]: number } = {};
   todayDate = dayjs().format("YYMMDD");
@@ -36,6 +37,7 @@ class UserInfoStore {
         age: observable,
         FIRST_DEPRESSION_SCORE: observable,
         LAST_DEPRESSION_SCORE: observable,
+        completeMissionVersionArray: observable,
         firstDepressionState: observable,
         lastDepressionState: observable,
         completeMissionDatesArray: observable,
@@ -56,6 +58,7 @@ class UserInfoStore {
         "FIRST_DEPRESSION_SCORE",
         "LAST_DEPRESSION_SCORE",
         "completeMissionDatesArray",
+        "completeMissionVersionArray",
         "firstMindTestResultObject",
         "todayDate",
         "firstDepressionState",
@@ -104,6 +107,12 @@ class UserInfoStore {
   }
   updateCompleteMissionDatesArray(date: any) {
     this.completeMissionDatesArray = [...this.completeMissionDatesArray, date];
+  }
+  updateCompleteMissionVersionArray(version: string) {
+    this.completeMissionVersionArray = [
+      ...this.completeMissionVersionArray,
+      version,
+    ];
   }
   resetCompleteMissionDatesArray() {
     this.completeMissionDatesArray = ["100000"];

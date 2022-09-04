@@ -24,12 +24,12 @@ interface Props {
   modalVisible: boolean;
   setModalVisible: (visible: boolean) => void;
   missionTitle: string;
-  missionType: string;
+  missionType: string | undefined;
   thisMissionNum: number;
   resultTextFromAsyncStorage: string | undefined;
   missionNameFromAsyncStorage: string | undefined;
   completeDateFromAsyncStorage: string | undefined;
-  imageUri: string | undefined;
+  imageUri?: string | null;
 }
 const DetailModal = ({
   modalVisible,
@@ -45,7 +45,6 @@ const DetailModal = ({
   const year = completeDateFromAsyncStorage?.slice(0, 2);
   const month = completeDateFromAsyncStorage?.slice(2, 4);
   const day = completeDateFromAsyncStorage?.slice(4, 6);
-  const { todoNum } = userInfoStore;
 
   return (
     <Modal
@@ -73,18 +72,20 @@ const DetailModal = ({
         </Header>
         <Body>
           <ScrollView showsVerticalScrollIndicator={false}>
-            <Image
-              style={{
-                marginBottom: 24,
-                width: "100%",
-                height: 300,
-                borderRadius: 20,
-              }}
-              resizeMode="stretch"
-              source={{
-                uri: imageUri,
-              }}
-            />
+            {imageUri && (
+              <Image
+                style={{
+                  marginBottom: 24,
+                  width: "100%",
+                  height: 300,
+                  borderRadius: 20,
+                }}
+                resizeMode="stretch"
+                source={{
+                  uri: imageUri,
+                }}
+              />
+            )}
             <Words>{resultTextFromAsyncStorage}</Words>
           </ScrollView>
         </Body>

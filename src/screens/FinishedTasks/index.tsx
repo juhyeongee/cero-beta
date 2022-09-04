@@ -17,6 +17,7 @@ const FinishedTasks = () => {
   const navigation = useNavigation<any>();
   const { todoNum, completeMissionDatesArray } = userInfoStore;
   const missionArray = [...new Array(todoNum - 1)].map((_, i) => i + 1);
+  const { todayDate } = userInfoStore;
   const showToast = () => {
     Toast.show({
       type: "error",
@@ -47,7 +48,6 @@ const FinishedTasks = () => {
   const lastCompletedMissionDate =
     completeMissionDatesArray[completeMissionDatesArray.length - 1];
   //TODO: Array에서 꺼내온 dayjs object에는 왜 .format등 메소드를 못쓴다고 해놓은걸까?
-  const { todayDate } = userInfoStore;
 
   return (
     <Container>

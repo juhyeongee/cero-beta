@@ -19,7 +19,7 @@ interface IContainerProps {
 
 interface CardProps {
   thisMissionNum: number;
-  type: string;
+  type: string | undefined;
   onClicked: () => void;
   missionNameFromAsyncStorage: string | undefined;
   completeDateFromAsyncStorage: string | undefined;
