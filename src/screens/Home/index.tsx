@@ -24,6 +24,7 @@ import currentPageStore from "@/store/CurrentPageStore";
 import AutoHeightImage from "react-native-auto-height-image";
 import SvgIcon from "@/assets/SvgIcon";
 import { BigPrimaryBtn } from "@/components";
+import Theme from "@/constants/Theme";
 
 interface IContainerProps {
   theme: ITheme;
@@ -57,9 +58,6 @@ const Home = ({ route, navigation }: HomeStackScreenProps<"Home">) => {
     ? require("@/assets/images/lastFlower.png")
     : imageSourceArray[todoNum - 1];
 
-  useEffect(() => {
-    console.log(userInfoStore.completeMissionVersionArray);
-  }, []);
   return (
     <>
       {!isCurriculumEnd ? (
@@ -93,8 +91,16 @@ const Home = ({ route, navigation }: HomeStackScreenProps<"Home">) => {
         </Container>
       ) : (
         <View
-          style={{ flex: 1, justifyContent: "flex-end", alignItems: "center" }}
+          style={{
+            backgroundColor: Theme.color.n300,
+            flex: 1,
+            justifyContent: "flex-end",
+            alignItems: "center",
+          }}
         >
+          <View style={{ position: "absolute", right: "0%", top: "18%" }}>
+            <SvgIcon name="LastWindow" />
+          </View>
           <View
             style={{
               flex: 1.2,
@@ -120,6 +126,7 @@ const Home = ({ route, navigation }: HomeStackScreenProps<"Home">) => {
           <View style={{ flex: 3.5, justifyContent: "flex-end" }}>
             <AutoHeightImage width={240} source={plantSource} />
           </View>
+
           <View
             style={{
               flex: 1,

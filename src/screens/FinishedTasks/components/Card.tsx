@@ -43,9 +43,7 @@ const Card = ({ missionNum }: CardProps) => {
       }
     });
     AsyncStorage.getItem(`mission${missionNum}ImageUri`).then((res) => {
-      if (res === null) {
-        console.log("ImageUri가 없습니다");
-      } else {
+      if (res !== null) {
         setImageUri(res);
       }
     });

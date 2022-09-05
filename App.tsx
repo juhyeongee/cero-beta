@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { View, Text, Pressable, Platform } from "react-native";
+import { View, Text, Pressable, Platform, Image } from "react-native";
 import { ThemeProvider } from "styled-components/native";
 import styled from "styled-components/native";
 import Theme from "./src/constants/Theme";
@@ -30,6 +30,7 @@ import currentPageStore from "@/store/CurrentPageStore";
 import { EndingStackNav } from "@navigations/index";
 import { observer } from "mobx-react";
 import * as Notifications from "expo-notifications";
+import SvgIcon from "@/assets/SvgIcon";
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -58,6 +59,7 @@ function App() {
   });
 
   useEffect(() => {
+    userInfoStore.resetVersionNum();
     const subscription = Notifications.addNotificationReceivedListener(
       (notification) => {
         console.log(notification);
@@ -68,7 +70,6 @@ function App() {
         console.log(notification);
       });
 
-    userInfoStore.resetVersionNum();
     return () => {
       subscription.remove(), responseSubscription.remove();
     };
@@ -76,9 +77,11 @@ function App() {
 
   if (!fontsLoaded) {
     return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text>Now Loading...</Text>
-      </View>
+      <Image
+        width={1242}
+        height={2757}
+        source={require("./assets/splash.png")}
+      />
     );
   }
 

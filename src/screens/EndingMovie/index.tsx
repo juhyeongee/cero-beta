@@ -46,14 +46,6 @@ const EndingMovie = () => {
     toOpacity1(), setTimeout(() => toOpacity0(), 3000);
   };
 
-  const goSecond = () => {
-    Animated.timing(boilingPotOpacity, {
-      toValue: 1,
-      duration: 500,
-      useNativeDriver: false,
-    }).start();
-  };
-
   const opacityInterpolation = boilingPotOpacity.interpolate({
     inputRange: [0, 1],
     outputRange: [0, 1],

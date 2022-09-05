@@ -3,7 +3,7 @@ import { observer } from "mobx-react";
 import SvgIcon from "@assets/SvgIcon";
 import styled from "styled-components/native";
 import { ITheme } from "@/types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface StyledProps {
   theme: ITheme;

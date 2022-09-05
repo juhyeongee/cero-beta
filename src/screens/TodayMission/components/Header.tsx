@@ -60,11 +60,6 @@ const Header = ({
               () => {
                 userInfoStore.updateCompleteMissionDatesArray(todayDate);
                 userInfoStore.addOne();
-
-                userInfoStore.updateCompleteMissionVersionArray(
-                  `version${versionNum}`
-                );
-
                 scheduleAfterMissionNotiHandler();
                 navigation.goBack();
               }

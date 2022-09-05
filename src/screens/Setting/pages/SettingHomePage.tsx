@@ -67,12 +67,12 @@ const SettingHomePage = ({
               text="데이터 초기화하기"
               icon={<SvgIcon name="format" />}
             />
-            <OptionBox
+            {/* <OptionBox
               onPress={logout}
               arrow={false}
               text="로그아웃"
               icon={<SvgIcon name="logout" />}
-            />
+            /> */}
 
             <FAQTitle>자주 묻는 질문 (FAQ)</FAQTitle>
             {Object.keys(FAQText).map((item, index) => (

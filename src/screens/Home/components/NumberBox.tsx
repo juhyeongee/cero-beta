@@ -9,7 +9,7 @@ interface IContainerProps {
   theme: ITheme;
 }
 interface Props {
-  text: string;
+  text?: string;
   icon?: JSX.Element;
 }
 
@@ -20,8 +20,8 @@ const NumberBox = ({ text, icon }: Props) => {
         <CheckedBox />
       ) : (
         <Container>
-          {text && <GrayText>{text}</GrayText>}
-          {icon && icon}
+          {text ? <GrayText>{text}</GrayText> : icon && icon}
+          {}
         </Container>
       )}
     </>

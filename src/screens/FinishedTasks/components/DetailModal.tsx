@@ -73,10 +73,10 @@ const DetailModal = ({
                 style={{
                   marginBottom: 24,
                   width: "100%",
-                  height: 300,
+                  height: 400,
                   borderRadius: 20,
                 }}
-                resizeMode="stretch"
+                resizeMode="contain"
                 source={{
                   uri: imageUri,
                 }}

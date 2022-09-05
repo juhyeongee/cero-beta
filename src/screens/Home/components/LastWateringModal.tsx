@@ -9,7 +9,7 @@ const LastWateringModal = () => {
   return (
     <Modal
       style={{ backgroundColor: "teal" }}
-      animationType="slide"
+      animationType="none"
       transparent={true}
       visible={true}
       onRequestClose={() => {

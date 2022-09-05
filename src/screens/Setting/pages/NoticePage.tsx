@@ -24,7 +24,7 @@ const NoticePage = ({
           <TitleText>공지사항</TitleText>
         </View>
         <View style={{ flex: 4 }}>
-          <GrayAcchodion texts={NoticeTexts} questionNum={3} />
+          <GrayAcchodion texts={NoticeTexts} questionNum={1} />
         </View>
       </SafeAreaView>
     </Container>
