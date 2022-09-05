@@ -13,7 +13,7 @@ import SecondPage from "./pages/SecondPage";
 import ThirdPage from "./pages/ThirdPage";
 import FourthPage from "./pages/FourthPage";
 
-const EndingResult = () => {
+const FeedBack = () => {
   const [pageNumber, setPageNubmer] = useState(1);
 
   const goGoodPage = () => {
@@ -41,4 +41,4 @@ const EndingResult = () => {
   );
 };
 
-export default EndingResult;
+export default FeedBack;

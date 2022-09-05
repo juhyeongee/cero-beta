@@ -62,3 +62,23 @@ export { default as alarm } from "./alarm.svg";
 export { default as logout } from "./logout.svg";
 
 export { default as textMissionIcon } from "./textMissionIcon.svg";
+
+export { default as redReverseTriangle } from "./redReverseTriangle.svg";
+export { default as yellowReverseTriangle } from "./yellowReverseTriangle.svg";
+export { default as transparentReverseTriangle } from "./transparentReverseTriangle.svg";
+export { default as blueReverseTriangle } from "./blueReverseTriangle.svg";
+export { default as greenReverseTriangle } from "./greenReverseTriangle.svg";
+
+export { default as articleInfo } from "./articleInfo.svg";
+export { default as grayFlowerReaf } from "./grayFlowerReaf.svg";
+
+export { default as format } from "./format.svg";
+export { default as name } from "./name.svg";
+export { default as photosynthesis } from "./photosynthesis.svg";
+
+export { default as yellowRightTriangle } from "./yellowRightTriangle.svg";
+export { default as blueRightTriangle } from "./blueRightTriangle.svg";
+export { default as greenRightTriangle } from "./greenRightTriangle.svg";
+export { default as redRightTriangle } from "./redRightTriangle.svg";
+
+export { default as x } from "./x.svg";

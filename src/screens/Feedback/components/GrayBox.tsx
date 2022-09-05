@@ -1,6 +1,7 @@
 import { ITheme } from "@/types";
 import styled from "styled-components/native";
 import { View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 interface IContainerProps {
   theme: ITheme;
@@ -11,8 +12,9 @@ interface IGrayBoxProps {
 }
 
 export const GrayBox = ({ textArray }: IGrayBoxProps) => {
+  const navigation = useNavigation<any>();
   return (
-    <Container>
+    <Container onPress={() => navigation.navigate("Home")}>
       <View
         style={{ flex: 1, alignItems: "center", justifyContent: "flex-end" }}
       >

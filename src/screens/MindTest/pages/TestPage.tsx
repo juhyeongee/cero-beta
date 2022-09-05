@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { View } from "react-native";
+import React, { useEffect, useState } from "react";
+import { View, Text } from "react-native";
 import { SubText, TitleText } from "../components";
-import { questionObj } from "@constants/mindtestProperties";
+import { questionObj } from "@constants/properties";
 import { BigPrimaryBtn } from "@/components";
 import {
   Container,
@@ -11,8 +11,8 @@ import {
   ButtonContainer,
   LastWeekTextContainer,
 } from "../components";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import userInfoStore from "@/store/UserInfoStore";
+import Theme from "@/constants/Theme";
 
 interface IProps {
   pageNumber: number;
@@ -26,10 +26,10 @@ const TestPage = ({ swipeNextPage, pageNumber, onPressSubmitBtn }: IProps) => {
     setClickedBtnNumber(pressedBtnNum);
     if (todoNum === 15) {
       userInfoStore.updateLastMindTestResultObject(pageNumber, pressedBtnNum);
-      console.log(`${pageNumber}페이지 클릭`);
+      // console.log(`${pageNumber}페이지 클릭`);
     } else {
       userInfoStore.updateFirstMindTestResultObject(pageNumber, pressedBtnNum);
-      console.log(`${pageNumber}페이지 클릭`);
+      // console.log(`${pageNumber}페이지 클릭`);
     }
     setTimeout(() => swipeNextPage(), 200);
   };
@@ -70,10 +70,16 @@ const TestPage = ({ swipeNextPage, pageNumber, onPressSubmitBtn }: IProps) => {
           />
         </ButtonContainer>
         <View style={{ width: "100%", position: "absolute", bottom: "5%" }}>
-          {pageNumber === 20 && (
+          {pageNumber === 20 ? (
             <>
               <BigPrimaryBtn text="제출하기" onPress={onPressSubmitBtn} />
             </>
+          ) : (
+            <View style={{ alignItems: "center" }}>
+              <Text style={{ color: Theme.color.n700 }}>
+                {pageNumber} / {Object.keys(questionObj).length}
+              </Text>
+            </View>
           )}
         </View>
       </SafeArea>

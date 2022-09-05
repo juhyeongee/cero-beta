@@ -30,24 +30,27 @@ export function MainBottomTabNav() {
         name="FinishedTasks"
         component={FinishedTasks}
         options={{
-          tabBarIcon: ({ color }) => (
-            <Image
-              style={{
-                tintColor: color,
-              }}
-              source={require("@/assets/images/file.png")}
-            />
-          ),
+          tabBarIcon: ({ color, size }) => {
+            console.log(size, size);
+            return (
+              <Image
+                style={{ width: size + 2, height: size - 1, tintColor: color }}
+                source={require("@/assets/images/folder.png")}
+              />
+            );
+          },
         }}
       />
       <MainBottomTab.Screen
         name="HomeStackNav"
         component={HomeStackNav}
         options={{
-          tabBarIcon: ({ color }) => (
+          tabBarIcon: ({ color, size }) => (
             <Image
               style={{
                 tintColor: color,
+                width: size,
+                height: size,
               }}
               source={require("@/assets/images/home.png")}
             />
@@ -59,17 +62,15 @@ export function MainBottomTabNav() {
         name="Setting"
         component={SettingStackNav}
         options={{
-          tabBarIcon: ({ color }) => (
+          tabBarIcon: ({ color, size }) => (
             <Image
-              style={{
-                tintColor: color,
-              }}
-              source={require("@/assets/images/setting.png")}
+              style={{ width: size, height: size, tintColor: color }}
+              source={require("@/assets/images/settings.png")}
             />
           ),
         }}
       />
-      <MainBottomTab.Screen
+      {/* <MainBottomTab.Screen
         name="Devtool"
         component={Devtool}
         options={{
@@ -82,7 +83,7 @@ export function MainBottomTabNav() {
             />
           ),
         }}
-      />
+      /> */}
     </MainBottomTab.Navigator>
   );
 }

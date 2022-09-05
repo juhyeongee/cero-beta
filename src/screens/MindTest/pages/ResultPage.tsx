@@ -104,9 +104,9 @@ const ResultPage = () => {
 export default ResultPage;
 
 const Container = styled.View`
-  justify-content: center;
   flex: 8;
-  padding: 32px;
+  padding: 8% 8% 0% 8%;
+  box-sizing: border-box;
 `;
 
 const BG = styled.View`
@@ -116,7 +116,7 @@ const BG = styled.View`
 
 const MainText = styled.Text`
   font-size: ${(props: StyledProps) =>
-    Platform.OS === "ios" ? fontsizeRatio(20) : fontsizeRatio(18)};
+    Platform.OS === "ios" ? "19px" : "18px"};
   font-family: ${(props: StyledProps) =>
     Platform.OS === "ios"
       ? props.theme.font.mainFont
@@ -124,7 +124,7 @@ const MainText = styled.Text`
 `;
 
 const ImageContainer = styled.View`
-  flex: 14;
+  flex: 12;
   align-items: center;
 `;
 

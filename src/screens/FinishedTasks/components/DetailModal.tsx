@@ -11,6 +11,9 @@ import styled from "styled-components/native";
 import { ITheme } from "@/types";
 import { Layout } from "@/components";
 import SvgIcon from "@/assets/SvgIcon";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useEffect, useState } from "react";
+import userInfoStore from "@/store/UserInfoStore";
 
 // TODO 1 : mission type 별로 이미지 띄우기,텍스트만띄우기 화면  수정하기
 // TODO 2: 텍스트와  이미지 서버에서  가져오기
@@ -21,23 +24,24 @@ interface Props {
   modalVisible: boolean;
   setModalVisible: (visible: boolean) => void;
   missionTitle: string;
-  missionType: string;
+  thisMissionNum: number;
   resultTextFromAsyncStorage: string | undefined;
   missionNameFromAsyncStorage: string | undefined;
   completeDateFromAsyncStorage: string | undefined;
+  imageUri?: string | null;
 }
 const DetailModal = ({
   modalVisible,
   setModalVisible,
-  missionTitle,
-  missionType,
   missionNameFromAsyncStorage,
   completeDateFromAsyncStorage,
   resultTextFromAsyncStorage,
+  imageUri,
 }: Props) => {
   const year = completeDateFromAsyncStorage?.slice(0, 2);
   const month = completeDateFromAsyncStorage?.slice(2, 4);
   const day = completeDateFromAsyncStorage?.slice(4, 6);
+
   return (
     <Modal
       style={{ flex: 1 }}
@@ -50,8 +54,10 @@ const DetailModal = ({
     >
       <Layout>
         <Header>
-          <View>
-            <MainText>{missionNameFromAsyncStorage}</MainText>
+          <View style={{ width: "90%" }}>
+            <MainText numberOfLines={1} ellipsizeMode="tail">
+              {missionNameFromAsyncStorage}
+            </MainText>
             <DateText>
               {year}년 {month}월 {day}일
             </DateText>
@@ -62,18 +68,20 @@ const DetailModal = ({
         </Header>
         <Body>
           <ScrollView showsVerticalScrollIndicator={false}>
-            <Pressable>
+            {imageUri && (
               <Image
                 style={{
                   marginBottom: 24,
                   width: "100%",
-                  height: 300,
+                  height: 400,
                   borderRadius: 20,
                 }}
-                resizeMode="stretch"
-                source={require("@assets/images/exampleImage.png")}
+                resizeMode="contain"
+                source={{
+                  uri: imageUri,
+                }}
               />
-            </Pressable>
+            )}
             <Words>{resultTextFromAsyncStorage}</Words>
           </ScrollView>
         </Body>
@@ -98,8 +106,9 @@ const Body = styled.View`
 `;
 
 const MainText = styled.Text`
+  width: 95%;
   font-family: ${(props: IContainerProps) => props.theme.font.thickFont};
-  font-size: 20px;
+  font-size: 18px;
   color: ${(props: IContainerProps) => props.theme.color.n900};
 `;
 

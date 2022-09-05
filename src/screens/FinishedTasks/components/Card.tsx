@@ -12,9 +12,8 @@ interface CardProps {
   showToast: () => void;
 }
 
-const Card = ({ missionNum, showToast }: CardProps) => {
+const Card = ({ missionNum }: CardProps) => {
   const [modalVisible, setModalVisible] = useState(false);
-  const { todoNum, versionNum } = userInfoStore;
   const missionTitle = missions[missionNum].version1.subtitle;
   const [missionNameFromAsyncStorage, setMissionNameFromAsyncStorage] =
     useState();
@@ -22,36 +21,46 @@ const Card = ({ missionNum, showToast }: CardProps) => {
     useState();
   const [resultTextFromAsyncStorage, setResultTextFromAsyncStorage] =
     useState();
-  const type = missions[missionNum].version1.type;
+
+  const { todoNum } = userInfoStore;
+
   //TODO: 완료한 미션의 버전따라 카드 타이틀명 설정
+  const [imageUri, setImageUri] = useState<string | null>();
 
   const onClicked = () => {
     setModalVisible(!modalVisible);
   };
-  AsyncStorage.getItem(`mission${missionNum}Result`).then((result) => {
-    if (typeof result === undefined) {
-      return null;
-    } else if (typeof result === "string") {
-      const resultObject = JSON.parse(result);
-      setMissionNameFromAsyncStorage(resultObject["missionName"]);
-      setCompleteDateFromAsyncStorage(resultObject["completeDate"]);
-      setResultTextFromAsyncStorage(resultObject["resultText"]);
-    }
-  });
 
+  useEffect(() => {
+    AsyncStorage.getItem(`mission${missionNum}Result`).then((result) => {
+      if (typeof result === undefined) {
+        return null;
+      } else if (typeof result === "string") {
+        const resultObject = JSON.parse(result);
+        setMissionNameFromAsyncStorage(resultObject["missionName"]);
+        setCompleteDateFromAsyncStorage(resultObject["completeDate"]);
+        setResultTextFromAsyncStorage(resultObject["resultText"]);
+      }
+    });
+    AsyncStorage.getItem(`mission${missionNum}ImageUri`).then((res) => {
+      if (res !== null) {
+        setImageUri(res);
+      }
+    });
+  }, [todoNum]);
   return (
     <View>
       <DetailModal
         modalVisible={modalVisible}
         setModalVisible={setModalVisible}
         missionTitle={missionTitle}
-        missionType={type}
         missionNameFromAsyncStorage={missionNameFromAsyncStorage}
         completeDateFromAsyncStorage={completeDateFromAsyncStorage}
         resultTextFromAsyncStorage={resultTextFromAsyncStorage}
+        thisMissionNum={missionNum}
+        imageUri={imageUri}
       />
       <CardDesign
-        type={type}
         thisMissionNum={missionNum}
         onClicked={onClicked}
         missionNameFromAsyncStorage={missionNameFromAsyncStorage}

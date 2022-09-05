@@ -59,7 +59,6 @@ export const moveDownSecond = (seedY: Animated.Value) => {
 
 export const findNotAnsweredQuestion = async () => {
   const { firstMindTestResultObject } = userInfoStore;
-  const arr = await AsyncStorage.getAllKeys();
   for (let i = 1; i < Object.keys(questionObj).length + 1; i++) {
     if (!firstMindTestResultObject[i]) {
       return i;
@@ -74,12 +73,22 @@ export const calculateDepressionScore = async (type: string) => {
   let totalScore = 0;
   for (let i = 1; i < QUESTION_OBJ_LENGTH + 1; i++) {
     if (type == "first") {
-      const eachScore = firstMindTestResultObject[i];
-      totalScore += eachScore;
+      const eachAnswer = firstMindTestResultObject[i];
+      console.log("eachScore:", eachAnswer);
+      if (i === 4 || i === 8 || i === 12 || i === 16) {
+        totalScore += 5 - eachAnswer;
+      } else {
+        totalScore += eachAnswer;
+      }
+      console.log("Score variation:", totalScore);
     } else if (type == "last") {
-      const eachScore = lastMindTestResultObject[i];
-      totalScore += eachScore;
-      console.log(eachScore);
+      const eachAnswer = lastMindTestResultObject[i];
+      if (i === 4 || i === 8 || i === 12 || i === 16) {
+        totalScore += 5 - eachAnswer;
+      } else {
+        totalScore += eachAnswer;
+      }
+      console.log("Score variation:", eachAnswer);
     }
   }
   totalScore = totalScore - QUESTION_OBJ_LENGTH;

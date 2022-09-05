@@ -15,7 +15,12 @@ interface LoadingTextProps {
 const FirstLoadingScreen = ({
   route,
   navigation,
-}: OnBoardingStackScreenProps<"LoadingPage">) => {
+}: OnBoardingStackScreenProps<"FirstLoadingScreen">) => {
+  function getRandomInt(min: number, max: number) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min; //최댓값은 제외, 최솟값은 포함
+  }
   useEffect(() => {
     if (userInfoStore.FIRST_DEPRESSION_SCORE >= 46) {
       userInfoStore.updateFirstDepressionState("good");
@@ -32,15 +37,23 @@ const FirstLoadingScreen = ({
     } else {
       userInfoStore.updateFirstDepressionState("serious");
     }
-    setTimeout(() => navigation.navigate("ResultPage"), 500);
+    setTimeout(() => navigation.navigate("ResultPage"), 4000);
   }, []);
 
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        padding: "8%",
+      }}
+    >
       <SvgIcon name="boilingSeed" />
-      <LoadingText>마음 씨앗을 만드는 중이예요</LoadingText>
-      <GrayText>{lifeQuotes[1]}</GrayText>
-      {/* TODO: lifeQuotes 명언 랜덤으로 나가게  */}
+      <LoadingText>마음 씨앗을 만드는 중이에요</LoadingText>
+      <GrayText>
+        {lifeQuotes[getRandomInt(0, Object.keys(lifeQuotes).length + 1)]}
+      </GrayText>
     </View>
   );
 };
@@ -54,6 +67,7 @@ const LoadingText = styled.Text`
 `;
 
 const GrayText = styled.Text`
+  text-align: center;
   font-family: ${(props: LoadingTextProps) => props.theme.font.thinFont};
   font-size: 16px;
   position: absolute;

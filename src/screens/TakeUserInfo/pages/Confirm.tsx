@@ -15,7 +15,7 @@ interface IConfirm {
 }
 
 const Confirm = ({ navigateToMindText }: IConfirm) => {
-  const { nickname, age, gender } = userInfoStore;
+  const { nickname, age, gender, birthday } = userInfoStore;
   return (
     <Container>
       <SafeArea>
@@ -33,9 +33,9 @@ const Confirm = ({ navigateToMindText }: IConfirm) => {
             </View>
             <View style={{ flex: 1, flexDirection: "row" }}>
               <View style={{ flex: 1 }}>
-                <TagName>나이</TagName>
+                <TagName>생일</TagName>
                 <InfoContainer>
-                  <InfoText>{age}</InfoText>
+                  <InfoText>{birthday}</InfoText>
                 </InfoContainer>
               </View>
               <View style={{ flex: 0.1 }}></View>
@@ -48,11 +48,13 @@ const Confirm = ({ navigateToMindText }: IConfirm) => {
             </View>
           </MainContainer>
         </View>
-        <BigPrimaryBtn
-          text="다음"
-          textBold={false}
-          onPress={navigateToMindText}
-        />
+        <View style={{ paddingBottom: 40 }}>
+          <BigPrimaryBtn
+            text="다음"
+            textBold={false}
+            onPress={navigateToMindText}
+          />
+        </View>
       </SafeArea>
     </Container>
   );

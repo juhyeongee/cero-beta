@@ -24,6 +24,7 @@ export type HomeStackParamList = {
   TodayMission: undefined;
   Home: { missionNum: number };
   MindTest: undefined;
+  FeedBack: undefined;
 };
 export type OnBoardingStackParamList = {
   TakeUserInfo: undefined;

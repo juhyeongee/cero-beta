@@ -24,7 +24,7 @@ export const TitleText = styled.Text`
 `;
 
 export const SubText = styled.Text`
-  font-size: 18px;
+  font-size: 17px;
   font-family: ${(props: StyledProps) =>
     Platform.OS === "ios"
       ? props.theme.font.mainFont

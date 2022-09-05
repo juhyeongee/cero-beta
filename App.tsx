@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { View, Text } from "react-native";
+import React, { useState, useEffect, useRef } from "react";
+import { View, Text, Pressable, Platform, Image } from "react-native";
 import { ThemeProvider } from "styled-components/native";
 import styled from "styled-components/native";
 import Theme from "./src/constants/Theme";
@@ -29,6 +29,16 @@ import userInfoStore from "@/store/UserInfoStore";
 import currentPageStore from "@/store/CurrentPageStore";
 import { EndingStackNav } from "@navigations/index";
 import { observer } from "mobx-react";
+import * as Notifications from "expo-notifications";
+import SvgIcon from "@/assets/SvgIcon";
+
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: false,
+    shouldSetBadge: false,
+  }),
+});
 
 function App() {
   const { currentScreen } = currentPageStore;
@@ -47,19 +57,31 @@ function App() {
     GothicA1_700Bold,
     GothicA1_600SemiBold,
   });
+
   useEffect(() => {
     userInfoStore.resetVersionNum();
-    // userInfoStore.updateTodayDate();
-    // TODO: 앱 빌드를 만들때는, 매일 날짜 갱신 되도록 위 코드를 꼭 주석을 해제해줘야함.
-    // AsyncStorage.clear();
-    // currentPageStore.updateScreen("MainBottomTabNav");
+    const subscription = Notifications.addNotificationReceivedListener(
+      (notification) => {
+        console.log(notification);
+      }
+    );
+    const responseSubscription =
+      Notifications.addNotificationResponseReceivedListener((notification) => {
+        console.log(notification);
+      });
+
+    return () => {
+      subscription.remove(), responseSubscription.remove();
+    };
   }, []);
 
   if (!fontsLoaded) {
     return (
-      <View>
-        <Text>Now Loading...</Text>
-      </View>
+      <Image
+        width={1242}
+        height={2757}
+        source={require("./assets/splash.png")}
+      />
     );
   }
 

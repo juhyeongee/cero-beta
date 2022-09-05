@@ -21,7 +21,6 @@ export const EndingStackNav = () => {
         component={LastLoadingScreen}
       />
       <EndingStack.Screen name="MindTest" component={MindTest} />
-
       <EndingStack.Screen name="EndingResult" component={EndingResult} />
       <EndingStack.Screen name="EndingMovie" component={EndingMovie} />
     </EndingStack.Navigator>

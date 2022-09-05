@@ -33,7 +33,7 @@ const SettingHomePage = ({
     navigation.navigate("Notice");
   }
   function logout() {
-    Alert.alert("로그아웃 하시겠어요?", "하지마~", [
+    Alert.alert("로그아웃 하시겠어요?", "", [
       { text: "네", onPress: () => console.log("logout") },
       { text: "아니요", onPress: () => console.log("취소~") },
     ]);
@@ -59,24 +59,28 @@ const SettingHomePage = ({
               onPress={navigateToResetNickname}
               arrow={true}
               text="닉네임 바꾸기"
-              icon={<SvgIcon name="alarm" />}
+              icon={<SvgIcon name="name" />}
             />
             <OptionBox
               onPress={navigateToResetData}
               arrow={true}
               text="데이터 초기화하기"
-              icon={<SvgIcon name="alarm" />}
+              icon={<SvgIcon name="format" />}
             />
-            <OptionBox
+            {/* <OptionBox
               onPress={logout}
               arrow={false}
               text="로그아웃"
               icon={<SvgIcon name="logout" />}
-            />
+            /> */}
 
             <FAQTitle>자주 묻는 질문 (FAQ)</FAQTitle>
             {Object.keys(FAQText).map((item, index) => (
-              <GrayAcchodion key={index} questionNum={parseInt(item)} />
+              <GrayAcchodion
+                texts={FAQText}
+                key={index}
+                questionNum={parseInt(item)}
+              />
             ))}
           </View>
         </ScrollView>

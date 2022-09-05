@@ -32,7 +32,7 @@ const Contianer = styled.View`
 
 const ExplainText = styled.Text`
   line-height: 28px;
-  font-size: 20px;
+  font-size: 18px;
   padding-right: 32px;
   padding-left: 32px;
   padding-top: 24px;

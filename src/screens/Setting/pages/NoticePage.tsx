@@ -1,10 +1,11 @@
 import SvgIcon from "@/assets/SvgIcon";
 import { ITheme, SettingStackScreenProps } from "@/types";
-import { Platform, View, Text, Pressable } from "react-native";
+import { Platform, View, Text, Pressable, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native";
 import styled from "styled-components/native";
 import { Container, TitleText, SubText } from "../components/Styled";
 import GrayAcchodion from "../components/GrayAcchodion";
+import { NoticeTexts } from "@constants/properties";
 
 const NoticePage = ({
   route,
@@ -20,13 +21,12 @@ const NoticePage = ({
           <Pressable onPress={navigateToBack}>
             <SvgIcon name="leftArrow" />
           </Pressable>
-
           <TitleText>공지사항</TitleText>
         </View>
         <View style={{ flex: 4 }}>
-          <GrayAcchodion questionNum={3} />
-          <GrayAcchodion questionNum={4} />
-          <GrayAcchodion questionNum={6} />
+          <ScrollView showsVerticalScrollIndicator={false} style={{ flex: 1 }}>
+            <GrayAcchodion texts={NoticeTexts} questionNum={1} />
+          </ScrollView>
         </View>
       </SafeAreaView>
     </Container>

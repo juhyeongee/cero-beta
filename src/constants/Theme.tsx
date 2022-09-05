@@ -28,13 +28,6 @@ const Theme = {
     errorRed: "#E26D66",
     endingBGcolor: "#F2F2F2",
   },
-  introBgColor: {
-    firstBg: "#2F3134",
-    secondBg: "#383A3E",
-    thirdBg: "#3C3E42",
-    fourthBg: "#4A4C50",
-    fifthBg: "#63656A",
-  },
 
   length: { windowWidth: WINDOW_WIDTH, windowHeight: WINDOW_HEIGHT },
   font: {

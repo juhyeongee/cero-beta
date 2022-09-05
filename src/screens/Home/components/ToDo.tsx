@@ -51,7 +51,7 @@ const ToDo = ({ navigateToTodayMission }: Props) => {
   const updateCompletedVersionFromAsyncStorage = () => {
     AsyncStorage.getItem(`mission${todoNum - 1}Result`).then((res) => {
       if (res === null) {
-        console.log(" 'Home어제자 미션 정보가 없습니다.");
+        console.log("Home어제자 미션 정보가 없습니다.");
         return null;
       } else {
         const parsedCompletedObject = JSON.parse(res);
@@ -69,6 +69,7 @@ const ToDo = ({ navigateToTodayMission }: Props) => {
       }
     });
   };
+
   //TODO: 다만, 현재 rerender를 하지 않는한, 홈 화면에서  오늘의 할 일 텍스트가 백지로 나옴; reroad 할 때, 비동기함수라서 업데이트가 느려서 그런건가  싶음
 
   const rotateVersionNum = () => {
@@ -82,7 +83,7 @@ const ToDo = ({ navigateToTodayMission }: Props) => {
 
   useEffect(() => {
     updateCompletedVersionFromAsyncStorage();
-  }, []);
+  }, [todoNum]);
 
   return (
     <Container>
@@ -104,16 +105,23 @@ const ToDo = ({ navigateToTodayMission }: Props) => {
             <></>
           ) : (
             <>
-              <GrayText>변경하기 </GrayText>
-              <Pressable
-                style={{
-                  justifyContent:
-                    Platform.OS === "ios" ? "flex-start" : "flex-end",
-                }}
-                onPress={rotateVersionNum}
-              >
-                <SvgIcon name="refresh" />
-              </Pressable>
+              {todoNum === 14 || todoNum === 1 ? (
+                <></>
+              ) : (
+                <Pressable
+                  style={{
+                    flexDirection: "row",
+                    justifyContent:
+                      Platform.OS === "ios" ? "flex-start" : "flex-end",
+                  }}
+                  onPress={rotateVersionNum}
+                >
+                  <GrayText>
+                    변경하기 ({versionNum}/{Object.keys(todoObject).length})
+                  </GrayText>
+                  <SvgIcon name="refresh" />
+                </Pressable>
+              )}
             </>
           )}
         </View>
@@ -135,14 +143,9 @@ const ToDo = ({ navigateToTodayMission }: Props) => {
           height: "30%",
         }}
       >
-        {todoNum === 15 ? (
-          <BigPrimaryBtn
-            text="마지막 물주기"
-            onPress={() => currentPageStore.updateScreen("EndingStackNav")}
-          />
-        ) : todayMissionComplete ? (
+        {todayMissionComplete ? (
           <CompleteBtn onPress={showToast}>
-            <CompleteBtnText>오늘의 할 일을 완료했어요!</CompleteBtnText>
+            <CompleteBtnText>오늘의 할 일 완료!</CompleteBtnText>
           </CompleteBtn>
         ) : (
           <BigPrimaryBtn text="물 주기" onPress={navigateToTodayMission} />
@@ -164,13 +167,14 @@ const Container = styled.View`
 
 const GrayText = styled.Text`
   font-size: 12px;
+  margin-right: 4px;
   font-family: ${(props: IContainerProps) => props.theme.font.mainFont};
   color: ${(props: IContainerProps) => props.theme.color.n700};
 `;
 
 const ToDoGrayBox = styled.View`
   width: 100%;
-  background-color: ${(props: IContainerProps) => props.theme.color.n500};
+  background-color: ${(props: IContainerProps) => props.theme.color.n100};
   height: ${Platform.OS === "ios" ? "40%" : "46%"};
   padding: ${Platform.OS === "ios" ? "5%" : "2%"};
   justify-content: center;

@@ -16,6 +16,12 @@ const LastLoadingScreen = ({
   route,
   navigation,
 }: EndingStackScreenProps<"LastLoadingScreen">) => {
+  function getRandomInt(min: number, max: number) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min; //최댓값은 제외, 최솟값은 포함
+  }
+
   useEffect(() => {
     if (userInfoStore.LAST_DEPRESSION_SCORE >= 46) {
       userInfoStore.updateLastDepressionState("good");
@@ -32,15 +38,23 @@ const LastLoadingScreen = ({
     } else {
       userInfoStore.updateLastDepressionState("serious");
     }
-    setTimeout(() => navigation.navigate("EndingResult"), 500);
+    setTimeout(() => navigation.navigate("EndingResult"), 4000);
   }, []);
 
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <SvgIcon name="boilingSeed" />
-      <LoadingText>결과를 알아보고 있어요.</LoadingText>
-      <GrayText>{lifeQuotes[1]}</GrayText>
-      {/* TODO: lifeQuotes 명언 랜덤으로 나가게  */}
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        padding: "8%",
+      }}
+    >
+      <SvgIcon name="photosynthesis" />
+      <LoadingText>꽃이 햇볕을 머금고 있어요.</LoadingText>
+      <GrayText>
+        {lifeQuotes[getRandomInt(0, Object.keys(lifeQuotes).length + 1)]}
+      </GrayText>
     </View>
   );
 };
@@ -54,6 +68,7 @@ const LoadingText = styled.Text`
 `;
 
 const GrayText = styled.Text`
+  text-align: center;
   font-family: ${(props: LoadingTextProps) => props.theme.font.thinFont};
   font-size: 16px;
   position: absolute;
