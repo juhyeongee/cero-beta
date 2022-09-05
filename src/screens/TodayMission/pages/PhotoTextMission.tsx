@@ -34,15 +34,11 @@ const PhotoTextMission = ({ pickImage, imageUri }: Props) => {
 
   const keyboardDidShowListener = Keyboard.addListener(
     "keyboardDidShow",
-    () => {
-      setKeyboardVisible(true);
-    }
+    () => {}
   );
   const keyboardDidHideListener = Keyboard.addListener(
     "keyboardDidHide",
-    () => {
-      setKeyboardVisible(false);
-    }
+    () => {}
   );
   useEffect(() => {
     return () => {

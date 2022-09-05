@@ -27,20 +27,14 @@ const TextMission = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const inputRef = createRef<TextInput>();
 
-  const [isKeyboardVisible, setKeyboardVisible] = useState(false);
-
   const keyboardDidShowListener = Keyboard.addListener(
     "keyboardDidShow",
-    () => {
-      setKeyboardVisible(true);
-    }
+    () => {}
   );
 
   const keyboardDidHideListener = Keyboard.addListener(
     "keyboardDidHide",
-    () => {
-      setKeyboardVisible(false);
-    }
+    () => {}
   );
 
   useEffect(() => {
