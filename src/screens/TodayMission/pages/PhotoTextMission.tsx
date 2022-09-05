@@ -30,7 +30,6 @@ const PhotoTextMission = ({ pickImage, imageUri }: Props) => {
   const [missionText, setMissionText] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
   const inputRef = createRef<TextInput>();
-  const [isKeyboardVisible, setKeyboardVisible] = useState(false);
 
   const keyboardDidShowListener = Keyboard.addListener(
     "keyboardDidShow",
@@ -121,7 +120,7 @@ const Container = styled.View`
 `;
 
 const PhotoTab = styled.View`
-  padding: 3%;
+  padding: 10% 3%;
   flex: 2.5;
   width: 100%;
 `;

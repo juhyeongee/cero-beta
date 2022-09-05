@@ -25,6 +25,7 @@ import {
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { observer } from "mobx-react";
 import { scheduleAfterMissionNotiHandler } from "@/utils/notification";
+import { useState } from "react";
 
 interface HeaderModal {
   modalVisible: boolean;
@@ -39,6 +40,7 @@ const Header = ({
 }: HeaderModal) => {
   const { minusOne, todoNum, versionNum } = userInfoStore;
   const navigation = useNavigation();
+
   const pressCompleteBtn = () => {
     const { todayDate } = userInfoStore;
     Alert.alert(
@@ -118,7 +120,11 @@ const Header = ({
           >
             <MissionTitle>{missionTitle}</MissionTitle>
           </View>
-          <Pressable onPress={() => setModalVisible(!modalVisible)}>
+          <Pressable
+            onPress={() => {
+              Keyboard.dismiss(), setModalVisible(!modalVisible);
+            }}
+          >
             <Subtitle>{missionDescription}</Subtitle>
             <GreenText>...더보기</GreenText>
           </Pressable>

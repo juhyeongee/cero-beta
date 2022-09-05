@@ -1,6 +1,6 @@
 import SvgIcon from "@/assets/SvgIcon";
 import { ITheme, SettingStackScreenProps } from "@/types";
-import { Platform, View, Text, Pressable } from "react-native";
+import { Platform, View, Text, Pressable, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native";
 import styled from "styled-components/native";
 import { Container, TitleText, SubText } from "../components/Styled";
@@ -24,7 +24,9 @@ const NoticePage = ({
           <TitleText>공지사항</TitleText>
         </View>
         <View style={{ flex: 4 }}>
-          <GrayAcchodion texts={NoticeTexts} questionNum={1} />
+          <ScrollView showsVerticalScrollIndicator={false} style={{ flex: 1 }}>
+            <GrayAcchodion texts={NoticeTexts} questionNum={1} />
+          </ScrollView>
         </View>
       </SafeAreaView>
     </Container>
