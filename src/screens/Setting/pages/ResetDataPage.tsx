@@ -8,10 +8,6 @@ import { useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as Update from "expo-updates";
 
-interface StyledProps {
-  theme: ITheme;
-  nickname: string;
-}
 interface IContainerProps {
   theme: ITheme;
 }
@@ -20,7 +16,6 @@ const ResetDataPage = ({
   route,
   navigation,
 }: SettingStackScreenProps<"ResetData">) => {
-  const [nickname, setNickname] = useState<string>("");
   const navigateToBack = () => {
     navigation.goBack();
   };
@@ -35,7 +30,7 @@ const ResetDataPage = ({
         text: "네",
         onPress: () => {
           resetData();
-          Update.reloadAsync();
+          Alert.alert("앱이 초기화되었습니다.", "앱을 껐다 켜주세요 :)");
         },
         style: "destructive",
       },
