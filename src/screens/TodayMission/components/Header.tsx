@@ -27,7 +27,7 @@ const Header = ({
   setModalVisible,
   missionText,
 }: HeaderModal) => {
-  const { minusOne, todoNum, versionNum } = userInfoStore;
+  const { nickname, todoNum, versionNum } = userInfoStore;
   const navigation = useNavigation();
 
   const pressCompleteBtn = () => {
@@ -68,9 +68,16 @@ const Header = ({
   };
   const version = `version${versionNum}`;
   const missionTitle = missions[todoNum][version].subtitle;
-  const missionDescription = missions[todoNum][version].description;
+
+  const missionDescription = missions[todoNum][version].description.replace(
+    "유저",
+    nickname
+  );
   const missionArticleTitle = missions[todoNum][version].articleTitle;
-  const missionArticle = missions[todoNum][version].article;
+  const missionArticle = missions[todoNum][version].article.replace(
+    "유저",
+    nickname
+  );
 
   return (
     <>

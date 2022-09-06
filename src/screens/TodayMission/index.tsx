@@ -13,9 +13,6 @@ const TodayMission = () => {
   const { todoNum, versionNum } = userInfoStore;
   const version = `version${versionNum}`;
   const missionType = missions[todoNum][version].type;
-  const [thisMissionImagePath, setThisMissionImagePath] = useState({
-    missionUri: require("@assets/images/camera.png"),
-  });
   const [imageUri, setImageUri] = useState<string | undefined | null>();
 
   const pickImage = async () => {

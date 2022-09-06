@@ -48,7 +48,7 @@ class UserInfoStore {
       { autoBind: true }
     );
     makePersistable(this, {
-      name: "TodoNumPersistStore",
+      name: "UserInfoStore",
       properties: [
         "todoNum",
         "versionNum",

@@ -4,11 +4,14 @@ import SvgIcon from "@/assets/SvgIcon";
 import { Container, DescContainer, DescCard } from "./components";
 import { introduceMindText } from "@/constants/properties";
 import MakeSeedModal from "./components/MakeSeedModal";
+import { observer } from "mobx-react";
+import userInfoStore from "@/store/UserInfoStore";
 
 const OnBoarding = ({
   route,
   navigation,
 }: OnBoardingStackScreenProps<"OnBoarding">) => {
+  const { nickname } = userInfoStore;
   const [page, setPage] = useState(1);
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -49,7 +52,9 @@ const OnBoarding = ({
       )}
 
       <DescContainer onPress={goNextPage}>
-        <DescCard text={introduceMindText[page - 1]} />
+        <DescCard
+          text={introduceMindText[page - 1].replace("유저", nickname)}
+        />
       </DescContainer>
 
       <MakeSeedModal
@@ -61,4 +66,4 @@ const OnBoarding = ({
   );
 };
 
-export default OnBoarding;
+export default observer(OnBoarding);

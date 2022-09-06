@@ -1,11 +1,20 @@
 import * as Notifications from "expo-notifications";
 import { notificationTexts } from "@/constants/properties";
+import userInfoStore from "@/store/UserInfoStore";
+
+//TODO: nickname 적용
+const { nickname } = userInfoStore;
 
 export function exampleAlarm() {
   Notifications.scheduleNotificationAsync({
     content: {
-      title: notificationTexts.missionAfterNoti[getRandomInt(0, 5)].title,
-      body: notificationTexts.missionAfterNoti[getRandomInt(0, 5)].body,
+      title: notificationTexts.missionAfterNoti[
+        getRandomInt(0, 5)
+      ].title.replace("유저", nickname),
+      body: notificationTexts.missionAfterNoti[getRandomInt(0, 5)].body.replace(
+        "유저",
+        nickname
+      ),
       // data: { userName: "주형" },
     },
     trigger: { seconds: 3 },
@@ -26,8 +35,13 @@ export function scheduleAfterMissionNotiHandler() {
 
   Notifications.scheduleNotificationAsync({
     content: {
-      title: notificationTexts.missionAfterNoti[getRandomInt(0, 5)].title,
-      body: notificationTexts.missionAfterNoti[getRandomInt(0, 5)].body,
+      title: notificationTexts.missionAfterNoti[
+        getRandomInt(0, 5)
+      ].title.replace("유저", nickname),
+      body: notificationTexts.missionAfterNoti[getRandomInt(0, 5)].body.replace(
+        "유저",
+        nickname
+      ),
       // data: { userName: "주형" },
     },
     trigger,
@@ -37,8 +51,13 @@ export function scheduleAfterMissionNotiHandler() {
 export function scheduledRemindNotiHandler(hour: number, minute: number) {
   Notifications.scheduleNotificationAsync({
     content: {
-      title: notificationTexts.missionAfterNoti[getRandomInt(0, 2)].title,
-      body: notificationTexts.missionAfterNoti[getRandomInt(0, 2)].body,
+      title: notificationTexts.missionAfterNoti[
+        getRandomInt(0, 2)
+      ].title.replace("유저", nickname),
+      body: notificationTexts.missionAfterNoti[getRandomInt(0, 2)].body.replace(
+        "유저",
+        nickname
+      ),
     },
     trigger: {
       hour: hour,

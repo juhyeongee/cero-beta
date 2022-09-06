@@ -1,8 +1,9 @@
-import { View, Text, Modal } from "react-native";
+import { View, Modal } from "react-native";
 import styled from "styled-components/native";
 import { ITheme } from "@/types";
 import SvgIcon from "@assets/SvgIcon";
 import { BigPrimaryBtn } from "@components/index";
+import { observer } from "mobx-react";
 
 interface IContainerProps {
   theme: ITheme;
@@ -93,13 +94,4 @@ const SubText = styled.Text`
   color: ${(props: IContainerProps) => props.theme.color.n800};
 `;
 
-const GrayBG = styled.Pressable`
-  flex: 1;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  opacity: 0.4;
-  background-color: ${(props: IContainerProps) => props.theme.color.n900}; ;
-`;
-
-export default MakeSeedModal;
+export default observer(MakeSeedModal);

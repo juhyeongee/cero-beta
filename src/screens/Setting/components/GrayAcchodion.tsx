@@ -2,6 +2,7 @@ import { Platform } from "react-native";
 import styled from "styled-components/native";
 import { ITheme } from "@/types";
 import { useState } from "react";
+import userInfoStore from "@/store/UserInfoStore";
 
 interface StyledProps {
   theme: ITheme;
@@ -13,11 +14,16 @@ interface IAccodionProps {
 
 const GrayAcchodion = ({ questionNum, texts }: IAccodionProps) => {
   const [clicked, setClicked] = useState(false);
+  const { nickname } = userInfoStore;
 
   return (
     <Container onPress={() => setClicked(!clicked)}>
       <QuestionText>{texts[questionNum]["Q"]}</QuestionText>
-      {clicked && <SmallGrayText>{texts[questionNum]["A"]}</SmallGrayText>}
+      {clicked && (
+        <SmallGrayText>
+          {texts[questionNum]["A"].replace("유저", nickname)}
+        </SmallGrayText>
+      )}
     </Container>
   );
 };

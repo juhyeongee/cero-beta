@@ -33,6 +33,7 @@ const ToDo = ({ navigateToTodayMission }: Props) => {
   const [completedTodoFromAsyncStorage, setCompletedTodoFromAsyncStorage] =
     useState<undefined | string>();
   const {
+    nickname,
     todoNum,
     todayDate,
     versionNum,
@@ -56,9 +57,9 @@ const ToDo = ({ navigateToTodayMission }: Props) => {
         const parsedCompletedObject = JSON.parse(res);
         const completedVersionFromAsyncStorage =
           parsedCompletedObject["versionNum"];
-        const completedTodo =
-          missions[todoNum - 1][`version${completedVersionFromAsyncStorage}`]
-            .subtitle;
+        const completedTodo = missions[todoNum - 1][
+          `version${completedVersionFromAsyncStorage}`
+        ].subtitle.replace("유저", nickname);
         if (completedTodo !== undefined) {
           setCompletedTodoFromAsyncStorage(completedTodo);
           userInfoStore.updateCompleteMissionName(completedTodo);
