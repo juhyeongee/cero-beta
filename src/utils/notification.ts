@@ -33,7 +33,6 @@ export function scheduleAfterMissionNotiHandler() {
   trigger.setSeconds(0);
   trigger.setHours(21);
 
-  console.log(trigger);
   Notifications.scheduleNotificationAsync({
     content: {
       title: notificationTexts.missionAfterNoti[getRandomInt(0, 5)].title,

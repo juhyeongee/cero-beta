@@ -60,9 +60,7 @@ const ToDo = ({ navigateToTodayMission }: Props) => {
         const completedTodo =
           missions[todoNum - 1][`version${completedVersionFromAsyncStorage}`]
             .subtitle;
-        if (completedTodo === undefined) {
-          console.log("completedTodo is 'undefined'");
-        } else {
+        if (completedTodo !== undefined) {
           setCompletedTodoFromAsyncStorage(completedTodo);
           userInfoStore.updateCompleteMissionName(completedTodo);
         }

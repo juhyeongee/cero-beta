@@ -26,7 +26,6 @@ const ResetNicknamePage = ({
 
   const onPressChangeBtn = (newName: string) => {
     userIntoStore.updateNickname(newName);
-    console.log("닉네임이 업데이트 되었습니다.");
     setTimeout(() => navigateToBack(), 500);
   };
   return (

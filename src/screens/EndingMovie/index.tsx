@@ -146,11 +146,7 @@ const EndingMovie = () => {
                     }, 6000);
                     setTimeout(() => {
                       currentPageStore.updateScreen("MainBottomTabNav"),
-                        currentPageStore.finishEndingMovie(),
-                        console.log(
-                          "isCurriculumEnd: ",
-                          currentPageStore.isCurriculumEnd
-                        );
+                        currentPageStore.finishEndingMovie();
                     }, 10000);
                   }}
                 />
