@@ -26,15 +26,6 @@ import userInfoStore from "@/store/UserInfoStore";
 import currentPageStore from "@/store/CurrentPageStore";
 import { EndingStackNav } from "@navigations/index";
 import { observer } from "mobx-react";
-import * as Notifications from "expo-notifications";
-
-Notifications.setNotificationHandler({
-  handleNotification: async () => ({
-    shouldShowAlert: true,
-    shouldPlaySound: false,
-    shouldSetBadge: false,
-  }),
-});
 
 function App() {
   const { currentScreen } = currentPageStore;
@@ -56,19 +47,19 @@ function App() {
   useEffect(() => {
     userInfoStore.updateTodayDate();
     userInfoStore.resetVersionNum();
-    const subscription = Notifications.addNotificationReceivedListener(
-      (notification) => {
-        console.log(notification);
-      }
-    );
-    const responseSubscription =
-      Notifications.addNotificationResponseReceivedListener((notification) => {
-        console.log(notification);
-      });
+    // const subscription = Notifications.addNotificationReceivedListener(
+    //   (notification) => {
+    //     console.log(notification);
+    //   }
+    // );
+    // const responseSubscription =
+    //   Notifications.addNotificationResponseReceivedListener((notification) => {
+    //     console.log(notification);
+    //   });
 
-    return () => {
-      subscription.remove(), responseSubscription.remove();
-    };
+    // return () => {
+    //   subscription.remove(), responseSubscription.remove();
+    // };
   }, []);
 
   if (!fontsLoaded) {

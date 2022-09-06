@@ -9,7 +9,6 @@ import { useState } from "react";
 import GreenTimePicker from "../components/settingHomeComp/NoticeBar";
 import Theme from "@/constants/Theme";
 import { scheduleAfterMissionNotiHandler } from "@/utils/notification";
-import Notifications from "expo-notifications";
 
 interface StyledProps {
   theme: ITheme;
