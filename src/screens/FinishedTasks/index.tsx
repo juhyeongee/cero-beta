@@ -69,7 +69,6 @@ const FinishedTasks = () => {
             )}
           </ScrollView>
         </View>
-        {/* TODO: ScrollView => Flatlist로 변환 */}
       </SafeAreaView>
     </Container>
   );

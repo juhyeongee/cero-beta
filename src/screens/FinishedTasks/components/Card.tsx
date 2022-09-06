@@ -24,7 +24,6 @@ const Card = ({ missionNum }: CardProps) => {
 
   const { todoNum } = userInfoStore;
 
-  //TODO: 완료한 미션의 버전따라 카드 타이틀명 설정
   const [imageUri, setImageUri] = useState<string | null>();
 
   const onClicked = () => {

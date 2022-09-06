@@ -14,7 +14,6 @@ const TakeUserInfo = ({
   const swipeNextPage = () => {
     swiperRef.current.scrollBy(1);
   };
-  //TODO: Swiper type적용
 
   const navigateToMindText = () => {
     navigation.navigate("OnBoarding");

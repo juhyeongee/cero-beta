@@ -59,6 +59,7 @@ function App() {
   });
 
   useEffect(() => {
+    userInfoStore.updateTodayDate();
     userInfoStore.resetVersionNum();
     const subscription = Notifications.addNotificationReceivedListener(
       (notification) => {

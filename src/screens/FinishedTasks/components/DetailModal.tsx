@@ -15,7 +15,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect, useState } from "react";
 import userInfoStore from "@/store/UserInfoStore";
 
-// TODO 1 : mission type 별로 이미지 띄우기,텍스트만띄우기 화면  수정하기
 // TODO 2: 텍스트와  이미지 서버에서  가져오기
 interface IContainerProps {
   theme: ITheme;
