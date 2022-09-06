@@ -1,15 +1,5 @@
 import AutoHeightImage from "react-native-auto-height-image";
-import {
-  View,
-  Text,
-  Pressable,
-  Modal,
-  ScrollView,
-  Platform,
-  Alert,
-  Keyboard,
-} from "react-native";
-import SvgIcon from "@/assets/SvgIcon";
+import { View, Pressable, Alert, Keyboard } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import userInfoStore from "@/store/UserInfoStore";
 import missions from "@constants/missions";
@@ -25,7 +15,6 @@ import {
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { observer } from "mobx-react";
 import { scheduleAfterMissionNotiHandler } from "@/utils/notification";
-import { useState } from "react";
 
 interface HeaderModal {
   modalVisible: boolean;
@@ -38,7 +27,7 @@ const Header = ({
   setModalVisible,
   missionText,
 }: HeaderModal) => {
-  const { minusOne, todoNum, versionNum } = userInfoStore;
+  const { nickname, todoNum, versionNum } = userInfoStore;
   const navigation = useNavigation();
 
   const pressCompleteBtn = () => {
@@ -62,6 +51,7 @@ const Header = ({
               () => {
                 userInfoStore.updateCompleteMissionDatesArray(todayDate);
                 userInfoStore.addOne();
+                userInfoStore.resetVersionNum();
                 scheduleAfterMissionNotiHandler();
                 navigation.goBack();
               }
@@ -79,9 +69,16 @@ const Header = ({
   };
   const version = `version${versionNum}`;
   const missionTitle = missions[todoNum][version].subtitle;
-  const missionDescription = missions[todoNum][version].description;
+
+  const missionDescription = missions[todoNum][version].description.replace(
+    "유저",
+    nickname
+  );
   const missionArticleTitle = missions[todoNum][version].articleTitle;
-  const missionArticle = missions[todoNum][version].article;
+  const missionArticle = missions[todoNum][version].article.replace(
+    "유저",
+    nickname
+  );
 
   return (
     <>

@@ -31,7 +31,6 @@ export function MainBottomTabNav() {
         component={FinishedTasks}
         options={{
           tabBarIcon: ({ color, size }) => {
-            console.log(size, size);
             return (
               <Image
                 style={{ width: size + 2, height: size - 1, tintColor: color }}
@@ -55,7 +54,7 @@ export function MainBottomTabNav() {
               source={require("@/assets/images/home.png")}
             />
           ),
-        }} //TODO: PNG file -> svg파일로 수정 필요 (color 변수 svg에 넘기는 방법 찾기)
+        }}
       />
 
       <MainBottomTab.Screen

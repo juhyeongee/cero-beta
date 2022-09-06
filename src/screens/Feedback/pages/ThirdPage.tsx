@@ -1,9 +1,6 @@
-import { View, Text, Pressable, Platform } from "react-native";
-import { EndingResultText } from "@constants/properties";
-import SvgIcon from "@/assets/SvgIcon";
-import styled from "styled-components/native";
+import { View } from "react-native";
+
 import { BigPrimaryBtn, MultiChoiceBtn } from "@/components";
-import AutoHeightImage from "react-native-auto-height-image";
 import { ITheme } from "@/types";
 import {
   TitleText,

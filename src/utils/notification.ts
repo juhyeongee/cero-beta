@@ -1,20 +1,20 @@
-import {
-  getExpoPushTokenAsync,
-  scheduleNotificationAsync,
-  requestPermissionsAsync,
-  addNotificationReceivedListener,
-} from "expo-notifications";
 import * as Notifications from "expo-notifications";
 import { notificationTexts } from "@/constants/properties";
-import * as Device from "expo-device";
-import { Platform } from "react-native";
-import dayjs from "dayjs";
+import userInfoStore from "@/store/UserInfoStore";
+
+//TODO: nickname 적용
+const { nickname } = userInfoStore;
 
 export function exampleAlarm() {
   Notifications.scheduleNotificationAsync({
     content: {
-      title: notificationTexts.missionAfterNoti[getRandomInt(0, 5)].title,
-      body: notificationTexts.missionAfterNoti[getRandomInt(0, 5)].body,
+      title: notificationTexts.missionAfterNoti[
+        getRandomInt(0, 5)
+      ].title.replace("유저", nickname),
+      body: notificationTexts.missionAfterNoti[getRandomInt(0, 5)].body.replace(
+        "유저",
+        nickname
+      ),
       // data: { userName: "주형" },
     },
     trigger: { seconds: 3 },
@@ -23,10 +23,9 @@ export function exampleAlarm() {
 function getRandomInt(min: number, max: number) {
   min = Math.ceil(min);
   max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min; //최댓값은 제외, 최솟값은 포함
+  return Math.floor(Math.random() * (max - min)) + min;
 }
 
-//TODO: 11시 50분에 다음날 12시 1분에 알람오는지 확인하기/ 시간 정보가 다음날로 넘어가는지가 궁금함
 export function scheduleAfterMissionNotiHandler() {
   const trigger = new Date(Date.now() + 24 * 60 * 60 * 1000);
 
@@ -34,11 +33,15 @@ export function scheduleAfterMissionNotiHandler() {
   trigger.setSeconds(0);
   trigger.setHours(21);
 
-  console.log(trigger);
   Notifications.scheduleNotificationAsync({
     content: {
-      title: notificationTexts.missionAfterNoti[getRandomInt(0, 5)].title,
-      body: notificationTexts.missionAfterNoti[getRandomInt(0, 5)].body,
+      title: notificationTexts.missionAfterNoti[
+        getRandomInt(0, 5)
+      ].title.replace("유저", nickname),
+      body: notificationTexts.missionAfterNoti[getRandomInt(0, 5)].body.replace(
+        "유저",
+        nickname
+      ),
       // data: { userName: "주형" },
     },
     trigger,
@@ -48,8 +51,13 @@ export function scheduleAfterMissionNotiHandler() {
 export function scheduledRemindNotiHandler(hour: number, minute: number) {
   Notifications.scheduleNotificationAsync({
     content: {
-      title: notificationTexts.missionAfterNoti[getRandomInt(0, 2)].title,
-      body: notificationTexts.missionAfterNoti[getRandomInt(0, 2)].body,
+      title: notificationTexts.missionAfterNoti[
+        getRandomInt(0, 2)
+      ].title.replace("유저", nickname),
+      body: notificationTexts.missionAfterNoti[getRandomInt(0, 2)].body.replace(
+        "유저",
+        nickname
+      ),
     },
     trigger: {
       hour: hour,

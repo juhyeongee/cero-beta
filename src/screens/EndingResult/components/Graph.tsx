@@ -1,5 +1,4 @@
-import { View, Text } from "react-native";
-import { WINDOW_WIDTH } from "@constants/properties";
+import { View } from "react-native";
 
 import SvgIcon from "@/assets/SvgIcon";
 import styled from "styled-components/native";

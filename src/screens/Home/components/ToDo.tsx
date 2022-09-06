@@ -1,5 +1,5 @@
 import { View, Text, Pressable, Platform } from "react-native";
-import styled, { css } from "styled-components/native";
+import styled from "styled-components/native";
 import { ITheme } from "@/types";
 import { BigPrimaryBtn } from "@/components";
 import SvgIcon from "@/assets/SvgIcon";
@@ -7,11 +7,10 @@ import Theme from "@/constants/Theme";
 import missions from "@constants/missions";
 import { observer } from "mobx-react";
 import userInfoStore from "@/store/UserInfoStore";
-import { heightRatio, widthRatio, fontsizeRatio } from "@/utils";
+import { heightRatio } from "@/utils";
 import Toast from "react-native-toast-message";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect, useState } from "react";
-import currentPageStore from "@/store/CurrentPageStore";
 
 interface IContainerProps {
   theme: ITheme;
@@ -34,6 +33,7 @@ const ToDo = ({ navigateToTodayMission }: Props) => {
   const [completedTodoFromAsyncStorage, setCompletedTodoFromAsyncStorage] =
     useState<undefined | string>();
   const {
+    nickname,
     todoNum,
     todayDate,
     versionNum,
@@ -57,20 +57,16 @@ const ToDo = ({ navigateToTodayMission }: Props) => {
         const parsedCompletedObject = JSON.parse(res);
         const completedVersionFromAsyncStorage =
           parsedCompletedObject["versionNum"];
-        const completedTodo =
-          missions[todoNum - 1][`version${completedVersionFromAsyncStorage}`]
-            .subtitle;
-        if (completedTodo === undefined) {
-          console.log("completedTodo is 'undefined'");
-        } else {
+        const completedTodo = missions[todoNum - 1][
+          `version${completedVersionFromAsyncStorage}`
+        ].subtitle.replace("유저", nickname);
+        if (completedTodo !== undefined) {
           setCompletedTodoFromAsyncStorage(completedTodo);
           userInfoStore.updateCompleteMissionName(completedTodo);
         }
       }
     });
   };
-
-  //TODO: 다만, 현재 rerender를 하지 않는한, 홈 화면에서  오늘의 할 일 텍스트가 백지로 나옴; reroad 할 때, 비동기함수라서 업데이트가 느려서 그런건가  싶음
 
   const rotateVersionNum = () => {
     let length = Object.keys(todoObject).length;

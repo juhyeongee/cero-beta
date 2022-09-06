@@ -3693,7 +3693,7 @@
     "compare-versions" "^3.4.0"
     "invariant" "^2.2.4"
 
-"expo-notifications@~0.15.4":
+"expo-notifications@^0.15.4":
   "integrity" "sha512-CHjzA0d4NQU9Es//tTSEKQl3Hfj9hdrV6k79G+2/dnAXIa+KjvDGUTjPlhVqvt9ApT4Ly6UbwoY5Cb5qgKMEWA=="
   "resolved" "https://registry.npmjs.org/expo-notifications/-/expo-notifications-0.15.4.tgz"
   "version" "0.15.4"

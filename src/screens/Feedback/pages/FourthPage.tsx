@@ -1,18 +1,9 @@
-import { View, Text, Pressable, Platform } from "react-native";
-import { EndingResultText } from "@constants/properties";
+import { View } from "react-native";
 import SvgIcon from "@/assets/SvgIcon";
 import styled from "styled-components/native";
-import { BigPrimaryBtn, MultiChoiceBtn } from "@/components";
-import AutoHeightImage from "react-native-auto-height-image";
+
 import { ITheme } from "@/types";
-import {
-  TitleText,
-  GrayBtn,
-  MainText,
-  BtnInnerText,
-  Container,
-  SubText,
-} from "../components/Styled";
+import { SubText } from "../components/Styled";
 import { GrayBox } from "../components/GrayBox";
 
 interface IContainerProps {
@@ -92,25 +83,4 @@ const BoxContainer = styled.Pressable`
   justify-content: space-around;
   flex: 3;
   width: 100%;
-`;
-
-const Box = styled.Pressable`
-  padding: 3% 3%;
-  height: 120px;
-  background-color: ${(props: IContainerProps) => props.theme.color.n200};
-  border-radius: 10px;
-  align-items: center;
-  justify-content: space-around;
-  width: 46%;
-`;
-
-const ImogiText = styled.Text`
-  font-size: 20px;
-`;
-
-const GrayBoxInnerTitle = styled.Text``;
-
-const GrayBoxInnerText = styled.Text`
-  font-size: 9px;
-  color: ${(props: IContainerProps) => props.theme.color.n700};
 `;

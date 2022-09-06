@@ -10,11 +10,10 @@ const TakeUserInfo = ({
   route,
   navigation,
 }: OnBoardingStackScreenProps<"TakeUserInfo">) => {
-  const swiperRef = useRef(1);
+  const swiperRef = useRef<any>(1);
   const swipeNextPage = () => {
     swiperRef.current.scrollBy(1);
   };
-  //TODO: Swiper type적용
 
   const navigateToMindText = () => {
     navigation.navigate("OnBoarding");

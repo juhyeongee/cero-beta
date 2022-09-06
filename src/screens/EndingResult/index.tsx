@@ -1,21 +1,12 @@
-import { useState, useRef, useEffect } from "react";
-import {
-  View,
-  Text,
-  SafeAreaView,
-  Pressable,
-  Animated,
-  Platform,
-} from "react-native";
+import { useState } from "react";
+import { SafeAreaView } from "react-native";
 
 import FirstPage from "./pages/FirstPage";
 import SecondPage from "./pages/SecondPage";
-import userInfoStore from "@/store/UserInfoStore";
 import ThirdPage from "./pages/ThirdPage";
 import FourthPage from "./pages/FourthPage";
 import { Container } from "./components/Styled";
 import { EndingStackScreenProps } from "@/types";
-import currentPageStore from "@/store/CurrentPageStore";
 
 const EndingResult = ({
   route,
@@ -29,7 +20,6 @@ const EndingResult = ({
 
   const navigateToEndingMovie = () => {
     navigation.navigate("EndingMovie");
-    console.log("isCurriculumEnd: ", currentPageStore.isCurriculumEnd);
   };
   return (
     <Container>

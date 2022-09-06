@@ -1,9 +1,5 @@
-import { View, Text, Pressable, Modal } from "react-native";
-import {
-  EndingResultText,
-  MindTestResultText,
-  WINDOW_WIDTH,
-} from "@constants/properties";
+import { View, Pressable } from "react-native";
+import { EndingResultText, MindTestResultText } from "@constants/properties";
 import {
   TitleText,
   MainText,
@@ -13,8 +9,7 @@ import {
 } from "../components/Styled";
 import SvgIcon from "@/assets/SvgIcon";
 import { FinalScoreBox } from "../components/FinalScoreBox";
-import styled from "styled-components/native";
-import { ITheme } from "@/types";
+
 import userInfoStore from "@/store/UserInfoStore";
 import { useState } from "react";
 import { ThirdPageModal } from "../components/ThirdPageModal";
@@ -25,13 +20,18 @@ interface IFirstPageProps {
 }
 const ThirdPage = ({ goNextPage }: IFirstPageProps) => {
   const [modalVisible, setModalVisible] = useState(false);
-  const firstScore = userInfoStore.FIRST_DEPRESSION_SCORE;
-  const lastScore = userInfoStore.LAST_DEPRESSION_SCORE;
+  const {
+    FIRST_DEPRESSION_SCORE: firstScore,
+    LAST_DEPRESSION_SCORE: lastScore,
+    nickname,
+  } = userInfoStore;
 
   return (
     <>
       <View style={{ flex: 2 }}>
-        <TitleText>{EndingResultText["thirdPageTitle"]}</TitleText>
+        <TitleText>
+          {EndingResultText["thirdPageTitle"].replace("유저", nickname)}
+        </TitleText>
       </View>
       <Graph />
       <FinalScoreBox
@@ -41,7 +41,10 @@ const ThirdPage = ({ goNextPage }: IFirstPageProps) => {
       />
       <View style={{ flex: 6.5, paddingTop: "10%" }}>
         <SubText>
-          {MindTestResultText[userInfoStore.lastDepressionState]}
+          {MindTestResultText[userInfoStore.lastDepressionState].replace(
+            "유저",
+            nickname
+          )}
         </SubText>
       </View>
       <BtnContainer>

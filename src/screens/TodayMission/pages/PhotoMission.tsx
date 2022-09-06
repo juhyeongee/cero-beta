@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { View, Text, Pressable, Image, SafeAreaView } from "react-native";
+import { Image, SafeAreaView } from "react-native";
 import styled from "styled-components/native";
 import { ITheme } from "@/types";
 
-import AutoHeightImage from "react-native-auto-height-image/";
 import Header from "../components/Header";
 
 interface IContainerProps {

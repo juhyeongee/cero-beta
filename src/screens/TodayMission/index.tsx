@@ -1,14 +1,5 @@
-import React, { useEffect, useState } from "react";
-import {
-  View,
-  Text,
-  Pressable,
-  Image,
-  SafeAreaView,
-  Keyboard,
-} from "react-native";
-import styled from "styled-components/native";
-import { ITheme } from "@/types";
+import React, { useState } from "react";
+
 import PhotoMission from "./pages/PhotoMission";
 import TextMission from "./pages/TextMission";
 import PhotoTextMission from "./pages/PhotoTextMission";
@@ -22,9 +13,6 @@ const TodayMission = () => {
   const { todoNum, versionNum } = userInfoStore;
   const version = `version${versionNum}`;
   const missionType = missions[todoNum][version].type;
-  const [thisMissionImagePath, setThisMissionImagePath] = useState({
-    missionUri: require("@assets/images/camera.png"),
-  });
   const [imageUri, setImageUri] = useState<string | undefined | null>();
 
   const pickImage = async () => {
@@ -33,14 +21,12 @@ const TodayMission = () => {
       allowsEditing: false,
       quality: 1,
     });
-    console.log(result);
     if (!result.cancelled) {
       await AsyncStorage.setItem(`mission${todoNum}ImageUri`, result.uri);
       setImageUri(result.uri);
       return result.uri;
     }
   };
-  //TODO: firebase 연결하기 - :https://docs.expo.dev/versions/latest/sdk/imagepicker/
 
   return (
     <>

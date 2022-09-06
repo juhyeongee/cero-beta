@@ -1,17 +1,9 @@
 import { useState } from "react";
-import {
-  View,
-  Text,
-  TextInput,
-  KeyboardAvoidingView,
-  Platform,
-} from "react-native";
+import { View, Text, KeyboardAvoidingView, Platform } from "react-native";
 import { BigPrimaryBtn } from "@components/index";
 import styled from "styled-components/native";
 import { ITheme } from "@/types";
 import { Container, SafeArea, TitleText } from "../components/Styled";
-
-import { observer } from "mobx-react";
 import userInfoStore from "@/store/UserInfoStore";
 
 interface IContainerProps {

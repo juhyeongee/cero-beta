@@ -4,7 +4,6 @@ import userInfoStore from "@/store/UserInfoStore";
 import { observer } from "mobx-react";
 import currentPageStore from "@/store/CurrentPageStore";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import dayjs from "dayjs";
 
 const Devtool = () => {
   const { todoNum } = userInfoStore;

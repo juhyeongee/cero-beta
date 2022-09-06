@@ -1,14 +1,6 @@
 import { IntroStackScreenProps } from "@/types";
-import {
-  Animated,
-  View,
-  Pressable,
-  TextInput,
-  KeyboardAvoidingView,
-  Keyboard,
-  TouchableWithoutFeedback,
-} from "react-native";
-import React, { useEffect, useState } from "react";
+import { Animated, View, Pressable } from "react-native";
+import React, { useState } from "react";
 import { WINDOW_WIDTH, WINDOW_HEIGHT } from "@/constants/properties";
 import SvgIcon from "@/assets/SvgIcon";
 import { Container, IntroText } from "./components/Styled";

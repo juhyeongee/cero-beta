@@ -1,9 +1,8 @@
 import SvgIcon from "@/assets/SvgIcon";
-import { ITheme, SettingStackScreenProps } from "@/types";
-import { Platform, View, Text, Pressable, ScrollView } from "react-native";
+import { SettingStackScreenProps } from "@/types";
+import { View, Pressable, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native";
-import styled from "styled-components/native";
-import { Container, TitleText, SubText } from "../components/Styled";
+import { Container, TitleText } from "../components/Styled";
 import GrayAcchodion from "../components/GrayAcchodion";
 import { NoticeTexts } from "@constants/properties";
 

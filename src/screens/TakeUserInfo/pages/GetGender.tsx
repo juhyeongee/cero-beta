@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import MultiChoiceBtn from "@components/MultiChoiceBtn";
 import { Container, SafeArea, TitleText } from "../components/Styled";
 import { observer } from "mobx-react";
 import userInfoStore from "@/store/UserInfoStore";
-import { BigPrimaryBtn, OutlineBtn } from "@components/index";
+import { BigPrimaryBtn } from "@components/index";
 interface IPageProps {
   swipeNextPage: () => void;
 }

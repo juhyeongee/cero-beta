@@ -1,9 +1,8 @@
-import { View, Text, Pressable, SafeAreaView, Platform } from "react-native";
-import { observer } from "mobx-react";
-import SvgIcon from "@assets/SvgIcon";
+import { Platform } from "react-native";
 import styled from "styled-components/native";
 import { ITheme } from "@/types";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import userInfoStore from "@/store/UserInfoStore";
 
 interface StyledProps {
   theme: ITheme;
@@ -15,11 +14,16 @@ interface IAccodionProps {
 
 const GrayAcchodion = ({ questionNum, texts }: IAccodionProps) => {
   const [clicked, setClicked] = useState(false);
+  const { nickname } = userInfoStore;
 
   return (
     <Container onPress={() => setClicked(!clicked)}>
       <QuestionText>{texts[questionNum]["Q"]}</QuestionText>
-      {clicked && <SmallGrayText>{texts[questionNum]["A"]}</SmallGrayText>}
+      {clicked && (
+        <SmallGrayText>
+          {texts[questionNum]["A"].replace("유저", nickname)}
+        </SmallGrayText>
+      )}
     </Container>
   );
 };

@@ -1,10 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
-import { View, Text, Pressable, Platform, Image } from "react-native";
+import React, { useEffect } from "react";
+import { Image } from "react-native";
 import { ThemeProvider } from "styled-components/native";
-import styled from "styled-components/native";
 import Theme from "./src/constants/Theme";
 import { NavigationContainer } from "@react-navigation/native";
-import ResultPage from "@/screens/MindTest/pages/ResultPage";
 import { IntroNav, OnBoardingNav, MainBottomTabNav } from "@/navigations";
 import {
   useFonts,
@@ -23,26 +21,14 @@ import {
   GothicA1_700Bold,
   GothicA1_600SemiBold,
 } from "@expo-google-fonts/gothic-a1";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import Toast from "react-native-toast-message";
 import userInfoStore from "@/store/UserInfoStore";
 import currentPageStore from "@/store/CurrentPageStore";
 import { EndingStackNav } from "@navigations/index";
 import { observer } from "mobx-react";
-import * as Notifications from "expo-notifications";
-import SvgIcon from "@/assets/SvgIcon";
-
-Notifications.setNotificationHandler({
-  handleNotification: async () => ({
-    shouldShowAlert: true,
-    shouldPlaySound: false,
-    shouldSetBadge: false,
-  }),
-});
 
 function App() {
   const { currentScreen } = currentPageStore;
-  const [onPage, setOnPage] = useState("Setting");
   const [fontsLoaded] = useFonts({
     NotoSansKR_100Thin,
     NotoSansKR_300Light,
@@ -59,20 +45,21 @@ function App() {
   });
 
   useEffect(() => {
+    userInfoStore.updateTodayDate();
     userInfoStore.resetVersionNum();
-    const subscription = Notifications.addNotificationReceivedListener(
-      (notification) => {
-        console.log(notification);
-      }
-    );
-    const responseSubscription =
-      Notifications.addNotificationResponseReceivedListener((notification) => {
-        console.log(notification);
-      });
+    // const subscription = Notifications.addNotificationReceivedListener(
+    //   (notification) => {
+    //     console.log(notification);
+    //   }
+    // );
+    // const responseSubscription =
+    //   Notifications.addNotificationResponseReceivedListener((notification) => {
+    //     console.log(notification);
+    //   });
 
-    return () => {
-      subscription.remove(), responseSubscription.remove();
-    };
+    // return () => {
+    //   subscription.remove(), responseSubscription.remove();
+    // };
   }, []);
 
   if (!fontsLoaded) {
@@ -92,8 +79,6 @@ function App() {
         {currentScreen === "OnBoardingNav" && <OnBoardingNav />}
         {currentScreen === "MainBottomTabNav" && <MainBottomTabNav />}
         {currentScreen === "EndingStackNav" && <EndingStackNav />}
-
-        {/* {onPage === "Setting" && <SettingStackNav />} */}
 
         <Toast />
       </ThemeProvider>

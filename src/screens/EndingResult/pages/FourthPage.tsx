@@ -1,4 +1,4 @@
-import { View, Text, Pressable } from "react-native";
+import { View } from "react-native";
 import { CompareResultText } from "@constants/properties";
 import { SubText, TitleText } from "../components/Styled";
 import { BigPrimaryBtn } from "@/components";
@@ -9,7 +9,7 @@ interface IFourthPageProps {
   navigateToEndingMovie: () => void;
 }
 const FourthPage = ({ navigateToEndingMovie }: IFourthPageProps) => {
-  const { firstDepressionState, lastDepressionState } = userInfoStore;
+  const { firstDepressionState, lastDepressionState, nickname } = userInfoStore;
   const [result, setResult] = useState("better");
   useEffect(() => getResultState(), []);
   const getResultState = () => {
@@ -47,8 +47,12 @@ const FourthPage = ({ navigateToEndingMovie }: IFourthPageProps) => {
   };
   return (
     <>
-      <TitleText>{CompareResultText[result].title}</TitleText>
-      <SubText>{CompareResultText[result].body}</SubText>
+      <TitleText>
+        {CompareResultText[result].title.replace("유저", nickname)}
+      </TitleText>
+      <SubText>
+        {CompareResultText[result].body.replace("유저", nickname)}
+      </SubText>
       <View style={{ flex: 1, alignItems: "flex-end" }}></View>
       <BigPrimaryBtn
         textBold={true}

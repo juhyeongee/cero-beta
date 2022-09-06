@@ -1,4 +1,3 @@
-import { View, Text, Image, Platform, Pressable } from "react-native";
 import styled from "styled-components/native";
 import { ITheme } from "@/types";
 
@@ -8,7 +7,6 @@ interface IContainerProps {
 
 interface CardProps {
   onPress: () => void;
-  // imageSource: ImageProps["source"];
 }
 
 const EmptyCard = ({ onPress }: CardProps) => {
