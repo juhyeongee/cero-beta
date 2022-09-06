@@ -1,5 +1,4 @@
-import { View, Text, Image, ImageBackground, Pressable } from "react-native";
-import { ITheme } from "@/types";
+import { View } from "react-native";
 import { useEffect, useState } from "react";
 import DetailModal from "./DetailModal";
 import missions from "@constants/missions";

@@ -1,5 +1,5 @@
 import { View, Text, Pressable, Platform } from "react-native";
-import styled, { css } from "styled-components/native";
+import styled from "styled-components/native";
 import { ITheme } from "@/types";
 import { BigPrimaryBtn } from "@/components";
 import SvgIcon from "@/assets/SvgIcon";
@@ -7,11 +7,10 @@ import Theme from "@/constants/Theme";
 import missions from "@constants/missions";
 import { observer } from "mobx-react";
 import userInfoStore from "@/store/UserInfoStore";
-import { heightRatio, widthRatio, fontsizeRatio } from "@/utils";
+import { heightRatio } from "@/utils";
 import Toast from "react-native-toast-message";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect, useState } from "react";
-import currentPageStore from "@/store/CurrentPageStore";
 
 interface IContainerProps {
   theme: ITheme;

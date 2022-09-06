@@ -1,4 +1,4 @@
-import { View, Text, Pressable } from "react-native";
+import { Pressable } from "react-native";
 import { EndingResultText } from "@constants/properties";
 import SvgIcon from "@/assets/SvgIcon";
 import {

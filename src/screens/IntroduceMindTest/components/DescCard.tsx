@@ -1,4 +1,4 @@
-import { View, Text, Platform } from "react-native";
+import { Platform } from "react-native";
 import styled from "styled-components/native";
 import { ITheme } from "@/types";
 

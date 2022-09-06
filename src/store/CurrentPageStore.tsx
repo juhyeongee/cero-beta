@@ -1,6 +1,6 @@
-import { action, observable, makeAutoObservable } from "mobx";
+import { observable, makeAutoObservable } from "mobx";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { makePersistable, stopPersisting } from "mobx-persist-store";
+import { makePersistable } from "mobx-persist-store";
 
 class CurrentPageStore {
   currentScreen = "IntroNav";

@@ -1,6 +1,6 @@
 import SvgIcon from "@/assets/SvgIcon";
 import { ITheme, SettingStackScreenProps } from "@/types";
-import { Platform, View, Text, Pressable, Alert } from "react-native";
+import { Platform, View, Pressable, Alert } from "react-native";
 import { SafeAreaView } from "react-native";
 import styled from "styled-components/native";
 import { Container, TitleText, SubText } from "../components/Styled";

@@ -1,8 +1,5 @@
 import React, { createRef, useEffect, useRef, useState } from "react";
 import {
-  View,
-  Text,
-  Pressable,
   TextInput,
   SafeAreaView,
   KeyboardAvoidingView,

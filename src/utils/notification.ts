@@ -1,14 +1,5 @@
-import {
-  getExpoPushTokenAsync,
-  scheduleNotificationAsync,
-  requestPermissionsAsync,
-  addNotificationReceivedListener,
-} from "expo-notifications";
 import * as Notifications from "expo-notifications";
 import { notificationTexts } from "@/constants/properties";
-import * as Device from "expo-device";
-import { Platform } from "react-native";
-import dayjs from "dayjs";
 
 export function exampleAlarm() {
   Notifications.scheduleNotificationAsync({

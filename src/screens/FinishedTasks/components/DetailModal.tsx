@@ -1,19 +1,8 @@
-import {
-  View,
-  Text,
-  Modal,
-  Pressable,
-  Image,
-  ImageBackground,
-  ScrollView,
-} from "react-native";
+import { View, Modal, Pressable, Image, ScrollView } from "react-native";
 import styled from "styled-components/native";
 import { ITheme } from "@/types";
 import { Layout } from "@/components";
 import SvgIcon from "@/assets/SvgIcon";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useEffect, useState } from "react";
-import userInfoStore from "@/store/UserInfoStore";
 
 // TODO 2: 텍스트와  이미지 서버에서  가져오기
 interface IContainerProps {

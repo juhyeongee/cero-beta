@@ -1,14 +1,4 @@
-import {
-  View,
-  Text,
-  SafeAreaView,
-  Image,
-  Animated,
-  Platform,
-  FlatList,
-  ScrollView,
-} from "react-native";
-import userInfoStore from "@/store/UserInfoStore";
+import { View, Animated, Platform } from "react-native";
 import currentPageStore from "@/store/CurrentPageStore";
 import SvgIcon from "@/assets/SvgIcon";
 import styled from "styled-components/native";

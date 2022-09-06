@@ -1,6 +1,6 @@
 import { action, observable, makeAutoObservable } from "mobx";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { makePersistable, stopPersisting } from "mobx-persist-store";
+import { makePersistable } from "mobx-persist-store";
 import dayjs from "dayjs";
 
 class UserInfoStore {

@@ -1,8 +1,7 @@
-import { View, Text, SafeAreaView, ScrollView, Platform } from "react-native";
+import { View, SafeAreaView, ScrollView } from "react-native";
 import styled from "styled-components/native";
 import { ITheme } from "@/types";
 import Card from "./components/Card";
-import missions from "@constants/missions";
 import Header from "./components/Header";
 import userInfoStore from "@/store/UserInfoStore";
 import { observer } from "mobx-react";

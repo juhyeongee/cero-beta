@@ -1,13 +1,5 @@
-import {
-  View,
-  Text,
-  Pressable,
-  Image,
-  SafeAreaView,
-  Platform,
-  Modal,
-} from "react-native";
-import styled, { css } from "styled-components/native";
+import { View, Text } from "react-native";
+import styled from "styled-components/native";
 import { HomeStackScreenProps, ITheme } from "@/types";
 import Swiper from "react-native-swiper";
 import {
@@ -17,9 +9,7 @@ import {
   LastWateringModal,
 } from "./components";
 import userInfoStore from "@/store/UserInfoStore";
-import React, { useEffect } from "react";
 import { observer } from "mobx-react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import currentPageStore from "@/store/CurrentPageStore";
 import AutoHeightImage from "react-native-auto-height-image";
 import SvgIcon from "@/assets/SvgIcon";

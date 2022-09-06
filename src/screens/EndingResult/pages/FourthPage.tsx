@@ -1,4 +1,4 @@
-import { View, Text, Pressable } from "react-native";
+import { View } from "react-native";
 import { CompareResultText } from "@constants/properties";
 import { SubText, TitleText } from "../components/Styled";
 import { BigPrimaryBtn } from "@/components";

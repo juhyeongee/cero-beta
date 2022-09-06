@@ -1,19 +1,11 @@
-import {
-  View,
-  Text,
-  Alert,
-  SafeAreaView,
-  ScrollView,
-  Platform,
-} from "react-native";
+import { View, Text, Alert, SafeAreaView, ScrollView } from "react-native";
 import { observer } from "mobx-react";
-import { Container, MainText, TitleText, FAQTitle } from "../components/Styled";
+import { Container, TitleText, FAQTitle } from "../components/Styled";
 import SvgIcon from "@assets/SvgIcon";
 import { FAQText } from "@constants/properties";
-import styled from "styled-components/native";
 import GrayAcchodion from "../components/GrayAcchodion";
 import NoticeBar from "../components/settingHomeComp/NoticeBar";
-import { SettingStackScreenProps, ITheme } from "@/types";
+import { SettingStackScreenProps } from "@/types";
 import { OptionBox } from "../components/settingHomeComp/OptionBox";
 
 const SettingHomePage = ({
