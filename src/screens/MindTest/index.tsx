@@ -10,7 +10,7 @@ const MindTest = ({
   route,
   navigation,
 }: OnBoardingStackScreenProps<"MindTest">) => {
-  const swiperRef = useRef();
+  const swiperRef = useRef<any>();
   const swipeNextPage = () => {
     swiperRef.current.scrollBy(1);
   };
