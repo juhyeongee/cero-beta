@@ -33,7 +33,6 @@ const TodayMission = () => {
       allowsEditing: false,
       quality: 1,
     });
-    console.log(result);
     if (!result.cancelled) {
       await AsyncStorage.setItem(`mission${todoNum}ImageUri`, result.uri);
       setImageUri(result.uri);

@@ -29,7 +29,6 @@ const EndingResult = ({
 
   const navigateToEndingMovie = () => {
     navigation.navigate("EndingMovie");
-    console.log("isCurriculumEnd: ", currentPageStore.isCurriculumEnd);
   };
   return (
     <Container>

@@ -13,7 +13,7 @@ const LastWateringModal = () => {
       transparent={true}
       visible={true}
       onRequestClose={() => {
-        console.log("moidal clsose");
+        console.log("modal close");
       }}
     >
       <View

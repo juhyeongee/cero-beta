@@ -39,7 +39,7 @@ const ResetDataPage = ({
         },
         style: "destructive",
       },
-      { text: "아니요", onPress: () => console.log("취소했습니다") },
+      { text: "아니요", onPress: () => {} },
     ]);
   };
   return (

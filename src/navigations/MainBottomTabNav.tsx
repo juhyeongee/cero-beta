@@ -31,7 +31,6 @@ export function MainBottomTabNav() {
         component={FinishedTasks}
         options={{
           tabBarIcon: ({ color, size }) => {
-            console.log(size, size);
             return (
               <Image
                 style={{ width: size + 2, height: size - 1, tintColor: color }}

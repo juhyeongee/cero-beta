@@ -74,13 +74,11 @@ export const calculateDepressionScore = async (type: string) => {
   for (let i = 1; i < QUESTION_OBJ_LENGTH + 1; i++) {
     if (type == "first") {
       const eachAnswer = firstMindTestResultObject[i];
-      console.log("eachScore:", eachAnswer);
       if (i === 4 || i === 8 || i === 12 || i === 16) {
         totalScore += 5 - eachAnswer;
       } else {
         totalScore += eachAnswer;
       }
-      console.log("Score variation:", totalScore);
     } else if (type == "last") {
       const eachAnswer = lastMindTestResultObject[i];
       if (i === 4 || i === 8 || i === 12 || i === 16) {
@@ -88,10 +86,8 @@ export const calculateDepressionScore = async (type: string) => {
       } else {
         totalScore += eachAnswer;
       }
-      console.log("Score variation:", eachAnswer);
     }
   }
   totalScore = totalScore - QUESTION_OBJ_LENGTH;
-  console.log("totalScore", totalScore);
   return totalScore;
 };

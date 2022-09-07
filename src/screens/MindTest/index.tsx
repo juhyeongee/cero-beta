@@ -18,20 +18,15 @@ const MindTest = ({
   const onPressSubmitBtn = async () => {
     const number = await findNotAnsweredQuestion();
     if (number !== -1) {
-      console.log("MindTest, 대답안한 number는: ", number);
       swiperRef.current.scrollBy(-(20 - number));
     } else {
       if (userInfoStore.todoNum !== 15) {
         const totalDepressionScore = await calculateDepressionScore("first");
         userInfoStore.updateFirstDepressionScore(totalDepressionScore);
-        const result = userInfoStore.FIRST_DEPRESSION_SCORE;
-        console.log("첫 마음점검 결과점수 : ", result);
         navigation.navigate("FirstLoadingScreen");
       } else if (userInfoStore.todoNum === 15) {
         const totalDepressionScore = await calculateDepressionScore("last");
         userInfoStore.updateLastDepressionScore(totalDepressionScore);
-        const result = userInfoStore.LAST_DEPRESSION_SCORE;
-        console.log("마지막 마음점검 결과점수 : ", result);
         navigation.navigate("LastLoadingScreen");
       }
     }
