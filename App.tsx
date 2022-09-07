@@ -1,10 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
-import { View, Text, Pressable, Platform, Image } from "react-native";
+import React, { useState, useEffect } from "react";
+import { Image } from "react-native";
 import { ThemeProvider } from "styled-components/native";
-import styled from "styled-components/native";
 import Theme from "./src/constants/Theme";
 import { NavigationContainer } from "@react-navigation/native";
-import ResultPage from "@/screens/MindTest/pages/ResultPage";
 import { IntroNav, OnBoardingNav, MainBottomTabNav } from "@/navigations";
 import {
   useFonts,
@@ -23,7 +21,6 @@ import {
   GothicA1_700Bold,
   GothicA1_600SemiBold,
 } from "@expo-google-fonts/gothic-a1";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import Toast from "react-native-toast-message";
 import userInfoStore from "@/store/UserInfoStore";
 import currentPageStore from "@/store/CurrentPageStore";

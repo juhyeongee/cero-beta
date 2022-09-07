@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { View, Text } from "react-native";
 import { SubText, TitleText } from "../components";
 import { questionObj } from "@constants/properties";

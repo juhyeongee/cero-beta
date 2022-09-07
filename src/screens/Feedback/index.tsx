@@ -1,13 +1,5 @@
-import { useState, useRef, useEffect } from "react";
-import {
-  View,
-  Text,
-  SafeAreaView,
-  Pressable,
-  Animated,
-  Platform,
-} from "react-native";
-import styled from "styled-components/native";
+import { useState } from "react";
+import { View, SafeAreaView } from "react-native";
 import FirstPage from "./pages/FirstPage";
 import SecondPage from "./pages/SecondPage";
 import ThirdPage from "./pages/ThirdPage";

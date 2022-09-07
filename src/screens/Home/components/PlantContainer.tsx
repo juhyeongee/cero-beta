@@ -1,7 +1,6 @@
-import { View, Text, Pressable, SafeAreaView, Platform } from "react-native";
+import { View } from "react-native";
 import styled from "styled-components/native";
 import SvgIcon from "@/assets/SvgIcon";
-import userInfoStore from "@/store/UserInfoStore";
 import AutoHeightImage from "react-native-auto-height-image";
 import { observer } from "mobx-react";
 

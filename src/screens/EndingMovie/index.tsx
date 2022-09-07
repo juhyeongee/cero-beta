@@ -1,13 +1,4 @@
-import {
-  View,
-  Text,
-  SafeAreaView,
-  Image,
-  Animated,
-  Platform,
-  FlatList,
-  ScrollView,
-} from "react-native";
+import { View, Animated, Platform } from "react-native";
 import userInfoStore from "@/store/UserInfoStore";
 import currentPageStore from "@/store/CurrentPageStore";
 import SvgIcon from "@/assets/SvgIcon";
@@ -161,8 +152,7 @@ const EndingMovie = () => {
                     }, 6000);
                     setTimeout(() => {
                       currentPageStore.updateScreen("MainBottomTabNav"),
-                        currentPageStore.finishEndingMovie(),
-                       
+                        currentPageStore.finishEndingMovie();
                     }, 10000);
                   }}
                 />

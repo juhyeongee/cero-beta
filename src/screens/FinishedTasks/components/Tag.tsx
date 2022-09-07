@@ -1,9 +1,5 @@
-import styled from "styled-components/native";
-import { View, Text, Image } from "react-native";
-import { ITheme } from "@/types";
-import SvgIcon from "@/assets/SvgIcon";
+import { View, Image } from "react-native";
 import AutoHeightImage from "react-native-auto-height-image";
-import { useEffect } from "react";
 
 interface IProps {
   type?: string;

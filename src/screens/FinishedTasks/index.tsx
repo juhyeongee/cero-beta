@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, ScrollView, Platform } from "react-native";
+import { View, SafeAreaView, ScrollView } from "react-native";
 import styled from "styled-components/native";
 import { ITheme } from "@/types";
 import Card from "./components/Card";

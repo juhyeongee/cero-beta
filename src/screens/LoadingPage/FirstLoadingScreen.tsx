@@ -4,7 +4,6 @@ import SvgIcon from "@assets/SvgIcon";
 import styled from "styled-components/native";
 import { ITheme } from "@/types";
 import { OnBoardingStackScreenProps } from "@/types";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import userInfoStore from "@/store/UserInfoStore";
 import { lifeQuotes } from "@/constants/properties";
 

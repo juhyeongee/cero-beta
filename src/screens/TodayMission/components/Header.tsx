@@ -1,15 +1,5 @@
 import AutoHeightImage from "react-native-auto-height-image";
-import {
-  View,
-  Text,
-  Pressable,
-  Modal,
-  ScrollView,
-  Platform,
-  Alert,
-  Keyboard,
-} from "react-native";
-import SvgIcon from "@/assets/SvgIcon";
+import { View, Pressable, Alert, Keyboard } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import userInfoStore from "@/store/UserInfoStore";
 import missions from "@constants/missions";

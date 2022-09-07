@@ -1,20 +1,13 @@
-import { View, Text, Pressable, Modal } from "react-native";
-import {
-  EndingResultText,
-  MindTestResultText,
-  WINDOW_WIDTH,
-} from "@constants/properties";
+import { View, Pressable } from "react-native";
+import { EndingResultText, MindTestResultText } from "@constants/properties";
 import {
   TitleText,
-  MainText,
   BtnContainer,
   BtnText,
   SubText,
 } from "../components/Styled";
 import SvgIcon from "@/assets/SvgIcon";
 import { FinalScoreBox } from "../components/FinalScoreBox";
-import styled from "styled-components/native";
-import { ITheme } from "@/types";
 import userInfoStore from "@/store/UserInfoStore";
 import { useState } from "react";
 import { ThirdPageModal } from "../components/ThirdPageModal";

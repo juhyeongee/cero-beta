@@ -1,6 +1,5 @@
 import styled from "styled-components/native";
 import { ITheme } from "@/types";
-import { Platform } from "react-native";
 
 interface IContainerProps {
   theme: ITheme;

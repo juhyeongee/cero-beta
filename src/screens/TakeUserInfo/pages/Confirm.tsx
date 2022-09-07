@@ -1,4 +1,4 @@
-import { View, Text, Platform } from "react-native";
+import { View, Platform } from "react-native";
 import styled from "styled-components/native";
 import { BigPrimaryBtn } from "@components/index";
 import { ITheme } from "@/types";

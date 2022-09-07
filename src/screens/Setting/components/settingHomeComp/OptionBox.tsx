@@ -1,7 +1,6 @@
 import SvgIcon from "@/assets/SvgIcon";
-import { View, Text, Pressable } from "react-native";
+import { View, Pressable } from "react-native";
 import { SubText, GrayBar } from "../Styled";
-import styled from "styled-components/native";
 
 interface IOptionBox {
   text: string;

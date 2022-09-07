@@ -1,4 +1,3 @@
-import { View, Text, Image, Platform, Pressable } from "react-native";
 import styled from "styled-components/native";
 import { ITheme } from "@/types";
 

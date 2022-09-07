@@ -2,7 +2,7 @@ import { useRef } from "react";
 import Swiper from "react-native-swiper";
 import { questionObj } from "@constants/properties";
 import TestPage from "./pages/TestPage";
-import { OnBoardingStackScreenProps, EndingStackScreenProps } from "@/types";
+import { OnBoardingStackScreenProps } from "@/types";
 import { findNotAnsweredQuestion, calculateDepressionScore } from "./functions";
 import userInfoStore from "@/store/UserInfoStore";
 

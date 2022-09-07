@@ -1,17 +1,9 @@
-import { View, Text, Pressable, Platform } from "react-native";
+import { View } from "react-native";
 import SvgIcon from "@/assets/SvgIcon";
 import styled from "styled-components/native";
-import { BigPrimaryBtn, MultiChoiceBtn } from "@/components";
-import AutoHeightImage from "react-native-auto-height-image";
+
 import { ITheme } from "@/types";
-import {
-  TitleText,
-  GrayBtn,
-  MainText,
-  BtnInnerText,
-  Container,
-  SubText,
-} from "../components/Styled";
+import { SubText } from "../components/Styled";
 import { GrayBox } from "../components/GrayBox";
 
 interface IContainerProps {

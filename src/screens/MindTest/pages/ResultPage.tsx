@@ -1,12 +1,5 @@
-import { useState, useRef, useEffect } from "react";
-import {
-  View,
-  Text,
-  SafeAreaView,
-  Pressable,
-  Animated,
-  Platform,
-} from "react-native";
+import { useState, useRef } from "react";
+import { SafeAreaView, Pressable, Animated, Platform } from "react-native";
 import { mindTestResult } from "@constants/properties";
 import styled from "styled-components/native";
 import { ITheme } from "@/types";
@@ -22,7 +15,6 @@ import {
 } from "../functions";
 import currentPageStore from "@/store/CurrentPageStore";
 import userInfoStore from "@/store/UserInfoStore";
-import { fontsizeRatio } from "@/utils";
 
 interface StyledProps {
   theme: ITheme;

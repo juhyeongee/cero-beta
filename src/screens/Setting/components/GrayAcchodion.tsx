@@ -1,9 +1,7 @@
-import { View, Text, Pressable, SafeAreaView, Platform } from "react-native";
-import { observer } from "mobx-react";
-import SvgIcon from "@assets/SvgIcon";
+import { Platform } from "react-native";
 import styled from "styled-components/native";
 import { ITheme } from "@/types";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import userInfoStore from "@/store/UserInfoStore";
 
 interface StyledProps {

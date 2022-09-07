@@ -1,13 +1,4 @@
-import {
-  View,
-  Text,
-  Image,
-  Platform,
-  ImageProps,
-  Pressable,
-  StyleSheet,
-} from "react-native";
-
+import { View, Platform, Pressable, StyleSheet } from "react-native";
 import styled from "styled-components/native";
 import { ITheme } from "@/types";
 

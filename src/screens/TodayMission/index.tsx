@@ -1,14 +1,4 @@
-import React, { useEffect, useState } from "react";
-import {
-  View,
-  Text,
-  Pressable,
-  Image,
-  SafeAreaView,
-  Keyboard,
-} from "react-native";
-import styled from "styled-components/native";
-import { ITheme } from "@/types";
+import { useState } from "react";
 import PhotoMission from "./pages/PhotoMission";
 import TextMission from "./pages/TextMission";
 import PhotoTextMission from "./pages/PhotoTextMission";

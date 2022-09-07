@@ -1,5 +1,4 @@
 import { Animated } from "react-native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { questionObj } from "@/constants/properties";
 import userInfoStore from "@/store/UserInfoStore";
 

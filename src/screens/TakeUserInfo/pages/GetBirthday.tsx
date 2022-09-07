@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { View, Text, Pressable } from "react-native";
+import { View } from "react-native";
 import { BigPrimaryBtn, OutlineBtn } from "@components/index";
 import dayjs from "dayjs";
 import DateTimePickerModal from "react-native-modal-datetime-picker";

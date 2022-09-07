@@ -1,13 +1,12 @@
 import SvgIcon from "@/assets/SvgIcon";
 import { ITheme, SettingStackScreenProps } from "@/types";
-import { Platform, View, Text, Pressable } from "react-native";
+import { Platform, View, Pressable } from "react-native";
 import { SafeAreaView } from "react-native";
 import styled from "styled-components/native";
 import { Container, TitleText, SubText } from "../components/Styled";
 import { useState } from "react";
 import { BigPrimaryBtn } from "@/components";
 import userIntoStore from "@/store/UserInfoStore";
-import Theme from "@/constants/Theme";
 
 interface StyledProps {
   theme: ITheme;
