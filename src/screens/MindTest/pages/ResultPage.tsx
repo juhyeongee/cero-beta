@@ -31,7 +31,7 @@ interface StyledProps {
 const ResultPage = () => {
   const [pageNumber, setPageNubmer] = useState(0);
   const { updateScreen } = currentPageStore;
-  const { firstDepressionState } = userInfoStore;
+  const { firstDepressionState, nickname } = userInfoStore;
   const TOGO_SCREEN = "MainBottomTabNav";
 
   const seedOpacity: Animated.Value = useRef(new Animated.Value(1)).current;
@@ -66,7 +66,10 @@ const ResultPage = () => {
       <SafeAreaView style={{ flex: 1 }}>
         <Container>
           <MainText>
-            {mindTestResult[firstDepressionState][pageNumber]}
+            {mindTestResult[firstDepressionState][pageNumber].replace(
+              "유저",
+              nickname
+            )}
           </MainText>
         </Container>
         <ImageContainer>

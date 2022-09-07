@@ -1,5 +1,4 @@
 import { View, Text, Pressable, Platform } from "react-native";
-import { EndingResultText } from "@constants/properties";
 import SvgIcon from "@/assets/SvgIcon";
 import styled from "styled-components/native";
 import { BigPrimaryBtn, MultiChoiceBtn } from "@/components";

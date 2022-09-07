@@ -8,16 +8,22 @@ import {
   BtnContainer,
   BtnText,
 } from "../components/Styled";
+import userInfoStore from "@/store/UserInfoStore";
 
 interface IFirstPageProps {
   goNextPage: () => void;
 }
 const FirstPage = ({ goNextPage }: IFirstPageProps) => {
+  const { nickname } = userInfoStore;
   return (
     <>
       <TextContainer>
-        <TitleText>{EndingResultText["firstPageTitle"]}</TitleText>
-        <MainText>{EndingResultText["firstPageSub"]}</MainText>
+        <TitleText>
+          {EndingResultText["firstPageTitle"].replace("유저", nickname)}
+        </TitleText>
+        <MainText>
+          {EndingResultText["firstPageSub"].replace("유저", nickname)}
+        </MainText>
       </TextContainer>
       <BtnContainer>
         <Pressable

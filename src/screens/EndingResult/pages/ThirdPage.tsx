@@ -27,11 +27,14 @@ const ThirdPage = ({ goNextPage }: IFirstPageProps) => {
   const [modalVisible, setModalVisible] = useState(false);
   const firstScore = userInfoStore.FIRST_DEPRESSION_SCORE;
   const lastScore = userInfoStore.LAST_DEPRESSION_SCORE;
+  const { nickname } = userInfoStore;
 
   return (
     <>
       <View style={{ flex: 2 }}>
-        <TitleText>{EndingResultText["thirdPageTitle"]}</TitleText>
+        <TitleText>
+          {EndingResultText["thirdPageTitle"].replace("유저", nickname)}
+        </TitleText>
       </View>
       <Graph />
       <FinalScoreBox
@@ -41,7 +44,10 @@ const ThirdPage = ({ goNextPage }: IFirstPageProps) => {
       />
       <View style={{ flex: 6.5, paddingTop: "10%" }}>
         <SubText>
-          {MindTestResultText[userInfoStore.lastDepressionState]}
+          {MindTestResultText[userInfoStore.lastDepressionState].replace(
+            "유저",
+            nickname
+          )}
         </SubText>
       </View>
       <BtnContainer>

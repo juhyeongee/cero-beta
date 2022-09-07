@@ -4,6 +4,7 @@ import SvgIcon from "@/assets/SvgIcon";
 import { Container, DescContainer, DescCard } from "./components";
 import { introduceMindText } from "@/constants/properties";
 import MakeSeedModal from "./components/MakeSeedModal";
+import userInfoStore from "@/store/UserInfoStore";
 
 const OnBoarding = ({
   route,
@@ -11,7 +12,7 @@ const OnBoarding = ({
 }: OnBoardingStackScreenProps<"OnBoarding">) => {
   const [page, setPage] = useState(1);
   const [modalVisible, setModalVisible] = useState(false);
-
+  const { nickname } = userInfoStore;
   const goNextPage = () => {
     if (page !== 4) {
       setPage(page + 1);
@@ -49,7 +50,9 @@ const OnBoarding = ({
       )}
 
       <DescContainer onPress={goNextPage}>
-        <DescCard text={introduceMindText[page - 1]} />
+        <DescCard
+          text={introduceMindText[page - 1].replace("유저", nickname)}
+        />
       </DescContainer>
 
       <MakeSeedModal

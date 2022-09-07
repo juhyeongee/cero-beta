@@ -23,6 +23,7 @@ interface IContainerProps {
 }
 
 const EndingMovie = () => {
+  const { nickname } = userInfoStore;
   const [image, setImage] = useState(
     require("@/assets/images/mansu-day14.png")
   );
@@ -61,13 +62,19 @@ const EndingMovie = () => {
               <SvgIcon name="LogoWithTitle" />
             </ImageContainer>
             <TextContainer>
-              <TitleText>{EndingMovieText[1]}</TitleText>
+              <TitleText>
+                {EndingMovieText[1].replace("유저", nickname)}
+              </TitleText>
             </TextContainer>
             <TextContainer>
-              <MainText>{EndingMovieText[2]}</MainText>
+              <MainText>
+                {EndingMovieText[2].replace("유저", nickname)}
+              </MainText>
             </TextContainer>
             <TextContainer>
-              <MainText>{EndingMovieText[3]}</MainText>
+              <MainText>
+                {EndingMovieText[3].replace("유저", nickname)}
+              </MainText>
             </TextContainer>
             <ImageContainer>
               <AutoHeightImage
@@ -76,7 +83,9 @@ const EndingMovie = () => {
               />
             </ImageContainer>
             <TextContainer>
-              <MainText>{EndingMovieText[4]}</MainText>
+              <MainText>
+                {EndingMovieText[4].replace("유저", nickname)}
+              </MainText>
             </TextContainer>
 
             <ImageContainer style={{ alignItems: "center" }}>
@@ -86,7 +95,9 @@ const EndingMovie = () => {
               />
             </ImageContainer>
             <TextContainer>
-              <MainText>{EndingMovieText[5]}</MainText>
+              <MainText>
+                {EndingMovieText[5].replace("유저", nickname)}
+              </MainText>
             </TextContainer>
             <ImageContainer style={{ alignItems: "flex-end" }}>
               <AutoHeightImage
@@ -95,7 +106,9 @@ const EndingMovie = () => {
               />
             </ImageContainer>
             <TextContainer>
-              <MainText>{EndingMovieText[6]}</MainText>
+              <MainText>
+                {EndingMovieText[6].replace("유저", nickname)}
+              </MainText>
             </TextContainer>
             <ImageContainer style={{ alignItems: "flex-start" }}>
               <AutoHeightImage
@@ -104,7 +117,9 @@ const EndingMovie = () => {
               />
             </ImageContainer>
             <TextContainer>
-              <MainText>{EndingMovieText[7]}</MainText>
+              <MainText>
+                {EndingMovieText[7].replace("유저", nickname)}
+              </MainText>
               <View style={{ flexDirection: "row" }}>
                 <MainThickText>새로 시작할 시간</MainThickText>
                 <MainText>입니다.</MainText>
@@ -115,8 +130,8 @@ const EndingMovie = () => {
               <MainThickText></MainThickText>
               <MainThickText></MainThickText>
               <MainThickText></MainThickText>
-              <SubText>{EndingMovieText[8]}</SubText>
-              <SubText>{EndingMovieText[9]}</SubText>
+              <SubText>{EndingMovieText[8].replace("유저", nickname)}</SubText>
+              <SubText>{EndingMovieText[9].replace("유저", nickname)}</SubText>
             </TextContainer>
 
             <EmptySpace />

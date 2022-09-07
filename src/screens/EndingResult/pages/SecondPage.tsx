@@ -7,15 +7,22 @@ import {
   BtnContainer,
   BtnText,
 } from "../components/Styled";
+import userInfoStore from "@/store/UserInfoStore";
 
 interface IFirstPageProps {
   goNextPage: () => void;
 }
 const SecondPage = ({ goNextPage }: IFirstPageProps) => {
+  const { nickname } = userInfoStore;
+
   return (
     <>
-      <TitleText>{EndingResultText["secondPageTitle"]}</TitleText>
-      <MainText>{EndingResultText["secondPageSub"]}</MainText>
+      <TitleText>
+        {EndingResultText["secondPageTitle"].replace("유저", nickname)}
+      </TitleText>
+      <MainText>
+        {EndingResultText["secondPageSub"].replace("유저", nickname)}
+      </MainText>
       <BtnContainer>
         <Pressable
           onPress={goNextPage}

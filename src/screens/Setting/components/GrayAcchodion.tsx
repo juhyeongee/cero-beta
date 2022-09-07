@@ -4,6 +4,7 @@ import SvgIcon from "@assets/SvgIcon";
 import styled from "styled-components/native";
 import { ITheme } from "@/types";
 import { useEffect, useState } from "react";
+import userInfoStore from "@/store/UserInfoStore";
 
 interface StyledProps {
   theme: ITheme;
@@ -15,11 +16,17 @@ interface IAccodionProps {
 
 const GrayAcchodion = ({ questionNum, texts }: IAccodionProps) => {
   const [clicked, setClicked] = useState(false);
-
+  const { nickname } = userInfoStore;
   return (
     <Container onPress={() => setClicked(!clicked)}>
-      <QuestionText>{texts[questionNum]["Q"]}</QuestionText>
-      {clicked && <SmallGrayText>{texts[questionNum]["A"]}</SmallGrayText>}
+      <QuestionText>
+        {texts[questionNum]["Q"].replace("유저", nickname)}
+      </QuestionText>
+      {clicked && (
+        <SmallGrayText>
+          {texts[questionNum]["A"].replace("유저", nickname)}
+        </SmallGrayText>
+      )}
     </Container>
   );
 };
