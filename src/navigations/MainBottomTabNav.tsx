@@ -55,7 +55,7 @@ export function MainBottomTabNav() {
               source={require("@/assets/images/home.png")}
             />
           ),
-        }} //TODO: PNG file -> svg파일로 수정 필요 (color 변수 svg에 넘기는 방법 찾기)
+        }}
       />
 
       <MainBottomTab.Screen

@@ -70,8 +70,6 @@ const ToDo = ({ navigateToTodayMission }: Props) => {
     });
   };
 
-  //TODO: 다만, 현재 rerender를 하지 않는한, 홈 화면에서  오늘의 할 일 텍스트가 백지로 나옴; reroad 할 때, 비동기함수라서 업데이트가 느려서 그런건가  싶음
-
   const rotateVersionNum = () => {
     let length = Object.keys(todoObject).length;
     if (versionNum < length) {

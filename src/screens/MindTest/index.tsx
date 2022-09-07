@@ -10,7 +10,6 @@ const MindTest = ({
   route,
   navigation,
 }: OnBoardingStackScreenProps<"MindTest">) => {
-  //TODO: 조건부 TYPE설정 어떻게 할지 알아보기
   const swiperRef = useRef();
   const swipeNextPage = () => {
     swiperRef.current.scrollBy(1);

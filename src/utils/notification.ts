@@ -26,7 +26,6 @@
 //   return Math.floor(Math.random() * (max - min)) + min; //최댓값은 제외, 최솟값은 포함
 // }
 
-// //TODO: 11시 50분에 다음날 12시 1분에 알람오는지 확인하기/ 시간 정보가 다음날로 넘어가는지가 궁금함
 // export function scheduleAfterMissionNotiHandler() {
 //   const trigger = new Date(Date.now() + 24 * 60 * 60 * 1000);
 

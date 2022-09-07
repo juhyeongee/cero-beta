@@ -40,7 +40,6 @@ const TodayMission = () => {
       return result.uri;
     }
   };
-  //TODO: firebase 연결하기 - :https://docs.expo.dev/versions/latest/sdk/imagepicker/
 
   return (
     <>

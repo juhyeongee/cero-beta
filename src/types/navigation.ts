@@ -12,8 +12,6 @@ export type IntroStackParamList = {
   PolicyDetail: undefined;
 };
 
-//TODO: 레퍼런스 코드 탐색 후, 각 타입에 필요한 요소들 타입선언하기.
-
 export type MainBottomTabParamList = {
   FinishedTasks: undefined;
   HomeStackNav: undefined;
