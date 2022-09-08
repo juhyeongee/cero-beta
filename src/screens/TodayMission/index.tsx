@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-
+import { useState } from "react";
 import PhotoMission from "./pages/PhotoMission";
 import TextMission from "./pages/TextMission";
 import PhotoTextMission from "./pages/PhotoTextMission";

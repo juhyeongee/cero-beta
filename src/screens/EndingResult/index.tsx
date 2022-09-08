@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { SafeAreaView } from "react-native";
 
 import FirstPage from "./pages/FirstPage";

@@ -6,7 +6,6 @@ import styled from "styled-components/native";
 import { Container, TitleText, SubText } from "../components/Styled";
 import { useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import * as Update from "expo-updates";
 
 interface IContainerProps {
   theme: ITheme;
@@ -34,7 +33,7 @@ const ResetDataPage = ({
         },
         style: "destructive",
       },
-      { text: "아니요", onPress: () => console.log("취소했습니다") },
+      { text: "아니요", onPress: () => {} },
     ]);
   };
   return (

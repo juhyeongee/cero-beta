@@ -14,7 +14,7 @@ import {
 } from "./Styled";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { observer } from "mobx-react";
-import { scheduleAfterMissionNotiHandler } from "@/utils/notification";
+import { useState } from "react";
 
 interface HeaderModal {
   modalVisible: boolean;
@@ -27,7 +27,7 @@ const Header = ({
   setModalVisible,
   missionText,
 }: HeaderModal) => {
-  const { nickname, todoNum, versionNum } = userInfoStore;
+  const { minusOne, todoNum, versionNum, nickname } = userInfoStore;
   const navigation = useNavigation();
 
   const pressCompleteBtn = () => {
@@ -52,7 +52,7 @@ const Header = ({
                 userInfoStore.updateCompleteMissionDatesArray(todayDate);
                 userInfoStore.addOne();
                 userInfoStore.resetVersionNum();
-                scheduleAfterMissionNotiHandler();
+                // scheduleAfterMissionNotiHandler();
                 navigation.goBack();
               }
             );
@@ -69,7 +69,6 @@ const Header = ({
   };
   const version = `version${versionNum}`;
   const missionTitle = missions[todoNum][version].subtitle;
-
   const missionDescription = missions[todoNum][version].description.replace(
     "유저",
     nickname

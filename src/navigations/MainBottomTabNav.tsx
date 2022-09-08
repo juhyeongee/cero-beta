@@ -1,5 +1,5 @@
 import * as React from "react";
-import { View, Image, Platform } from "react-native";
+import { Image, Platform } from "react-native";
 import FinishedTasks from "../screens/FinishedTasks";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Theme from "@/constants/Theme";

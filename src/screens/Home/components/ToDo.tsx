@@ -51,15 +51,14 @@ const ToDo = ({ navigateToTodayMission }: Props) => {
   const updateCompletedVersionFromAsyncStorage = () => {
     AsyncStorage.getItem(`mission${todoNum - 1}Result`).then((res) => {
       if (res === null) {
-        console.log("Home어제자 미션 정보가 없습니다.");
         return null;
       } else {
         const parsedCompletedObject = JSON.parse(res);
         const completedVersionFromAsyncStorage =
           parsedCompletedObject["versionNum"];
-        const completedTodo = missions[todoNum - 1][
-          `version${completedVersionFromAsyncStorage}`
-        ].subtitle.replace("유저", nickname);
+        const completedTodo =
+          missions[todoNum - 1][`version${completedVersionFromAsyncStorage}`]
+            .subtitle;
         if (completedTodo !== undefined) {
           setCompletedTodoFromAsyncStorage(completedTodo);
           userInfoStore.updateCompleteMissionName(completedTodo);

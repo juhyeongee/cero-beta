@@ -23,12 +23,10 @@ const MindTest = ({
       if (userInfoStore.todoNum !== 15) {
         const totalDepressionScore = await calculateDepressionScore("first");
         userInfoStore.updateFirstDepressionScore(totalDepressionScore);
-        const result = userInfoStore.FIRST_DEPRESSION_SCORE;
         navigation.navigate("FirstLoadingScreen");
       } else if (userInfoStore.todoNum === 15) {
         const totalDepressionScore = await calculateDepressionScore("last");
         userInfoStore.updateLastDepressionScore(totalDepressionScore);
-        const result = userInfoStore.LAST_DEPRESSION_SCORE;
         navigation.navigate("LastLoadingScreen");
       }
     }

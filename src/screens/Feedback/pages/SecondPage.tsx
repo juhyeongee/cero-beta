@@ -1,5 +1,4 @@
 import { View } from "react-native";
-
 import { BigPrimaryBtn } from "@/components";
 import { ITheme } from "@/types";
 import {

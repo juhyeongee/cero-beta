@@ -3,14 +3,6 @@ import { Dimensions } from "react-native";
 export const WINDOW_WIDTH = Dimensions.get("window").width;
 export const WINDOW_HEIGHT = Dimensions.get("window").height;
 
-// export const MindTestIntroductionText = [
-//   `유저님의 마음은 지금 어둡고 외로워 보이네요.`,
-//   "평소에는 괜찮은 것 같다가도, 이따금 가슴이 답답하고 가라앉는 느낌이 드실 거예요.",
-//   `괜찮아요.여기 유저님의 외로움을 담은 마음 씨앗을 받으세요.`,
-//   `앞으로 14일 동안, 유저님이 이 씨앗을 키우게 됩니다.`,
-//   "14일 후, 이 화분엔 어떤 꽃이 자라게 될까요?",
-// ];
-
 export const introText = [
   "안녕하세요.",
   `여기까지 오시느라\n고생많으셨어요.`,

@@ -2,14 +2,12 @@ import { View, Pressable } from "react-native";
 import { EndingResultText, MindTestResultText } from "@constants/properties";
 import {
   TitleText,
-  MainText,
   BtnContainer,
   BtnText,
   SubText,
 } from "../components/Styled";
 import SvgIcon from "@/assets/SvgIcon";
 import { FinalScoreBox } from "../components/FinalScoreBox";
-
 import userInfoStore from "@/store/UserInfoStore";
 import { useState } from "react";
 import { ThirdPageModal } from "../components/ThirdPageModal";
@@ -20,11 +18,9 @@ interface IFirstPageProps {
 }
 const ThirdPage = ({ goNextPage }: IFirstPageProps) => {
   const [modalVisible, setModalVisible] = useState(false);
-  const {
-    FIRST_DEPRESSION_SCORE: firstScore,
-    LAST_DEPRESSION_SCORE: lastScore,
-    nickname,
-  } = userInfoStore;
+  const firstScore = userInfoStore.FIRST_DEPRESSION_SCORE;
+  const lastScore = userInfoStore.LAST_DEPRESSION_SCORE;
+  const { nickname } = userInfoStore;
 
   return (
     <>

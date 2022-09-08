@@ -4,17 +4,16 @@ import SvgIcon from "@/assets/SvgIcon";
 import { Container, DescContainer, DescCard } from "./components";
 import { introduceMindText } from "@/constants/properties";
 import MakeSeedModal from "./components/MakeSeedModal";
-import { observer } from "mobx-react";
 import userInfoStore from "@/store/UserInfoStore";
+import { observer } from "mobx-react";
 
 const OnBoarding = ({
   route,
   navigation,
 }: OnBoardingStackScreenProps<"OnBoarding">) => {
-  const { nickname } = userInfoStore;
   const [page, setPage] = useState(1);
   const [modalVisible, setModalVisible] = useState(false);
-
+  const { nickname } = userInfoStore;
   const goNextPage = () => {
     if (page !== 4) {
       setPage(page + 1);

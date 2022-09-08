@@ -1,4 +1,5 @@
 import { View, Animated, Platform } from "react-native";
+import userInfoStore from "@/store/UserInfoStore";
 import currentPageStore from "@/store/CurrentPageStore";
 import SvgIcon from "@/assets/SvgIcon";
 import styled from "styled-components/native";
@@ -7,17 +8,16 @@ import AutoHeightImage from "react-native-auto-height-image";
 import { EndingMovieText } from "@constants/properties";
 import { BigPrimaryBtn } from "@/components";
 import { useState } from "react";
-import userInfoStore from "@/store/UserInfoStore";
 
 interface IContainerProps {
   theme: ITheme;
 }
 
 const EndingMovie = () => {
+  const { nickname } = userInfoStore;
   const [image, setImage] = useState(
     require("@/assets/images/mansu-day14.png")
   );
-  const { nickname } = userInfoStore;
 
   const boilingPotOpacity = new Animated.Value(0);
   const toOpacity1 = () => {

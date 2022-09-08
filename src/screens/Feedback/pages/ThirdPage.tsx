@@ -1,6 +1,5 @@
 import { View } from "react-native";
-
-import { BigPrimaryBtn, MultiChoiceBtn } from "@/components";
+import { BigPrimaryBtn } from "@/components";
 import { ITheme } from "@/types";
 import {
   TitleText,

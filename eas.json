@@ -8,14 +8,9 @@
       "distribution": "internal"
     },
     "preview": {
-      "ios": {
-        "simulator": true
-      },
       "distribution": "internal"
     },
-    "production": {
-      "credentialsSource": "local"
-    }
+    "production": { "credentialsSource": "local" }
   },
   "submit": {
     "production": {}

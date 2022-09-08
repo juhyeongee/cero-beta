@@ -15,10 +15,11 @@ interface IAccodionProps {
 const GrayAcchodion = ({ questionNum, texts }: IAccodionProps) => {
   const [clicked, setClicked] = useState(false);
   const { nickname } = userInfoStore;
-
   return (
     <Container onPress={() => setClicked(!clicked)}>
-      <QuestionText>{texts[questionNum]["Q"]}</QuestionText>
+      <QuestionText>
+        {texts[questionNum]["Q"].replace("유저", nickname)}
+      </QuestionText>
       {clicked && (
         <SmallGrayText>
           {texts[questionNum]["A"].replace("유저", nickname)}
