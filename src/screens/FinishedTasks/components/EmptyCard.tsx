@@ -7,7 +7,6 @@ interface IContainerProps {
 
 interface CardProps {
   onPress: () => void;
-  // imageSource: ImageProps["source"];
 }
 
 const EmptyCard = ({ onPress }: CardProps) => {

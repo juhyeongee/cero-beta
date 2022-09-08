@@ -33,6 +33,7 @@ const ToDo = ({ navigateToTodayMission }: Props) => {
   const [completedTodoFromAsyncStorage, setCompletedTodoFromAsyncStorage] =
     useState<undefined | string>();
   const {
+    nickname,
     todoNum,
     todayDate,
     versionNum,

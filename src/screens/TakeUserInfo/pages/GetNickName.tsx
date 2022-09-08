@@ -4,8 +4,6 @@ import { BigPrimaryBtn } from "@components/index";
 import styled from "styled-components/native";
 import { ITheme } from "@/types";
 import { Container, SafeArea, TitleText } from "../components/Styled";
-
-import { observer } from "mobx-react";
 import userInfoStore from "@/store/UserInfoStore";
 
 interface IContainerProps {

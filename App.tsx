@@ -29,7 +29,6 @@ import { observer } from "mobx-react";
 
 function App() {
   const { currentScreen } = currentPageStore;
-  const [onPage, setOnPage] = useState("Setting");
   const [fontsLoaded] = useFonts({
     NotoSansKR_100Thin,
     NotoSansKR_300Light,
@@ -46,6 +45,7 @@ function App() {
   });
 
   useEffect(() => {
+    userInfoStore.updateTodayDate();
     userInfoStore.resetVersionNum();
     // const subscription = Notifications.addNotificationReceivedListener(
     //   (notification) => {
@@ -79,8 +79,6 @@ function App() {
         {currentScreen === "OnBoardingNav" && <OnBoardingNav />}
         {currentScreen === "MainBottomTabNav" && <MainBottomTabNav />}
         {currentScreen === "EndingStackNav" && <EndingStackNav />}
-
-        {/* {onPage === "Setting" && <SettingStackNav />} */}
 
         <Toast />
       </ThemeProvider>

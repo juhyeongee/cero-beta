@@ -5,7 +5,7 @@ import SvgIcon from "@assets/SvgIcon";
 import { FAQText } from "@constants/properties";
 import GrayAcchodion from "../components/GrayAcchodion";
 import NoticeBar from "../components/settingHomeComp/NoticeBar";
-import { SettingStackScreenProps, ITheme } from "@/types";
+import { SettingStackScreenProps } from "@/types";
 import { OptionBox } from "../components/settingHomeComp/OptionBox";
 
 const SettingHomePage = ({

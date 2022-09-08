@@ -7,10 +7,6 @@ import { Container, TitleText, SubText } from "../components/Styled";
 import { useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-interface StyledProps {
-  theme: ITheme;
-  nickname: string;
-}
 interface IContainerProps {
   theme: ITheme;
 }
@@ -19,7 +15,6 @@ const ResetDataPage = ({
   route,
   navigation,
 }: SettingStackScreenProps<"ResetData">) => {
-  const [nickname, setNickname] = useState<string>("");
   const navigateToBack = () => {
     navigation.goBack();
   };

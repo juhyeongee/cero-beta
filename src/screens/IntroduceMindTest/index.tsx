@@ -5,6 +5,7 @@ import { Container, DescContainer, DescCard } from "./components";
 import { introduceMindText } from "@/constants/properties";
 import MakeSeedModal from "./components/MakeSeedModal";
 import userInfoStore from "@/store/UserInfoStore";
+import { observer } from "mobx-react";
 
 const OnBoarding = ({
   route,
@@ -64,4 +65,4 @@ const OnBoarding = ({
   );
 };
 
-export default OnBoarding;
+export default observer(OnBoarding);

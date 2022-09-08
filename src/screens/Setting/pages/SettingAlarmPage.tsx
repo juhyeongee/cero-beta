@@ -8,6 +8,8 @@ import { Container, GrayBar, TitleText, SubText } from "../components/Styled";
 import { useState } from "react";
 import GreenTimePicker from "../components/settingHomeComp/NoticeBar";
 import Theme from "@/constants/Theme";
+import { scheduleAfterMissionNotiHandler } from "@/utils/notification";
+
 interface StyledProps {
   theme: ITheme;
 }
@@ -33,12 +35,23 @@ const SettingAlarmPage = ({
       setAlarmTime(`오전 ${hours}시 ${minutes}분  `);
     }
   };
-  const onPressTodayMissionAlarmToggle = () => {
-    setOnTodayMissionAlarmToggle(!onTodayMissionAlarmToggle);
+  const onPressTodayMissionAlarmToggle = async () => {
+    setOnTodayMissionAlarmToggle(false);
+    // if (onTodayMissionAlarmToggle === false) {
+    //   console.log("에스홀");
+    //   scheduleAfterMissionNotiHandler();
+    // } else {
+    //   try {
+    //     const res = await Notifications.getAllScheduledNotificationsAsync();
+    //     console.log(res);
+    //   } catch (e) {
+    //     console.log(e);
+    //   }
+    // }
   };
 
   const onPressHelloAlarmToggle = () => {
-    setOnHelloAlarmToggle(!onHelloAlarmToggle);
+    setOnHelloAlarmToggle(false);
   };
 
   return (
@@ -62,7 +75,7 @@ const SettingAlarmPage = ({
               <View>
                 <SubText>할 일 안내 알림 받기</SubText>
                 <SmallGrayText>
-                  지정한 시간에 매일 ‘오늘 할 일’ 알림을 보내드려요.
+                  매일 아침 9시, ‘오늘 할 일’ 알림을 보내드려요.
                 </SmallGrayText>
               </View>
               <Switch
@@ -77,14 +90,14 @@ const SettingAlarmPage = ({
               />
             </View>
 
-            <GreenTimePicker
+            {/* <GreenTimePicker
               center={true}
               text1={alarmTime}
               onPress={() => setIsTimePickerVisible(true)}
-            />
+            /> */}
             <GrayBar />
           </View>
-          <View style={{ flex: 2.5 }}>
+          <View style={{ flex: 4.5 }}>
             <View
               style={{
                 flexDirection: "row",

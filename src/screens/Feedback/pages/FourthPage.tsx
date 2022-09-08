@@ -84,24 +84,3 @@ const BoxContainer = styled.Pressable`
   flex: 3;
   width: 100%;
 `;
-
-const Box = styled.Pressable`
-  padding: 3% 3%;
-  height: 120px;
-  background-color: ${(props: IContainerProps) => props.theme.color.n200};
-  border-radius: 10px;
-  align-items: center;
-  justify-content: space-around;
-  width: 46%;
-`;
-
-const ImogiText = styled.Text`
-  font-size: 20px;
-`;
-
-const GrayBoxInnerTitle = styled.Text``;
-
-const GrayBoxInnerText = styled.Text`
-  font-size: 9px;
-  color: ${(props: IContainerProps) => props.theme.color.n700};
-`;

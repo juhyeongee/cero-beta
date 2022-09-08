@@ -18,6 +18,7 @@ const EndingMovie = () => {
   const [image, setImage] = useState(
     require("@/assets/images/mansu-day14.png")
   );
+
   const boilingPotOpacity = new Animated.Value(0);
   const toOpacity1 = () => {
     Animated.timing(boilingPotOpacity, {
