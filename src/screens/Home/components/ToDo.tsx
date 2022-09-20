@@ -11,6 +11,7 @@ import { heightRatio } from "@/utils";
 import Toast from "react-native-toast-message";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect, useState } from "react";
+import dayjs from "dayjs";
 
 interface IContainerProps {
   theme: ITheme;
@@ -35,7 +36,7 @@ const ToDo = ({ navigateToTodayMission }: Props) => {
   const {
     nickname,
     todoNum,
-    todayDate,
+
     versionNum,
     plusVersionNum,
     completeMissionDatesArray,
@@ -43,11 +44,15 @@ const ToDo = ({ navigateToTodayMission }: Props) => {
   const version = `version${versionNum}`;
   const todoObject = missions[todoNum];
   const todo = todoObject[version].subtitle;
+  const todayDate = dayjs().format("YYMMDD");
+  console.log("TODO에 있는 todayDate :", todayDate);
 
   const lastCompletedMissionDate =
     completeMissionDatesArray[completeMissionDatesArray.length - 1];
-  const todayMissionComplete = todayDate === lastCompletedMissionDate;
-
+  console.log(lastCompletedMissionDate);
+  const [todayMissionComplete, setTodayMissionComplete] = useState(
+    todayDate === lastCompletedMissionDate
+  );
   const updateCompletedVersionFromAsyncStorage = () => {
     AsyncStorage.getItem(`mission${todoNum - 1}Result`).then((res) => {
       if (res === null) {
@@ -79,6 +84,10 @@ const ToDo = ({ navigateToTodayMission }: Props) => {
   useEffect(() => {
     updateCompletedVersionFromAsyncStorage();
   }, [todoNum]);
+
+  useEffect(() => {
+    setTodayMissionComplete(todayDate === lastCompletedMissionDate);
+  }, [todayDate]);
 
   return (
     <Container>

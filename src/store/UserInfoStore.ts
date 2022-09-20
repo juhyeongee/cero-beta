@@ -124,10 +124,7 @@ class UserInfoStore {
   updateLastMindTestResultObject(answerNum: number, answer: number) {
     this.lastMindTestResultObject[answerNum] = answer;
   }
-  updateTodayDate() {
-    this.todayDate = dayjs().format("YYMMDD");
-  }
-  updateTempTodayDate(date: string) {
+  updateTodayDate(date: string) {
     this.todayDate = date;
   }
 }

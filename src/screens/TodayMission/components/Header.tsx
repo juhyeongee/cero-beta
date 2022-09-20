@@ -15,6 +15,7 @@ import {
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { observer } from "mobx-react";
 import { useState } from "react";
+import dayjs from "dayjs";
 
 interface HeaderModal {
   modalVisible: boolean;
@@ -30,8 +31,8 @@ const Header = ({
   const { minusOne, todoNum, versionNum, nickname } = userInfoStore;
   const navigation = useNavigation();
 
+  const todayDate = dayjs().format("YYMMDD");
   const pressCompleteBtn = () => {
-    const { todayDate } = userInfoStore;
     Alert.alert(
       "미션 내용을 제출하시겠어요?",
       `제출한 내용은 '지난 할 일' 탭에서 \n확인할 수 있어요`,
